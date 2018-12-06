@@ -1,0 +1,162 @@
+* {-webkit-font-smoothing: antialiased;}
+body{
+	font-family: "微软雅黑";
+	margin: 0px;
+	padding: 0px;
+	overflow-x:hidden;
+	min-width:960px;
+	width: expression_r( document.body.clientWidth < 960 ? "960px" : "auto" );
+} 
+div.container-fluid{
+	width: 100%;
+	margin: 0px;
+	padding:0;
+}
+/*头部样式*/
+#head{
+	height: 60px;
+	line-height: 56px;
+	width: 980px;
+	margin: 0 auto;
+}
+ul{
+	margin-bottom: 0;
+}
+#menue{
+	text-align: right;
+}
+#menue>li{
+	display: inline-block;
+  padding: 0 22px;
+}
+#menue>li>a{
+	color: #666666;
+}
+.login-btn{
+	padding: 0!important;
+}
+.login-btn>a{
+	height: 36px;
+	line-height: 36px;
+	width: 75px;
+	background: #783390;
+	display: block;
+	text-align: center;
+}
+.register-btn{
+	width: 75px;
+	padding: 0!important;
+	border: 1px solid #783390;
+	margin-left: 30px;
+}
+.register-btn>a{
+	height: 36px;
+	line-height: 36px;
+	width: 75px;
+	text-align: center;
+	display: block;
+}
+#register-color{
+	color: #783390!important;
+}
+.big-word{
+	font-size: 26px;
+	color: #222222;
+}
+.middle-word{
+	font-size: 20px;
+	color: #666666;
+}
+.small-word{
+	font-size: 12px;
+	color: #666666;
+}
+/* 2018.12.04 */
+#menue {
+  position: relative;
+}
+.home-product-list {
+  margin-top: 4px;
+  margin-left: -22px;
+  position: absolute;
+  display: none;
+  text-align: left;
+  overflow: hidden;
+  z-index: 9999;
+}
+.product:hover .home-product-list {
+  display: block;
+}
+.home-product-list ul {
+  list-style: none;
+  overflow: hidden;
+  padding-left: 4px;
+  border-bottom: solid 1px #eee;
+  border-left: solid 1px #eee;
+  border-right: solid 1px #eee;
+  width: 72px;
+  background: #fff;
+}
+.home-product-list ul li {
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  line-height: 40px;
+}
+.home-product-list li a {
+  display: inline-block;
+  color: #696969;
+  border-bottom: 2px solid #fff;
+}
+.home-product-list li a:hover {
+  color: #af49d3;
+  border-bottom: 2px solid #af49d3;
+}
+/*  */
+/*footer样式*/
+footer{
+	height: 420px;
+	width: 100%;
+	background: #1E232A;
+	color: white;
+	text-align: center;
+}
+.footer{
+	padding-top: 66px;
+}
+.main-footer{
+	width: 960px;
+	margin: 0 auto;
+	height: 280px;
+}
+.three-footer{
+	width: 318px;
+	float: left;
+	text-align: left;
+}
+.special-footer{
+	padding-left: 200px
+}
+.footer-big{
+	font-size: 18px;
+	margin-bottom: 25px;
+}
+.footer-small{
+	font-size: 12px;
+}
+.footer-small>a{
+	color: white;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+/* 2018.12.04 */
+.home:hover, .product:hover, .case:hover, .about:hover, .price:hover {
+  /* padding-bottom: 21px; */
+  border-bottom: 4px solid #783390;
+}
+/* .home > a:hover, .product > a:hover, .case > a:hover, .about > a:hover, .price > a:hover {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+} */

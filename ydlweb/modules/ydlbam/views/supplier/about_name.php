@@ -1,0 +1,2 @@
+supplier_detail 供应商管理-供应商详情
+supplier_manage 供应商管理

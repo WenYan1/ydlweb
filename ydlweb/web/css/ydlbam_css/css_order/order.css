@@ -1,0 +1,37 @@
+.date-input{
+	width:120px;
+}
+.option-supplier{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/drop-down.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    min-width: 160px;
+    max-width: 280px;
+    cursor: pointer;
+    padding:3px 5px;
+    border:1px solid #ccc;
+}
+.down-line{
+	border-bottom: 1px dashed #eee;
+}
+
+.order_detail thead tr {
+    height: 40px;
+    background: #F5F5F5;
+}
+.order_detail tbody tr{
+	height: 60px;
+	background: #fff;
+}
+.order_detail #table>tbody>tr>td, .order_detail #table>thead>tr>th {
+	color:#333;
+    vertical-align: middle;
+    border-bottom: 1px solid #efefef;
+}
+
+.font-blue {
+    color: rgb(78, 153, 184);
+    cursor: pointer;
+}

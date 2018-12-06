@@ -1,0 +1,116 @@
+.box-img{
+	position: relative;
+}
+.index-image{
+	width: 100%;
+	height: 606px;
+}
+.enlish-word,.sweat-word{
+	color: #ffffff;
+}
+.service-word{
+	font-size: 18px;
+}
+.login{
+	margin-top: 53px;
+}
+.centre-info{
+	margin-top: 200px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+}
+.enlish-word{
+	font-size: 30px;
+	font-weight: 100;
+}
+.small-word,.big-word{
+	margin-top: 18px;
+}
+.characteristics{
+	text-align: center;padding-top: 100px;
+}
+.information{
+	width: 960px;
+	background: white;
+	margin: 0 auto;
+	margin-top: -27px;
+}
+.first-part{
+	height: 200px;
+	padding-top: 60px;
+	background: white;
+	text-align: center;
+}
+.three-part{
+	width: 320px;
+	height: 320px;
+	float: left;
+	text-align: center;padding-top: 55px;
+}
+.white-part{
+	background: white;
+}
+.one-part{
+	width: 960px;
+	height: 245px;
+	float: left;
+	text-align: center;
+	padding-top: 90px;
+}
+.diamond{
+height: 545px;width: 100%;background: #f7f7f7;text-align: center;line-height: 545px;
+}
+.parter{
+	height: 400px;
+	text-align: center;
+	padding-top: 66px;
+}
+.six-parter{
+	width: 960px;
+	margin: 0 auto;
+}
+.three-parter{
+	width: 320px;
+	float: left;
+}
+.taste{
+	text-align: center;
+	height: 270px;
+	padding-top: 50px;
+	background: #f2f2f2;
+	line-height: 40px;
+}
+.middle-word{
+	font-size: 20px;
+	color: #666666;
+}
+.small-word{
+	font-size: 12px;
+	color: #666666;
+}
+.taste-btn{
+	margin: 30px auto;
+	display: block;
+	width: 300px;
+	color: white;
+	height: 40px;
+	line-height: 40px;
+	background: #783390;
+	font-size: 18px;
+}
+.small-word>span{
+	padding-left: 10px;
+}
+/* 2018.12.04 */
+/* .home > a {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+} */
+.home {
+    padding-bottom: 21px;
+}
+.three-parter>a{
+	cursor: default;
+}
+

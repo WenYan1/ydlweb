@@ -1,0 +1,3 @@
+user_account_detail 用户管理-用户账号详情
+user_company_detail 用户管理-用户公司详情
+user_manage 用户管理

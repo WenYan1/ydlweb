@@ -1,0 +1,332 @@
+.content-width{
+	width:100%;
+}
+.capital-category-color{
+	color:#666666;
+}
+.content-item-width{
+	width:24%
+}
+.capital-img{
+	width:18px;
+	vertical-align: top;
+}
+.available-capital{
+	color:#FD8B13;
+	font-size:24px;
+	display:inline-block;
+}
+.available-capital-small{
+	color:#FD8B13;
+	font-size:12px;
+	display:inline-block;
+}
+.useless-captial{
+	color:#666;
+	font-size:20px;
+	display:inline-block;
+}
+.useless-captial-small{
+	color:#666;
+	font-size:12px;
+	display:inline-block;
+}
+.capital-width{
+	width:24%;
+	display:inline-block;
+}
+.available-credit{
+	color:#af49d3;
+	font-size:24px;
+	display:inline-block;
+}
+.available-credit-small{
+	color:#af49d3;
+	font-size:12px;
+	display:inline-block;
+}
+.total-credit{
+	color:#222;
+	font-size:20px;
+	display:inline-block;
+}
+.total-credit-small{
+	color:#222;
+	font-size:12px;
+	display:inline-block;
+}
+.vertical-line{
+	display: inline-block;
+	width: 0.5px;
+    margin-right: 10px;
+    font-size: 22px;
+    color: #aaa;
+}
+.recharge{
+	color:#fff;
+	padding:4px 12px;
+}
+.capital-settlement{
+	vertical-align:middle;
+}
+.space-left{
+	margin-left:15px;
+	margin-right:30px;
+}
+.privider_query{
+    font-size: 14px;
+    height: 28px;
+    border: 1px solid #D8D2D2;
+    margin-left: 30px;
+}
+.privider-select{
+	width:100%;
+	font-weight: bold;
+}
+.privider-select p{
+	cursor: pointer;
+}
+.capital-manager-1{
+	width:14%;
+	text-align:center;
+}
+.capital-manager-2,.capital-manager-4,.capital-manager-5,.capital-manager-6{
+	width:11.5%;
+	text-align:center;
+}
+.capital-manager-3{
+	width:17.5%;
+	text-align:center;
+}
+
+.capital-manager-7{
+	width:11.5%;
+	text-align:center; 
+}
+.capital-manager-8{
+	width:11%;
+	text-align:center; 
+}
+
+.capital-left{
+	padding-left:15px;
+}
+.capital-center{
+	padding-left:10px;
+}
+
+table{
+	width:100%;
+}
+
+thead {
+    border-bottom: 1px solid #d8d8d8;
+}
+th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #f7f7f7;
+}
+td {
+    height: 60px;
+    border-bottom: 1px solid #eee;
+}
+
+.exchange-2,.exchange-4,.exchange-5,.exchange-6,.exchange-7{
+	width:12%;
+	text-align:center;
+}
+.exchange-1{
+	width:14%;
+	text-align:center;
+}
+.exchange-3{
+	width:15%;
+	text-align:center;
+}
+.exchange-8{
+	width:11%;
+	text-align:center;
+}
+
+
+.retainage-1{
+	width:15%;
+	text-align:center;
+}
+.retainage-2,.retainage-4,.retainage-5,.retainage-6{
+	width:13%;
+	text-align:center;
+}
+.retainage-3{
+	width:20%;
+	text-align:center;
+}
+.retainage-7{
+	width:13%;
+	text-align:center;
+}
+
+.duty_rate-1{
+	width:14%;
+	text-align:center;
+}
+.duty_rate-2,.duty_rate-4,.duty_rate-5,.duty_rate-6,.duty_rate-7{
+	width:12%;
+	text-align:center;
+}
+.duty_rate-3{
+	width:15%;
+	text-align:center;
+}
+.duty_rate-8{
+	width:11%;
+	text-align:center;
+}
+
+.overdue-1,.overdue-3{
+	width:15%;
+	text-align:center;
+}
+.overdue-4,.overdue-5{
+	width:8%;
+	text-align:center;
+}
+.overdue-2,.overdue-6,.overdue-7,.overdue-8{
+	width:11%;
+	text-align:center;
+}
+.overdue-9{
+	width:11%;
+	text-align:center;
+}
+
+
+.available-crash{
+	color:#fff;
+	padding:3px 10px;
+	cursor:pointer;
+}
+.credit-limit{
+	cursor:pointer;
+}
+.time-quantum{
+	float:right;
+	margin-right: 16px;
+	display:inline-block;
+}
+.time-quantum input{
+	height: 32px;
+	padding-left: 8px;
+	padding-top: 6px; 
+	padding-bottom: 6px;
+}
+.balance-1,.balance-2{
+	width:15%;
+	text-align:center;
+}
+.balance-3,.balance-5{
+	width:15%;
+	text-align:center;
+}
+.balance-4{
+	width:40%;
+	text-align:center;
+}
+.border-recharge{
+	border:2px solid #eee;
+}
+.space-top-bottom{
+	margin-top:30px;
+	margin-bottom: 30px;
+}
+.recharge-div{
+	text-align:center;
+}
+.recharge-row{
+	padding: 10px 0;
+}
+.submit{
+	color:#fff;
+	cursor:pointer;
+	padding:6px 20px;
+	border-radius:5px;
+	background: #783390;
+	margin:20px auto;
+	display:inline-block;
+}
+.recharge-p{
+	width:95px;
+}
+.space-recharge-left{
+	padding-left:23px;
+}
+.recharge-to-input{
+	margin-left:10px;
+	padding: 0 8px;
+	width: 280px;
+	height: 36px;
+}
+#recharge-date{
+	margin-left:10px;
+	padding-left:24px;
+	padding-top: 8px;
+	padding-bottom: 8px; 
+	padding-right: 8px;
+	width: 280px;
+	height: 36px;
+}
+.table-select{
+	border-radius: 6px 6px 0 0;
+	float: left;
+	margin-left: 24px;
+	margin-top: 8px;
+	display: inline-block;
+}
+.table-select p{
+	display: inline-block;
+	width: 120px;
+	margin-top: 8px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 24px;
+	cursor: pointer;
+}
+.select-false{
+	background-color: #fff;
+	color:#000000;
+}
+.select-true{
+	background-color: #f7f7f7;
+	color:#783390;
+}
+
+#form-filter input{
+	display: none;
+}
+
+div.button_fileter{
+	float:right;
+	margin-right: 150px;
+	display:inline-block;
+	padding: 2.5px;
+	height: 28px;
+	background-color:#783390;
+	border-radius:5px;
+	margin-left:10px;
+	cursor:pointer;
+}
+div.button_fileter p{
+	margin: 0 12px;
+	line-height: 23px;
+	font-size:12px;
+	color:#fff;
+	font-weight: normal;
+	display:inline-block;
+}
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+}

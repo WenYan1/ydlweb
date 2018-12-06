@@ -1,0 +1,66 @@
+.account-title{
+	border-bottom:1px solid #eee;
+	padding-bottom: 15px;
+}
+a.content:link{
+	color:#783390;
+}
+a.content:visited{
+	color:#783390;
+}
+a.content:hover{
+	color:#783390;
+	border-bottom:1px solid #783390;
+}
+a.content:active{
+	color:#783390;
+	border-bottom:1px solid #783390;
+}
+.content-middle{
+	vertical-align:middle;
+}
+.content-to-left{
+	margin-left:26px;
+}
+.account-click{
+	cursor:pointer;
+	margin-left:5px;
+}
+.account-phone{
+	height:25px;
+}
+.account-left{
+	margin-left:5px;
+}
+.a-button{
+	width:50px;
+	height:25px;
+	text-align:center;
+	padding:2px;
+	vertical-align:middle;
+}
+.font-bold{
+	font-weight:bold;
+}
+a.a-button:link{
+	border:1px solid #bdbdbd;
+}
+a.a-button:visited{
+	border:1px solid #bdbdbd;
+}
+a.a-button:hover{
+	border:2px solid #bdbdbd;
+}
+a.a-button:active{
+	border:1px solid #bdbdbd;
+}
+.hide{
+    display: none;
+}
+.bind-phone{
+	display:inline-block;
+}
+.border-none{
+	border:none;
+}
+

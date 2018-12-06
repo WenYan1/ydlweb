@@ -1,0 +1,38 @@
+.block2inline{
+	display:inline-block;
+}
+.option-supplier{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/drop-down.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    min-width: 160px;
+    max-width: 280px;
+    cursor: pointer;
+    padding:3px 5px;
+    border:1px solid #ccc;
+}
+.font-blue{
+	color:rgb(78, 153, 184);
+	cursor:pointer;
+}
+.message-space-left{
+	margin-left:93px;
+}
+.message-space-top{
+	margin-top:10px;
+}
+.company-image{
+	width: 100px;
+	height:100px;
+	vertical-align:top;
+	margin-top:25px;
+	cursor:pointer;
+}
+.border-none{
+	border:none;
+}
+#account_opening{
+	width:140px;
+}

@@ -1,0 +1,2 @@
+order_detail 订单管理-订单详情
+order_manage 订单管理

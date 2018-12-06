@@ -1,0 +1,277 @@
+.main{
+	margin-top: 56px;
+	min-width: 1000px;
+}
+.forgetpasswd{
+	margin-top: 70px;
+}
+.form{
+	padding: 30px 0  0 0;
+}
+.topbar{
+	border-bottom:1px solid #eee;
+}
+.nav_string{
+	color:#783390;
+	font-size:36px;
+}
+.top-inner{
+	margin:15px 0 15px 21px;
+}
+.top-inner-black{
+	margin-top:15px;
+	margin-bottom: :15px;
+}
+.tobar-black{
+	height:55px;
+}
+.form-style{
+	margin-top: 16px;
+}
+.account-label{
+	color:#888;
+	text-align:left;
+	width: 70px;
+	height: 40px;
+	font-weight: 100;
+	line-height: 40px;
+	margin-right: 7px;
+}
+.password-confirm{
+	margin-top:40px;
+}
+.content-body{
+	margin:60px auto;
+	width:400px;
+}
+.content-body img{
+	width:15%;
+	margin-left:40%;
+}
+.content-body p {
+	text-align:center;
+	margin-top:30px;
+}
+.content-body p span{
+	font-size:16px;
+	color:#333;
+}
+.verification-button{
+	font-size:16px;
+	background-color:#783390;
+	color:#fff;
+	margin:0px auto;
+	width:200px;
+	padding:10px 0px;
+}
+.join-me-color{
+	font-size: 20px;
+}
+.complete-password{
+	background-color:#783390;
+	color:#fff;
+	padding:10px 0;
+	width:90px;
+	text-align: center;
+	margin-top:30px;
+	border-radius: 5px;
+}
+.complete{
+	background-color:#783390;
+	color:#fff;
+	padding:10px 40px;
+	margin-bottom:45px;
+	margin-top:35px;
+	cursor: pointer;
+	text-align: center;
+}
+.advantage{
+	float:right;
+	margin-top:20px;
+}
+.verification-lable{
+	margin-left:55px;
+	margin-top: 30px;
+}
+.verification-style{
+	width:67px;
+	margin-left:10px;
+}
+.verfication{
+	background-color:#f8f8f8;
+	padding:10px 0 10px 10px;
+	width:85px;
+}
+.tip-message{
+	margin-top:25px;
+}
+.tip-register{
+	color:#221212;
+	font-size:14px;
+	float:right;
+	margin-right:14px;
+	text-align:right;
+}
+.forget-password{
+	color:#783390;
+	font-size:14px;
+}
+.verfication-tip{
+	color:#783390;
+	width:100px;
+	font-size:12px;
+}
+.button-next{
+	background-color:#783390;
+	color:#fff;
+	padding:10px 0;
+	width:350px;
+	margin-top:30px;
+	margin-left:27%;
+	font-size:16px;
+}
+.next-step{
+	background-color:#783390;
+	color:#fff;
+	text-align: center;
+	padding:10px 0;
+	width: 170px;
+	margin-top:30px;
+	font-size:16px;
+	border-radius: 5px;
+	margin:0 auto;
+	margin-top: 50px;
+}
+a{
+	text-decoration:none;
+}
+.background-color-white{
+	background-color:#fff;
+	border:1px solid #d8d8d8;
+}
+.join-me-color{
+	color:#333;
+	margin-top:15px;
+}
+.register-tip{
+	color:#999;
+}
+.vertical-line{
+	background-color:#eee;
+	height:200px;
+	margin-top:60px;
+	width:1px;
+	display:inline-block;
+}
+.describe{
+	font-size:14px;
+}
+.describe-color{
+	color:#999;
+	vertical-align:top;
+	font-size:15px;
+}
+.info{
+	margin-top: 95px;
+	padding-left: 78px;
+	border-right: 1px solid #eee;
+}
+.describe{
+	margin-top:105px;
+}
+.describe-em-color{
+	color:#FD8B13 ;
+}
+.describe-em-size{
+	font-size:18px;
+}
+.describe-title{
+	display:inline-block;
+}
+.describe-em-color span{
+	font-size:12px;
+	color:#666;
+}
+.public_top{
+	margin-top: 16px;
+}
+#account{
+	height: 29px;
+	padding-left: 4px;
+}
+#verification-input{
+	padding-left: 4px;
+}
+.little-word{
+	font-size: 12px;
+	color: #999;
+}
+.index-info{
+	height: 66px;
+}
+.edit-eamail,.edit-code{
+	margin-left: 10px;
+	height: 39px;
+	padding-left: 5px;
+}
+.edit-eamail{
+	width: 300px;
+}
+.edit-code{
+	width: 120px;
+}
+.word{
+	width: 140px;
+	font-size: 20px;
+	color: #666666;
+	font-weight: lighter;
+}
+.new-code,.again-pwd,.old-code{
+	text-align: right;
+	height: 40px;
+	line-height: 40px;
+	font-weight:normal;
+	color:#999;
+}
+.new-input,.again-input,.old-input{
+	height: 40px;
+	line-height: 40px;
+}
+.pwd-forget-one,.pwd-forget-two,.pwd-forget-three{
+	margin-top: 40px;
+}
+.sure-btn{
+	margin: 0 auto;
+}
+.input_style{
+	padding: 8px;	
+}
+input::-webkit-input-placeholder{
+	color: #dddddd;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+	color: #dddddd;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+	color: #dddddd;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+	color: #dddddd;
+}
+.submit-p{
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	padding:0 40px;
+	color:#fff;
+	margin-left:5px;
+}
+.forget-account{
+	border-bottom:1px solid #eee;
+}
+.forgettwo-main{
+	margin-top:30px;
+}
+
+
+

@@ -1,0 +1,35 @@
+div.select-row{
+	margin-top: 20px;
+}
+
+.select{
+	cursor: pointer;
+	border-top: 6px solid #783390;
+	border-left: 1px solid #d8d8d8;
+	border-right: 1px solid #d8d8d8;
+}
+.select span{
+	display: block;
+	text-align: center;
+	color: #783390;
+}
+.no-select{
+	cursor: pointer;
+	border: 1px solid #d8d8d8;
+	
+}
+.bottom-line{
+	border-bottom: 1px solid #d8d8d8;
+}
+.bottom-line{
+	color: #fff;
+}
+
+/*table外层容器，带边框*/
+div.table-border-2{
+	width: 100%;
+	border-left: 1px solid #d8d8d8;
+	border-bottom: 1px solid #d8d8d8;
+	border-right: 1px solid #d8d8d8;
+
+}

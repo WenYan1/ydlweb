@@ -1,0 +1,137 @@
+/*privider_manage*/;
+a {
+	text-decoration:none;
+	cursor: pointer;
+}
+div.space{
+	width: 100%;
+	float: left;
+	padding: 10px 0px;
+}
+
+div.space p{
+	display: inline-block;
+}
+div.barcolor {
+	margin-right: 15px;
+    width: 6px;
+    height: 24px;
+    display: block;
+    float: left;
+    background-color: #fd8b13;
+}
+div.privider-filter{
+	float: left;
+}
+div.privider-filter p{
+	display: inline-block;
+	margin-right: 30px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.vertical-line{
+	color:#ddd;
+	margin-left:15px;
+	display:inline-block;
+}
+input.product_query{
+	width: 180px;
+	height: 28px;
+	padding: 2px;
+}
+
+table.privider-list{
+	padding-left: 24px;
+	text-align: center;
+	width: 100%;
+}
+.privider-list-head{
+	height: 40px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #d8d8d8;
+}
+.privider-list-item{
+	height: 60px;
+	border-bottom: 1px solid #d8d8d8;
+}
+
+tr.privider-list-item a{
+	color: #783390;
+	cursor: pointer;
+}	
+
+
+/*add privider*/
+div.divider-padding2{
+	width: 100%;
+	float: left;
+	padding: 0 24px;
+}
+div.add-privider-form{
+	padding: 20px 0;
+}
+div.add-privider-form p{
+	display: block;
+	float: right;
+	color: #666666;
+}
+div.add-privider-form input{
+	width: 240px;
+}
+div.submit-img{
+	padding: 20px 0;
+}
+div.submit-img img{
+	margin-right: 10px;
+	width:100px;
+	height:100px;
+	cursor: pointer;
+	border: 1px solid #d8d8d8;
+}
+div.submit-img input{
+	display: none;
+}
+
+.privider-sapce-top{
+	margin-top:15px;
+}
+div.input-height input{
+	height: 32px;
+}
+div.input-height p{
+	line-height: 32px;
+}
+div.input-height select{
+	height: 32px;
+	width: 77px;
+	line-height: 32px;
+}
+div.export-right p{
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+div.export-right input{
+	width: auto;
+	float: left;
+}
+#form-filter input{
+	display: none;
+}
+/*privider_detail*/
+div.privider-detail {
+	padding: 20px 0;
+}
+div.privider-detail p{
+	display: block;
+	float: right;
+	color: #666666;
+}
+div.privider-detail span{
+	margin:0 8px;
+	line-height: 32px;
+	width: 16px;
+	color: #222222;
+	font-weight: normal;
+}
+

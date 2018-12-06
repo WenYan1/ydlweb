@@ -1,0 +1,27 @@
+/*case样式*/
+.fixed-width{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.fixed-title{
+	width: 960px;
+	padding-top: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+.excuse-words{
+	font-size: 26px;
+	padding-top: 30px;
+}
+.excuse-image{
+	margin-top: 160px;
+}
+/* 2018.12.04 */
+/* .case > a {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+} */
+.case {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+}

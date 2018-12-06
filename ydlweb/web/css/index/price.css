@@ -1,0 +1,137 @@
+/*price样式*/
+#form-tab>li{
+	width: 50%;
+	border:1px solid #e4e4e4;
+}
+.fixed-form{
+	width: 960px;
+	padding-top: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+#form-tab>li.active>a, #form-tab>li.active>a:focus,#form-tab>li.active>a:hover{
+	border:0;
+}
+#form-tab>li>a{
+	display: inline-block;
+	height: 30px;
+	line-height: 12px;
+	color: black;
+}
+.nav-tabs>li>a{
+	border:0px solid transparent;
+}
+.fixed-title{
+	width: 960px;
+	padding-top: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+.fixed-two-part{
+	width: 480px;
+	float: left;
+	text-align: left;
+}
+.price-words{
+	color: #222222;
+	font-size: 14px;
+	margin-top: 20px;
+}
+.price-input{
+	width: 320px;
+	height: 40px;
+}
+.fixed-two-part{
+	padding-left: 100px;
+}
+.price-btn{
+	margin-top: 44px;
+	margin-left: 80px;
+	width: 150px;
+	height: 32px;
+	line-height: 32px;
+	border:none;
+	background: #783390;
+	color: white;
+}
+.price-result{
+	width: 340px;
+	height: 320px;
+	background: #f5f5f5;
+	margin-top: 50px;
+}
+.price-result>p{
+text-align: center;
+padding-top: 20px;
+}
+th,td{
+	width: 170px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+.total-price{
+	font-size: 20px;
+	color: #783390;
+}
+.fixed-small{
+	width: 780px;
+	background-color: #f5f5f5;
+	margin: 0 auto;
+}
+.calculate-top{
+	padding-top: 50px;
+}
+.calculate-centre{
+	padding-top: 30px;
+}
+.calculate-btn{
+	display: inline-block;
+	color: white;
+	width: 155px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 40px;
+	background: #783390;
+}
+.small-word{
+	font-size: 14px;
+	color: #999999;
+}
+.big-word{
+	font-size: 30px;
+	margin-top: 90px;
+}
+.detail-msg{
+	background: white;padding:0 40px;
+	text-align: left;
+}
+.msg-brief{
+	margin-bottom: 100px;
+	padding-left: 80px;
+}
+/* 2018.12.04 */
+/* .price > a {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+} */
+.price {
+    border-bottom: 4px solid #783390;
+}
+
+.info-title-size{
+	font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

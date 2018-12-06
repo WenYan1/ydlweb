@@ -1,0 +1,179 @@
+/*product样式*/
+.fixed-width{
+	width: 100%;
+}
+.fixed-title{
+	width: 960px;
+	padding-top: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+.fixed-form{
+	width: 630px;
+	margin: 60px auto;
+	text-align: center;
+	height: 420px;
+	background: white;
+}
+.anchor-point-three{
+	width: 320px;
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	border:1px solid #F2F2F2;
+}
+.detail-centre{
+	width: 470px;
+	height: 160px;
+	padding-left: 100px;
+	display: inline-block;
+}
+.detail-word{
+	margin-top: -30px;
+	margin-left: 70px;
+}
+.short-detail{
+	text-align: left;
+}
+.point-title{
+	font-size: 26px;
+	color: #666666;
+}
+.point-second-title{
+	font-size: 18px;
+	color: #999999;
+}
+.top-empty{
+	margin-top: 30px;
+}
+.financial-image{
+	padding-top: 20px;padding-bottom: 50px;
+}
+.expericen{
+	display: block;
+	margin :0 auto;
+	height: 35px;
+	width: 150px;
+	background: #783390;
+	line-height: 35px;
+	color: white;
+}
+/* 2018.12.04 */
+#logisticsServe {
+ /* display: none; */
+}
+#tax-clearance {
+  margin-bottom: 60px;
+  /* display: none; */
+}
+#financial {
+  /* display: none; */
+}
+/* #logistics{
+	margin-top: 80px;
+} */
+.showActive {
+	display: none;
+}
+/*  */
+.fixed-small{
+	width: 720px;
+	margin: 0 auto;
+	padding-top: 37px;
+}
+.logistics-image{
+	width: 240px;height:300px;
+	float: left;background-repeat: no-repeat;
+	background-color: #f2f2f2;
+	border-left:1px solid white;
+}
+.big-word{
+	padding-top: 50px;
+	font-size: 30px;
+	color: white;
+}
+.small-word{
+	padding: 100px 20px;
+	text-align: left;
+}
+.right-now{
+	clear: both;padding-top: 40px;
+}
+.logistics-point-three{
+	width: 320px;
+	padding-top: 60px;
+	float: left;
+	height: 332px;
+	line-height: 32px;
+}
+.fixed-image{
+	background-repeat: no-repeat;
+	background-size:100% 100%;
+}
+#form-tab>li{
+	width: 50%;
+}
+.nav-tabs>li>a{
+	height: 100px;
+	line-height: 100px;
+	font-size: 30px;
+	color: black;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	border:none;
+	border-bottom: 4px solid #783390;
+	background-color:white;
+}
+#form-tab>li{
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.nav-tabs>li>a:hover{
+	border-color:white;
+}
+.port{
+	padding-top: 35px;
+	padding-right:30px;
+	padding-left: 15px; 
+}
+.port-put{
+	width: 360px;
+	height: 37px;
+	padding: 10px;
+}
+.port-put-short{
+	height: 37px;
+	width: 140px;
+	padding: 7px;
+}
+.transportant{
+	width: 35px;
+	line-height: 35px;
+	width: 120px;
+	border-radius: 4px;
+	margin-top: 30px;
+	background: #783390;
+	border:none;
+	margin-left: -148px;
+	color: white;
+}
+/* 2018.12.04 */
+/* .product > a {
+    padding-bottom: 21px;
+    border-bottom: 4px solid #783390;
+} */
+.product {
+	border-bottom: 4px solid #783390;
+}
+
+.financial-three{
+	width: 33%;float: left;
+}
+.financial-left{
+	padding-top: 20px;text-align: right;padding-right: 30px;
+}
+.financial-right{
+	padding-top: 20px;text-align: left;padding-left: 50px;
+}
+
+

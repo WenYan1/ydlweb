@@ -1,0 +1,29 @@
+.block2inline{
+	display:inline-block;
+}
+.option-supplier{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/drop-down.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    min-width: 160px;
+    max-width: 280px;
+    cursor: pointer;
+    padding:3px 5px;
+    border:1px solid #ccc;
+}
+.company-image{
+	width: 100px;
+	height:100px;
+	vertical-align:top;
+	margin-top:25px;
+	cursor:pointer;
+}
+.page-number{
+    float:right;
+}
+.font-blue {
+    color: rgb(78, 153, 184);
+    cursor: pointer;
+}
