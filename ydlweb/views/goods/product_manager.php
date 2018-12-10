@@ -77,32 +77,19 @@
             <select class="option-supplier" id = "supplier" >
               
               <?php
-                if($supplier === null){ ?>
-                      <option selected="selected" value="">全部</option>
-                <?php
-                      foreach ($suppliers as $x => $x_value) {
-                        foreach ($x_value as $y => $y_value) {
-                          if($y == "id"){ ?>
-                            <option value="<?php echo $y_value; ?>">
-                          <?php }if($y == "company_name"){ ?><?php echo $y_value; ?></option>
-                         <?php }
-                        }
-                      }
-
-                    }else{ ?>
-                      <option value="">全部</option>
-                    <?php
-                      foreach ($suppliers as $x => $x_value) {
-                          foreach ($x_value as $y => $y_value) {
-                            if($y == "id"){ 
-                              $str = $y_value + "";
-                              if($str == $supplier){
-                              ?><option selected="selected" value="<?php echo $y_value; ?>"><?php }else{ ?><option value="<?php echo $y_value; ?>"><?php }}if($y == "company_name"){ ?><?php echo $y_value; ?></option>
-                         <?php break; }
-                          }
-                          
-                        }
-                      }
+              if (!empty($suppliers)){
+                  ?>
+                  <option selected="selected" value="">全部</option>
+                  <?php
+	              foreach ($suppliers as $x => $x_value) {
+		              foreach ($x_value as $y => $y_value) {
+			              if($y == "id"){ ?>
+                              <option value="<?php echo $y_value; ?>" <?php echo !empty($supplier) && $supplier == $y_value ? 'selected' : ''?>>
+			              <?php }if($y == "company_name"){ ?><?php echo $y_value; ?></option>
+			              <?php }
+		              }
+	              }
+              }
               ?>
           
             </select>

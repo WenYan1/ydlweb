@@ -17,8 +17,10 @@
 			<p>操作</p>
 		</div>
 
-		<?php 
-			$img_source = "http://172.18.240.62:8080/uploads/";
+		<?php
+            //todo
+		    //$img_source = "http://172.18.240.62:8080/uploads/";
+			$img_source = "/uploads/";
 		?>
 					
 		<div class="space_top ">
@@ -48,9 +50,11 @@
 				<input type="hidden" value="<?php echo $supplier["id"];?>" id="supplier-hide">
 			</div>
 		</div>
-		<div class="orange-label">
-			<p>开票人信息</p>
-		</div>
+        <form actoin="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/supplier/supplier-detail']); ?>" enctype="multipart/form-data" method="post">
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+            <div class="orange-label">
+                <p>开票人信息</p>
+            </div>
 			<div>
 				<div class="container-fluid">
 					<div class="row-fluid col-xs-12">
@@ -168,8 +172,45 @@
 							 <img id="organization-code-btn" src="<?php echo $img_source.$supplier["organization_code"];?>" class="company-image " alt="组织机构代码">
 						</div>
 					</div>
+                    <div class="row-fluid col-sm-12">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <label>原因</label>
+                                <textarea class="form-control" name="business_license_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $supplier["business_license_remark"];?></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>风控附件上传</label>
+                                <input type="file" name="business_license_risk">
+                                <?php $_temp = $img_source.$supplier["business_license_risk"]; if (!empty($supplier["business_license_risk"])){ ?>
+                                <a href="<?php echo $_temp;?>">已上传点击下载</a>
+                                <?php }else{ ?>
+                                    <span class="red">未上传</span>
+                                <?php }?>
+                            </div>
+                        </div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <label>原因</label>
+                                <textarea class="form-control" name="tax_registration_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $supplier["tax_registration_remark"];?></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>风控附件上传</label>
+                                <input type="file" name="tax_registration_risk">
+	                            <?php $_temp = $img_source.$supplier["tax_registration_risk"]; if (!empty($supplier["tax_registration_risk"])){ ?>
+                                    <a href="<?php echo $_temp;?>">已上传点击下载</a>
+	                            <?php }else{ ?>
+                                    <span class="red">未上传</span>
+	                            <?php }?>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="supplier_id" value="<?php echo $supplier["id"];?>">
+                    <button type="submit" class="btn btn-primary">保存</button>
 				</div>
 			</div>
+        </form>
 			<div class="modal fade bs-example-modal-lg" id="bl-dialog" tabindex="-1" role="dialog" aria-labelledby="blLabel">
 			  <div class="modal-dialog modal-lg">
 			  	<div class="modal-header" style="border-bottom:0px;">

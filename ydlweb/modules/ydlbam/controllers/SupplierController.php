@@ -4,9 +4,11 @@ namespace app\modules\ydlbam\controllers;
 
 use app\models\Suppliers;
 use Tool;
+use Upload;
 use Yii;
 use yii\data\Pagination;
 use app\modules\ydlbam\controllers\AdminBaseController;
+use yii\web\UploadedFile;
 
 class SupplierController extends AdminBaseController {
 	public $layout = 'ydlbam';
@@ -63,15 +65,75 @@ class SupplierController extends AdminBaseController {
 		$session = Yii::$app->session;
 		if(!$session->isActive) $session->open();
     		$this->initializeAttributes();
-		$supplierModel = new Suppliers;
-		$id = $request->get('supplier_id');
-		$supplierModel = $supplierModel->findById($id, $message);
-		if ($supplierModel) {
-			return $this->render('supplier_detail', [
-				'supplier' => $supplierModel->attributes,
-			]);
-		} else {
-			$this->redirect(Yii::$app->request->referrer);
+
+		if ($request->isPost) {
+
+			$supplier_id = $request->post('supplier_id');
+
+			if (!empty($supplier_id)){
+				$dir = 'risk/';
+
+				$businessFile = UploadedFile::getInstanceByName('business_license_risk');
+				$taxFile = UploadedFile::getInstanceByName('tax_registration_risk');
+
+				$business_license_risk = '';
+				if (!empty($businessFile)) {
+					$temp = Upload::getPath($dir, $businessFile->getExtension());
+					$temp_result = $businessFile->saveAs($temp['savePath'] . $temp['newName']);
+					if (!$temp_result) {
+						$this->_setErrorMessage('营业执照风控附件上传失败');
+						$this->redirect(Yii::$app->request->referrer);
+					}
+					$business_license_risk = $dir . $temp['newName'];
+				}
+
+				$tax_registration_risk = '';
+				if (!empty($taxFile)) {
+					$temp = Upload::getPath($dir, $taxFile->getExtension());
+					$temp_result = $taxFile->saveAs($temp['savePath'] . $temp['newName']);
+					if (!$temp_result) {
+						$this->_setErrorMessage('税务登记风控附件上传失败');
+						$this->redirect(Yii::$app->request->referrer);
+					}
+					$tax_registration_risk = $dir . $temp['newName'];
+				}
+
+
+				$supplier = false;
+				$supplierModel = new Suppliers;
+				$supplierModel = $supplierModel->findById($supplier_id, $message);
+				if ($supplierModel) {
+					$supplierModel->business_license_remark = $request->post('business_license_remark');
+					$supplierModel->tax_registration_remark = $request->post('tax_registration_remark');
+
+					if (!empty($business_license_risk)){
+						$supplierModel->business_license_risk = $business_license_risk;
+					}
+
+					if (!empty($tax_registration_risk)){
+						$supplierModel->tax_registration_risk = $tax_registration_risk;
+					}
+
+					$supplier = $supplierModel->save();
+				}
+
+				if ($supplier) {
+					$this->redirect(Yii::$app->request->referrer);
+				} else {
+					$this->redirect(Yii::$app->request->referrer);
+				}
+			}
+		}else{
+			$supplierModel = new Suppliers;
+			$id = $request->get('supplier_id');
+			$supplierModel = $supplierModel->findById($id, $message);
+			if ($supplierModel) {
+				return $this->render('supplier_detail', [
+					'supplier' => $supplierModel->attributes,
+				]);
+			} else {
+				$this->redirect(Yii::$app->request->referrer);
+			}
 		}
 	}
 

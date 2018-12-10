@@ -18,8 +18,8 @@
         </div>
         <div class="console">
            <li class="overview"><a href="#">总览</a></li>
-           <li class="supplier"><a href="../?r=privider_manage/privider_manage">供应商管理</a></li>
            <li class="products"><a href="../?r=product/product_manager">产品管理</a></li>
+           <li class="supplier"><a href="../?r=privider_manage/privider_manage">供应商管理</a></li>
            <li class="order"><a href="../?r=order/add_order">我的订单</a></li>
            <li class="capital">
                资金管理 <i class="icon"></i>

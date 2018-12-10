@@ -57,7 +57,7 @@ class GoodsController extends HomeBaseController
         
         $state = $request->get('state');
         $kw = $request->get('search');
-        $supplier = $request->get('supplier');   
+        $supplier = $request->get('supplier');
         $page = $request->get('page') ? $request->get('page') : 1;
         $query = Goods::find()->where(['user_id'=>$session['uid']])->andFilterWhere(['supplier_id'=>$supplier])->andFilterWhere(['state'=>$state])->andFilterWhere(['like','goods_name',$kw])->orderBy(['id' => SORT_DESC]);
 

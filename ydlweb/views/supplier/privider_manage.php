@@ -119,7 +119,11 @@
 						</td>
 
 					<td class="delete col-md-2">
-						<a href="<?php echo Yii::$app->urlManager->createUrl(['/supplier/supplier-detail','supplier_id'=>$x_value['id']]);?>" class="deletePrivider">详情</a>
+                        <?php if ((!empty($state) && $state ==-1) || (!empty($x_value['supplier_state']) && $x_value['supplier_state'] == -1)){ ?>
+						<a href="<?php echo Yii::$app->urlManager->createUrl(['/supplier/edit','supplier_id'=>$x_value['id']]);?>" class="deletePrivider">编辑</a>
+                        |
+                        <?php } ?>
+                        <a href="<?php echo Yii::$app->urlManager->createUrl(['/supplier/supplier-detail','supplier_id'=>$x_value['id']]);?>" class="deletePrivider">详情</a>
 					</td>
 					</tr>
 				<?php $i ++; } ?>

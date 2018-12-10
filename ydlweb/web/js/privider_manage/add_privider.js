@@ -104,16 +104,16 @@ function customListner(){
 
 function createCitySelect(data){
 
-    var str = '';
+    var _selected = $("#city_hide").attr('data-id');
 
+    var str = '';
     str += '<select id="city_id" name="city_id">';
         for(var i=0;i<data.length;i++){
             if(i == 0){
                 str += '<option selected="selected" value="'+ data[i].region_id + 
                 '">' + data[i].region_name +'</option>';
             }else{
-                str += '<option value="'+ data[i].region_id + 
-                '">' + data[i].region_name +'</option>';
+                str += '<option value="'+ data[i].region_id + '" '+(_selected == data[i].region_id ? 'selected' : '')+'>' + data[i].region_name +'</option>';
             }
         }
     
@@ -146,17 +146,15 @@ function createCitySelect(data){
 }
 
 function createCountySelect(data){
+    var _selected = $("#county_hide").attr('data-id');
 
     var str = '';
-
     str += '<select id="county_id" name="county_id">';
         for(var i=0;i<data.length;i++){
             if(i == 0){
-                str += '<option selected="selected" value="'+ data[i].region_id + 
-                '">' + data[i].region_name +'</option>';
+                str += '<option value="'+ data[i].region_id + '">' + data[i].region_name +'</option>';
             }else{
-                str += '<option value="'+ data[i].region_id + 
-                '">' + data[i].region_name +'</option>';
+                str += '<option value="'+ data[i].region_id + '" '+(_selected == data[i].region_id ? 'selected' : '')+'>' + data[i].region_name +'</option>';
             }
         }
     
@@ -205,9 +203,9 @@ function checkAndSubmit(){
     //$("#tax-rate").trigger("change");
     var taxRate = $("#tax-rate").val();
     var exportRight = $('input:radio[name="export_right"]:checked').val();
-    var img1 = $("#business-license-input").val();
-    var img2 = $("#tax-reg-input").val();
-    var img3 = $("#organization-code-input").val();
+    var img1 = $("#business-license-input").val() || $("#business-license-hide").val();
+    var img2 = $("#tax-reg-input").val() || $("#tax-reg-hide").val();
+    var img3 = $("#organization-code-input").val() || $("#organization-code-hide").val();
 
     if(checkData(code)){
         showFailHint("纳税人识别号内容不能为空！");
@@ -219,15 +217,15 @@ function checkAndSubmit(){
         showFailHintalert("开票人财务联系人内容不能为空！");
     }else if(checkData(linkMenPhone)){
         showFailHint("开票人财务联系人电话内容不能为空！");
-    }else if(checkData(detail_address)){
+    }else if(checkData(detail_address)) {
         showFailHint("开票人详细地址内容不能为空！");
-    }else if(checkData(source)){
-        showFailHint("境内资源地内容不能为空！");
-    }
-	//else if(checkData(taxRate)){
-      //  showFailHint("开票人增值税率内容为空！");
-    //}
-	else if(checkData(img1)){
+        // }else if(checkData(source)){
+        //     showFailHint("境内资源地内容不能为空！");
+        // }
+        //else if(checkData(taxRate)){
+        //  showFailHint("开票人增值税率内容为空！");
+        //}
+    }else if(checkData(img1)){
         showFailHint("营业执照、一般纳税人资格、近期开过的发票样本信息不完整！");
     }else if(checkData(img2)){
         showFailHint("营业执照、一般纳税人资格、近期开过的发票样本信息不完整！");

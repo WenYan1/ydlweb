@@ -38,6 +38,17 @@
 				<div class="divider"></div>
 			</div>
 			<div class="container-fluid privider-detail">
+				<?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']))){ ?>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>未通过原因!</strong> <br>
+						<?php if (!empty($supplier['business_license_remark'])){ ?>
+                            <strong>营业执照:</strong> <?php echo $supplier['business_license_remark'];?><br>
+						<?php } ?>
+						<?php if (!empty($supplier['tax_registration_remark'])){ ?>
+                            <strong>一般纳税人资质:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
+						<?php } ?>
+                    </div>
+				<?php } ?>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
 						<p>纳税人识别号 :</p>
@@ -74,7 +85,7 @@
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
-						<p>开票人固定电话 :</p>
+						<p>开票人联系方式 :</p>
 					</div>
 					<div class="col-md-7">
 						<span id="link-men-phone"><?php echo $supplier['tel'];?></span>
