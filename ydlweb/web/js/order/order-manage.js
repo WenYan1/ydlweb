@@ -3,7 +3,7 @@ var csrfToken = $('meta[name="csrf-token"]').attr("content");
 $(function(){
 	request_status();
 	request_search();
-
+    bindSettlementType();
 });
 // 获取地址栏参数 
 function GetQueryString(name) { 
@@ -47,4 +47,26 @@ function request_search() {
 	})
 }
 
+function bindSettlementType() {
+    $("#table").on("blur","[data-settlement-type='true']",function () {
+        var id = $(this).attr("data-order-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/order/change-settlement-type",
+            {
+                "order_id":id,
+                "settlement_type":val,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                    art.dialog.tips("操作成功");
+                }else{
+                    art.dialog.tips("操作失败，稍后重试");
+                }
+            });
+    });
+}
 

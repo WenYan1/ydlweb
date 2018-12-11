@@ -93,7 +93,7 @@ if($this->context->_popSuccessMessage()) {
 								<th>供应商</th>
 								<th>订单总额</th>
 								<th>状态</th>
-								<th>首付</th>
+								<th>结算方式</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -141,7 +141,7 @@ if($this->context->_popSuccessMessage()) {
 
 										?></td>
 										<td>
-											<?php if($data['down_payment']==0){echo '无';}else{echo '有';} ?>
+											<input class="" type="text" data-settlement-type="true" value="<?php echo $data['settlement_type'];?>" data-order-id="<?php echo $data['id'];?>" title="鼠标离开后保存">
 										</td>
 										<td class="blue-color">
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
@@ -169,6 +169,7 @@ if($this->context->_popSuccessMessage()) {
 					</div>
 				</div>
 			</div>
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 			<nav class="page-number">		
 				<?php use yii\widgets\LinkPager;?>
 				<?php
@@ -182,4 +183,5 @@ if($this->context->_popSuccessMessage()) {
 					?>
 				</nav>
 			</div>
-			<script type="text/javascript" src="/js/order/order-manage.js"></script>	
+			<script type="text/javascript" src="/js/artdialog/jquery.artDialog.js"></script>
+			<script type="text/javascript" src="/js/order/order-manage.js"></script>

@@ -75,7 +75,7 @@
 						<th>供应商名称</th>
 						<th>订单金额</th>
 						<th>时间</th>
-						<th>首付款</th>
+						<th>结算方式</th>
 						<th>状态</th>
 					</tr>
 				</thead>
@@ -96,14 +96,7 @@
 							<td><?php echo $models[$i]['supplier_name']; ?></td>
 							<td><?php echo $models[$i]['order_total']; ?></td>
 							<td><?php echo date(("Y-m-d"), $models[$i]['created_at']);?></td>
-							<td><?php
-								if($models[$i]['down_payment'] == 0){
-									echo "无";
-								}else{
-									echo "有";
-
-								}
-								?></td>
+							<td><input class="" type="text" data-settlement-type="true" value="<?php echo $models[$i]['settlement_type'];?>" data-order-id="<?php echo $models[$i]['id'];?>;?>" title="鼠标离开后保存"></td>
 								<td><?php
 									if ($models[$i]['order_state']==0) {
 						echo '下单审核';
@@ -159,6 +152,7 @@
 				</div>
 			</div>
 		</div>
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 		<script>
 			$('#start_time').datetimepicker({
 				lang:'ch',
@@ -171,4 +165,5 @@
 				timepicker:false,
 			});
 		</script>
+<script type="text/javascript" src="/js/artdialog/jquery.artDialog.js"></script>
 		<script type="text/javascript" src="/js/ydlbam_js/js_order/order_manage.js"></script>

@@ -138,4 +138,35 @@ class OrderController extends AdminBaseController {
 			return Tool::outputError('非法请求');
 		}
 	}
+
+	public function actionChangeSettlementType (){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		if ($request->isPost) {
+			$ordersModel = new Orders;
+			$condition = [];
+			$condition['id'] = $request->post('order_id');
+			$order = $ordersModel->findById($condition,$message);
+			if($order) {
+				$order->settlement_type = $request->post('settlement_type');
+
+				if($order->save()) {
+					$arr = array(
+						'state' => 1
+					);
+					$json = Tool::array2Json($arr);
+					exit($json);
+				}
+			}
+		}
+
+		$arr = array(
+			'state' => 0
+		);
+
+		$json = Tool::array2Json($arr);
+		exit($json);
+	}
 }
