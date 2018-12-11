@@ -131,7 +131,7 @@ class OrderPayController extends HomeBaseController
 	            		$userModel = $userModel->findById($session['uid']);
 
             			if($pay_type == 1) {
-            				//自由资金支付
+            				//自有资金支付
 	            			if($userModel->user_capital >= $paymentAmount) {
 	            				$condition['id'] = $request->post('order_id');
 	            				$condition['user_id'] = $session['uid'];
@@ -150,6 +150,8 @@ class OrderPayController extends HomeBaseController
 						                    			$data['order_id'] = $request->post('order_id');
 						                    			$data['flow_sn'] = time().rand(10000, 99999);
 						                    			$data['capital'] = $paymentAmount;
+														$data['factory_account_name'] = $request->post('factory_account_name');
+														$data['account_name'] = $request->post('account_name');
 						                    			$data['capital_symbol'] = '-';
 						                    			$data['capital_type'] = 1;
 						                    			$data['capital_explain'] = '订单支付';
@@ -226,7 +228,7 @@ class OrderPayController extends HomeBaseController
 					                    				$orderModel->credit_insurance +=$paymentAmount; //订单使用信保金额数
 					                    				if($orderModel->save()) {
 					                    					$userModel->credi_limit -= $paymentAmount; //用户可用信保金额数
-					                    					$userModel->user_capital -=$bond; //用户自由资金
+					                    					$userModel->user_capital -=$bond; //用户自有资金
 					                    					$userModel->bond +=$bond; //用户保证金总数
 					                    					if($userModel->save()) {
 								                    			$data = [
@@ -398,8 +400,8 @@ class OrderPayController extends HomeBaseController
             					if($userModel->user_capital>$amountSettled) {
             						if($orderModel->save()) {
 	            						$userModel->credi_limit +=$orderModel->credit_insurance; //用户可用信用额度
-	            						$userModel->user_capital -=$amountSettled; //用户自由资金
-	            						$userModel->user_capital +=$orderModel->bond; //用户自由资金
+	            						$userModel->user_capital -=$amountSettled; //用户自有资金
+	            						$userModel->user_capital +=$orderModel->bond; //用户自有资金
 	            						$userModel->bond -=$orderModel->bond; //用户保证金总数 
 	            						if($userModel->save()) {
 	            							$data = [['user_id' => $session['uid'],'order_id'=>$request->post('order_id'),'flow_sn'=>time().rand(10000, 99999),'capital' => $amountSettled, 'capital_symbol'=>'-','capital_type'=>1,'capital_explain'=>'订单结汇'],];

@@ -49,6 +49,7 @@
 						<th>序号</th>
 						<th>账号</th>
 						<th>充值资金</th>
+						<th>付款人账户</th>
 						<th>银行名称</th>
 						<th>银行账号</th>
 						<th>充值日期</th>
@@ -66,6 +67,7 @@
 						<td><?php  echo ($page - 1) * 10 + ($i + 1);  ?></td>
 						<td><?php echo $value['user_email'];?></td>
 						<td><?php echo $value['recharge_amount'];?></td>
+						<td><?php echo $value['account_name'];?></td>
 						<td><?php echo $value['bank_name'];?></td>
 						<td><?php echo $value['bank_account'];?></td>
 						<td><?php echo date("Y-m-d", $value['created_at']); ?></td>

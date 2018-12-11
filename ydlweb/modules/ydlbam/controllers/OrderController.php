@@ -169,4 +169,46 @@ class OrderController extends AdminBaseController {
 		$json = Tool::array2Json($arr);
 		exit($json);
 	}
+
+	public function actionChangeFk (){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		if ($request->isPost) {
+			$ordersModel = new Orders;
+			$condition = [];
+			$condition['id'] = $request->post('order_id');
+			$order = $ordersModel->findById($condition,$message);
+
+			$val = $request->post('val');
+			$name = $request->post('name');
+
+			if($order) {
+
+				if ($name == 'first_payment_remark'){
+					$order->first_payment_remark = $val;
+				}
+
+				if ($name == 'original_place_remark'){
+					$order->original_place_remark = $val;
+				}
+
+				if($order->save()) {
+					$arr = array(
+						'state' => 1
+					);
+					$json = Tool::array2Json($arr);
+					exit($json);
+				}
+			}
+		}
+
+		$arr = array(
+			'state' => 0
+		);
+
+		$json = Tool::array2Json($arr);
+		exit($json);
+	}
 }

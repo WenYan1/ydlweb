@@ -27,7 +27,7 @@ if($this->context->_popSuccessMessage()) {
 
 <div class="container-fluid">
 	<div class="row-fluid title-div">
-		<p class="spacing-left">我的订单</p>
+		<p class="spacing-left">订单管理</p>
 	</div>
 	<div class="row-fluid col-md-12" >
 		<a class="blue-border spacing-left" href=<?php echo Yii::$app->urlManager->createUrl(['order/add-first-step']);?> id="add_product">

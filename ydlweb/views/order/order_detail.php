@@ -7,7 +7,7 @@
 
 <div class="title-div">
   <a href="add-first-step">
-    <p class="font-title-size default-blue spacing-left">我的订单</p>
+    <p class="font-title-size default-blue spacing-left">订单管理</p>
   </a>
   <p class="font-title-size font-color-default"> - 添加订单</p>
   <?php
@@ -513,7 +513,7 @@ if($order['order_state'] == 11||$order['order_state'] == 0 || $order['order_stat
                       <td><?php echo $value['capital_symbol'].$value['capital'];?></td>
                       <td><?php 
                         if($value['capital_type'] == 1){
-                          echo "自由资金";
+                          echo "自有资金";
                         }else if($value['capital_type'] == 2){
                           echo "信用额度";
                         }else{
@@ -574,7 +574,7 @@ if($order['order_state'] == 11||$order['order_state'] == 0 || $order['order_stat
                         <td><?php echo $value['capital_symbol'].$value['capital'];?></td>
                         <td><?php 
                           if($value['capital_type'] == 1){
-                            echo "自由资金";
+                            echo "自有资金";
                           }else if($value['capital_type'] == 2){
                             echo "信用额度";
                           }else{

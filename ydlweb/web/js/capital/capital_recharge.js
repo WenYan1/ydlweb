@@ -6,8 +6,9 @@ $(document).ready(function(){
 });
 
 function submitInfo(){
-	
-		if(checkData($("#bank_name").val())){
+		if (checkData($("#account_name").val())){
+            alert("付款人账户名不能为空！");
+		} else if(checkData($("#bank_name").val())){
 			alert("银行名称不能为空！");
 		}else if(checkData($("#bank_account").val())){
 			alert("银行账号不能为空！");

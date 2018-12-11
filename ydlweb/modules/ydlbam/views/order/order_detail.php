@@ -123,14 +123,17 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 		</div>
 		<div class="down-line row">
 			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-4 col-xs-4 ">
+				<div class="col-md-3 col-xs-3 ">
 					<span  >订单总金额(元)：</span>
 					<span  ><?php echo $order['order_total'];?></span>
 				</div>
-				<div class="col-md-4 col-xs-4">
+				<div class="col-md-3 col-xs-3">
 					<span class="col-md-offset-1">首付款(元)：</span>
 					<span >&nbsp<?php echo $order['firstpayment_amount'];?></span>
 				</div>
+                <div class="col-md-2 col-xs-2">
+                    <input class="form-control" type="text" name="first_payment_remark" value="<?php echo $order['first_payment_remark'];?>" data-fk="true" data-id="<?php echo $order['id'];?>" placeholder="首付款(元) 风控备注" title="输入完成，失去焦点后自动保存">
+                </div>
 				<div class="col-md-4 col-xs-4 " >
 					<span class="col-md-offset-3">总净重(kg):</span>
 					<span>&nbsp&nbsp<?php echo $order['net_weight'];?></span>
@@ -138,14 +141,17 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 
 			</div>
 			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-4 col-xs-4 ">
+				<div class="col-md-3 col-xs-3 ">
 					<span>总毛重(kg)：</span>
 					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['gross_weoght'];?></span>
 				</div>
-				<div class="col-md-4 col-xs-4">
+				<div class="col-md-3 col-xs-3">
 					<span class="col-md-offset-1">境内货源地：</span>
 					<span ><?php echo $order['original_place'];?></span>
 				</div>
+                <div class="col-md-2 col-xs-2">
+                    <input class="form-control" type="text" name="original_place_remark" value="<?php echo $order['original_place_remark'];?>" data-fk="true" data-id="<?php echo $order['id'];?>" placeholder="境内货源地 风控备注" title="输入完成，失去焦点后自动保存">
+                </div>
 				<div class="col-md-4 col-xs-4 " >
 					<span class="col-md-offset-3">总数量:</span>
 					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['total_quantity'];?></span>
@@ -154,11 +160,11 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 			</div>
 
 			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-4 col-xs-4 ">
+				<div class="col-md-3 col-xs-3 ">
 					<span>报关口岸：</span>
 					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['customs_port'];?></span>
 				</div>
-				<div class="col-md-4 col-xs-4">
+				<div class="col-md-5 col-xs-5">
 					<span class="col-md-offset-1">到达口岸：</span>
 					<span >&nbsp&nbsp&nbsp<?php echo $order['arrive_port'];?></span>
 				</div>
@@ -221,6 +227,8 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 					<tr>
 						<th>日期</th>
 						<th>金额</th>
+						<th>加工厂账户名</th>
+						<th>账号信息</th>
 						<th>支付方式</th>
 						<th>备注</th>
 
@@ -234,6 +242,8 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 						<tr  >
 							<td><?php echo date(("Y-m-d"),$payLogs[$i]['created_at']);?></td>
 							<td><?php echo $payLogs[$i]['capital']; ?></td>
+							<td><?php echo $payLogs[$i]['factory_account_name']; ?></td>
+							<td><?php echo $payLogs[$i]['account_name']; ?></td>
 							<td>
 								<!-- pay_type(1:可用资金,2:信用额度) -->
 								<?php 
@@ -260,4 +270,5 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 
 </div>
 </div>
+<script type="text/javascript" src="/js/artdialog/jquery.artDialog.js"></script>
 <script type="text/javascript" src="/js/ydlbam_js/js_order/order_detail.js"></script>

@@ -28,7 +28,7 @@
         ?>
         <div style="width:100%;float:left;padding-top:18px;">
             <!-- <p class="font-title-size spacing-left">
-                <a href="" class="default-blue">我的订单</a> - 
+                <a href="" class="default-blue">订单管理</a> - 
             </p>
             <p class="font-title-size">
                 <a href="" class="default-blue">订单详情</a> - 
@@ -76,11 +76,19 @@
                 <p class="font-content-size  ">信用额度支付</p>
             </div>
             <div class="spacing-left">
-                 <p class="font-content-size  ">(将从自由资金中扣除使用信用额度支付金额的10%作为保证金，结汇时收取本单使用信用额度支付金额的3%作为服务费)</p>
+                 <p class="font-content-size  ">(将从自有资金中扣除使用信用额度支付金额的10%作为保证金，结汇时收取本单使用信用额度支付金额的3%作为服务费)</p>
             </div>
             <div class="space-vertical spacing-left option-third">
-                <p class="font-content-size font-bold">支付金额(元):  </p>
+                <p class="font-bold col-md-1">支付金额(元):  </p>
                 <input style="padding:2px 6px;" id="money-number" type="text" name="payment_amount" required="require">
+            </div>
+            <div class="space-vertical spacing-left option-third">
+                <p class="font-bold col-md-1">加工厂账户名:  </p>
+                <input style="padding:2px 6px;" id="factory_account_name" type="text" name="factory_account_name" required="require">
+            </div>
+            <div class="space-vertical spacing-left option-third">
+                <p class="font-bold col-md-1">账号信息:  </p>
+                <input style="padding:2px 6px;" id="account_name" type="text" name="account_name" required="require">
             </div>
             <input id="submit-real" style="display:none;" type="submit" value="Submit">
             </form>

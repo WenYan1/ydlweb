@@ -123,6 +123,7 @@ class CapitalController extends HomeBaseController {
 			$time = time();
 			$data['user_id'] = $session['uid'];
 			$data['user_email'] = $session['userEmail'];
+			$data['account_name'] = $request->post('account_name');
 			$data['bank_name'] = $request->post('bank_name');
 			$data['bank_account'] = $request->post('bank_account');
 			$data['recharge_amount'] = $request->post('recharge_amount');

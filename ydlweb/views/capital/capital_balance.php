@@ -197,7 +197,7 @@
                 <td class="balance-3">
                     <?php 
                         if($value['capital_type'] == 1){
-                            echo "自由资金";
+                            echo "自有资金";
                         }else if($value['capital_type'] == 2){
                             echo "信用额度";
                         }else{

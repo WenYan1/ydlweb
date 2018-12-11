@@ -42,115 +42,121 @@
         </div>
         <div class="container-fluid ">
             <div class="row" style="min-width: 1100px">
-                <div class="col-md-10 col-lg-10 col-md-offset-2 ">
+                <div class="col-md-12 col-lg-12">
                     <div class="">
-                            <div class="space-top-bottom ">
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;padding-right: 5px;">币种：</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">USD</span>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;padding-right: 5px;">公司名稱：</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">騰邦跨境商業服務有限公司</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">公司地址：</p>
-                                        <span class=" col-md-6" style="padding-left: 9px;">香港德輔道西410號太平洋廣場26樓</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">銀行帳號：</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">368-114589-18</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">開戶銀行名稱：</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">香港渣打銀行</span>
-                                    </div>
-                                </div>
-                                 <div class="recharge-row">
-                                     <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">開戶銀行地址：</p>
-                                        <span class=" col-md-6" style="padding-left: 9px;">中環德輔道中4-4號A</span>
-                                    </div>
-                                </div>
-                                 <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">聯行號(SWIFT CODE)：</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">SCBLHKHHXXX</span>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;padding-right: 5px;">Correspondent Bank:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">Standard Chartered Bank New York</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Address:</p>
-                                        <span class=" col-md-6" style="padding-left: 9px;">1 Evertrust Plaza, Suite 1101, Jersey City, New Jersey 07302, USA</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Swift No.:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">SCBLUS33XXX</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Beneficiary Name:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">Tempus Cross-border Commercial Service Limited</span>
-                                    </div>
-                                </div>
-                                 <div class="recharge-row">
-                                     <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Beneficiary Address:</p>
-                                        <span class=" col-md-6" style="padding-left: 9px;">26/F., Pacific Plaza, 410 Des Voeux Road West, Hong Kong</span>
-                                    </div>
-                                </div>
-                                 <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Account No.:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">368-114589-18</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Beneficiary Bank Name:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">Standard Chartered Bank (Hong Kong) Ltd</span>
-                                    </div>
-                                </div>
-                                <div class="recharge-row">
-                                    <div class="row">
-                                        <p class="font-content-size font-color-default space-recharge-left col-md-2 col-md-offset-2" style="text-align: right;
-                                        padding-right: 5px;">Bank Address:</p>
-                                        <span class="col-md-6" style="padding-left: 9px;">15/F Standard Chartered Tower, 388 Kwun Tong Road, Kwun Tong, KLN, Hong Kong
-SWIFT CODE:SCBLHKHHXXX</span>
-                                    </div>
+                        <div class="space-top-bottom ">
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;padding-right: 5px;">币种：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">美元 (USD)</span>
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;padding-right: 5px;">币种：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">人民币 (RMB)</span>
                                 </div>
                             </div>
+                            <hr/>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;padding-right: 5px;">公司名稱：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">騰邦跨境商業服務有限公司</span>
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;padding-right: 5px;">开户行：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">上海浦东发展银行天津分行</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right; padding-right: 5px;">公司地址：</p>
+                                    <span class=" col-md-4" style="padding-left: 9px;">香港德輔道西410號太平洋廣場26樓</span>
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right; padding-right: 5px;">开户名：</p>
+                                    <span class=" col-md-4" style="padding-left: 9px;">天津腾邦易贸通外贸服务有限公司</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right; padding-right: 5px;">銀行帳號：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">368-114589-18</span>
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right; padding-right: 5px;">账号：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">77010078801000000961</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">開戶銀行名稱：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">香港渣打銀行</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">開戶銀行地址：</p>
+                                    <span class=" col-md-4" style="padding-left: 9px;">中環德輔道中4-4號A</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">聯行號(SWIFT CODE)：</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">SCBLHKHHXXX</span>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;padding-right: 5px;">Correspondent Bank:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">Standard Chartered Bank New York</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Address:</p>
+                                    <span class=" col-md-4" style="padding-left: 9px;">1 Evertrust Plaza, Suite 1101, Jersey City, New Jersey 07302, USA</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Swift No.:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">SCBLUS33XXX</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Beneficiary Name:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">Tempus Cross-border Commercial Service Limited</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Beneficiary Address:</p>
+                                    <span class=" col-md-4" style="padding-left: 9px;">26/F., Pacific Plaza, 410 Des Voeux Road West, Hong Kong</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Account No.:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">368-114589-18</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Beneficiary Bank Name:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">Standard Chartered Bank (Hong Kong) Ltd</span>
+                                </div>
+                            </div>
+                            <div class="recharge-row">
+                                <div class="row">
+                                    <p class="font-content-size font-color-default space-recharge-left col-md-2" style="text-align: right;
+                                        padding-right: 5px;">Bank Address:</p>
+                                    <span class="col-md-4" style="padding-left: 9px;">15/F Standard Chartered Tower, 388 Kwun Tong Road, Kwun Tong, KLN, Hong Kong
+SWIFT CODE:SCBLHKHHXXX</span>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                        
                 </div>
@@ -168,6 +174,10 @@ SWIFT CODE:SCBLHKHHXXX</span>
         				<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
                                         <div class="">
         					<div class="space-top-bottom recharge-div">
+        						<div class="recharge-row">
+        							<p class="font-content-size font-color-default recharge-p space-recharge-left">付款人账户名：</p>
+        							<input type="text" id="account_name" required="required" name="account_name" class="spacing-left recharge-to-input">
+        						</div>
         						<div class="recharge-row">
         							<p class="font-content-size font-color-default recharge-p space-recharge-left">银行名称：</p>
         							<input type="text" id="bank_name" required="required" name="bank_name" class="spacing-left recharge-to-input">

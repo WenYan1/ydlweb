@@ -82,7 +82,7 @@
 								<p class="msg-brief">发票金额的10%~20%+退税手续费</p>
 								<p class="info-title-size">保证金</p>
 								<hr>
-								<p style="padding-left: 80px">保证金=使用信保融资金额的10%作为保证金，保证金必须来自自由资金</p>
+								<p style="padding-left: 80px">保证金=使用信保融资金额的10%作为保证金，保证金必须来自自有资金</p>
 								<p class="msg-brief">（订单完成后保证金24小时内退回原账户）</p>
 								<p class="info-title-size">结汇金额</p>
 								<hr>

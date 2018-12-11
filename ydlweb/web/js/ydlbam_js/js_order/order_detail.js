@@ -5,6 +5,7 @@ $(function(){
 	// 请求
 	change_status();
 
+    bindFk();
 })
 
 function set_status(){
@@ -40,6 +41,31 @@ function change_status(){
 			})
 		}
 	});
+}
+
+function bindFk() {
+    $(".main-content").on("blur","[data-fk='true']",function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+        var name = $(this).attr('name');
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+        $.post("/ydlbam/order/change-fk",
+            {
+                "order_id":id,
+                "val":val,
+                "name":name,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                    art.dialog.tips("操作成功");
+                }else{
+                    art.dialog.tips("操作失败，稍后重试");
+                }
+            });
+    });
 }
 
 

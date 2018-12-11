@@ -24,7 +24,7 @@
 <title>订单详情-付款记录(不包含首付款)</title>
 <div class="space-vertical add-title">
             <a href="">
-                <p class="font-title-size default-blue spacing-left">我的订单</p>
+                <p class="font-title-size default-blue spacing-left">订单管理</p>
             </a>
             <p class="font-title-size "> - 订单详情</p>
         </div>

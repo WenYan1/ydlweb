@@ -26,7 +26,7 @@ if($this->context->_popSuccessMessage()) {
 <title>添加订单-第一步</title>
 <div class="title-div">
 	<a href='<?php echo Yii::$app->urlManager->createUrl(['order']); ?>'>
-		<p class="font-title-size default-blue spacing-left">我的订单</p>
+		<p class="font-title-size default-blue spacing-left">订单管理</p>
 	</a>
 	<p class="font-title-size font-color-default"> - 添加订单</p>
 	<span style="color:#666666;">(第一步)</span>

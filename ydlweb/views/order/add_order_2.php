@@ -37,7 +37,7 @@ if($this->context->_popSuccessMessage()) {
 		enctype="multipart/form-data" method="post">
 		<div class="title-div">
 			<a href="'<?php echo Yii::$app->urlManager->createUrl(['order']); ?>'">
-				<p class="font-title-size default-blue spacing-left">我的订单</p>
+				<p class="font-title-size default-blue spacing-left">订单管理</p>
 			</a>
 			<p class="font-title-size font-color-default"> - 添加订单</p>
 			<span style="color:#666666;">(最后一步)</span>
