@@ -35,81 +35,68 @@ if($this->context->_popSuccessMessage()) {
     </div>
 
     <input type="text" name="supplier_name" style="display:none;" id="supplier_name" value="" />
+	<?php if(!empty($goods['state'])==-1 && (!empty($goods['hs_code_remark']) || !empty($goods['original_price_remark']) || !empty($goods['goods_image_remark']))){ ?>
+        <div class="alert alert-warning" role="alert">
+            <strong>未通过原因!</strong> <br>
+			<?php if (!empty($goods['hs_code_remark'])){ ?>
+                <strong>HS Code:</strong> <?php echo $goods['hs_code_remark'];?><br>
+			<?php } ?>
+			<?php if (!empty($goods['original_price_remark'])){ ?>
+                <strong>商品单价:</strong> <?php echo $goods['original_price_remark'];?><br>
+			<?php } ?>
+			<?php if (!empty($goods['goods_image_remark'])){ ?>
+                <strong>商品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
+			<?php } ?>
+        </div>
+	<?php } ?>
     <div class="row-fluid col-md-12" >
         <div class="orange-label">
             <p class="label-title">填写整件商品信息</p>
         </div>
     </div>
 
-
     <div class="container-fluid message">
         <div class="row">
-            <form action=<?php echo Yii::$app->urlManager->createUrl(['goods/update','id'=>$goods['id']]);?>
-                method="post">
-
+            <form action=<?php echo Yii::$app->urlManager->createUrl(['goods/update','id'=>$goods['id']]);?> method="post" enctype="multipart/form-data">
                 <div class="col-md-4 col-lg-4">
                     <div class="product-message-left space--left">
                         <div class="space-top">
-                            <p class="font-content-size font--title title-width" style="text-align: left;" id="">商品名称:</p>
-                            <input type="text" required="required" class="delete-border font--content input-padding" id="product-name" value="<?php echo $goods['goods_name'];?>" readOnly="true">
+                            <p class="font-content-size  font--title title-width" style="text-align: left;">商品名称:</p>
+
+                            <input type="text" required="required" name="goods_name" class="font--content input-padding" id="product-name" value="<?php echo $goods['goods_name'];?>">
+
                         </div>
                         <div class="space-top">
-                            <p class="font-content-size font--title title-width" style="text-align: left;" >产品单价：</p>
-                            <input type="text" required="required" class="delete-border font--content input-padding"  id="product-price" value="<?php echo $goods['original_price'];?>" readOnly="true">
+                            <p class="font-content-size font--title title-width" style="text-align: left;" >商品单价：</p>
+                            <input type="text" required="required" name="original_price" class="font--content input-padding"  id="product-price" value="<?php echo $goods['original_price'];?>">
                         </div>
-                        <div class="space-top">
-                            <p class="font-content-size font--title title-width" style="text-align: left;" >HS Code：</p> 
-                            <input type="text" required="required" class="delete-border font--content input-padding"  id="product-code" value="<?php echo $goods['hs_code'];?>" readOnly="true">
+                        <div class="space-top" style="width: 380px">
+                            <p class="font-content-size font--title title-width" style="text-align: left;" >HS Code：</p>
+                            <input id="hs-code" type="text" required="required" name="hs_code" class="font--content input-padding"  id="product-code" value="<?php echo $goods['hs_code'];?>"><br>
+                            <p id="search-rate">查询</p>
                         </div>
 
                         <div class="space-top">
                             <p class="font-content-size font--title title-width" style="text-align: left;" >商品退税率：</p>
-                            <input type="text" placeholder="如12%税率则填写12" required="required" class="delete-border font--content input-padding"  value="<?php echo $goods['goods_taxrate'];?>" readOnly="true">
+                            <input type="text" placeholder="如12%税率则填写12" required="required" name="goods_taxrate" id="goods-rate" class="font--content input-padding" value="<?php echo $goods['goods_taxrate'];?>">
                         </div>
                     </div>
                 </div>
-               <!-- <div class="col-md-4 col-lg-4 total-middle">
-                    <div class="product-message-left total">
-                        <div class="space-top">
-                            <p class="font-content-size spacing-left product-space-left font--title title-width" style="text-align: left;">产品长宽高(cm)：</p>
-                            <input type="text" name="goods_long" class="p-input font--content input-padding" placeholder="长度" id="length" value="<?php echo $goods['goods_long'];?>">
-                            <input type="text" name="goods_wide" style="margin-left: 7px"class="p-input font--content input-padding" placeholder="宽度" id="width" value="<?php echo $goods['goods_wide'];?>">
-                            <input type="text" name="goods_height" style="margin-left: 7px"class="p-input font--content input-padding" placeholder="高度" id="height" value="<?php echo $goods['goods_height'];?>">
-                        </div>
-                        <div class="space-top">
-                            <p class="font-content-size spacing-left product-space-left font--title title-width">净重(kg)：</p>
-
-                            <input type="text" id="total-suttle" style="width:80px;" name="net_weight" value="<?php echo $goods['net_weight'];?>" readOnly="true" class="delete-border font--content input-padding">
-                        </div>
-                        <div class="space-top">
-                            <p class="font-content-size spacing-left product-space-left font--title title-width" >毛重(kg)：</p>
-                            <input type="text" id="total-gross" style="width:80px;" name="gross_weight" value="<?php echo $goods['gross_weight'];?>" readOnly="true" class="delete-border font--content input-padding">
-                        </div>
-                        <div class="space-top total-box">
-                            <p class="font-content-size spacing-left product-space-left font--title title-width" > 总箱数：</p>
-                            <input type="text"  id="total-num" style="width:80px;" name="box_number" value="<?php echo $goods['box_number'];?>" readOnly="true" class="delete-border font--content input-padding">
-                        </div>
-                        <div class="space-top total-box">
-                            <p class="font-content-size spacing-left product-space-left font--title title-width" > 总体积(cm<sup>3</sup>)：</p>
-                            <input type="text" id="total-volume" style="width:80px;" name="goods_volume" value="1" readOnly="true" value="<?php echo $goods['goods_volume'];?>" class="delete-border font--content input-padding">
+                <div class="col-md-4 col-lg-4">
+                    <div class="product-message-right">
+                        <p class="font-content-size spacing-left product-add-tip">商品图片：</p>
+                        <div class="product-img-style">
+                            <img src="<?php echo !empty($goods['goods_image']) ? $img_source.$goods['goods_image'] : '../images/upload_bg.png'?>" id="product_image">
+                            <input type="file" accept="image/*" id="up_image" style="display: none" name="goods_image" >
+                            <p class="product-img-tip">可传一张小于1M的图片</p>
                         </div>
                     </div>
                 </div>
-				-->
                 <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
                 <input style="display:none;" id="sumbit-real" type="submit" value="Submit">
 
                 <input type="text" id="goods_id" style="display: none;" name="id" value="<?php echo $goods['id'];?>">
             </form>
-            <div class="col-md-4 col-lg-4">
-                <div class="product-message-right">
-                    <p class="font-content-size spacing-left product-add-tip font--title font--title ">商品图片：</p>
-                    <div class="product-img-style">
-                        <a href="<?php echo $img_source.$goods['goods_image'];?>" target="_Blank"><img src="<?php echo $img_source.$goods['goods_image'];?>" id="product-img" style="cursor:pointer;"></a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

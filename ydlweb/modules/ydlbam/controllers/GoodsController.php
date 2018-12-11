@@ -8,12 +8,15 @@ use Yii;
 use yii\data\Pagination;
 use app\modules\ydlbam\controllers\AdminBaseController;
 
-class GoodsController extends AdminBaseController {
+class GoodsController extends AdminBaseController
+{
 	public $layout = 'ydlbam';
-	public function actionIndex() {
+
+	public function actionIndex()
+	{
 		$request = Yii::$app->request;
 		$session = Yii::$app->session;
-		if(!$session->isActive) $session->open();
+		if (!$session->isActive) $session->open();
 		$this->initializeAttributes();
 
 		$state = $request->get('state');
@@ -22,8 +25,8 @@ class GoodsController extends AdminBaseController {
 		$email = $request->get('email');
 		$page = $request->get('page') ? $request->get('page') : 1;
 		$query = Goods::find();
-		if($session['rank'] == 2) {
-			$query->where(['user_id'=>$session['usersIds']]);
+		if ($session['rank'] == 2) {
+			$query->where(['user_id' => $session['usersIds']]);
 			if ($state !== null || $goodsName !== null || $supplier !== null || $email !== null) {
 				if ($state !== null) {
 					$query->andWhere(['state' => $state])->andFilterWhere(['like', 'supplier_name', $supplier])->andFilterWhere(['like', 'goods_name', $goodsName])->andFilterWhere(['like', 'user_email', $email]);
@@ -55,21 +58,22 @@ class GoodsController extends AdminBaseController {
 		$models = Tool::convert2Array($models);
 
 		return $this->render('goods_manage', [
-			'models' => $models,
-			'pages' => $pages,
-			'state' => $state,
+			'models'    => $models,
+			'pages'     => $pages,
+			'state'     => $state,
 			'goodsName' => $goodsName,
-			'supplier' => $supplier,
-			'email' => $email,
-			'page' => $page,
+			'supplier'  => $supplier,
+			'email'     => $email,
+			'page'      => $page,
 		]);
 	}
 
-	public function actionAuditingGoods() {
+	public function actionAuditingGoods()
+	{
 		$request = Yii::$app->request;
 		$session = Yii::$app->session;
-		if(!$session->isActive) $session->open();
-    		$this->initializeAttributes();
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
 
 		if ($request->isPost) {
 			$goodsModel = new Goods;
@@ -90,25 +94,49 @@ class GoodsController extends AdminBaseController {
 		}
 	}
 
-	public function actionGoodsDetail() {
+	public function actionGoodsDetail()
+	{
 		$request = Yii::$app->request;
 		$session = Yii::$app->session;
-		if(!$session->isActive) $session->open();
-    		$this->initializeAttributes();
-		$goodsModel = new Goods;
-		$condition['id'] = $request->get('goods_id');
-		$goodsModel = $goodsModel->findById($condition, $message);
-		if ($goodsModel) {
-			$goodsAttr = $goodsModel->getGoodsAttrs()->all();
-			$goodsAttr = Tool::convert2Array($goodsAttr);
-			$goodsModel = $goodsModel->attributes;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
 
-			return $this->render('goods_detail', [
-				'goods' => $goodsModel,
-				'goodsAttr' => $goodsAttr,
-			]);
+		if ($request->isPost) {
+			$goodsModel = new Goods;
+
+			$condition['id'] = $request->post('goods_id');
+			$goodsModel = $goodsModel->findById($condition, $message);
+
+			$goods = false;
+			if ($goodsModel) {
+				$goodsModel->hs_code_remark = $request->post('hs_code_remark');
+				$goodsModel->original_price_remark = $request->post('original_price_remark');
+				$goodsModel->goods_image_remark = $request->post('goods_image_remark');
+				$goods = $goodsModel->save();
+			}
+
+			if ($goods) {
+				$this->redirect(Yii::$app->request->referrer);
+			} else {
+				$this->redirect(Yii::$app->request->referrer);
+			}
+
 		} else {
-			$this->redirect(Yii::$app->request->referrer);
+			$goodsModel = new Goods;
+			$condition['id'] = $request->get('goods_id');
+			$goodsModel = $goodsModel->findById($condition, $message);
+			if ($goodsModel) {
+				$goodsAttr = $goodsModel->getGoodsAttrs()->all();
+				$goodsAttr = Tool::convert2Array($goodsAttr);
+				$goodsModel = $goodsModel->attributes;
+
+				return $this->render('goods_detail', [
+					'goods'     => $goodsModel,
+					'goodsAttr' => $goodsAttr,
+				]);
+			} else {
+				$this->redirect(Yii::$app->request->referrer);
+			}
 		}
 	}
 

@@ -46,7 +46,8 @@
 				<input type="hidden" value="<?php echo $goods["id"];?>" id="goods-hide">
 			</div>
 		</div>
-
+        <form actoin="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/supplier/goods-detail']); ?>" enctype="multipart/form-data" method="post">
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 		<div class="orange-label">
 			<p>商品信息</p>
 		</div>
@@ -76,17 +77,23 @@
 								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">HS Code：</span>
 								</div>
-								<div class="col-md-8 col-xs-8">
+								<div class="col-md-4 col-xs-4">
 									<span class="text-value sapce_left"><?php echo $goods['hs_code']?></span>
 								</div>
+                                <div class="col-md-4 col-xs-4">
+                                    <input class="form-control" type="text" name="hs_code_remark" placeholder="HSCode未通过备注" value="<?php echo $goods['hs_code_remark']?>">
+                                </div>
 							</div>
 							<div class="col-md-12 col-xs-12">
 								<div class=" col-md-4 col-xs-4" >
 									<span class="name-float">产品单价(元)：</span>
 								</div>
-								<div class="col-md-8 col-xs-8">
+								<div class="col-md-4 col-xs-4">
 									<span class="text-value sapce_left"><?php echo $goods['original_price']?></span>
 								</div>
+                                <div class="col-md-4 col-xs-4">
+                                    <input class="form-control" type="text" name="original_price_remark" placeholder="产品单价未通过备注" value="<?php echo $goods['original_price_remark']?>">
+                                </div>
 							</div>
 							<div class="col-md-12 col-xs-12">
 								<div class=" col-md-4 col-xs-4">
@@ -139,6 +146,14 @@
 									 <img src="<?php echo $img_source.$goods['goods_image']?>" id="product_img" class="company-image " alt="产品图片">
 								</div>
 							</div>
+                            <div class="col-md-12 col-xs-12">
+                                <div class=" col-md-5 col-xs-5">
+                                    <span class="name-float">图片未通过备注：</span>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <textarea class="form-control" name="goods_image_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $goods['goods_image_remark']?></textarea>
+                                </div>
+                            </div>
 
 						</div>
 					</div>
@@ -203,7 +218,9 @@
 					<p class="goods-botder"></p>
 				</div>
 			<?php } ?>
-
+            <input type="hidden" name="goods_id" value="<?php echo $goods["id"];?>">
+            <button type="submit" class="btn btn-primary">保存</button>
+        </form>
 		</div>
 			<div class="modal fade bs-example-modal-lg" id="product-dialog" tabindex="-1" role="dialog" aria-labelledby="blLabel">
 			  <div class="modal-dialog modal-lg">

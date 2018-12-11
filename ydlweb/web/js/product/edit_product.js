@@ -27,7 +27,77 @@ $(document).ready(function () {
 	productNumberOnly("#width");
 	productNumberOnly("#height");
 
+    searchRateFun();
+    loadImage();
 });
+
+function searchRateFun(){
+    $('#search-rate').click(function(){
+        var rate = $('#hs-code').val();
+        if (rate=='') {
+            showFailHint('HScode不能为空');
+        }else{
+            $.ajax({
+                url: '/goods/tax-tsl',
+                type: "post",
+                async: true,
+                data: {
+                    hscode:rate,
+                    "_csrf":csrfToken
+                },
+                dataType: "json",
+                headers: {
+                    'X-CSRF-Token': $('meta[name=_token]').attr('content')
+                },
+                error: function() {
+                    alert('error');
+                },
+                success: function(data) {
+                    if (data.status) {
+                        $('#goods-rate').val(data.data['tsl']);
+                    }else{
+                        $('#goods-rate').val(data.message);
+                    }
+                }
+            })
+        }
+    })
+}
+
+//添加商品图片
+function loadImage(){
+    $("#product_image").click(function(){
+        $("#up_image").click();
+    });
+    $("#up_image").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        var path = $("#up_image").val();
+        var bool = imageSize(path);
+        if (bool) {
+            $("#product_image").attr("src",src);
+            $("#up_image").attr("src",src);
+        }
+
+    });
+}
+
+function imageSize(argument) {
+    var filepath= argument;
+    var extStart=filepath.lastIndexOf(".");
+    var ext=filepath.substring(extStart,filepath.length).toUpperCase();
+
+    if(ext!=".BMP"&&ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+        alert("图片限于bmp,png,gif,jpeg,jpg格式");
+        return false;
+    }
+
+    var fileSize = document.getElementById("up_image").files[0].size;
+    if(fileSize>1024 * 1024){
+        alert("图片不能大于1M。");
+        return false;
+    }
+    return true;
+}
 
 //商品
 function productNumberOnly(selector){

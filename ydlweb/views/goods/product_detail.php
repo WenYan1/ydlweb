@@ -25,7 +25,20 @@
                 }
             }
         ?>
-		
+        <?php if(!empty($goods['state'])==-1 && (!empty($goods['hs_code_remark']) || !empty($goods['original_price_remark']) || !empty($goods['goods_image_remark']))){ ?>
+            <div class="alert alert-warning" role="alert">
+                <strong>未通过原因!</strong> <br>
+		        <?php if (!empty($goods['hs_code_remark'])){ ?>
+                    <strong>HS Code:</strong> <?php echo $goods['hs_code_remark'];?><br>
+		        <?php } ?>
+		        <?php if (!empty($goods['original_price_remark'])){ ?>
+                    <strong>商品单价:</strong> <?php echo $goods['original_price_remark'];?><br>
+		        <?php } ?>
+		        <?php if (!empty($goods['goods_image_remark'])){ ?>
+                    <strong>商品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
+		        <?php } ?>
+            </div>
+        <?php } ?>
 
         	<div style="padding-top:12px;border-bottom:1px solid #d8d8d8;">
         		<a href='<?php echo Yii::$app->urlManager->createUrl(['goods']);?>' class="spacing-left privider-sapce-top">

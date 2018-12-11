@@ -245,14 +245,34 @@ class GoodsController extends HomeBaseController
     	if($request->isPost) {
     		$condition['id'] = $request->post('id');
     		$condition['user_id'] = $session['uid'];
+
+		    $dir = 'goods/';
+		    $imageFile = UploadedFile::getInstanceByName('goods_image');
+
+		    $fileResult = '';
+		    if (!empty($imageFile)){
+			    $path = Upload::getPath($dir, $imageFile->getExtension());
+			    $fileResult = $imageFile->saveAs($path['savePath'] . $path['newName']);
+		    }
+
     		$goods = $goodsModel->findById($condition,$message);
     		if($goods) {
-    			$goods->goods_long = $request->post('goods_long');
+			    $goods->goods_name = $request->post('goods_name');
+			    $goods->original_price = $request->post('original_price');
+			    $goods->goods_long = $request->post('goods_long');
+			    $goods->hs_code = $request->post('hs_code');
+			    $goods->goods_taxrate = $request->post('goods_taxrate');
     			$goods->goods_wide = $request->post('goods_wide');
     			$goods->goods_height = $request->post('goods_height');
     			$goods->gross_weight = $request->post('gross_weight');
     			$goods->net_weight = $request->post('net_weight');
     			$goods->box_number = $request->post('box_number');
+
+			    if (!empty($fileResult)){
+				    $goods->goods_image = $dir.$path['newName'];
+			    }
+
+    			$goods->state = 0;
     			if($goods->save()) {
     				$this->_setSuccessMessage('编辑成功');
 					$this->redirect(Yii::$app->request->referrer);
