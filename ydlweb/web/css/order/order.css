@@ -68,7 +68,7 @@
 .order-top{
 	margin-top:3px;
 	margin-bottom:3px;
-	padding-top:5px; 
+	padding-top:5px;
 }
 #next-step{
 	color:#fff;
@@ -193,9 +193,6 @@ div.pay-right {
 td,th{
 	text-align: center;
 }
-tr{
-	height: 60px;
-}
 thead tr{
 	height: 40px;
 	background: #F5F5F5;
@@ -305,7 +302,7 @@ thead tr{
 }
 .option-pay-mothed{
 	margin-top:30px;
-	margin-bottom:30px;	
+	margin-bottom:30px;
 }
 .option-first{
 	padding-top:10px;
@@ -360,7 +357,7 @@ div.paying-right{
 	width: 84%;
 }
 div.paying-right p{
-	font-size: 15px; 
+	font-size: 15px;
 	color:#222222;
 }
 p.submit-payinfo{
@@ -389,7 +386,7 @@ p.submit-payinfo{
 }
 
 div.down-div1{
-	width: 360px; 
+	width: 360px;
 	max-height: 300px;
 	overflow:scroll;
 	position: absolute;
@@ -411,7 +408,7 @@ div.down-div1 p:hover{
 }
 
 div.down-div2{
-	width: 360px; 
+	width: 360px;
 	max-height: 300px;
 	overflow:scroll;
 	position: absolute;

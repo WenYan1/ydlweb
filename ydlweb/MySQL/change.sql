@@ -23,3 +23,10 @@ ALTER TABLE `orders` ADD `original_place_remark` VARCHAR(255) NULL COMMENT '境�
 -- 张俊杰 2018-12-12 10:00
 ALTER TABLE `suppliers` ADD `organization_code_remark` VARCHAR(255) NULL COMMENT '近期开过的发票样本未通过备注' AFTER `organization_code`;
 ALTER TABLE `suppliers` ADD `organization_code_risk` VARCHAR(255) NULL COMMENT '近期开过的发票样本风控附件上传' AFTER `organization_code_remark`;
+
+-- 张俊杰 2018-12-12 11:00
+ALTER TABLE `orders` ADD `customs_declaration` VARCHAR(255) NULL COMMENT '报关单号' AFTER `original_place_remark`;
+ALTER TABLE `orders` ADD `commodity_code` VARCHAR(255) NULL COMMENT '商品编码' AFTER `customs_declaration`;
+ALTER TABLE `orders` ADD `date_departure` VARCHAR(255) NULL COMMENT '出口日期' AFTER `commodity_code`;
+ALTER TABLE `orders` ADD `usd_total` VARCHAR(255) NULL COMMENT '申报美金总价' AFTER `date_departure`;
+ALTER TABLE `orders` ADD `usd_unit_price` VARCHAR(255) NULL COMMENT '申报美金单价' AFTER `usd_total`;

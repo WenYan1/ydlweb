@@ -9,6 +9,7 @@
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="../css/order/order.css">
+<link rel="stylesheet" type="text/css" href="../css/public/jquery.datetimepicker.css"/ >
 <?php
 $img_source = "/uploads/";
 if($this->context->_popSuccessMessage()) {
@@ -173,8 +174,6 @@ if($this->context->_popSuccessMessage()) {
 							</div>
 						</p>
 					</div>
-				</div>
-				<div class="info-custom row-fluid">
 					<div class="order-inf">
 						<p class="spacing-left">报关口岸:
 							<input id="customs_port" name="order_info[customs_port]" style="width:360px;" class="input-padding">
@@ -187,7 +186,32 @@ if($this->context->_popSuccessMessage()) {
 							<input id="arrive_port" name="order_info[arrive_port]" style="width:360px;" class="input-padding">
 						</p>
 					</div>
-				</div>
+					<div class="order-inf">
+						<p class="spacing-left">报关单号:
+							<input id="arrive_port" name="order_info[customs_declaration]" style="width:360px;" class="input-padding">
+						</p>
+					</div>
+                    <div class="order-inf">
+                        <p class="spacing-left">商品编码:
+                            <input id="arrive_port" name="order_info[commodity_code]" style="width:360px;" class="input-padding">
+                        </p>
+                    </div>
+					<div class="order-inf">
+						<p class="spacing-left">出口日期:
+							<input id="date_departure" name="order_info[date_departure]" style="width:360px;" class="input-padding">
+						</p>
+					</div>
+                    <div class="order-inf">
+                        <p class="spacing-left">申报美金总价:
+                            <input id="arrive_port" name="order_info[usd_total]" style="width:360px;" class="input-padding">
+                        </p>
+                    </div>
+                    <div class="order-inf">
+                        <p class="spacing-left">申报美金单价:
+                            <input id="arrive_port" name="order_info[usd_unit_price]" style="width:360px;" class="input-padding">
+                        </p>
+                    </div>
+                </div>
 
 				<div class="row-fluid col-md-12">
 					<div class="orange-label">
@@ -292,7 +316,14 @@ if($this->context->_popSuccessMessage()) {
 	</div>
 	<div class="down-div2">
 	</div>
-
+<script type="text/javascript" src="../public/jquery.datetimepicker.js"></script>
 	<script type="text/javascript" src="../js/order/order-second-step.js"></script>
 
 
+<script>
+    $('#date_departure').datetimepicker({
+        lang:'ch',
+        format:'Y-m-d',
+        timepicker:false,
+    });
+</script>

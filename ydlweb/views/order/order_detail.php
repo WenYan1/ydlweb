@@ -422,16 +422,7 @@
 </div>
 <hr>
 <div class="info-custom">
-  <div class="custom-inf-three">
-    <p>报关口岸：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <input  disabled="disabled"style="border-width: 0" value="<?php echo $order['customs_port'];?>" />
-    </p>
-  </div>
-  <div class="custom-inf-three">
-    <p>到达口岸：&nbsp&nbsp&nbsp
-      <input disabled="disabled"style="border-width: 0" value="<?php echo $order['arrive_port'];?>"/>
-    </p>
-  </div>
+
   <div class="custom-inf-three">
     <p>总箱数：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <input  disabled="disabled"style="border-width: 0" value="<?php echo $order['total_box'];?>" />
@@ -445,6 +436,53 @@
       </p>
     </div>
   </div>
+</div>
+
+<div class="orange-label" style="margin-top: 0px">
+  <p class="label-title">报关信息</p>
+</div>
+<div class="container-fluid" style="padding: 0 20px;">
+    <div class="custom-inf-three">
+        <p>报关口岸：&nbsp&nbsp&nbsp
+            <input  disabled="disabled"style="border-width: 0" value="<?php echo $order['customs_port'];?>" />
+        </p>
+    </div>
+    <div class="custom-inf-three">
+        <p>到达口岸：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['arrive_port'];?>"/>
+        </p>
+    </div>
+
+    <div class="custom-inf-three">
+        <p>报关单号：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['customs_declaration'];?>"/>
+        </p>
+    </div>
+
+    <div class="custom-inf-three">
+        <p>商品编码：&nbsp&nbsp&nbsp
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['commodity_code'];?>"/>
+        </p>
+    </div>
+
+    <div class="custom-inf-three">
+        <p>申报美金总价：
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['usd_total'];?>"/>
+        </p>
+    </div>
+
+    <div class="custom-inf-three">
+        <p>申报美金单价：
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['usd_unit_price'];?>"/>
+        </p>
+    </div>
+
+
+    <div class="custom-inf-three">
+        <p>出口日期：&nbsp&nbsp&nbsp
+            <input disabled="disabled"style="border-width: 0" value="<?php echo $order['date_departure'];?>"/>
+        </p>
+    </div>
 </div>
 
 <div class="orange-label">

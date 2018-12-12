@@ -161,12 +161,10 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 
 			<div class="space_top " style="min-width: 1000px">
 				<div class="col-md-3 col-xs-3 ">
-					<span>报关口岸：</span>
-					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['customs_port'];?></span>
+
 				</div>
 				<div class="col-md-5 col-xs-5">
-					<span class="col-md-offset-1">到达口岸：</span>
-					<span >&nbsp&nbsp&nbsp<?php echo $order['arrive_port'];?></span>
+
 				</div>
 				<div class="col-md-4 col-xs-4 " >
 					<span class="col-md-offset-3">总箱数:</span>
@@ -175,6 +173,39 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 
 			</div>
 		</div>
+        <div class="orange-label">
+            <p>报关信息</p>
+        </div>
+        <div class="down-line row">
+            <div class="col-md-3 col-xs-3 ">
+                <span >报关口岸：</span>
+                <span>&nbsp&nbsp&nbsp<?php echo $order['customs_port'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span >到达口岸：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['arrive_port'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span>申报美金单价：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['usd_unit_price'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span >商品编码：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['commodity_code'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span >报关单号：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['customs_declaration'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span >出口日期：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['date_departure'];?></span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <span >申报美金总价：</span>
+                <span >&nbsp&nbsp&nbsp<?php echo $order['usd_total'];?></span>
+            </div>
+        </div>
 		<div class="orange-label">
 			<p>已添加商品</p>
 		</div>
