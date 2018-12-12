@@ -75,6 +75,7 @@ class SupplierController extends AdminBaseController {
 
 				$businessFile = UploadedFile::getInstanceByName('business_license_risk');
 				$taxFile = UploadedFile::getInstanceByName('tax_registration_risk');
+				$organizationFile = UploadedFile::getInstanceByName('organization_code_risk');
 
 				$business_license_risk = '';
 				if (!empty($businessFile)) {
@@ -98,6 +99,17 @@ class SupplierController extends AdminBaseController {
 					$tax_registration_risk = $dir . $temp['newName'];
 				}
 
+				$organization_code_risk = '';
+				if (!empty($organizationFile)) {
+					$temp = Upload::getPath($dir, $organizationFile->getExtension());
+					$temp_result = $organizationFile->saveAs($temp['savePath'] . $temp['newName']);
+					if (!$temp_result) {
+						$this->_setErrorMessage('近期开过的发票样本风控附件上传失败');
+						$this->redirect(Yii::$app->request->referrer);
+					}
+					$organization_code_risk = $dir . $temp['newName'];
+				}
+
 
 				$supplier = false;
 				$supplierModel = new Suppliers;
@@ -105,6 +117,7 @@ class SupplierController extends AdminBaseController {
 				if ($supplierModel) {
 					$supplierModel->business_license_remark = $request->post('business_license_remark');
 					$supplierModel->tax_registration_remark = $request->post('tax_registration_remark');
+					$supplierModel->organization_code_remark = $request->post('organization_code_remark');
 
 					if (!empty($business_license_risk)){
 						$supplierModel->business_license_risk = $business_license_risk;
@@ -112,6 +125,10 @@ class SupplierController extends AdminBaseController {
 
 					if (!empty($tax_registration_risk)){
 						$supplierModel->tax_registration_risk = $tax_registration_risk;
+					}
+
+					if (!empty($organization_code_risk)){
+						$supplierModel->organization_code_risk = $organization_code_risk;
 					}
 
 					$supplier = $supplierModel->save();

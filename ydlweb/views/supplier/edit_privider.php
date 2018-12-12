@@ -42,7 +42,7 @@
 				enctype="multipart/form-data" method="post">
 
 			<div class="container-fluid add-privider-form">
-                <?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']))){ ?>
+                <?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']) || !empty($supplier['organization_code_remark']))){ ?>
                 <div class="alert alert-warning" role="alert">
                     <strong>未通过原因!</strong> <br>
                     <?php if (!empty($supplier['business_license_remark'])){ ?>
@@ -50,6 +50,9 @@
                     <?php } ?>
 	                <?php if (!empty($supplier['tax_registration_remark'])){ ?>
                         <strong>营业执照:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
+	                <?php } ?>
+	                <?php if (!empty($supplier['organization_code_remark'])){ ?>
+                        <strong>其他信息:</strong> <?php echo $supplier['organization_code_remark'];?><br>
 	                <?php } ?>
                 </div>
                 <?php } ?>

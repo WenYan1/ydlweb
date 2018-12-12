@@ -205,6 +205,22 @@
 	                            <?php }?>
                             </div>
                         </div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <label>原因</label>
+                                <textarea class="form-control" name="organization_code_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $supplier["organization_code_remark"];?></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>风控附件上传</label>
+                                <input type="file" name="organization_code_risk">
+	                            <?php $_temp = $img_source.$supplier["organization_code_risk"]; if (!empty($supplier["organization_code_risk"])){ ?>
+                                    <a href="<?php echo $_temp;?>">已上传点击下载</a>
+	                            <?php }else{ ?>
+                                    <span class="red">未上传</span>
+	                            <?php }?>
+                            </div>
+                        </div>
                     </div>
                     <input type="hidden" name="supplier_id" value="<?php echo $supplier["id"];?>">
                     <button type="submit" class="btn btn-primary">保存</button>

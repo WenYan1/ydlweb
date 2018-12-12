@@ -19,3 +19,7 @@ ALTER TABLE `capital_logs` ADD `account_name` VARCHAR(255) NULL COMMENT '账号�
 
 ALTER TABLE `orders` ADD `first_payment_remark` VARCHAR(255) NULL COMMENT '首付款(元) 风控备注' AFTER `settlement_type`;
 ALTER TABLE `orders` ADD `original_place_remark` VARCHAR(255) NULL COMMENT '境内货源地 风控备注' AFTER `first_payment_remark`;
+
+-- 张俊杰 2018-12-12 10:00
+ALTER TABLE `suppliers` ADD `organization_code_remark` VARCHAR(255) NULL COMMENT '近期开过的发票样本未通过备注' AFTER `organization_code`;
+ALTER TABLE `suppliers` ADD `organization_code_risk` VARCHAR(255) NULL COMMENT '近期开过的发票样本风控附件上传' AFTER `organization_code_remark`;
