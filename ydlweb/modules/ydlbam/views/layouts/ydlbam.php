@@ -106,6 +106,14 @@ AppAsset::register($this);
             </a>
             <div class="menu_left-divider"></div>
             <?php }?>
+	        <?php if(in_array('collection', $actionList)) {?>
+                <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/collection']); ?>">
+                    <li id="collection-manage">
+                        <span>单据管理</span>
+                    </li>
+                </a>
+                <div class="menu_left-divider"></div>
+	        <?php }?>
             <?php if(in_array('supplier', $actionList)) {?>
             <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/supplier']); ?>">
                 <li id="suplier-manage">

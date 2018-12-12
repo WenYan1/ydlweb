@@ -30,3 +30,33 @@ ALTER TABLE `orders` ADD `commodity_code` VARCHAR(255) NULL COMMENT '商品编�
 ALTER TABLE `orders` ADD `date_departure` VARCHAR(255) NULL COMMENT '出口日期' AFTER `commodity_code`;
 ALTER TABLE `orders` ADD `usd_total` VARCHAR(255) NULL COMMENT '申报美金总价' AFTER `date_departure`;
 ALTER TABLE `orders` ADD `usd_unit_price` VARCHAR(255) NULL COMMENT '申报美金单价' AFTER `usd_total`;
+
+
+-- 张俊杰 2018-12-12 13:00
+--
+-- 表的结构 `collection`
+--
+
+CREATE TABLE `collection` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL COMMENT '用户ID',
+  `user_email` varchar(255) DEFAULT NULL COMMENT '用户邮箱',
+  `order_number` varchar(255) DEFAULT NULL COMMENT '订单号',
+  `tax_refund` varchar(255) DEFAULT NULL COMMENT '报关单退税联（上传附件）',
+  `supply_contract` varchar(255) DEFAULT NULL COMMENT '供货合同（上传附件）',
+  `invoice` varchar(255) DEFAULT NULL COMMENT '增值税发票（上传附件）',
+  `is_identification` tinyint(1) UNSIGNED DEFAULT '0' COMMENT '是否认证 1是 2否 0默认',
+  `anticipated_tax_refund` varchar(255) DEFAULT NULL COMMENT '预计退税款',
+  `is_end` tinyint(1) UNSIGNED DEFAULT '0' COMMENT '是否收齐 1是 2否',
+  `created_at` int(11) UNSIGNED DEFAULT NULL COMMENT '创建时间',
+  `updated_at` int(11) UNSIGNED DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='单据收集表';
+
+ALTER TABLE `collection`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `collection`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- 张俊杰 2018-12-12 16:00
+INSERT INTO `admin_modular` (`id`, `permission_name`, `modular_explain`) VALUES (NULL, 'collection', '单据收集');

@@ -53,7 +53,7 @@
 			    <?php }?>
 			  </div>
 			   <div class="checkbox" style="width:130px; float:left; margin-top:10px;">
-			  <?php for($i=12;$i<=12;$i++){?>
+			  <?php for($i=12;$i<=13;$i++){?>
 			    <label style="margin-right:30px;">
 			      <input type="checkbox" name="permission[]" style="width:180px;" value="<?php echo $permission[$i]['permission_name'];?>"><?php echo $permission[$i]['modular_explain'];?>
 			    </label>

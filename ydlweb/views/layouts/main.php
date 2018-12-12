@@ -37,6 +37,7 @@ AppAsset::register($this);
             <li class="products"><a href='<?php echo Yii::$app->urlManager->createUrl(['goods']); ?>' >产品管理</a></li>
            <li class="supplier"><a href='<?php echo Yii::$app->urlManager->createUrl(['supplier']); ?>' >供应商管理</a></li>
            <li class="order"><a href='<?php echo Yii::$app->urlManager->createUrl(['order']); ?>' >订单管理</a></li>
+           <li class="collection"><a href='<?php echo Yii::$app->urlManager->createUrl(['collection']); ?>' >单据收集</a></li>
            <li class="capital">
                资金管理 <i class="icon"></i>
            </li>
