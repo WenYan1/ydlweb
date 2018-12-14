@@ -35,11 +35,11 @@
         </div>
         <div class="background-grey content-width">
         	<div >
-        		<p class="spacing-left content-item-width font-content-size capital-category-color space-vertical">可用资金：
-                    <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="可用资金： 由用户转账至平台，可以用于支付首付款\尾款\结汇\信保代采购保证金。">
+        		<p class="spacing-left content-item-width font-content-size capital-category-color space-vertical">结算流水：
+                    <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="结算流水： 由用户转账至平台，可以用于支付首付款\尾款\结汇记录\信保代采购保证金。">
                 </p>
                 <p class=" content-item-width font-content-size capital-category-color space-vertical">保证金：
-                    <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="不可用资金： 每次使用信保代采购需要支付使用额度的10%作为保证金，待结汇后返还至可用资金。">
+                    <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="不结算流水： 每次使用信保代采购需要支付使用额度的10%作为保证金，待结汇记录后返还至结算流水。">
                 </p>
                 <p class=" content-item-width font-content-size capital-category-color space-vertical">可用信用额度：
                     <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="可用信用额度： 当前可用的信保代采购金额。">
@@ -85,40 +85,66 @@
             <?php
                 if($type == '1'){
             ?>
-
+					<div id="type-3" class="table-select select-false">
+                        <p>充值流水</p>
+                    </div>
+					<div id="type-4" class="table-select select-false">
+                        <p>结汇记录</p>
+                    </div>
                     <div id="type-1" class="table-select select-true">
-                        <p>可用资金</p>
+                        <p>结算流水</p>
                     </div>
                     <div id="type-2" class="table-select select-false">
                         <p>信用额度</p>
                     </div>
-                    <div id="type-3" class="table-select select-false">
-                        <p>充值流水</p>
-                    </div>
+                   
             <?php
                 }else if($type == '2'){
             ?>
+					<div id="type-3" class="table-select select-false">
+                        <p>充值流水</p>
+                    </div>
+						<div id="type-4" class="table-select select-false">
+                        <p>结汇记录</p>
+                    </div>
                     <div id="type-1" class="table-select select-false">
-                        <p>可用资金</p>
+                        <p>结算流水</p>
                     </div>
                     <div id="type-2" class="table-select select-true">
                         <p>信用额度</p>
                     </div>
-                    <div id="type-3" class="table-select select-false">
+			 <?php
+                }else if($type == '3'){
+            ?>
+					<div id="type-3" class="table-select select-true">
                         <p>充值流水</p>
                     </div>
-            <?php
-                }else{
-            ?>
+					<div id="type-4" class="table-select select-false">
+                        <p>结汇记录</p>
+                    </div>
                     <div id="type-1" class="table-select select-false">
-                        <p>可用资金</p>
+                        <p>结算流水</p>
                     </div>
                     <div id="type-2" class="table-select select-false">
                         <p>信用额度</p>
                     </div>
-                    <div id="type-3" class="table-select select-true">
+                  
+            <?php
+                }else{
+            ?>
+					<div id="type-3" class="table-select select-false">
                         <p>充值流水</p>
                     </div>
+						<div id="type-4" class="table-select select-true">
+                        <p>结汇记录</p>
+                    </div>
+                    <div id="type-1" class="table-select select-false">
+                        <p>结算流水</p>
+                    </div>
+                    <div id="type-2" class="table-select select-false">
+                        <p>信用额度</p>
+                    </div>
+                    
             <?php
                 }
             ?>
@@ -142,10 +168,11 @@
             <thead>
               <tr>
                 <th>金额</th>
+				<th>币种</th>
                 <th>转账银行</th>
                 <th>银行账号</th>
                 <th>时间</th>
-                <th>状态</th>
+                <th>申请结汇</th>
               </tr>
             </thead>
             <tbody>
@@ -154,6 +181,7 @@
             ?>
               <tr>
                 <td><?php echo $value['recharge_amount']; ?></td>
+				<td></td> 
                 <td><?php echo $value['bank_name'] ?></td> 
                 <td><?php echo $value['bank_account']; ?></td>
                 <td><?php echo date("Y-m-d", $value['created_at']); ?></td>
@@ -170,6 +198,32 @@
                 </td>
               </tr>
             <?php } ?>
+            </tbody>
+          </table>
+		  <?php
+            }else if($type == '4'){
+        ?>
+             <table>
+            <thead>
+              <tr>
+                <th>金额</th>
+                <th>币种</th>
+                <th>结汇汇率</th>
+                <th>结汇后人民币金额</th>
+                <th>关联订单</th>
+              </tr>
+            </thead>
+            <tbody>
+			
+              <tr>
+                <td></td>
+                <td></td> 
+                <td></td>
+                <td></td>
+                <td>
+                </td>
+              </tr>
+         
             </tbody>
           </table>
         <?php

@@ -25,8 +25,9 @@
                资金管理 <i class="icon"></i>
            </li>
             <div class="capital-detail">
+				<li><a href="../?r=capital/capital_balance">资金流水</a></li>
                 <li><a href="../?r=capital/capital_manager">资金结算</a></li>
-                <li><a href="../?r=capital/capital_balance">资金流水</a></li>
+               
             </div>
 
           <li class="company"><a href="#">公司认证</a></li>

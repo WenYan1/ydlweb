@@ -25,6 +25,11 @@ function filter(){
 		state = 3;
 		createForm(state);
 	});
+	
+	$("#type-4").click(function(){
+		state = 4;
+		createForm(state);
+	});
 
 	$(".button_fileter").click(function(){
 		start_time = $("#start_time").val();
