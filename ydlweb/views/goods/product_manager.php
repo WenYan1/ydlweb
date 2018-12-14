@@ -143,7 +143,11 @@
                     ?>
                   </td>
                   <td class="product-item-6 protuct-center">
+                      <?php if ($x_val['state'] == 1){?>
+                          <span class="product-option"><a href="<?php echo Yii::$app->urlManager->createUrl(['goods/goods-detail','id'=>$x_val['id']]);?>">查看</a></span>
+                      <?php } else{ ?>
                       <span class="product-option"><a href="<?php echo Yii::$app->urlManager->createUrl(['goods/update','id'=>$x_val['id']]);?>">编辑</a></span>
+                      <?php } ?>
                   </td>
                 </tr>
               <?php $i++; } ?>

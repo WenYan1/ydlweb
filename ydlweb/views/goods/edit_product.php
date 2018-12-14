@@ -35,7 +35,7 @@ if($this->context->_popSuccessMessage()) {
     </div>
 
     <input type="text" name="supplier_name" style="display:none;" id="supplier_name" value="" />
-	<?php if(!empty($goods['state'])==-1 && (!empty($goods['hs_code_remark']) || !empty($goods['original_price_remark']) || !empty($goods['goods_image_remark']))){ ?>
+	<?php if($goods['state']==-1 && (!empty($goods['hs_code_remark']) || !empty($goods['original_price_remark']) || !empty($goods['goods_image_remark']))){ ?>
         <div class="alert alert-warning" role="alert">
             <strong>未通过原因!</strong> <br>
 			<?php if (!empty($goods['hs_code_remark'])){ ?>
