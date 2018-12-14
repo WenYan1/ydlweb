@@ -108,9 +108,10 @@
             <thead class="privider-list-head">
               <tr>
                 <th class="product-item-1 protuct-center">序号</th>
-                <th class="product-item-2 protuct-center">封面</th>
-                <th class="product-item-3 protuct-center">产品名称</th>
-                <th class="product-item-4 protuct-center">供应商</th>
+                <th class="product-item-2 protuct-center">产品图片</th>
+                <th class="product-item-3 protuct-center">报关品名</th>
+                <th class="product-item-1 protuct-center">HS编码</th>
+                <th class="product-item-1 protuct-center">退税率(%)</th>
                 <th class="product-item-5 protuct-center">产品状态</th>
                 <th class="product-item-6 protuct-center">操作</th>
               </tr>
@@ -122,13 +123,14 @@
                   foreach ($models as $x => $x_val) {
                 ?>
                 <tr>
-                  <td class="product-item-1 protuct-center"> <?php echo ($page - 1) * 10 + $i; ?> </td>
-                  <td class="product-item-2 protuct-center">
+                  <td class="protuct-center"> <?php echo ($page - 1) * 10 + $i; ?> </td>
+                  <td class="protuct-center">
                     <a href="<?php echo $img_source.$x_val['goods_image']; ?>" target="_Bank"><img class="product-img" style="cursor:pointer;" src="<?php echo $img_source.$x_val['goods_image']; ?>" ></a>
                   </td>
-                  <td class="product-item-3 protuct-center product-option"><a href="<?php echo Yii::$app->urlManager->createUrl(['goods/goods-detail','id'=>$x_val['id']]);?>"><?php echo $x_val['goods_name']; ?></a></td>
-                  <td class="product-item-4 protuct-center product-option"><a href="<?php echo Yii::$app->urlManager->createUrl(['/supplier/supplier-detail','supplier_id'=>$x_val['supplier_id']]);?>"><?php echo $x_val['supplier_name']; ?></a></td>
-                  <td class="product-item-5 protuct-center"> 
+                  <td class="protuct-center product-option"><a href="<?php echo Yii::$app->urlManager->createUrl(['goods/goods-detail','id'=>$x_val['id']]);?>"><?php echo $x_val['goods_name']; ?></a></td>
+                  <td class="protuct-center"><?php echo $x_val['hs_code']; ?></td>
+                  <td class="protuct-center"><?php echo $x_val['goods_taxrate']; ?></td>
+                  <td class="protuct-center">
                     <?php 
                       
                         if($x_val['state'] == 0){

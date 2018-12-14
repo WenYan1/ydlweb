@@ -240,8 +240,8 @@
                     <div class="spacing-left">
                         <div class=" order-top order-margin-space spacing-left" style="margin-right: 150px;" >
                             <p class="order-item-1 font-content-size "></p>
-                            <p class="order-item-2 font-content-size">封面</p>
-                            <p class="order-item-3 font-content-size">产品名称</p>
+                            <p class="order-item-2 font-content-size">产品图片</p>
+                            <p class="order-item-3 font-content-size">报关品名</p>
                             <p class="order-item-4 font-content-size">毛重(kg)</p>
                             <p class="order-item-5 font-content-size">净重(kg)</p>
                             <p class="order-item-6 font-content-size">箱数</p>

@@ -26,7 +26,7 @@
 					</select>
 				</div>
 				<div class="row-fluid space_bottom">
-					<span class="text-name space-h--right">产品名称： <input placeholder="请输入产品" id="product_name" name="goods_name" value="<?php echo $goodsName?>"></span>
+					<span class="text-name space-h--right">报关品名： <input placeholder="请输入产品" id="product_name" name="goods_name" value="<?php echo $goodsName?>"></span>
 				</div>
 				<div class="row-fluid space_bottom">
 					<div class="search-button">
@@ -44,7 +44,9 @@
 				<thead>
 					<tr>
 						<th>序号</th>
-						<th>产品名称</th>
+						<th>报关品名</th>
+						<th>HS编码</th>
+						<th>退税率(%)</th>
 						<th>供应商名称</th>
 						<th>账号</th>
 						<th>状态</th>
@@ -58,7 +60,9 @@
 					<tr <?php if ($key % 2 != 1) {echo "style='background-color:#f5f5f5;'";}?> >
 						<td><?php echo $key+1+($page-1)*10?></td>
 						<td><a href="<?php echo Yii::$app->urlManager->createUrl(['/ydlbam/goods/goods-detail','goods_id'=>$value['id']]);?>"><?php echo $value['goods_name']?></a></td>
-						<td><?php echo $value['supplier_name']?></td>
+                        <td><?php echo $value['hs_code']?></td>
+                        <td><?php echo $value['goods_taxrate']?></td>
+                        <td><?php echo $value['supplier_name']?></td>
 						<td><?php echo $value['user_email']?></td>
 						<td>
 							<?php

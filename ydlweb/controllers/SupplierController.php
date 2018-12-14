@@ -96,15 +96,27 @@ class SupplierController extends HomeBaseController
 				$organizationCodeResult = $organizationCode->saveAs($organizationCodePath['savePath'] . $organizationCodePath['newName']);
 
 				if (!$businessLicenseResult) {
-					$this->_setErrorMessage('营业执照上传失败');
+					$this->_setErrorMessage('上传营业执照上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				} else if (!$taxRegistrationResult) {
-					$this->_setErrorMessage('税务登记证上传失败');
+					$this->_setErrorMessage('上传一般纳税人认证书上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				} else if (!$organizationCodeResult) {
-					$this->_setErrorMessage('组织机构代码证上传失败');
+					$this->_setErrorMessage('上传以往开发的发票样本上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				} else {
+
+					$other_image = UploadedFile::getInstanceByName('other_image');
+					if (!empty($other_image)) {
+						$temp = Upload::getPath($dir, $other_image->getExtension());
+						$tempResult = $other_image->saveAs($temp['savePath'] . $temp['newName']);
+						if (!$tempResult) {
+							$this->_setErrorMessage('其他上传失败');
+							$this->redirect(Yii::$app->request->referrer);
+						}
+						$data['other_image'] = $dir . $temp['newName'];
+					}
+
 					$data['user_id'] = $session['uid'];
 					$data['user_email'] = $session['userEmail'];
 					$data['identify_number'] = $request->post('identify_number');
@@ -184,12 +196,13 @@ class SupplierController extends HomeBaseController
 			$businessLicense = UploadedFile::getInstanceByName('business_license');
 			$taxRegistration = UploadedFile::getInstanceByName('tax_registration');
 			$organizationCode = UploadedFile::getInstanceByName('organization_code');
+			$other_image = UploadedFile::getInstanceByName('other_image');
 
 			if (!empty($businessLicense)) {
 				$businessLicensePath = Upload::getPath($dir, $businessLicense->getExtension());
 				$businessLicenseResult = $businessLicense->saveAs($businessLicensePath['savePath'] . $businessLicensePath['newName']);
 				if (!$businessLicenseResult) {
-					$this->_setErrorMessage('营业执照上传失败');
+					$this->_setErrorMessage('上传营业执照上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				}
 				$data['business_license'] = $dir . $businessLicensePath['newName'];
@@ -199,7 +212,7 @@ class SupplierController extends HomeBaseController
 				$taxRegistrationPath = Upload::getPath($dir, $taxRegistration->getExtension());
 				$taxRegistrationResult = $taxRegistration->saveAs($taxRegistrationPath['savePath'] . $taxRegistrationPath['newName']);
 				if (!$taxRegistrationResult) {
-					$this->_setErrorMessage('税务登记证上传失败');
+					$this->_setErrorMessage('上传一般纳税人认证书上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				}
 				$data['tax_registration'] = $dir . $taxRegistrationPath['newName'];
@@ -209,10 +222,20 @@ class SupplierController extends HomeBaseController
 				$organizationCodePath = Upload::getPath($dir, $organizationCode->getExtension());
 				$organizationCodeResult = $organizationCode->saveAs($organizationCodePath['savePath'] . $organizationCodePath['newName']);
 				if (!$organizationCodeResult) {
-					$this->_setErrorMessage('组织机构代码证上传失败');
+					$this->_setErrorMessage('上传以往开发的发票样本上传失败');
 					$this->redirect(Yii::$app->request->referrer);
 				}
 				$data['organization_code'] = $dir . $organizationCodePath['newName'];
+			}
+
+			if (!empty($other_image)) {
+				$temp = Upload::getPath($dir, $other_image->getExtension());
+				$tempResult = $other_image->saveAs($temp['savePath'] . $temp['newName']);
+				if (!$tempResult) {
+					$this->_setErrorMessage('其他上传失败');
+					$this->redirect(Yii::$app->request->referrer);
+				}
+				$data['other_image'] = $dir . $temp['newName'];
 			}
 			$condition1 = [];
 			$condition1['id'] = $request->get('supplier_id');

@@ -104,7 +104,7 @@ function add_product(){
 		' <div class="setting"><p class="font-content-size default-blue edit"><a href="javascript:;" class="linked delete" >删除</a></p>' +
 		' </div> </div><div class="pack"><div class="container-fluid">'+
 		' <div class="row "><div class="col-md-4 col-lg-4"><div class="product-message-left space-vertical space--left" id=""><div class=" space-top">'+
-		' <p class="font-content-size font--title title-width">单个净重(kg):</p> '+'<input type="text"  class="suttle font--content input-padding" name="attr'+ num +'[net_weight]" required></div> <div class="space-top"> <p class="font-content-size font--title title-width">单个毛重(kg)：</p>'+
+		' <p class="font-content-size font--title title-width">单个商品净重(kg):</p> '+'<input type="text"  class="suttle font--content input-padding" name="attr'+ num +'[net_weight]" required></div> <div class="space-top"> <p class="font-content-size font--title title-width">单个毛重(kg)：</p>'+
 		' <input type="text"   class="gross font--content input-padding" name="attr'+ num +'[gross_weight]" required> </div> <div class="space-top"><p class="font-content-size font--title title-width">单个产品尺寸(cm)：</p>'+
 		' <input type="text"  class="p-input length font--content input-padding" name="attr'+ num +'[goods_long]" placeholder="长度"  required>'+
 		' <input type="text" style="margin-left: 7px" class="p-input width font--content input-padding"  name="attr'+ num +'[goods_wide]" placeholder="宽度" required>' +

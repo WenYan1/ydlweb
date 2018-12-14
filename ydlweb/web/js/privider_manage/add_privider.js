@@ -20,6 +20,9 @@ function aboutUploadImg(){
 	$("#organization-code-btn").click(function(){
 		$("#organization-code-input").click();
 	});
+	$("#other_image-btn").click(function(){
+		$("#other_image-input").click();
+	});
 		/*var ei = $("#large");
         ei.hide();
         $("#business-license-btn").mousemove(function(e){
@@ -65,6 +68,15 @@ function aboutUploadImg(){
         }
         $("#organization-code-btn").attr("src",src);
         
+    });
+    $("#other_image-input").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        oc_size = this.files[0].size;
+        if(oc_size >1024*1024){
+            showFailHint("上传图片不能大于1MB");
+        }
+        $("#other_image-btn").attr("src",src);
+
     });
 }
 
@@ -226,11 +238,11 @@ function checkAndSubmit(){
         //  showFailHint("开票人增值税率内容为空！");
         //}
     }else if(checkData(img1)){
-        showFailHint("营业执照、一般纳税人资格、近期开过的发票样本信息不完整！");
+        showFailHint("请上传营业执照！");
     }else if(checkData(img2)){
-        showFailHint("营业执照、一般纳税人资格、近期开过的发票样本信息不完整！");
+        showFailHint("请上传一般纳税人认证书！");
     }else if(checkData(img3)){
-        showFailHint("营业执照、一般纳税人资格、近期开过的发票样本信息不完整！");     
+        showFailHint("请上传以往开发的发票样本！");
     }else if(bl_size > 7*1024*1024){
         showFailHint("上传图片不能大于7MB");
     }else if(tr_size > 1024*1024){

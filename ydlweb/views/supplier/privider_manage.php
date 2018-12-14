@@ -96,8 +96,11 @@
 				<tbody>
 					<tr class="privider-list-head row-fluid">
 						<td class="number col-md-1">序号</td>
-						<td class="name col-md-3">供应商名称</td>
-						<td class="time col-md-2">添加日期</td>
+						<td class="col-md-3">供应商名称</td>
+						<td class="">纳税人识别号</td>
+						<td class="">函调垫税限额</td>
+						<td class="">已垫付税款金额</td>
+						<td class="">添加日期</td>
 						<td class="status col-md-2">状态</td>
 						<td class="operate col-md-2">操作</td>
 					</tr>
@@ -106,7 +109,10 @@
 						<tr class="privider-list-item row-fluid">
 						<td class="number col-md-1"><?php echo ($page - 1) * 10 + $i; ?></td>
 						<td class="name col-md-3"><?php echo $x_value['company_name']; ?></td>
-						<td class="time col-md-2"><?php echo date(("Y-m-d"),$x_value['created_at']); ?></td>
+						<td class="name"><?php echo $x_value['identify_number']; ?></td>
+						<td class="name"><?php echo $x_value['allowance_limit']; ?></td>
+						<td class="name"><?php echo $x_value['tax_paid_advance']; ?></td>
+						<td class="time"><?php echo date(("Y-m-d"),$x_value['created_at']); ?></td>
 						<td class="status col-md-2"><?php
 							if($x_value['supplier_state'] == 0){
 								echo "待审核";

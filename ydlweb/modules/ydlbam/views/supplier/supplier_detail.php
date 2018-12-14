@@ -153,27 +153,33 @@
 						</div>
 					</div>
 					<div class="row-fluid col-sm-12">
-						<div class="col-xs-2">
+						<div class="col-xs-1">
 							<span class="text-name name-float">营业执照：</span>
 						</div>
 						<div class="col-xs-2">
 							 <img id="business-license-btn" src="<?php  echo $img_source.$supplier["business_license"];?>" class="company-image " alt="营业执照">
 						</div>
-						<div class="col-xs-2">
-							<span class="text-name name-float">一般纳税人资格资质</span>
+						<div class="col-xs-1">
+							<span class="text-name name-float">一般纳税人认证书</span>
 						</div>
 						<div class="col-xs-2">
-							 <img id="tax-reg-btn" src="<?php echo $img_source.$supplier["tax_registration"];?>" class="company-image " alt="税务登记">
+							 <img id="tax-reg-btn" src="<?php echo $img_source.$supplier["tax_registration"];?>" class="company-image " alt="一般纳税人认证书">
+						</div>
+						<div class="col-xs-1">
+							<span class="text-name name-float">以往开发的发票样本：</span>
 						</div>
 						<div class="col-xs-2">
-							<span class="text-name name-float">近期开过的发票样本：</span>
+							 <img id="organization-code-btn" src="<?php echo $img_source.$supplier["organization_code"];?>" class="company-image " alt="以往开发的发票样本">
+						</div>
+						<div class="col-xs-1">
+							<span class="text-name name-float">其他：</span>
 						</div>
 						<div class="col-xs-2">
-							 <img id="organization-code-btn" src="<?php echo $img_source.$supplier["organization_code"];?>" class="company-image " alt="组织机构代码">
+							 <img id="organization-code-btn" src="<?php echo $img_source.$supplier["other_image"];?>" class="company-image " alt="其他">
 						</div>
 					</div>
                     <div class="row-fluid col-sm-12">
-                        <div class="col-xs-2"></div>
+                        <div class="col-xs-1"></div>
                         <div class="col-xs-2">
                             <div class="input-group">
                                 <label>原因</label>
@@ -189,7 +195,7 @@
                                 <?php }?>
                             </div>
                         </div>
-                        <div class="col-xs-2"></div>
+                        <div class="col-xs-1"></div>
                         <div class="col-xs-2">
                             <div class="input-group">
                                 <label>原因</label>
@@ -205,7 +211,7 @@
 	                            <?php }?>
                             </div>
                         </div>
-                        <div class="col-xs-2"></div>
+                        <div class="col-xs-1"></div>
                         <div class="col-xs-2">
                             <div class="input-group">
                                 <label>原因</label>
@@ -215,6 +221,22 @@
                                 <label>风控附件上传</label>
                                 <input type="file" name="organization_code_risk">
 	                            <?php $_temp = $img_source.$supplier["organization_code_risk"]; if (!empty($supplier["organization_code_risk"])){ ?>
+                                    <a href="<?php echo $_temp;?>">已上传点击下载</a>
+	                            <?php }else{ ?>
+                                    <span class="red">未上传</span>
+	                            <?php }?>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <label>原因</label>
+                                <textarea class="form-control" name="other_image_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $supplier["other_image_remark"];?></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>风控附件上传</label>
+                                <input type="file" name="other_image_risk">
+	                            <?php $_temp = $img_source.$supplier["other_image_risk"]; if (!empty($supplier["other_image_risk"])){ ?>
                                     <a href="<?php echo $_temp;?>">已上传点击下载</a>
 	                            <?php }else{ ?>
                                     <span class="red">未上传</span>

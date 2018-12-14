@@ -119,6 +119,7 @@ class GoodsController extends HomeBaseController
     				$data['goods_taxrate'] = $request->post('goods_taxrate');
     				$data['box_number'] = $request->post('box_number');
                     $data['original_price'] = $request->post('original_price');
+                    $data['goods_url'] = $request->post('goods_url');
                     $data['goods_volume'] = $request->post('goods_volume');
     				/*$data['created_at'] = $time;
     				$data['updated_at'] = $time;*/
@@ -266,6 +267,7 @@ class GoodsController extends HomeBaseController
     			$goods->goods_height = $request->post('goods_height');
     			$goods->gross_weight = $request->post('gross_weight');
     			$goods->net_weight = $request->post('net_weight');
+    			$goods->goods_url = $request->post('goods_url');
     			$goods->box_number = $request->post('box_number');
 
 			    if (!empty($fileResult)){

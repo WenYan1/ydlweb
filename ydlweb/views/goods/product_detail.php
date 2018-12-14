@@ -32,7 +32,7 @@
                     <strong>HS Code:</strong> <?php echo $goods['hs_code_remark'];?><br>
 		        <?php } ?>
 		        <?php if (!empty($goods['original_price_remark'])){ ?>
-                    <strong>商品单价:</strong> <?php echo $goods['original_price_remark'];?><br>
+                    <strong>报关单价(RMB):</strong> <?php echo $goods['original_price_remark'];?><br>
 		        <?php } ?>
 		        <?php if (!empty($goods['goods_image_remark'])){ ?>
                     <strong>商品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
@@ -73,7 +73,7 @@
 				</div>
 				<div class="row-fluid col-md-12">
 					<div class="col-md-1">
-						<p>商品单价 :</p>
+						<p>报关单价(RMB) :</p>
 					</div>
 					<div class="col-md-2">
 						<span><?php echo $goods['original_price']; ?></span>

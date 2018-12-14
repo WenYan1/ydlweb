@@ -76,6 +76,7 @@ class SupplierController extends AdminBaseController {
 				$businessFile = UploadedFile::getInstanceByName('business_license_risk');
 				$taxFile = UploadedFile::getInstanceByName('tax_registration_risk');
 				$organizationFile = UploadedFile::getInstanceByName('organization_code_risk');
+				$otherFile = UploadedFile::getInstanceByName('other_image_risk');
 
 				$business_license_risk = '';
 				if (!empty($businessFile)) {
@@ -110,6 +111,17 @@ class SupplierController extends AdminBaseController {
 					$organization_code_risk = $dir . $temp['newName'];
 				}
 
+				$other_image_risk = '';
+				if (!empty($otherFile)) {
+					$temp = Upload::getPath($dir, $otherFile->getExtension());
+					$temp_result = $otherFile->saveAs($temp['savePath'] . $temp['newName']);
+					if (!$temp_result) {
+						$this->_setErrorMessage('近期开过的发票样本风控附件上传失败');
+						$this->redirect(Yii::$app->request->referrer);
+					}
+					$other_image_risk = $dir . $temp['newName'];
+				}
+
 
 				$supplier = false;
 				$supplierModel = new Suppliers;
@@ -118,6 +130,7 @@ class SupplierController extends AdminBaseController {
 					$supplierModel->business_license_remark = $request->post('business_license_remark');
 					$supplierModel->tax_registration_remark = $request->post('tax_registration_remark');
 					$supplierModel->organization_code_remark = $request->post('organization_code_remark');
+					$supplierModel->other_image_remark = $request->post('other_image_remark');
 
 					if (!empty($business_license_risk)){
 						$supplierModel->business_license_risk = $business_license_risk;
@@ -129,6 +142,10 @@ class SupplierController extends AdminBaseController {
 
 					if (!empty($organization_code_risk)){
 						$supplierModel->organization_code_risk = $organization_code_risk;
+					}
+
+					if (!empty($other_image_risk)){
+						$supplierModel->other_image_risk = $other_image_risk;
 					}
 
 					$supplier = $supplierModel->save();
@@ -179,4 +196,34 @@ class SupplierController extends AdminBaseController {
 		}
 	}
 
+	public function actionChangeSllowance (){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		if ($request->isPost) {
+			$supplierModel = new Suppliers;
+			$condition = [];
+			$condition['id'] = $request->post('id');
+			$supplier = $supplierModel->findById($condition,$message);
+			if($supplier) {
+				$supplier->allowance_limit = $request->post('allowance');
+
+				if($supplier->save()) {
+					$arr = array(
+						'state' => 1
+					);
+					$json = Tool::array2Json($arr);
+					exit($json);
+				}
+			}
+		}
+
+		$arr = array(
+			'state' => 0
+		);
+
+		$json = Tool::array2Json($arr);
+		exit($json);
+	}
 }

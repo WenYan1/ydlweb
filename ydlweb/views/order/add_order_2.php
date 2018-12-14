@@ -261,8 +261,8 @@ if($this->context->_popSuccessMessage()) {
 							<thead>
 								<tr>
 									<th>序号</th>
-									<th>封面</th>
-									<th>产品名称</th>
+									<th>产品图片</th>
+									<th>报关品名</th>
 									<th>毛重(kg)</th>
 									<th>净重(kg)</th>
 									<th>箱数</th>

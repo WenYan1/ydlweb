@@ -46,6 +46,9 @@
 					<tr>
 						<th>序号</th>
 						<th>供应商名称</th>
+                        <th>纳税人识别号</th>
+                        <th>函调垫税限额</th>
+                        <th>已垫付税款金额</th>
 						<th>账号</th>
 						<th>申请日期</th>
 						<th>状态</th>
@@ -59,6 +62,9 @@
 					<tr <?php if ($key % 2 != 1) {echo "style='background-color:#f5f5f5;'";}?> >
 						<td><?php echo ($key+1)+($page-1)*10?></td>
 						<td><a href="<?php echo Yii::$app->urlManager->createUrl(['/ydlbam/supplier/supplier-detail','supplier_id'=>$value['id']]);?>"><?php echo $value['company_name']?></a></td>
+						<td><?php echo $value['identify_number']?></td>
+						<td><input class="" type="text" data-allowance-type="true" value="<?php echo $value['allowance_limit']?>" data-id="<?php echo $value['id'];?>" title="鼠标离开后保存"></td>
+						<td><?php echo $value['tax_paid_advance']?></td>
 						<td><?php echo $value['user_email']?></td>
 						<td><?php echo date(("Y-m-d"),$value['updated_at']);?></td>
 
@@ -99,4 +105,6 @@
 
 	</div>
 </div>
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+<script type="text/javascript" src="/js/artdialog/jquery.artDialog.js"></script>
 <script type="text/javascript" src="/js/ydlbam_js/js_supplier/supplier_manage.js"></script>

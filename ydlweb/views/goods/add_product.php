@@ -93,7 +93,7 @@ if($this->context->_popSuccessMessage()) {
 
                                 </div>
                                 <div class="space-top">
-                                    <p class="font-content-size font--title title-width" style="text-align: left;" >商品单价：</p>
+                                    <p class="font-content-size font--title title-width" style="text-align: left;" >报关单价(RMB)：</p>
                                     <input type="text" required="required" name="original_price" class="font--content input-padding"  id="product-price" value="">
                                 </div>
                                 <div class="space-top" style="width: 380px">
@@ -108,37 +108,6 @@ if($this->context->_popSuccessMessage()) {
                                 </div>
                             </div>
                         </div>
-                       <!-- <div class="col-md-4 col-lg-4 total-middle">
-                            <div class="product-message-left total ">
-                                <div class="space-top">
-                                    <p class="font-content-size spacing-left product-space-left font--title title-width" style="text-align: left;">产品长宽高(cm)：</p>
-                                    <input type="text" required="required" name="goods_long"  class="p-input font--content input-padding" placeholder="长度" id="length" value="">
-                                    <input type="text" required="required" name="goods_wide"  style="margin-left: 7px" class="p-input font--content input-padding" placeholder="宽度" id="width" value="">
-                                    <input type="text" required="required" name="goods_height"  style="margin-left: 7px" class="p-input font--content input-padding" placeholder="高度" id="height" value="">
-                                </div>
-                                <div class="space-top">
-                                    <p class="font-content-size spacing-left product-space-left font--title title-width" >净重(kg)：</p>
-
-                                    <input type="text" id="total-suttle" style="width:80px;" name="net_weight" value=""  readOnly="true" class="delete-border font--content input-padding">
-                                </div>
-                                <div class="space-top">
-                                    <p class="font-content-size spacing-left product-space-left font--title title-width" >毛重(kg)：</p>
-                                    <input type="text" id="total-gross" style="width:80px;" name="gross_weight" value="" readOnly="true" class="delete-border font--content input-padding">
-                                </div>
-                                <div class="space-top total-box">
-                                    <p class="font-content-size spacing-left product-space-left font--title title-width" >总箱数：</p>
-                                    <input type="text" id="total-num" style="width:80px;" name="box_number" value="1" readOnly="true" class="delete-border font--content input-padding">
-
-                                </div>
-                                <div class="space-top total-box">
-                                    <p class="font-content-size spacing-left product-space-left font--title title-width" >总体积(cm<sup>3</sup>)：</p>
-                                    <input type="text" id="total-volume" style="width:80px;" name="goods_volume" value="1" readOnly="true" class="delete-border font--content input-padding">
-
-                                </div>
-
-                            </div>
-                        </div>
-						20180829-->
                         <div class="col-md-4 col-lg-4">
                             <div class="product-message-right">
                                 <p class="font-content-size spacing-left product-add-tip">添加商品图片：</p>
@@ -147,6 +116,11 @@ if($this->context->_popSuccessMessage()) {
                                     <input type="file" accept="image/*" id="up_image" style="display: none" name="goods_image" >
                                     <p class="product-img-tip">可传一张小于1M的图片</p>
                                 </div>
+                            </div>
+
+                            <div class="space-top">
+                                <p class="font-content-size font--title title-width" style="text-align: left;" >报关单价(RMB)：</p>
+                                <input type="text" name="goods_url" class="font--content input-padding" value="">
                             </div>
                         </div>
                     </div>

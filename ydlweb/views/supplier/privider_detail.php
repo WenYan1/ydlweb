@@ -38,17 +38,20 @@
 				<div class="divider"></div>
 			</div>
 			<div class="container-fluid privider-detail">
-				<?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']) || !empty($supplier['organization_code_remark']))){ ?>
+				<?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']) || !empty($supplier['organization_code_remark']) || !empty($supplier['other_image_remark']))){ ?>
                     <div class="alert alert-warning" role="alert">
                         <strong>未通过原因!</strong> <br>
 						<?php if (!empty($supplier['business_license_remark'])){ ?>
                             <strong>营业执照:</strong> <?php echo $supplier['business_license_remark'];?><br>
 						<?php } ?>
 						<?php if (!empty($supplier['tax_registration_remark'])){ ?>
-                            <strong>营业执照:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
+                            <strong>一般纳税人认证书:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
 						<?php } ?>
 						<?php if (!empty($supplier['organization_code_remark'])){ ?>
-                            <strong>其他信息:</strong> <?php echo $supplier['organization_code_remark'];?><br>
+                            <strong>上传以往开发的发票样本:</strong> <?php echo $supplier['organization_code_remark'];?><br>
+						<?php } ?>
+						<?php if (!empty($supplier['other_image_remark'])){ ?>
+                            <strong>其他:</strong> <?php echo $supplier['other_image_remark'];?><br>
 						<?php } ?>
                     </div>
 				<?php } ?>
@@ -130,23 +133,29 @@
 			</div>
 			<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
 			<div class="row-fluid col-sm-12">
-						<div class="col-xs-2">
+						<div class="col-xs-1">
 							<span class="text-name name-float">营业执照：</span>
 						</div>
 						<div class="col-xs-2">
 							<a href="<?php echo $img_source.$supplier['business_license'];?>" target="_Blank"><img id = "business-license-btn" src="<?php echo $img_source.$supplier['business_license'];?>"/></a>
 						</div>
-						<div class="col-xs-2">
-							<span class="text-name name-float">一般纳税人资格：</span>
+						<div class="col-xs-1">
+							<span class="text-name name-float">一般纳税人认证书：</span>
 						</div>
 						<div class="col-xs-2">
 							 <a href="<?php echo $img_source.$supplier['tax_registration'];?>" target="_Blank"><img id = "tax-reg-btn" src="<?php echo $img_source.$supplier['tax_registration'];?>"/></a>
 						</div>
-						<div class="col-xs-2">
-							<span class="text-name name-float">其他信息：</span>
+						<div class="col-xs-1">
+							<span class="text-name name-float">以往开发的发票样本：</span>
 						</div>
 						<div class="col-xs-2">
 							 <a href="<?php echo $img_source. $supplier['organization_code'];?>" target="_Blank"><img id = "organization-code-btn" src="<?php echo $img_source. $supplier['organization_code'];?>"/></a>
+						</div>
+                        <div class="col-xs-1">
+                            <span class="text-name name-float">其他：</span>
+                        </div>
+						<div class="col-xs-2">
+							 <a href="<?php echo $img_source. $supplier['other_image'];?>" target="_Blank"><img id = "other_image-btn" src="<?php echo $img_source. $supplier['other_image'];?>"/></a>
 						</div>
 					</div>
 				

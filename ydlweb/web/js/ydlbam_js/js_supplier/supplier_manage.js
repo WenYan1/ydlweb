@@ -2,6 +2,7 @@ $(document).ready(function(){
 	search();
 	setStatus();
 	enter_search();
+    bindAllowance();
 });
 
 function enter_search(){
@@ -49,3 +50,25 @@ function setStatus(){
 }
 
 
+function bindAllowance() {
+    $(".table-border").on("blur","[data-allowance-type='true']",function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/ydlbam/supplier/change-sllowance",
+            {
+                "id":id,
+                "allowance":val,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                    art.dialog.tips("操作成功");
+                }else{
+                    art.dialog.tips("操作失败，稍后重试");
+                }
+            });
+    });
+}

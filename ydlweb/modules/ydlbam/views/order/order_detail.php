@@ -215,8 +215,8 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 					<thead>
 						<tr>
 							<th>序号</th>
-							<th>封面</th>
-							<th>产品名称</th>
+							<th>产品图片</th>
+							<th>报关品名</th>
 							<th>毛重(kg)</th>
 							<th>净重(kg)</th>
 							<th>箱数</th>

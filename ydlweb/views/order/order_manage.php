@@ -90,10 +90,12 @@ if($this->context->_popSuccessMessage()) {
 								<th>序号</th>
 								<th>订单号</th>
 								<th>生成日期</th>
+								<th>服务类型</th>
+                                <th>结算方式</th>
 								<th>供应商</th>
-								<th>订单总额</th>
-								<th>状态</th>
-								<th>结算方式</th>
+                                <th>状态</th>
+								<th>发票金额</th>
+								<th>申报美金总金额</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -105,9 +107,18 @@ if($this->context->_popSuccessMessage()) {
 									<td><?php echo ($page - 1) * 10 + $i; ?></td>
 									<td><?php echo $data['order_sn']; ?></td>
 									<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
+                                    <td>
+                                        <select data-service-type="true" data-order-id="<?php echo $data['id'];?>" style="width: 100px">
+                                            <option value="">请选择</option>
+                                            <option value="1" <?=$data['service_type'] == '1' ? 'selected' : ''?>>退税</option>
+                                            <option value="2" <?=$data['service_type'] == '2' ? 'selected' : ''?>>退税+代采购</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="" type="text" data-settlement-type="true" value="<?php echo $data['settlement_type'];?>" data-order-id="<?php echo $data['id'];?>" title="鼠标离开后保存">
+                                    </td>
 									<td><?php echo $data['supplier_name']; ?></td>
-									<td><?php echo $data['order_total']; ?></td>
-									<td><?php 
+                                    <td><?php
 										if ($data['order_state']==0) {
 											echo '下单审核';
 										} elseif ($data['order_state']==2) {
@@ -131,7 +142,7 @@ if($this->context->_popSuccessMessage()) {
 										}elseif ($data['order_state']==11) {
 											echo '还本付息';
 										}
-										elseif ($data['order_state']==11) {
+                                        elseif ($data['order_state']==11) {
 											echo '已完成';
 										}elseif ($data['order_state']==-1) {
 											echo '审核未通过';
@@ -140,9 +151,8 @@ if($this->context->_popSuccessMessage()) {
 										}
 
 										?></td>
-										<td>
-											<input class="" type="text" data-settlement-type="true" value="<?php echo $data['settlement_type'];?>" data-order-id="<?php echo $data['id'];?>" title="鼠标离开后保存">
-										</td>
+									<td><?php echo $data['order_total']; ?></td>
+									<td><?php echo $data['usd_total']; ?></td>
 										<td class="blue-color">
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
 												查看

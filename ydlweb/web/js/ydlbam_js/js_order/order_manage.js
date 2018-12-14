@@ -89,4 +89,25 @@ function bindSettlementType() {
                 }
             });
     });
+
+    $(".table-border").on("change","[data-service-type='true']",function () {
+        var id = $(this).attr("data-order-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/ydlbam/order/change-service-type",
+            {
+                "order_id":id,
+                "service_type":val,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                    art.dialog.tips("操作成功");
+                }else{
+                    art.dialog.tips("操作失败，稍后重试");
+                }
+            });
+    });
 }

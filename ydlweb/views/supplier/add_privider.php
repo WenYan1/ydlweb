@@ -155,22 +155,38 @@
 
 			</div>
 			<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
-				<div class="row-fluid col-md-12">
-					<div class="col-md-4 col-md-offset-1" >
-						<p style="display:block;float:right;">上传营业执照、一般纳税人资格、其他信息 :</p>
-					</div>
-					<div class="col-md-7">
-							<img id = "business-license-btn" src="../images/upload_bg.png"/>
-							<input id="business-license-input" type="file" accept="image/*" name="business_license" />
-							<img id = "tax-reg-btn" src="../images/upload_bg.png"/>
-							<input id="tax-reg-input" type="file" accept="image/*"  name="tax_registration"/>
-							<img id="organization-code-btn" src="../images/upload_bg.png"/>
-							<input id="organization-code-input" type="file" accept="image/*" name="organization_code"/>
-					</div>
-				</div>
-				<div class="row-fluid col-md-12">
-						
-				</div>
+                <div class="container-fluid submit-img" style="background-color: #FAFAFA;">
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1" >
+                            上传营业执照：
+                        </div>
+                        <div class="col-md-2" >
+                            <img id = "business-license-btn" src="../images/upload_bg.png"/>
+                            <input id="business-license-input" type="file" accept="image/*" name="business_license" />
+                        </div>
+                        <div class="col-md-1" >
+                            上传一般纳税人认证书：
+                        </div>
+                        <div class="col-md-2" >
+                            <img id = "tax-reg-btn" src="../images/upload_bg.png"/>
+                            <input id="tax-reg-input" type="file" accept="image/*"  name="tax_registration"/>
+                        </div>
+                        <div class="col-md-1" >
+                            上传以往开发的发票样本：
+                        </div>
+                        <div class="col-md-2" >
+                            <img id="organization-code-btn" src="../images/upload_bg.png"/>
+                            <input id="organization-code-input" type="file" accept="image/*" name="organization_code"/>
+                        </div>
+                        <div class="col-md-1" >
+                            其他：
+                        </div>
+                        <div class="col-md-2" >
+                            <img id="other_image-btn" src="../images/upload_bg.png"/>
+                            <input id="other_image-input" type="file" accept="image/*" name="other_image"/>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 			<input style="display:none;" id="sumbit-real" type="submit" value="Submit">

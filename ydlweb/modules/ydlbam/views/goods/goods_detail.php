@@ -67,7 +67,7 @@
 							</div>
 							<div class="col-md-12 col-xs-12">
 								<div class=" col-md-4 col-xs-4">
-									<span class="name-float">产品名称：</span>
+									<span class="name-float">报关品名：</span>
 								</div>
 								<div class="col-md-8 col-xs-8">
 									<span class="text-value sapce_left"><?php echo $goods['goods_name']?></span>
@@ -144,6 +144,14 @@
 								</div>
 								<div class="col-md-6 col-xs-6">
 									 <img src="<?php echo $img_source.$goods['goods_image']?>" id="product_img" class="company-image " alt="产品图片">
+								</div>
+							</div>
+							<div class="col-md-12 col-xs-12">
+								<div class=" col-md-5 col-xs-5">
+									<span class="name-float">产品售卖链接：</span>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<a href="<?=!empty($goods['goods_url']) ? $goods['goods_url'] : 'javascript:;'?>" target="_blank"><?=!empty($goods['goods_url']) ? $goods['goods_url'] : '未填写'?></a>
 								</div>
 							</div>
                             <div class="col-md-12 col-xs-12">

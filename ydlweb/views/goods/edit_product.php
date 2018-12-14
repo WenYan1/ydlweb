@@ -42,7 +42,7 @@ if($this->context->_popSuccessMessage()) {
                 <strong>HS Code:</strong> <?php echo $goods['hs_code_remark'];?><br>
 			<?php } ?>
 			<?php if (!empty($goods['original_price_remark'])){ ?>
-                <strong>商品单价:</strong> <?php echo $goods['original_price_remark'];?><br>
+                <strong>报关单价(RMB):</strong> <?php echo $goods['original_price_remark'];?><br>
 			<?php } ?>
 			<?php if (!empty($goods['goods_image_remark'])){ ?>
                 <strong>商品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
@@ -67,7 +67,7 @@ if($this->context->_popSuccessMessage()) {
 
                         </div>
                         <div class="space-top">
-                            <p class="font-content-size font--title title-width" style="text-align: left;" >商品单价：</p>
+                            <p class="font-content-size font--title title-width" style="text-align: left;" >报关单价(RMB)：</p>
                             <input type="text" required="required" name="original_price" class="font--content input-padding"  id="product-price" value="<?php echo $goods['original_price'];?>">
                         </div>
                         <div class="space-top" style="width: 380px">
@@ -90,6 +90,10 @@ if($this->context->_popSuccessMessage()) {
                             <input type="file" accept="image/*" id="up_image" style="display: none" name="goods_image" >
                             <p class="product-img-tip">可传一张小于1M的图片</p>
                         </div>
+                    </div>
+                    <div class="space-top">
+                        <p class="font-content-size font--title title-width" style="text-align: left;" >产品售卖链接：</p>
+                        <input type="text" name="goods_url" class="font--content input-padding" value="<?=$goods['goods_url'];?>">
                     </div>
                 </div>
                 <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
@@ -134,7 +138,7 @@ if($this->context->_popSuccessMessage()) {
                                     <div class="product-message-left space-vertical space--left" >
                                         <div class=" space-top">
                                             <p class="font-content-size font--title title-width">
-                                                单个净重(kg):
+                                                单个商品净重(kg):
                                             </p> 
                                             <input type="text"  class="suttle delete-border font--content input-padding" name="attr" value="<?php echo $value['net_weight'];?>" disabled="true">
                                         </div> 

@@ -42,20 +42,23 @@
 				enctype="multipart/form-data" method="post">
 
 			<div class="container-fluid add-privider-form">
-                <?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']) || !empty($supplier['organization_code_remark']))){ ?>
-                <div class="alert alert-warning" role="alert">
-                    <strong>未通过原因!</strong> <br>
-                    <?php if (!empty($supplier['business_license_remark'])){ ?>
-                    <strong>营业执照:</strong> <?php echo $supplier['business_license_remark'];?><br>
-                    <?php } ?>
-	                <?php if (!empty($supplier['tax_registration_remark'])){ ?>
-                        <strong>营业执照:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
-	                <?php } ?>
-	                <?php if (!empty($supplier['organization_code_remark'])){ ?>
-                        <strong>其他信息:</strong> <?php echo $supplier['organization_code_remark'];?><br>
-	                <?php } ?>
-                </div>
-                <?php } ?>
+				<?php if(!empty($supplier['supplier_state']) && (!empty($supplier['business_license_remark']) || !empty($supplier['tax_registration_remark']) || !empty($supplier['organization_code_remark']) || !empty($supplier['other_image_remark']))){ ?>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>未通过原因!</strong> <br>
+						<?php if (!empty($supplier['business_license_remark'])){ ?>
+                            <strong>营业执照:</strong> <?php echo $supplier['business_license_remark'];?><br>
+						<?php } ?>
+						<?php if (!empty($supplier['tax_registration_remark'])){ ?>
+                            <strong>一般纳税人认证书:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
+						<?php } ?>
+						<?php if (!empty($supplier['organization_code_remark'])){ ?>
+                            <strong>上传以往开发的发票样本:</strong> <?php echo $supplier['organization_code_remark'];?><br>
+						<?php } ?>
+						<?php if (!empty($supplier['other_image_remark'])){ ?>
+                            <strong>其他:</strong> <?php echo $supplier['other_image_remark'];?><br>
+						<?php } ?>
+                    </div>
+				<?php } ?>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
 						<p>纳税人识别号 :</p>
@@ -170,23 +173,38 @@
 			</div>
 			<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
 				<div class="row-fluid col-md-12">
-					<div class="col-md-4 col-md-offset-1" >
-						<p style="display:block;float:right;">上传营业执照、一般纳税人资格、其他信息 :</p>
-					</div>
-					<div class="col-md-7">
+                    <div class="col-md-1" >
+                        上传营业执照：
+                    </div>
+					<div class="col-md-2" >
                         <img id = "business-license-btn" src="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '../images/upload_bg.png';?>"/>
                         <input id="business-license-input" type="file" accept="image/*" name="business_license" />
+                        <input id="business-license-hide" type="hidden" value="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '';?>>" />
+                    </div>
+                    <div class="col-md-1" >
+                        上传一般纳税人认证书：
+                    </div>
+                    <div class="col-md-2" >
                         <img id = "tax-reg-btn" src="<?php echo !empty($supplier['tax_registration']) ? $img_source.$supplier['tax_registration'] : '../images/upload_bg.png';?>"/>
                         <input id="tax-reg-input" type="file" accept="image/*"  name="tax_registration"/>
+                        <input id="tax-reg-hide" type="hidden" value="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '';?>>" />
+                    </div>
+                    <div class="col-md-1" >
+                        上传以往开发的发票样本：
+                    </div>
+                    <div class="col-md-2" >
                         <img id="organization-code-btn" src="<?php echo !empty($supplier['organization_code']) ? $img_source.$supplier['organization_code'] : '../images/upload_bg.png';?>"/>
                         <input id="organization-code-input" type="file" accept="image/*" name="organization_code"/>
-                        <input id="business-license-hide" type="hidden" value="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '';?>>" />
-                        <input id="tax-reg-hide" type="hidden" value="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '';?>>" />
                         <input id="organization-code-hide" type="hidden" value="<?php echo !empty($supplier['business_license']) ? $img_source.$supplier['business_license'] : '';?>>" />
-					</div>
-				</div>
-				<div class="row-fluid col-md-12">
-						
+                    </div>
+                    <div class="col-md-1" >
+                        其他：
+                    </div>
+                    <div class="col-md-2" >
+                        <img id="other_image-btn" src="<?php echo !empty($supplier['other_image']) ? $img_source.$supplier['other_image'] : '../images/upload_bg.png';?>"/>
+                        <input id="other_image-input" type="file" accept="image/*" name="other_image"/>
+                        <input id="other_image-hide" type="hidden" value="<?php echo !empty($supplier['other_image']) ? $img_source.$supplier['other_image'] : '';?>>" />
+                    </div>
 				</div>
 			</div>
 			<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
