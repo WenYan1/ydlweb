@@ -45,10 +45,10 @@
                             <strong>营业执照:</strong> <?php echo $supplier['business_license_remark'];?><br>
 						<?php } ?>
 						<?php if (!empty($supplier['tax_registration_remark'])){ ?>
-                            <strong>一般纳税人认证书:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
+                            <strong>一般纳税人认定书:</strong> <?php echo $supplier['tax_registration_remark'];?><br>
 						<?php } ?>
 						<?php if (!empty($supplier['organization_code_remark'])){ ?>
-                            <strong>上传以往开发的发票样本:</strong> <?php echo $supplier['organization_code_remark'];?><br>
+                            <strong>上传以往开过的发票样本:</strong> <?php echo $supplier['organization_code_remark'];?><br>
 						<?php } ?>
 						<?php if (!empty($supplier['other_image_remark'])){ ?>
                             <strong>其他:</strong> <?php echo $supplier['other_image_remark'];?><br>

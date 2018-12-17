@@ -30,9 +30,9 @@
 									</ul>
 								</div>
 							</li>
-							<li class="price"><a href="<?php echo Yii::$app->urlManager->createUrl(['home','act'=>'price']); ?>">价格</a></li>
 							<li class="case"><a href="<?php echo Yii::$app->urlManager->createUrl(['home','act'=>'case']); ?>">流程</a></li>
 							<li class="about"><a href="<?php echo Yii::$app->urlManager->createUrl(['home','act'=>'about']); ?>">关于</a></li>
+							<li class="price"><a href="<?php echo Yii::$app->urlManager->createUrl(['home','act'=>'price']); ?>">Q&A</a></li>
 							<li class="login-btn"><a style="color: white" href="login">登录</a></li>
 							<li class="register-btn"><a id="register-color" href=<?php echo Yii::$app->urlManager->createUrl(['login','act'=>'reg']); ?>>注册</a></li>
 						</ul>
@@ -45,7 +45,7 @@
 			<div class="fixed-form">
 				<ul id="form-tab" class="nav nav-tabs">
 					<li class="active">
-						<a href="#product-price" data-toggle="tab">产品价格</a>
+						<a href="#product-price" data-toggle="tab">名词解释</a>
 					</li>
 					<li>
 						<a href="#calculate" data-toggle="tab">价格计算器</a>
@@ -55,7 +55,7 @@
 					<div class="tab-pane fade in active" id="product-price">
 						<div class="fixed-title">
 							<div class="fixed-small" style="height: 230px">
-								<p class="calculate-top">注册成功开通金融服务即可享受高额的新报融资服务</p>
+								<p class="calculate-top">注册成功开通金融服务即可享受高额的信保融资服务</p>
 								<p class="calculate-centre">
 									<span class="small-word">总信保额度下随用随还 </span>  
 									<span class="small-word" style="padding: 0 30px">服务费低，整月低至1%</span>  
@@ -63,18 +63,16 @@
 								</p>
 								<a class="calculate-btn" href="">立即体验</a>
 							</div>
-							<p class="big-word">基本价格</p>
+							<p class="big-word">名词解释</p>
 							<div class="fixed-small detail-msg">
 								<p class="info-title-size">退税款计算</p>
 								<hr>
 								<p class="msg-brief">退税款=开票金额/1.16*产品退税率</br>
-							退税手续费=退税款*4%</p>
+							退税手续费=退税款*费率</p>
 								<p class="info-title-size">代采购费用</p>
 								<hr>
 								<p class="msg-brief">代采购费用根据客户月出口额阶梯收费</br>
-								月出口额500万元以内的，1.5%/月</br>
-								月出口额500-2000万元的，1.25%/月</br>
-								月出口额2000万元的，1%/月</p>
+								</p>
 								
 								
 								<p class="info-title-size">定金</p>

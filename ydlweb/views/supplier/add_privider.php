@@ -165,14 +165,14 @@
                             <input id="business-license-input" type="file" accept="image/*" name="business_license" />
                         </div>
                         <div class="col-md-1" >
-                            上传一般纳税人认证书：
+                            上传一般纳税人认定书：
                         </div>
                         <div class="col-md-2" >
                             <img id = "tax-reg-btn" src="../images/upload_bg.png"/>
                             <input id="tax-reg-input" type="file" accept="image/*"  name="tax_registration"/>
                         </div>
                         <div class="col-md-1" >
-                            上传以往开发的发票样本：
+                            上传以往开过的发票样本：
                         </div>
                         <div class="col-md-2" >
                             <img id="organization-code-btn" src="../images/upload_bg.png"/>

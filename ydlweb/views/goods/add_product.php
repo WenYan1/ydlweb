@@ -35,7 +35,7 @@ if($this->context->_popSuccessMessage()) {
     <form action=<?php echo Yii::$app->urlManager->createUrl(['goods/add']);?>
         enctype="multipart/form-data" method="post">
 
-        <div class="row-fluid col-md-12" >
+      <!--  <div class="row-fluid col-md-12" >
             <div class="orange-label">
                 <p class="label-title">选择供应商</p>
             </div>
@@ -43,42 +43,12 @@ if($this->context->_popSuccessMessage()) {
         <div>
             <p class="font-content-size spacing-left">供应商</p>
             <select name="supplier_id" id="supplier_id" class="option-supplier">
-                <?php 
-                foreach($supplier as $x=>$x_value){
-                    if($x == 0){
-                        foreach($x_value as $y=>$y_value){ 
-                            if($y == "id"){              
-                                ?>  
-
-                                <option value="<?php echo $y_value; ?>"><?php 
-                                }else if($y == "company_name"){ 
-                                    ?><?php echo $y_value; ?></option>   
-
-                                    <?php
-                                }
-                            }
-                        }else{
-                            foreach($x_value as $y=>$y_value){ 
-                                if($y == "id"){  
-                                    ?>
-
-                                    <option value="<?php echo $y_value; ?>"><?php
-                                    }else if($y == "company_name"){
-                                        ?><?php echo $y_value; ?></option>   
-                                        <?php
-
-                                    }
-                                }
-                            }
-                        } 
-                        ?>
-
-                    </select>
-                </div>
+			-->
+              
                 <input type="text" name="supplier_name" style="display:none;" id="supplier_name" value="" />
                 <div class="row-fluid col-md-12" >
                     <div class="orange-label">
-                        <p class="label-title">填写商品信息</p>
+                        <p class="label-title">填写产品信息</p>
                     </div>
                 </div>
 
@@ -87,13 +57,13 @@ if($this->context->_popSuccessMessage()) {
                         <div class="col-md-4 col-lg-4">
                             <div class="product-message-left space--left">
                                 <div class="space-top">
-                                    <p class="font-content-size  font--title title-width" style="text-align: left;">商品名称:</p>
+                                    <p class="font-content-size  font--title title-width" style="text-align: left;">报关品名:</p>
 
                                     <input type="text" required="required" name="goods_name" class="font--content input-padding" id="product-name" value="">
 
                                 </div>
                                 <div class="space-top">
-                                    <p class="font-content-size font--title title-width" style="text-align: left;" >报关单价(RMB)：</p>
+                                    <p class="font-content-size font--title title-width" style="text-align: left;" >含税单价(RMB)：</p>
                                     <input type="text" required="required" name="original_price" class="font--content input-padding"  id="product-price" value="">
                                 </div>
                                 <div class="space-top" style="width: 380px">
@@ -103,14 +73,14 @@ if($this->context->_popSuccessMessage()) {
                                 </div>
 
                                 <div class="space-top">
-                                    <p class="font-content-size font--title title-width" style="text-align: left;" >商品退税率：</p>
+                                    <p class="font-content-size font--title title-width" style="text-align: left;" >产品退税率：</p>
                                     <input type="text" placeholder="如12%税率则填写12" required="required" name="goods_taxrate" id="goods-rate" class="font--content input-padding" value="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-4">
                             <div class="product-message-right">
-                                <p class="font-content-size spacing-left product-add-tip">添加商品图片：</p>
+                                <p class="font-content-size spacing-left product-add-tip">添加产品外观图片：</p>
                                 <div class="product-img-style">
                                     <img src="../images/upload_bg.png" id="product_image">
                                     <input type="file" accept="image/*" id="up_image" style="display: none" name="goods_image" >
@@ -119,8 +89,19 @@ if($this->context->_popSuccessMessage()) {
                             </div>
 
                             <div class="space-top">
-                                <p class="font-content-size font--title title-width" style="text-align: left;" >报关单价(RMB)：</p>
+                                <p class="font-content-size font--title title-width" style="text-align: left;" >产品售卖链接：</p>
                                 <input type="text" name="goods_url" class="font--content input-padding" value="">
+                            </div>
+                        </div>
+						  <div class="col-md-4 col-lg-4">
+     
+							 <div class="product-message-right">
+                                <p class="font-content-size spacing-left product-add-tip">或上传历史报关单：</p>
+                                <div class="product-img-style">
+                                    <img src="../images/upload_bg.png" id="product_file">
+                                    <input type="file" id="up_file" style="display: none" name="up_file" >
+                                    <p class="product-img-tip"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,7 +109,7 @@ if($this->context->_popSuccessMessage()) {
 
                 <div class="row-fluid col-md-12" style="background-color: #fff">
                     <div class="orange-label">
-                        <p class="label-title">填写单个商品信息</p>
+                        <p class="label-title">产品其他信息</p>
                     </div>
                 </div>
                 <div class="border-bottom-box">

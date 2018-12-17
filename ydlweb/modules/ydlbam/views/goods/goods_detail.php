@@ -86,7 +86,7 @@
 							</div>
 							<div class="col-md-12 col-xs-12">
 								<div class=" col-md-4 col-xs-4" >
-									<span class="name-float">产品单价(元)：</span>
+									<span class="name-float">含税单价(元)：</span>
 								</div>
 								<div class="col-md-4 col-xs-4">
 									<span class="text-value sapce_left"><?php echo $goods['original_price']?></span>
@@ -144,6 +144,12 @@
 								</div>
 								<div class="col-md-6 col-xs-6">
 									 <img src="<?php echo $img_source.$goods['goods_image']?>" id="product_img" class="company-image " alt="产品图片">
+								</div>
+								<div class=" col-md-5 col-xs-5">
+									<span class="name-float">或上传历史报关单：</span>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									 <img src="" id="product_file" class="company-image " alt="图片">
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">

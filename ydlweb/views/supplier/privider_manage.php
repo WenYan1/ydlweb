@@ -96,7 +96,7 @@
 				<tbody>
 					<tr class="privider-list-head row-fluid">
 						<td class="number col-md-1">序号</td>
-						<td class="col-md-3">供应商名称</td>
+						<td class="col-md-1">供应商名称</td>
 						<td class="">纳税人识别号</td>
 						<td class="">函调垫税限额</td>
 						<td class="">已垫付税款金额</td>
@@ -108,7 +108,7 @@
 
 						<tr class="privider-list-item row-fluid">
 						<td class="number col-md-1"><?php echo ($page - 1) * 10 + $i; ?></td>
-						<td class="name col-md-3"><?php echo $x_value['company_name']; ?></td>
+						<td class="name col-md-1"><?php echo $x_value['company_name']; ?></td>
 						<td class="name"><?php echo $x_value['identify_number']; ?></td>
 						<td class="name"><?php echo $x_value['allowance_limit']; ?></td>
 						<td class="name"><?php echo $x_value['tax_paid_advance']; ?></td>
