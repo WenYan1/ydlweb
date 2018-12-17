@@ -67,4 +67,5 @@ ALTER TABLE `suppliers` ADD `allowance_limit` VARCHAR(255) NULL COMMENT '函调�
 ALTER TABLE `suppliers` ADD `tax_paid_advance` VARCHAR(255) NULL COMMENT '已垫付税款金额' AFTER `allowance_limit`;
 ALTER TABLE `suppliers` ADD `other_image` VARCHAR(255) NULL COMMENT '其他上传' AFTER `tax_registration_risk`;
 ALTER TABLE `suppliers` ADD `other_image_remark` VARCHAR(255) NULL COMMENT '其他上传未通过备注' AFTER `other_image`;
+ALTER TABLE `suppliers` ADD `other_image_risk` VARCHAR(255) NULL COMMENT '其他上传未通过备注' AFTER `other_image`;
 ALTER TABLE `orders` ADD `service_type` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '服务类型 0未选 1退税 2退税+代采购' AFTER `delivery_time`;
