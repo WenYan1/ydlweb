@@ -82,24 +82,28 @@
 if ($filter == 1) {
 	?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size default-blue under-line">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">结汇</p>
+			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-            <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+
             <?php } else if ($filter == 2) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">结汇</p>
+			  <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-            <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+          
             <?php } else if ($filter == 3) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">结汇</p>
+			 <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line">逾期付款</p>
-            <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+           
             <?php } else {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">结汇</p>
+			<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">退税</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-            <p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">退税</p>
+            
             <?php }?>
             <p style="margin:0 48px;" class="vertical-line-width vertical-line-color">|</p>
             <input id="key"  type="text" placeholder="请输入供应商名称" class="privider_query input-padding" value="<?php if ($search === null) {} else {echo $search;}?>">

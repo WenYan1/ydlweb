@@ -190,6 +190,10 @@ SWIFT CODE:SCBLHKHHXXX</span>
         							<p class="font-content-size font-color-default recharge-p">充值金额(元)：</p>
         							<input type="text" id="recharge_amount" required="required" name="recharge_amount" class="spacing-left recharge-to-input">
         						</div>
+								<div class="recharge-row">
+        							<p class="font-content-size font-color-default recharge-p">币种：</p>
+        							<input type="text" id="recharge_currency" required="required" name="recharge_currency" class="spacing-left recharge-to-input">
+        						</div>
         						<div class="recharge-row">
         							<p class="font-content-size font-color-default recharge-p space-recharge-left">充值日期：</p>
         							<input type="text" id="recharge_time" name="recharge_time" class="spacing-left recharge-to-input">

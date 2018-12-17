@@ -214,16 +214,18 @@
               </tr>
             </thead>
             <tbody>
-			
+			  <?php
+                foreach ($models as $key => $value) {
+            ?>
               <tr>
-                <td></td>
+                <td><?php echo $value['recharge_amount']; ?></td>
                 <td></td> 
                 <td></td>
                 <td></td>
                 <td>
                 </td>
               </tr>
-         
+          <?php } ?>
             </tbody>
           </table>
         <?php
