@@ -95,7 +95,8 @@ if($this->context->_popSuccessMessage()) {
 								<th>供应商</th>
                                 <th>状态</th>
 								<th>发票金额</th>
-								<th>申报美金总金额</th>
+								<th>报关金额</th>
+								<th>单据上传</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -153,6 +154,7 @@ if($this->context->_popSuccessMessage()) {
 										?></td>
 									<td><?php echo $data['order_total']; ?></td>
 									<td><?php echo $data['usd_total']; ?></td>
+									<td><a href="" >上传</a></td>
 										<td class="blue-color">
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
 												查看

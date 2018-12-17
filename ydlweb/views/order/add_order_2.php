@@ -10,6 +10,13 @@
 </script>
 <link rel="stylesheet" type="text/css" href="../css/order/order.css">
 <link rel="stylesheet" type="text/css" href="../css/public/jquery.datetimepicker.css"/ >
+<style>
+.custom-inf {
+    width: 100%;
+    float: left;
+    margin-top: 17px;
+}
+</style>
 <?php
 $img_source = "/uploads/";
 if($this->context->_popSuccessMessage()) {
@@ -32,6 +39,82 @@ if($this->context->_popSuccessMessage()) {
 <meta name="csrf-token" content="<?=Yii::$app->request->csrfToken?>"/>
 
 <title>添加订单-第二步</title>
+
+<div style="min-width: 960px">
+<form autocomplete="off" action=<?php echo Yii::$app->urlManager->createUrl(['order/add-second-step']); ?>
+		enctype="multipart/form-data" method="post">
+<div class="title-div">
+			<a href="'<?php echo Yii::$app->urlManager->createUrl(['order']); ?>'">
+				<p class="font-title-size default-blue spacing-left">订单管理</p>
+			</a>
+			<p class="font-title-size font-color-default"> - 添加订单</p>
+			<span style="color:#666666;">(最后一步)</span>
+		</div>
+		<div class="row-fluid col-md-12">
+			<div class="orange-label">
+				<p class="label-title">选择收汇方式与报关方式</p>
+			</div>
+		</div>
+		<div class="space-vertical base-message" style="">
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p>服务类型：
+						<input id="####" class="input-padding"  name="order_info[settlement_style]" value="" />
+					</p>
+				</div>
+			</div>
+			</br>
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p>结算方式：
+						<input id="####" class="input-padding"  name="order_info[settlement_style]" value="" />
+					</p>
+				</div>
+			</div>
+			</br>
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p >报关口岸:
+							<input id="customs_port" name="order_info[customs_port]"  value="" >
+							<div>
+							</div>
+						</p>
+				</div>
+			</div>
+			</br>
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p>报关方式：
+						<input id="####" class="input-padding"  name="order_info[settlement_style]" value="" />
+					</p>
+				</div>
+			</div>
+			</br>
+		
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p>报关形式：
+						<input id="####" class="input-padding"  name="order_info[settlement_style]" value="" />
+					</p>
+				</div>
+			</div>
+			</br>
+			<div class="info-custom">
+				<div class="custom-inf">
+					<p>报关联系人：
+						<input id="####" class="input-padding"  name="order_info[settlement_style]" value="" />
+					</p>
+				</div>
+			</div>
+			</br>
+			
+		</div>
+</form>
+
+</div>
+
+
+
 
 <div style="min-width: 960px">
 	<form autocomplete="off" action=<?php echo Yii::$app->urlManager->createUrl(['order/add-second-step']); ?>
