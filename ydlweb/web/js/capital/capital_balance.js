@@ -5,6 +5,7 @@ var end_time="";
 $(document).ready(function(){
 	filter();
 	hint();
+	bind_order_id();
 });
 
 function filter(){
@@ -83,3 +84,29 @@ function hint(){
 	jQuery.noConflict();
 	$('[data-toggle="tooltip"]').tooltip(100);
 } 
+
+function bind_order_id() {
+	$("#bill").on("change",'[data-order=true]',function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+
+        $.post("/capital/change-order",
+            {
+                "id":id,
+                "val":val,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                   alert("操作成功");
+                }else{
+                    alert("操作失败，稍后重试");
+                }
+            });
+    });
+
+	$("#bill").on('click','[data-apply="true"]',function () {
+		alert("申请成功")
+    })
+}

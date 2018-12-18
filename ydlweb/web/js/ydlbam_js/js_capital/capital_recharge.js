@@ -6,7 +6,7 @@ $(document).ready(function(){
 		checkData();
 	});
 	aboutAgree();
-	
+    bind_exchange_rate();
 });
 
 function aboutAgree(){
@@ -20,7 +20,13 @@ function aboutAgree(){
 						state:1,
 						_csrf:csrfToken
 					},function(data){
-						history.go(0);
+					 var data = $.parseJSON(data);
+					if (data.status === false){
+						alert(data.message);
+					}else{
+                        history.go(0);
+					}
+
 					});
 			});
 		});
@@ -66,4 +72,28 @@ function checkData(){
 
 function isNull(data){
     return $.trim(data).length == 0;
+}
+
+function bind_exchange_rate() {
+    $(".table-border").on("blur","[data-exchange-rate='true']",function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/ydlbam/capital/exchange-rate",
+            {
+                "id":id,
+                "val":val,
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.status == 1){
+                    alert("操作成功");
+                    window.location.reload();
+                }else{
+                    alert("操作失败，稍后重试");
+                }
+            });
+    });
 }

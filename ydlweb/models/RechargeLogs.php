@@ -12,7 +12,7 @@ use Yii;
  * @property string $user_email
  * @property string $bank_name
  * @property string $bank_account
- * @property integer $recharge_amount
+ * @property string $recharge_amount
  * @property string $recharge_time
  * @property integer $state
  * @property integer $created_at
@@ -34,7 +34,7 @@ class RechargeLogs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'recharge_amount', 'state', 'created_at', 'update_at'], 'integer'],
+            [['user_id', 'state', 'created_at', 'update_at'], 'integer'],
             [['user_email', 'bank_name', 'bank_account', 'recharge_time', 'created_at', 'update_at'], 'required'],
             [['user_email', 'bank_name'], 'string', 'max' => 30],
             [['bank_account'], 'string', 'max' => 20],

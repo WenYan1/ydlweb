@@ -49,11 +49,14 @@
 						<th>序号</th>
 						<th>账号</th>
 						<th>充值资金</th>
+						<th>币种</th>
 						<th>付款人账户</th>
 						<th>银行名称</th>
 						<th>银行账号</th>
 						<th>充值日期</th>
+						<th>订单</th>
 						<th>当时汇率</th>
+						<th>结汇后人民币</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -67,13 +70,20 @@
 						<td class="td-id" style="display:none;"><?php echo $value['id'];?></td>
 						<td><?php  echo ($page - 1) * 10 + ($i + 1);  ?></td>
 						<td><?php echo $value['user_email'];?></td>
+						<td><?=Tool::getCurrency($value['currency']);?></td>
 						<td><?php echo $value['recharge_amount'];?></td>
 						<td><?php echo $value['account_name'];?></td>
 						<td><?php echo $value['bank_name'];?></td>
 						<td><?php echo $value['bank_account'];?></td>
 						<td><?php echo date("Y-m-d", $value['created_at']); ?></td>
-						<td><input name="#####" type="text" value=""/></td>
-						<?php
+                        <td>
+							<?php foreach ($orders as $item){ ?>
+								<?=$value['order_id'] == $item['id'] ? $item['order_sn']:''?>
+							<?php } ?>
+                        </td>
+						<td><input name="exchange_rate" data-exchange-rate="true" data-id="<?=$value['id']?>" type="text" value="<?=$value['exchange_rate']?>" style="width: 60px"/></td>
+						<td><?=$value['exchange_settlement_rmb'];?></td>
+                        <?php
 						if ($value['state'] == 1) {
 						?>
 						<td>已同意</td>
@@ -129,5 +139,5 @@
         timepicker:false,
     });
 </script>
-
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 <script type="text/javascript" src="/js/ydlbam_js/js_capital/capital_recharge.js"></script>

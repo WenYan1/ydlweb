@@ -192,7 +192,11 @@ SWIFT CODE:SCBLHKHHXXX</span>
         						</div>
 								<div class="recharge-row">
         							<p class="font-content-size font-color-default recharge-p">币种：</p>
-        							<input type="text" id="recharge_currency" required="required" name="recharge_currency" class="spacing-left recharge-to-input">
+        							<select type="text" id="recharge_currency" required="required" name="currency" class="spacing-left recharge-to-input">
+                                        <option value="">请选择</option>
+                                        <option value="1">(RMB)人民币</option>
+                                        <option value="2">(USD)美元</option>
+                                    </select>
         						</div>
         						<div class="recharge-row">
         							<p class="font-content-size font-color-default recharge-p space-recharge-left">充值日期：</p>

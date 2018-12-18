@@ -69,3 +69,14 @@ ALTER TABLE `suppliers` ADD `other_image` VARCHAR(255) NULL COMMENT '其他上�
 ALTER TABLE `suppliers` ADD `other_image_remark` VARCHAR(255) NULL COMMENT '其他上传未通过备注' AFTER `other_image`;
 ALTER TABLE `suppliers` ADD `other_image_risk` VARCHAR(255) NULL COMMENT '其他上传未通过备注' AFTER `other_image`;
 ALTER TABLE `orders` ADD `service_type` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '服务类型 0未选 1退税 2退税+代采购' AFTER `delivery_time`;
+
+-- 张俊杰 2018-12-18 20:00
+ALTER TABLE `capital_logs` CHANGE `currency` `currency` TINYINT(3) NULL DEFAULT '1' COMMENT '币种 1人民币 2美元 3其它';
+ALTER TABLE `recharge_logs` ADD `currency` TINYINT(3) UNSIGNED NULL DEFAULT '1' COMMENT '币种 1人民币 2美元 3其它' AFTER `recharge_time`;
+ALTER TABLE `recharge_logs` CHANGE `recharge_amount` `recharge_amount` DECIMAL(10,2) NOT NULL DEFAULT '0' COMMENT '充值金额';
+ALTER TABLE `capital_logs` CHANGE `capital_type` `capital_type` SMALLINT(1) NULL DEFAULT '0' COMMENT '资金类型 1:自由资金,2:信用额度 4结汇';
+ALTER TABLE `capital_logs` ADD `exchange_settlement_rmb` DECIMAL(10,2) UNSIGNED NULL COMMENT '结汇后人民币' AFTER `exchange_rate`;
+ALTER TABLE `capital_logs` ADD `re_id` INT(11) UNSIGNED NULL COMMENT 'recharge_logsID' AFTER `user_id`;
+ALTER TABLE `recharge_logs` ADD `exchange_settlement_rmb` DECIMAL(10,2) UNSIGNED NULL COMMENT '结汇后人民币' AFTER `currency`;
+ALTER TABLE `recharge_logs` ADD `exchange_rate` DECIMAL(10,4) UNSIGNED NULL COMMENT '汇率' AFTER `currency`;
+ALTER TABLE `recharge_logs` ADD `order_id` INT(11) UNSIGNED NULL COMMENT '订单ID' AFTER `exchange_settlement_rmb`;

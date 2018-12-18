@@ -164,7 +164,7 @@
         <?php
             if($type == '3'){
         ?>
-             <table >
+             <table id="bill">
             <thead>
               <tr>
                 <th>金额</th>
@@ -182,23 +182,19 @@
             ?>
               <tr>
                 <td><?php echo $value['recharge_amount']; ?></td>
-				<td></td> 
+				<td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?php echo $value['bank_name'] ?></td> 
                 <td><?php echo $value['bank_account']; ?></td>
                 <td><?php echo date("Y-m-d", $value['created_at']); ?></td>
-				<td></td>
-                <td>
-				<a>申请结汇</a>
-                  <!--  <?php 
-                        if($value['state'] == 0){
-                            echo "未审核";
-                        }else if($value['state'] == 1){
-                            echo "通过审核";
-                        }else{
-                            echo "未通过审核";
-                        }
-                    ?>-->
+				<td>
+                    <select data-id="<?=$value['id']?>" data-order="true" style="width: 100px;">
+                        <option value="">请选择</option>
+                        <?php foreach ($orders as $item){ ?>
+                        <option value="<?=$item['id']?>" <?=$value['order_id'] == $item['id'] ? 'selected':''?>><?=$item['order_sn']?></option>
+                        <?php } ?>
+                    </select>
                 </td>
+                <td><a data-id="<?=$value['id']?>" data-apply="true">申请结汇</a></td>
               </tr>
             <?php } ?>
             </tbody>
@@ -213,30 +209,17 @@
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
-               
               </tr>
             </thead>
             <tbody>
-			
+            <?php foreach ($models as $key => $value) { ?>
               <tr>
-                <td>50000</td>
-                <td>美金</td> 
-                <td>6.88</td>
-                <td>344000</td>
-               
+                <td><?=$value['capital']?></td>
+                <td><?=Tool::getCurrency($value['currency'])?></td>
+                <td><?=$value['exchange_rate']?></td>
+                <td><?=$value['exchange_settlement_rmb']?></td>
               </tr>
-			  <tr>
-                <td>100000</td>
-                <td>美金</td> 
-                <td>6.89</td>
-                <td>689000</td>
-              </tr>
-			<tr>
-                <td>123</td>
-                <td>美金</td> 
-                <td>6.89</td>
-                <td>847.47</td>
-              </tr>
+            <?php } ?>
             </tbody>
           </table>
         <?php
