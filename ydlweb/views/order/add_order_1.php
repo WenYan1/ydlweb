@@ -127,8 +127,8 @@
 							<p>录入价格方式 :</p>
 						</div>
 						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp指定货物报关人民币单价&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp指定货物报关美金货值</label>
+							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp指定货物报关发票金额&nbsp&nbsp</label>
+							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp指定货物报关美金金额</label>
 							</p>
 						</div>
 					</div>
@@ -207,7 +207,7 @@
 										<th style="width:10%">单价</th>
 										<th style="width: 10%">货值</th>
 										<th style="width: 10%">法定数量和单位</th>
-										<th style="width: 20%">开票人</th>
+										<th style="width: 10%">开票人</th>
 										<th style="width: 10%">估算汇率</th>
 									</tr>
 								</thead>
@@ -218,12 +218,16 @@
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value=""  style="width:50px"/></td>
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
+																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
+																	</td>
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px" /></td>
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
-											<td style="width: 20%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:200px"/></td>	
+																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></br>
+																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
+																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
+																	</td>
+											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:200px"/></td>	
 											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>											
 										</tr>
 									</tbody>

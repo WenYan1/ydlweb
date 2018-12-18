@@ -67,7 +67,7 @@ if($this->context->_popSuccessMessage()) {
                                     <input type="text" required="required" name="original_price" class="font--content input-padding"  id="product-price" value="">
                                 </div>
                                 <div class="space-top" style="width: 380px">
-                                    <p class="font-content-size font--title title-width" style="text-align: left;" >HS Code：</p>
+                                    <p class="font-content-size font--title title-width" style="text-align: left;" >海关编码HS Code：</p>
                                     <input id="hs-code" type="text" required="required" name="hs_code" class="font--content input-padding"  id="product-code" value=""><br>
                                     <p id="search-rate">查询</p>
                                 </div>

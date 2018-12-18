@@ -82,27 +82,29 @@
 if ($filter == 1) {
 	?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size default-blue under-line">付款</p>
-			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+			
             <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
+			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
 
             <?php } else if ($filter == 2) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			  <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
+			 
             <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
+			 <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
           
             <?php } else if ($filter == 3) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			 <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">退税</p>
             <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line">逾期付款</p>
+			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
            
             <?php } else {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">退税</p>
             <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
             <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
+			<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">其他</p>
             
             <?php }?>
             <p style="margin:0 48px;" class="vertical-line-width vertical-line-color">|</p>

@@ -53,6 +53,7 @@
 						<th>银行名称</th>
 						<th>银行账号</th>
 						<th>充值日期</th>
+						<th>当时汇率</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -71,6 +72,7 @@
 						<td><?php echo $value['bank_name'];?></td>
 						<td><?php echo $value['bank_account'];?></td>
 						<td><?php echo date("Y-m-d", $value['created_at']); ?></td>
+						<td><input name="#####" type="text" value=""/></td>
 						<?php
 						if ($value['state'] == 1) {
 						?>

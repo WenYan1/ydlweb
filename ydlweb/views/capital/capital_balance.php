@@ -172,6 +172,7 @@
                 <th>转账银行</th>
                 <th>银行账号</th>
                 <th>时间</th>
+				<th>关联订单</th>
                 <th>申请结汇</th>
               </tr>
             </thead>
@@ -185,8 +186,10 @@
                 <td><?php echo $value['bank_name'] ?></td> 
                 <td><?php echo $value['bank_account']; ?></td>
                 <td><?php echo date("Y-m-d", $value['created_at']); ?></td>
+				<td></td>
                 <td>
-                    <?php 
+				<a>申请结汇</a>
+                  <!--  <?php 
                         if($value['state'] == 0){
                             echo "未审核";
                         }else if($value['state'] == 1){
@@ -194,7 +197,7 @@
                         }else{
                             echo "未通过审核";
                         }
-                    ?>
+                    ?>-->
                 </td>
               </tr>
             <?php } ?>
@@ -210,22 +213,30 @@
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
-                <th>关联订单</th>
+               
               </tr>
             </thead>
             <tbody>
-			  <?php
-                foreach ($models as $key => $value) {
-            ?>
+			
               <tr>
-                <td><?php echo $value['recharge_amount']; ?></td>
-                <td></td> 
-                <td></td>
-                <td></td>
-                <td>
-                </td>
+                <td>50000</td>
+                <td>美金</td> 
+                <td>6.88</td>
+                <td>344000</td>
+               
               </tr>
-          <?php } ?>
+			  <tr>
+                <td>100000</td>
+                <td>美金</td> 
+                <td>6.89</td>
+                <td>689000</td>
+              </tr>
+			<tr>
+                <td>123</td>
+                <td>美金</td> 
+                <td>6.89</td>
+                <td>847.47</td>
+              </tr>
             </tbody>
           </table>
         <?php

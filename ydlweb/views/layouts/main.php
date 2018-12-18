@@ -37,13 +37,13 @@ AppAsset::register($this);
             <li class="products"><a href='<?php echo Yii::$app->urlManager->createUrl(['goods']); ?>' >产品管理</a></li>
            <li class="supplier"><a href='<?php echo Yii::$app->urlManager->createUrl(['supplier']); ?>' >供应商管理</a></li>
            <li class="order"><a href='<?php echo Yii::$app->urlManager->createUrl(['order']); ?>' >订单管理</a></li>
-           <!--<li class="collection"><a href='<?php echo Yii::$app->urlManager->createUrl(['collection']); ?>' >单据收集</a></li>-->
+           <li class="collection"><a href='<?php echo Yii::$app->urlManager->createUrl(['collection']); ?>' >退税管理</a></li>
            <li class="capital">
                资金管理 <i class="icon"></i>
            </li>
             <div class="capital-detail">
 				<li class="capital-balance"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital/capital-logs']); ?>'>充值结汇</a></li>
-                <li class="capital-manage"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital']); ?>'>付款退税</a></li>
+                <li class="capital-manage"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital']); ?>'>付款还款</a></li>
                 
             </div>
           <li class="company"><a href="<?php echo Yii::$app->urlManager->createUrl(['/company']); ?>">公司认证</a></li>

@@ -93,10 +93,10 @@ if($this->context->_popSuccessMessage()) {
 								<th>服务类型</th>
                                 <th>结算方式</th>
 								<th>供应商</th>
-                                <th>状态</th>
+                                
 								<th>发票金额</th>
 								<th>报关金额</th>
-								<th>单据上传</th>
+								<th>状态</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -119,7 +119,10 @@ if($this->context->_popSuccessMessage()) {
                                         <input class="" type="text" data-settlement-type="true" value="<?php echo $data['settlement_type'];?>" data-order-id="<?php echo $data['id'];?>" title="鼠标离开后保存">
                                     </td>
 									<td><?php echo $data['supplier_name']; ?></td>
-                                    <td><?php
+                                   
+									<td><?php echo $data['order_total']; ?></td>
+									<td><?php echo $data['usd_total']; ?></td>
+									 <td><?php
 										if ($data['order_state']==0) {
 											echo '下单审核';
 										} elseif ($data['order_state']==2) {
@@ -152,9 +155,6 @@ if($this->context->_popSuccessMessage()) {
 										}
 
 										?></td>
-									<td><?php echo $data['order_total']; ?></td>
-									<td><?php echo $data['usd_total']; ?></td>
-									<td><a href="" >上传</a></td>
 										<td class="blue-color">
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
 												查看

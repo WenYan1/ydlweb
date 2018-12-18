@@ -23,12 +23,12 @@ if($this->context->_popSuccessMessage()) {
 }
 ?>
 <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>"/>
-<title>单据收集</title>
+<title>退税管理</title>
 
 
 <div class="container-fluid">
     <div class="row-fluid title-div">
-        <p class="spacing-left">订单管理</p>
+        <p class="spacing-left">退税管理</p>
     </div>
     <div class="row-fluid col-md-12" >
         <a class="blue-border spacing-left" href=<?php echo Yii::$app->urlManager->createUrl(['collection/add']);?>>
@@ -80,13 +80,15 @@ if($this->context->_popSuccessMessage()) {
                         <tr>
                             <th>序号</th>
                             <th>订单号</th>
-                            <th>报关单退税联</th>
+							<th>发票金额</th>
+							<th>创建时间</th>
+                            <th>报关单</th>
                             <th>供货合同</th>
                             <th>增值税发票</th>
-                            <th>是否认证</th>
+                            <th>提单</th>
+							<th>外汇状态</th>
                             <th>预计退税款</th>
                             <th>是否收齐</th>
-                            <th>创建时间</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -95,41 +97,43 @@ if($this->context->_popSuccessMessage()) {
 						$i = 1;
 						foreach ($models as $data) {
 							?>
-                            <tr>
+                            <tr> 
                                 <td><?php echo ($page - 1) * 10 + $i; ?></td>
                                 <td><?=$data['order_number']?></td>
-                                <td>
+								<td></td>
+								<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
+                                <td><input name="#####" type="text" id="#####" value=""  style="width: 54px;">
                                     <?php if (!empty($data['tax_refund'])){ ?>
                                     <a href="<?php echo $img_source.$data['tax_refund']?>">下载</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
-                                <td>
+                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
                                     <?php if (!empty($data['supply_contract'])){ ?>
                                     <a href="<?php echo $img_source.$data['supply_contract']?>">下载</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
-                                <td>
+                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
                                     <?php if (!empty($data['invoice'])){ ?>
                                     <a href="<?php echo $img_source.$data['invoice']?>">下载</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
-                                <td>
-                                    <?php
-                                    if ($data['is_identification'] == 1){
-                                        echo '是';
-                                    }else if ($data['is_identification'] == 2){
-                                        echo '否';
-                                    }else{
-                                        echo '';
-                                    }
-                                    ?>
+								
+                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
+									 <?php if (!empty($data['is_identification'])){ ?>
+                                    <a href="<?php echo $img_source.$data['is_identification']?>">下载</a>
+                                    <?php } else { ?>
+                                        未上传
+                                    <?php } ?>
                                 </td>
+								<td>
+									<input name="#####" type="text" id="#####" value="" style="width: 54px;">
+								</td>
                                 <td><?=$data['is_end']?></td>
                                 <td>
 		                            <?php
@@ -142,7 +146,7 @@ if($this->context->_popSuccessMessage()) {
 		                            }
 		                            ?>
                                 </td>
-                                <td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
+                          
                                 <td class="blue-color">
                                     <a href=<?php echo Yii::$app->urlManager->createUrl(['collection/edit','id'=> $data['id']]);?>>
                                         编辑

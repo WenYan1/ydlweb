@@ -80,7 +80,7 @@ if($this->context->_popSuccessMessage()) {
 	<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
 		<div class="row-fluid col-md-12">
 			<div class="col-md-4 col-md-offset-1" >
-				<p style="display:block;float:right;">上传报关单退税联、供货合同、增值税发票 :</p>
+				<p style="display:block;float:right;">上传报关单退税联、供货合同、增值税发票、提单 :</p>
 			</div>
 			<div class="col-md-7">
 				<img id = "tax_refund_btn" src="../images/upload_bg.png"/>
@@ -89,6 +89,8 @@ if($this->context->_popSuccessMessage()) {
 				<input id="supply_contract_input" type="file" accept="image/*" name="supply_contract" />
 				<img id = "invoice_btn" src="../images/upload_bg.png"/>
 				<input id="invoice_input" type="file" accept="image/*" name="invoice" />
+				<img id = "invoice_btn" src="../images/upload_bg.png"/>
+				<input id="#####" type="file" accept="image/*" name="#####" />
 			</div>
 		</div>
 		<div class="row-fluid col-md-12">
