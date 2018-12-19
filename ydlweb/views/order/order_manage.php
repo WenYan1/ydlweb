@@ -96,7 +96,9 @@ if($this->context->_popSuccessMessage()) {
                                 
 								<th>发票金额</th>
 								<th>报关金额</th>
+								<th>报关日期</th>
 								<th>状态</th>
+								<th>下载报关资料</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -122,6 +124,7 @@ if($this->context->_popSuccessMessage()) {
                                    
 									<td><?php echo $data['order_total']; ?></td>
 									<td><?php echo $data['usd_total']; ?></td>
+									<td></td>
 									 <td><?php
 										if ($data['order_state']==0) {
 											echo '下单审核';
@@ -155,6 +158,7 @@ if($this->context->_popSuccessMessage()) {
 										}
 
 										?></td>
+										<td></td>
 										<td class="blue-color">
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
 												查看

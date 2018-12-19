@@ -109,7 +109,7 @@ AppAsset::register($this);
 	        <?php if(in_array('collection', $actionList)) {?>
                 <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/collection']); ?>">
                     <li id="collection-manage">
-                        <span>单据管理</span>
+                        <span>退税管理</span>
                     </li>
                 </a>
                 <div class="menu_left-divider"></div>

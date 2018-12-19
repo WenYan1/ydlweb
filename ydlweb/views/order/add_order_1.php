@@ -351,7 +351,7 @@
                         </div>
                         <div class="col-md-2" >
                             <img id = "business-license-btn" src="../images/upload_bg.png"/>
-                            <input id="business-license-input" type="file" accept="image/*" name="#####" />
+                            <input id="business-license-input" type="file"  name="#####" />
                         </div>
             
                         <div class="col-md-1" >
@@ -359,7 +359,7 @@
                         </div>
                         <div class="col-md-2" >
                             <img id="other_image-btn" src="../images/upload_bg.png"/>
-                            <input id="other_image-input" type="file" accept="image/*" name="#####"/>
+                            <input id="other_image-input" type="file"  name="#####"/>
                         </div>
                     </div>
                 

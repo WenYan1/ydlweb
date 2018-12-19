@@ -76,18 +76,22 @@
                 <p class="font-content-size  ">信用额度支付</p>
             </div>
             <div class="spacing-left">
-                 <p class="font-content-size  ">(将从自有资金中扣除使用信用额度支付金额的10%作为保证金，结汇时收取本单使用信用额度支付金额的3%作为服务费)</p>
+                 <p class="font-content-size  "></p>
             </div>
             <div class="space-vertical spacing-left option-third">
                 <p class="font-bold col-md-1">支付金额(元):  </p>
                 <input style="padding:2px 6px;" id="money-number" type="text" name="payment_amount" required="require">
             </div>
             <div class="space-vertical spacing-left option-third">
-                <p class="font-bold col-md-1">加工厂账户名:  </p>
+                <p class="font-bold col-md-1">工厂账户名:  </p>
                 <input style="padding:2px 6px;" id="factory_account_name" type="text" name="factory_account_name" required="require">
             </div>
+			<div class="space-vertical spacing-left option-third">
+                <p class="font-bold col-md-1">开户银行:  </p>
+                <input style="padding:2px 6px;" id="#####" type="text" name="#####" required="require">
+            </div>
             <div class="space-vertical spacing-left option-third">
-                <p class="font-bold col-md-1">账号信息:  </p>
+                <p class="font-bold col-md-1">银行账号:  </p>
                 <input style="padding:2px 6px;" id="account_name" type="text" name="account_name" required="require">
             </div>
             <input id="submit-real" style="display:none;" type="submit" value="Submit">

@@ -14,8 +14,8 @@ function submitInfo(){
 			alert("银行账号不能为空！");
 		}else if (checkData($("#recharge_amount").val())) {
 			alert("充值金额不能为空！");
-		}else if ($("#recharge_currency").val()=='') {
-			alert("请选择币种！");
+		//}else if(!check_number($("#recharge_amount").val())){
+		//	alert("充值金额必须为正整数！");
 		}else if (checkData($("#recharge_time").val())){
 			alert("充值日期不能为空！");
 		}else{

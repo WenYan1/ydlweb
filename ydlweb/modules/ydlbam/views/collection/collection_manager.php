@@ -9,7 +9,7 @@
 	<div class="main-content">
 		<div class="content-position">
 			<span class="text-name">您的位置： </span>
-			<span class="text-value">单据管理</span>
+			<span class="text-value">退税管理</span>
 		</div>
 		<div class="content-search_top">
 			<span class="text-value">搜索条件</span>
@@ -45,16 +45,18 @@
 			<table>
 				<thead>
 				<tr>
-                    <th>序号</th>
-                    <th>订单号</th>
-                    <th>报关单退税联</th>
-                    <th>供货合同</th>
-                    <th>增值税发票</th>
-                    <th>是否认证</th>
-                    <th>预计退税款</th>
-                    <th>是否收齐</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
+                   <th>序号</th>
+                            <th>订单号</th>
+							<th>发票金额</th>
+							<th>创建时间</th>
+                            <th>报关单</th>
+                            <th>供货合同</th>
+                            <th>增值税发票</th>
+                            <th>提单</th>
+							<th>外汇状态</th>
+                            <th>预计退税款</th>
+                            <th>是否收齐</th>
+                            <th>操作</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -67,6 +69,8 @@
                     <tr>
                         <td><?php echo ($page - 1) * 10 + $i; ?></td>
                         <td><?=$data['order_number']?></td>
+						<td></td>
+						<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                         <td>
 							<?php if (!empty($data['tax_refund'])){ ?>
                                 <a href="<?php echo $img_source.$data['tax_refund']?>">下载</a>
@@ -88,17 +92,9 @@
                                 未上传
 							<?php } ?>
                         </td>
-                        <td>
-							<?php
-							if ($data['is_identification'] == 1){
-								echo '是';
-							}else if ($data['is_identification'] == 2){
-								echo '否';
-							}else{
-								echo '';
-							}
-							?>
-                        </td>
+						 <td>未上传
+                                </td>
+						<td></td>
                         <td><?=$data['is_end']?></td>
                         <td>
 							<?php
@@ -111,7 +107,6 @@
 							}
 							?>
                         </td>
-                        <td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                         <td class="blue-color">
                             <a href=<?php echo Yii::$app->urlManager->createUrl(['/ydlbam/collection/detail','id'=> $data['id']]);?>>
                                 详情

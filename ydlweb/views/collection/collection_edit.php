@@ -1,5 +1,5 @@
 
-<title>单据收集</title>
+<title>退税管理</title>
 <script>
     $(".collection").css("border-left","6px solid #4E99B8");
     $(".collection").css("background","#222222");
@@ -29,7 +29,7 @@ if($this->context->_popSuccessMessage()) {
 <script type="text/javascript" src="../js/collection/collection-add.js"></script>
 <div style="border-bottom:1px solid #d8d8d8;">
 	<a href='<?php echo Yii::$app->urlManager->createUrl(['collection']);?>' class="spacing-left privider-sapce-top">
-		<p class="font-title-size">单据收集</p>
+		<p class="font-title-size">退税管理</p>
 	</a>
 	<p class="font-title-size privider-sapce-top"> - 编辑单据</p>
 
