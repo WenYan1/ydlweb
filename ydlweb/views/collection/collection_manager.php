@@ -134,7 +134,7 @@ if($this->context->_popSuccessMessage()) {
 								<td>
 									<input name="#####" type="text" id="#####" value="" style="width: 54px;">
 								</td>
-                                <td><?=$data['is_end']?></td>
+                                <td><?=$data['anticipated_tax_refund']?></td>
                                 <td>
 		                            <?php
 		                            if ($data['is_end'] == 1){

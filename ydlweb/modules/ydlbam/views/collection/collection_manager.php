@@ -94,8 +94,8 @@
                         </td>
 						 <td>未上传
                                 </td>
-						<td></td>
-                        <td><?=$data['is_end']?></td>
+						<td><input name="#####" type="text" id="#####" value=""></td>
+                        <td><?=$data['anticipated_tax_refund']?></td>
                         <td>
 							<?php
 							if ($data['is_end'] == 1){
