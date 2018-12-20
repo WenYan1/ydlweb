@@ -82,30 +82,62 @@
 if ($filter == 1) {
 	?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size default-blue under-line">付款</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
 			
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
+			
 
             <?php } else if ($filter == 2) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			 
-            <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">还款</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-			 <p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+			
+			
           
             <?php } else if ($filter == 3) {?>
             <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line">逾期付款</p>
-			<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+			
+			
+           
+            <?php } else if ($filter == 4) {?>
+            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">其他</p>-->
+			
+		
+              <?php } else if ($filter == 5) {?>
+            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size default-blue under-line">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+			
+			
            
             <?php } else {?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还款</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期付款</p>
-			<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">其他</p>
-            
+			<p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
+			<p id="state-ct" style="margin-left:96px;" class="font-content-size default-blue under-line">额度使用情况</p>
+            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+			
+			
             <?php }?>
             <p style="margin:0 48px;" class="vertical-line-width vertical-line-color">|</p>
             <input id="key"  type="text" placeholder="请输入供应商名称" class="privider_query input-padding" value="<?php if ($search === null) {} else {echo $search;}?>">
@@ -288,7 +320,7 @@ if ($filter == 1) {
                       <?php }?>
                     </tbody>
               </table>
-            <?php } else {
+            <?php } else if($filter == 4){
 	?>
                 <table >
                     <thead>
@@ -340,7 +372,37 @@ if ($filter == 1) {
                       <?php }?>
                     </tbody>
                 </table>
-            <?php }?>
+            <?php }else{?>
+
+             <table >
+            <thead>
+              <tr>
+                <th class="balance-1">流水单号</th>
+                <th class="balance-2">金额</th>
+                <th class="balance-3">资金类型</th>
+                <th class="balance-4">资金说明</th>
+                <th class="balance-5">时间</th>
+              </tr>
+              
+            </thead>
+            <tbody>
+            
+            <?php
+                foreach ($models as $key => $value) {
+            ?>
+              <tr>
+                <td class="balance-1"></td>
+                <td class="balance-2"></td>
+                <td class="balance-3">
+                    
+                </td>
+                <td class="balance-4"></td>
+                <td class="balance-5"></td>
+              </tr>
+            <?php } ?>
+            </tbody>
+          </table>
+        <?php } ?>
 
            <?php
                 if(count($models) == 0){

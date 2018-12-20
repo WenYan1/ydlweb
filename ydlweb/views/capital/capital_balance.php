@@ -4,7 +4,7 @@
             $('.capital-detail').show();
         </script>
         <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>"/>
-        <title>资金流水</title>
+        <title>资金管理</title>
         <link rel="stylesheet" type="text/css" href="../css/capital/capital.css">   
         <link rel="stylesheet" type="text/css" href="../css/public/jquery.datetimepicker.css"/ >  
 
@@ -31,11 +31,11 @@
         <script type="text/javascript" src="../js/capital/capital_balance.js"></script>
 
         <div class="background-white">
-            <p class="font-title-size space-vertical spacing-left" style="font-weight:bold;">资金流水</p>
+            <p class="font-title-size space-vertical spacing-left" style="font-weight:bold;">资金管理</p>
         </div>
         <div class="background-grey content-width">
         	<div >
-        		<p class="spacing-left content-item-width font-content-size capital-category-color space-vertical">结算流水：
+        		<p class="spacing-left content-item-width font-content-size capital-category-color space-vertical">可用余额：
                     <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="结算流水： 由用户转账至平台，可以用于支付首付款\尾款\结汇记录\信保代采购保证金。">
                 </p>
                 <p class=" content-item-width font-content-size capital-category-color space-vertical">保证金：
@@ -77,73 +77,34 @@
         </div>
         <div class="row-fluid col-md-12" >
             <div class="orange-label">
-                 <p class="label-title">流水资金</p>
+                 <p class="label-title">充值结汇</p>
             </div>
         </div>
         <div class="privider-select">
             <p id="type-val" style="display:none"><?php echo $type; ?></p>
-            <?php
-                if($type == '1'){
-            ?>
-					<div id="type-3" class="table-select select-false">
-                        <p>充值流水</p>
-                    </div>
-					<div id="type-4" class="table-select select-false">
-                        <p>结汇记录</p>
-                    </div>
-                    <div id="type-1" class="table-select select-true">
-                        <p>结算流水</p>
-                    </div>
-                    <div id="type-2" class="table-select select-false">
-                        <p>信用额度</p>
-                    </div>
-                   
-            <?php
-                }else if($type == '2'){
-            ?>
-					<div id="type-3" class="table-select select-false">
-                        <p>充值流水</p>
-                    </div>
-						<div id="type-4" class="table-select select-false">
-                        <p>结汇记录</p>
-                    </div>
-                    <div id="type-1" class="table-select select-false">
-                        <p>结算流水</p>
-                    </div>
-                    <div id="type-2" class="table-select select-true">
-                        <p>信用额度</p>
-                    </div>
+            
+        
 			 <?php
-                }else if($type == '3'){
+                 if($type == '3'){
             ?>
 					<div id="type-3" class="table-select select-true">
-                        <p>充值流水</p>
+                        <p>充值记录</p>
                     </div>
 					<div id="type-4" class="table-select select-false">
                         <p>结汇记录</p>
                     </div>
-                    <div id="type-1" class="table-select select-false">
-                        <p>结算流水</p>
-                    </div>
-                    <div id="type-2" class="table-select select-false">
-                        <p>信用额度</p>
-                    </div>
+                 
                   
             <?php
                 }else{
             ?>
 					<div id="type-3" class="table-select select-false">
-                        <p>充值流水</p>
+                        <p>充值记录</p>
                     </div>
 						<div id="type-4" class="table-select select-true">
                         <p>结汇记录</p>
                     </div>
-                    <div id="type-1" class="table-select select-false">
-                        <p>结算流水</p>
-                    </div>
-                    <div id="type-2" class="table-select select-false">
-                        <p>信用额度</p>
-                    </div>
+                   
                     
             <?php
                 }
@@ -164,7 +125,7 @@
         <?php
             if($type == '3'){
         ?>
-             <table >
+             <table id="bill">
             <thead>
               <tr>
                 <th>金额</th>
@@ -182,23 +143,19 @@
             ?>
               <tr>
                 <td><?php echo $value['recharge_amount']; ?></td>
-				<td></td> 
+				<td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?php echo $value['bank_name'] ?></td> 
                 <td><?php echo $value['bank_account']; ?></td>
                 <td><?php echo date("Y-m-d", $value['created_at']); ?></td>
-				<td></td>
-                <td>
-				<a>申请结汇</a>
-                  <!--  <?php 
-                        if($value['state'] == 0){
-                            echo "未审核";
-                        }else if($value['state'] == 1){
-                            echo "通过审核";
-                        }else{
-                            echo "未通过审核";
-                        }
-                    ?>-->
+				<td>
+                    <select data-id="<?=$value['id']?>" data-order="true" style="width: 100px;">
+                        <option value="">请选择</option>
+                        <?php foreach ($orders as $item){ ?>
+                        <option value="<?=$item['id']?>" <?=$value['order_id'] == $item['id'] ? 'selected':''?>><?=$item['order_sn']?></option>
+                        <?php } ?>
+                    </select>
                 </td>
+                <td><a data-id="<?=$value['id']?>" data-apply="true">申请结汇</a></td>
               </tr>
             <?php } ?>
             </tbody>
@@ -213,30 +170,17 @@
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
-               
               </tr>
             </thead>
             <tbody>
-			
+            <?php foreach ($models as $key => $value) { ?>
               <tr>
-                <td>50000</td>
-                <td>美金</td> 
-                <td>6.88</td>
-                <td>344000</td>
-               
+                <td><?=$value['capital']?></td>
+                <td><?=Tool::getCurrency($value['currency'])?></td>
+                <td><?=$value['exchange_rate']?></td>
+                <td><?=$value['exchange_settlement_rmb']?></td>
               </tr>
-			  <tr>
-                <td>100000</td>
-                <td>美金</td> 
-                <td>6.89</td>
-                <td>689000</td>
-              </tr>
-			<tr>
-                <td>123</td>
-                <td>美金</td> 
-                <td>6.89</td>
-                <td>847.47</td>
-              </tr>
+            <?php } ?>
             </tbody>
           </table>
         <?php

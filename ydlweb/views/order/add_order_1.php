@@ -52,7 +52,9 @@
 					</div>
 					<div class="export-right">
 						<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp退税&nbsp&nbsp</label>
-						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp退税+代采购</label></p>
+						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp代采购</label>
+						<label><input name="#####" type="radio" value="3" />&nbsp&nbsp退税+代采购</label>
+						</p>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -87,6 +89,14 @@
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
 						<p>报关联系人 :</p>
+					</div>
+					<div class="col-md-7">
+						<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+					</div>
+				</div>
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
+						<p>报关联系方式 :</p>
 					</div>
 					<div class="col-md-7">
 						<input class="input-padding" type="text" id="#####" name="#####" value=""/>

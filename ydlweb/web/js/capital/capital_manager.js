@@ -3,7 +3,9 @@ var PAY = 1;
 var SETTLEMENT_EXCHANGE = 2;
 var OVERDUE_FUND = 3;
 var DUTY_RATE = 4;
-var STATE_ARRAY = [1,2,3,4];
+var SETTLEMENT = 5;
+var CREDIT = 6;
+var STATE_ARRAY = [1,2,3,4,5,6];
 $(document).ready(function(){
 	filter();
 	hint();
@@ -27,6 +29,14 @@ function filter(){
 		state = DUTY_RATE;
 		createForm(state);
 	});
+	$("#state-st").click(function(){
+		state = SETTLEMENT;
+		createForm(state);
+	});
+	$("#state-ct").click(function(){
+		state = CREDIT;
+		createForm(state);
+	});
 	
 	$(".button_query").click(function(){
 		createForm(getState());
@@ -39,7 +49,9 @@ function getState(){
 	var b = $("#state-se").attr("class").length;
 	var c = $("#state-of").attr("class").length;
 	var d = $("#state-dr").attr("class").length;
-	var array = [a,b,c,d];
+	var e = $("#state-st").attr("class").length;
+	var f = $("#state-ct").attr("class").length;
+	var array = [a,b,c,d,e,f];
 
 	return STATE_ARRAY[select(array)];
 	

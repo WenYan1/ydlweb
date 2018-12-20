@@ -45,7 +45,7 @@
 			<table>
 				<thead>
 				<tr>
-                   <th>序号</th>
+                    <th>序号</th>
                             <th>订单号</th>
 							<th>发票金额</th>
 							<th>创建时间</th>
@@ -69,7 +69,7 @@
                     <tr>
                         <td><?php echo ($page - 1) * 10 + $i; ?></td>
                         <td><?=$data['order_number']?></td>
-						<td></td>
+							<td></td>
 						<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                         <td>
 							<?php if (!empty($data['tax_refund'])){ ?>
@@ -92,7 +92,7 @@
                                 未上传
 							<?php } ?>
                         </td>
-						 <td>未上传
+                         <td>未上传
                                 </td>
 						<td><input name="#####" type="text" id="#####" value=""></td>
                         <td><?=$data['anticipated_tax_refund']?></td>
@@ -107,6 +107,7 @@
 							}
 							?>
                         </td>
+                        
                         <td class="blue-color">
                             <a href=<?php echo Yii::$app->urlManager->createUrl(['/ydlbam/collection/detail','id'=> $data['id']]);?>>
                                 详情

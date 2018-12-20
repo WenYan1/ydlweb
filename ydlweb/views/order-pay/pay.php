@@ -86,10 +86,6 @@
                 <p class="font-bold col-md-1">工厂账户名:  </p>
                 <input style="padding:2px 6px;" id="factory_account_name" type="text" name="factory_account_name" required="require">
             </div>
-			<div class="space-vertical spacing-left option-third">
-                <p class="font-bold col-md-1">开户银行:  </p>
-                <input style="padding:2px 6px;" id="#####" type="text" name="#####" required="require">
-            </div>
             <div class="space-vertical spacing-left option-third">
                 <p class="font-bold col-md-1">银行账号:  </p>
                 <input style="padding:2px 6px;" id="account_name" type="text" name="account_name" required="require">
