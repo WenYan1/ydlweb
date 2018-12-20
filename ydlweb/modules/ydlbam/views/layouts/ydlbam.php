@@ -98,6 +98,14 @@ AppAsset::register($this);
             </a>
             <div class="menu_left-divider"></div>
             <?php }?>
+			 <?php if(in_array('supplier', $actionList)) {?>
+            <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/supplier']); ?>">
+                <li id="suplier-manage">
+                    <span>供应商管理</span>
+                </li>
+            </a>
+            <div class="menu_left-divider"></div>
+            <?php }?>
             <?php if(in_array('order', $actionList)) {?>
             <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/order']); ?>">
                 <li id="order-manage">
@@ -109,27 +117,13 @@ AppAsset::register($this);
 	        <?php if(in_array('collection', $actionList)) {?>
                 <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/collection']); ?>">
                     <li id="collection-manage">
-                        <span>单据管理</span>
+                        <span>退税管理</span>
                     </li>
                 </a>
                 <div class="menu_left-divider"></div>
 	        <?php }?>
-            <?php if(in_array('supplier', $actionList)) {?>
-            <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/supplier']); ?>">
-                <li id="suplier-manage">
-                    <span>供应商管理</span>
-                </li>
-            </a>
-            <div class="menu_left-divider"></div>
-            <?php }?>
-            <?php if(in_array('finance', $actionList)) {?>
-            <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/finance']); ?>">
-                <li id="finance-service">
-                    <span>金融服务</span>
-                </li>
-            </a>
-            <div class="menu_left-divider"></div>
-            <?php }?>
+           
+            
             <?php if(in_array('capital', $actionList) || in_array('recharge', $actionList) || in_array('log', $actionList) || in_array('pay_logs', $actionList)) {?>
             <a href="javascript:">
                 <li id="capital-manage">
@@ -173,6 +167,15 @@ AppAsset::register($this);
             </ul>
             <?php }?>
 
+			<?php if(in_array('finance', $actionList)) {?>
+            <a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/finance']); ?>">
+                <li id="finance-service">
+                    <span>金融服务</span>
+                </li>
+            </a>
+            <div class="menu_left-divider"></div>
+            <?php }?>
+			
             <?php if(in_array('user', $actionList)) {?>
             <a href="javascript:">
                 <li id="adminer-manage">

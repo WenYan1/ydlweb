@@ -170,6 +170,7 @@
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
+				<th>关联订单</th>
               </tr>
             </thead>
             <tbody>
@@ -179,6 +180,7 @@
                 <td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?=$value['exchange_rate']?></td>
                 <td><?=$value['exchange_settlement_rmb']?></td>
+				 <td> </td>
               </tr>
             <?php } ?>
             </tbody>

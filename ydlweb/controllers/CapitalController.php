@@ -91,7 +91,7 @@ class CapitalController extends HomeBaseController
 		$session = Yii::$app->session;
 		if (!$session->isActive) $session->open();
 
-		$type = $request->get('type') ? $request->get('type') : 1;
+		$type = $request->get('type') ? $request->get('type') : 3;
 		$page = $request->get('page') ? $request->get('page') : 1;
 		$startTime = $request->get('start_time') ? explode('-', $request->get('start_time')) : null;
 		$endTime = $request->get('end_time') ? explode('-', $request->get('end_time')) : null;
