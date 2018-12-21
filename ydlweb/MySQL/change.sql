@@ -114,4 +114,5 @@ ALTER TABLE `orders` CHANGE `original_place` `original_place` VARCHAR(60) CHARAC
 ALTER TABLE `order_goods` CHANGE `goods_image` `goods_image` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '商品图片';
 ALTER TABLE `order_goods` CHANGE `hs_code` `hs_code` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '';
 ALTER TABLE `order_goods` CHANGE `goods_taxrate` `goods_taxrate` FLOAT(5,3) NULL;
+ALTER TABLE `order_goods` ADD `invoice_amount` VARCHAR(255) NULL COMMENT '开票金额' AFTER `subtotal`;
 

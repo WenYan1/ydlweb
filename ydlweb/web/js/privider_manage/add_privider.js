@@ -64,6 +64,7 @@ function checkAndSubmit(){
     var standard_count = $("#standard_count").val();
     var standard_count2 = $("#standard_count2").val();
     var supplier_id = $("#supplier_id").val();
+    var invoice_amount = $("#invoice_amount").val();
     var estimate = $("#estimate").val();
     var delivery_time = $("#delivery_time").val();
     var buyers_name = $("#buyers_name").val();
@@ -117,6 +118,8 @@ function checkAndSubmit(){
         showFailHint("法定数量和单位内容不能为空！");
     } else if (checkData(supplier_id)) {
         showFailHint("开票人内容不能为空！");
+    } else if (checkData(invoice_amount)) {
+        showFailHint("开票金额内容不能为空！");
     } else if (checkData(estimate)) {
         showFailHint("估算汇率内容不能为空！");
     } else if (checkData(delivery_time)) {

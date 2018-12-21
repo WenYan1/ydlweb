@@ -48,7 +48,7 @@ function request_search() {
 }
 
 function bindSettlementType() {
-    $("#table").on("blur","[data-settlement-type='true']",function () {
+    $("#table").on("change","[data-settlement-type='true']",function () {
         var id = $(this).attr("data-order-id");
         var val = $(this).val();
         var csrfToken = $("#_csrf").val();

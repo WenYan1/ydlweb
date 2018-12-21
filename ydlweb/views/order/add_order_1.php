@@ -207,21 +207,22 @@
 					<table id="table" class="table">
                         <thead>
                             <tr>
-                                <th style="width:10%">出货产品清单</th>
-                                <th style="width: 10%">总净重(KG)</th>
-                                <th style="width: 10%">总毛重(KG)</th>
-                                <th style="width:10%">产品数量和单位</th>
-                                <th style="width:10%">单价</th>
-                                <th style="width: 10%">货值</th>
-                                <th style="width: 10%">法定数量和单位</th>
-                                <th style="width: 10%">开票人</th>
-                                <th style="width: 10%">估算汇率</th>
+                                <th >出货产品清单</th>
+                                <th >总净重(KG)</th>
+                                <th >总毛重(KG)</th>
+                                <th>产品数量和单位</th>
+                                <th >单价</th>
+                                <th >货值</th>
+                                <th >法定数量和单位</th>
+                                <th >开票人</th>
+                                <th >开票金额</th>
+                                <th >估算汇率</th>
                             </tr>
                         </thead>
                         <tbody style="background: #fff;">
                             <tr>
                                 <td style="width: 10%">
-                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 180px;">
+                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 140px;">
                                         <option value="">请选择</option>
                                         <?php foreach ($goods as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
@@ -249,13 +250,14 @@
                                     千克
                                 </td>
                                 <td style="width: 10%">
-                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 180px;">
+                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 140px;">
                                         <option value="">请选择</option>
 		                                <?php foreach ($supplier as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
 		                                <?php } ?>
                                     </select>
                                 </td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:50px"/></td>
                                 <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:50px"/></td>
                             </tr>
                         </tbody>

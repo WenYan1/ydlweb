@@ -118,13 +118,18 @@ if($this->context->_popSuccessMessage()) {
                                         </select>
                                     </td>
                                     <td>
-                                        <input class="" type="text" data-settlement-type="true" value="<?php echo $data['settlement_type'];?>" data-order-id="<?php echo $data['id'];?>" title="鼠标离开后保存">
+                                        <select data-settlement-type="true" data-order-id="<?php echo $data['id'];?>" style="width: 170px">
+                                            <option value="">请选择</option>
+                                            <option value="1" <?=$data['settlement_type'] == '1' ? 'selected' : ''?>>先定金再交货时付尾款</option>
+                                            <option value="2" <?=$data['settlement_type'] == '2' ? 'selected' : ''?>>交货时付全款</option>
+                                            <option value="3" <?=$data['settlement_type'] == '3' ? 'selected' : ''?>>交货后付款</option>
+                                        </select>
                                     </td>
 									<td><?php echo $data['supplier_name']; ?></td>
                                    
-									<td><?php echo $data['order_total']; ?></td>
-									<td><?php echo $data['usd_total']; ?></td>
-									<td></td>
+									<td><?=!empty($orders_goods[$data['id']]['invoice_amount']) ? $orders_goods[$data['id']]['invoice_amount'] : ''?></td>
+									<td><?=!empty($orders_goods[$data['id']]['subtotal']) ? $orders_goods[$data['id']]['subtotal'] : ''?></td>
+									<td><?php echo empty($data['delivery_time']) ? '' : date("Y-m-d", $data['delivery_time']);?></td>
 									 <td><?php
 										if ($data['order_state']==0) {
 											echo '下单审核';

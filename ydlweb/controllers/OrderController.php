@@ -68,12 +68,29 @@ public function behaviors()
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
 		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
 		$models = Tool::convert2Array($models);
-		
+
+		$order_ids = '';
+
+		foreach ($models as $item){
+			$order_ids .= $order_ids === '' ? $item['id'] : ','.$item['id'];
+		}
+
+		// todo 多个产品调整此处  $_orders_goods[$item['order_id']] 为 $_orders_goods[$item['order_id']][]
+		$_orders_goods = array();
+		if (!empty($order_ids)){
+			$orders_goods = OrderGoods::find()->where("order_id in($order_ids)")->orderBy(['id' => SORT_DESC])->all();
+			$orders_goods = Tool::convert2Array($orders_goods);
+			foreach ($orders_goods as $item){
+				$_orders_goods[$item['order_id']] = $item;
+			}
+		}
+
 		return $this->render('order_manage', [
 			'models' => $models,
 			'pages' => $pages,
 			'state' => $status,
 			'search' => $search, 
+			'orders_goods' => $_orders_goods,
             'page' => $page
 		]);
 	}
@@ -92,6 +109,7 @@ public function behaviors()
 			$post['order_sn'] = Tool::build_order_no();
 			$post['user_id'] = $_SESSION['uid'];
 			$post['email'] = $_SESSION['userEmail'];
+			$post['delivery_time'] = empty($post['delivery_time']) ? '' : strtotime($post['delivery_time']);
 
 			$goodsData = !empty($post['goods']) ? $post['goods'] : array();
 			unset($post['goods']);
@@ -143,10 +161,10 @@ public function behaviors()
 						$this->_setErrorMessage('订单产品不能为空');
 						$this->redirect(Yii::$app->request->referrer);
 					} else {
-						foreach ($goodsData as $item){
-							$item['order_id'] = $order_id;
+						foreach ($goodsData as $key => $item){
+							$goodsData[$key]['order_id'] = $order_id;
 						}
-						$result = $connection->createCommand()->batchInsert(OrderGoods::tableName(), ['goods_id','net_weight','gross_weight','box_number','box_unit','goods_price','subtotal','standard_count','standard_count2','supplier_id','estimate'], $goodsData)->execute();
+						$result = $connection->createCommand()->batchInsert(OrderGoods::tableName(), ['goods_id','net_weight','gross_weight','box_number','box_unit','goods_price','subtotal','standard_count','standard_count2','supplier_id','invoice_amount','estimate','order_id'], $goodsData)->execute();
 						if ($result) {
 							$transaction->commit();
 							$this->_setSuccessMessage($message);
