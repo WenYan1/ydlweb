@@ -10,6 +10,7 @@ use app\models\Orders;
 use app\models\Suppliers;
 use app\models\Users;
 use Tool;
+use Upload;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -17,6 +18,8 @@ use app\models\WorldPorts;
 use app\models\ChinaPorts;
 use app\models\HSCodeTax;
 use mPDF;
+use yii\helpers\VarDumper;
+use yii\web\UploadedFile;
 
 class OrderController extends HomeBaseController {
 
@@ -82,15 +85,101 @@ public function behaviors()
 		$cookies = Yii::$app->response->cookies;
 
 		if ($request->isPost) {
-			$cookies->add(new \yii\web\Cookie([
-				'name' => 'order_goods',
-				'value' => $request->post(),
-			]));
-			$this->redirect('add-second-step');
+			$dir = 'orders/';
+
+			$ordersModel = new Orders;
+			$post = $request->post();
+			$post['order_sn'] = Tool::build_order_no();
+			$post['user_id'] = $_SESSION['uid'];
+			$post['email'] = $_SESSION['userEmail'];
+
+			$goodsData = !empty($post['goods']) ? $post['goods'] : array();
+			unset($post['goods']);
+
+			unset($post['_csrf']);
+
+			$purchasing_orderFile = UploadedFile::getInstanceByName('purchasing_order');
+			$other_fileFile = UploadedFile::getInstanceByName('other_file');
+
+			$purchasing_order = '';
+			if (!empty($purchasing_orderFile)) {
+				$temp = Upload::getPath($dir, $purchasing_orderFile->getExtension());
+				$temp_result = $purchasing_orderFile->saveAs($temp['savePath'] . $temp['newName']);
+				if (!$temp_result) {
+					$this->_setErrorMessage('近期开过的发票样本风控附件上传失败');
+					$this->redirect(Yii::$app->request->referrer);
+				}
+				$purchasing_order = $dir . $temp['newName'];
+			}
+
+			$other_file = '';
+			if (!empty($other_fileFile)) {
+				$temp = Upload::getPath($dir, $other_fileFile->getExtension());
+				$temp_result = $other_fileFile->saveAs($temp['savePath'] . $temp['newName']);
+				if (!$temp_result) {
+					$this->_setErrorMessage('近期开过的发票样本风控附件上传失败');
+					$this->redirect(Yii::$app->request->referrer);
+				}
+				$other_file = $dir . $temp['newName'];
+			}
+
+			$connection = Yii::$app->db;
+			$transaction = $connection->beginTransaction();
+
+			try {
+				if (!empty($purchasing_order)){
+					$post['purchasing_order'] = $purchasing_order;
+				}
+
+				if (!empty($other_file)){
+					$post['other_file'] = $other_file;
+				}
+
+				$order = $ordersModel->add($post, $message);
+				if ($order) {
+					$order_id = $order->id;
+					if (empty($goodsData)) {
+						$transaction->rollBack();
+						$this->_setErrorMessage('订单产品不能为空');
+						$this->redirect(Yii::$app->request->referrer);
+					} else {
+						foreach ($goodsData as $item){
+							$item['order_id'] = $order_id;
+						}
+						$result = $connection->createCommand()->batchInsert(OrderGoods::tableName(), ['goods_id','net_weight','gross_weight','box_number','box_unit','goods_price','subtotal','standard_count','standard_count2','supplier_id','estimate'], $goodsData)->execute();
+						if ($result) {
+							$transaction->commit();
+							$this->_setSuccessMessage($message);
+							$this->redirect('index');
+						} else {
+							$transaction->rollBack();
+							$this->_setErrorMessage('订单提交失败');
+							$this->redirect(Yii::$app->request->referrer);
+						}
+					}
+				} else {
+					$transaction->rollBack();
+					$this->_setErrorMessage($message);
+					$this->redirect(Yii::$app->request->referrer);
+				}
+			} catch (Exception $e) {
+				$transaction->rollBack();
+				$this->_setErrorMessage('订单提交失败');
+				$this->redirect(Yii::$app->request->referrer);
+			}
+
+
+			$this->redirect('index');
 		} else {
 			$userModel = new Users;
 			$suppliersModel = new Suppliers;
 			$userModel = $userModel->findById($session['uid']);
+
+			$goodsModel = new Goods;
+			$condition['user_id'] = $session['uid'];
+			$goodsModel = $goodsModel->findBySupplier($condition);
+			$goodsModel = Tool::convert2Array($goodsModel);
+
 			if ($userModel->state === -2) {
 				$this->_setErrorMessage('您还存在逾期订单未支付,暂时不能下单');
 				$this->redirect(Yii::$app->request->referrer);
@@ -99,6 +188,7 @@ public function behaviors()
 				$suppliersModel = Tool::convert2Array($suppliersModel);
 				return $this->render('add_order_1', [
 					'supplier' => $suppliersModel,
+					'goods' => $goodsModel,
 				]);
 			}
 		}

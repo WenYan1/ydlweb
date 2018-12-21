@@ -80,3 +80,38 @@ ALTER TABLE `capital_logs` ADD `re_id` INT(11) UNSIGNED NULL COMMENT 'recharge_l
 ALTER TABLE `recharge_logs` ADD `exchange_settlement_rmb` DECIMAL(10,2) UNSIGNED NULL COMMENT '结汇后人民币' AFTER `currency`;
 ALTER TABLE `recharge_logs` ADD `exchange_rate` DECIMAL(10,4) UNSIGNED NULL COMMENT '汇率' AFTER `currency`;
 ALTER TABLE `recharge_logs` ADD `order_id` INT(11) UNSIGNED NULL COMMENT '订单ID' AFTER `exchange_settlement_rmb`;
+
+-- 张俊杰 2018-12-21 12:00
+ALTER TABLE `orders` CHANGE `service_type` `service_type` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '服务类型 0未选 1退税 2代采购 3退税+代采购';
+ALTER TABLE `orders` ADD `customs_port_type` TINYINT(1) UNSIGNED NULL DEFAULT '1' COMMENT '报关方式 1客户自行报关 2易贸通报关' AFTER `customs_port`;
+ALTER TABLE `orders` ADD `customs_contact` VARCHAR(255) NULL COMMENT '报关联系人' AFTER `service_type`;
+ALTER TABLE `orders` ADD `customs_contact_tel` VARCHAR(255) NULL COMMENT '报关联系方式' AFTER `customs_contact`;
+ALTER TABLE `orders` ADD `customs_currency` TINYINT(1) UNSIGNED NULL COMMENT '报关币种 1人民币 2美元 3其它' AFTER `customs_contact_tel`;
+ALTER TABLE `orders` ADD `cost_type` TINYINT(1) UNSIGNED NULL COMMENT '成交方式 1FOB 2CIF 3C&F' AFTER `customs_currency`;
+ALTER TABLE `orders` ADD `input_price_type` TINYINT(1) UNSIGNED NULL COMMENT '录入价格方式 1指定货物报关发票金额 2定货物报关美金金额' AFTER `cost_type`;
+ALTER TABLE `orders` ADD `packing_way` TINYINT(1) UNSIGNED NULL COMMENT '包装方式 1整装（同一包装中只含一种商品） 2混装（任一包装中含两种或以上产品）' AFTER `input_price_type`;
+ALTER TABLE `orders` ADD `destination_country_or_area` VARCHAR(255) NULL COMMENT '运抵国（地区）' AFTER `packing_way`;
+ALTER TABLE `orders` ADD `risk_container_type` TINYINT(1) UNSIGNED NULL COMMENT '装柜方式 1整柜出口 2拼柜出口 3不使用集装箱出口' AFTER `destination_country_or_area`;
+ALTER TABLE `orders` ADD `transport_package_count` VARCHAR(255) NULL COMMENT '整体包装件数' AFTER `risk_container_type`;
+ALTER TABLE `orders` ADD `pack_type_list` VARCHAR(255) NULL COMMENT '包装种类' AFTER `transport_package_count`;
+ALTER TABLE `order_goods` ADD `box_unit` VARCHAR(20) NULL COMMENT '单位' AFTER `box_number`;
+ALTER TABLE `order_goods` ADD `standard_count` INT(10) UNSIGNED NULL COMMENT '法定数量和单位' AFTER `goods_num`;
+ALTER TABLE `order_goods` ADD `standardCount2` INT(10) UNSIGNED NULL COMMENT '法定数量和单位2' AFTER `standard_count`;
+ALTER TABLE `order_goods` CHANGE `standardCount2` `standard_count2` INT(10) UNSIGNED NULL DEFAULT NULL COMMENT '法定数量和单位2';
+ALTER TABLE `order_goods` ADD `subtotal` VARCHAR(20) NULL COMMENT '货值' AFTER `standard_count2`;
+ALTER TABLE `order_goods` ADD `supplier_id` INT(11) UNSIGNED NULL COMMENT '开票人ID' AFTER `subtotal`;
+ALTER TABLE `order_goods` ADD `estimate` INT(11) UNSIGNED NULL COMMENT '估算汇率' AFTER `supplier_id`;
+ALTER TABLE `orders` ADD `buyers_name` VARCHAR(255) NULL COMMENT '境外收货人' AFTER `pack_type_list`;
+ALTER TABLE `orders` ADD `trading_country` VARCHAR(255) NULL COMMENT '贸易国（地区）' AFTER `buyers_name`;
+ALTER TABLE `orders` ADD `is_special_relation` TINYINT(1) UNSIGNED NULL COMMENT '特殊关系确认 1是 2否' AFTER `trading_country`;
+ALTER TABLE `orders` ADD `goods_supply_id` TINYINT(1) UNSIGNED NULL COMMENT '境内货源地' AFTER `is_special_relation`;
+ALTER TABLE `orders` ADD `goods_save_adr` TINYINT(1) UNSIGNED NULL COMMENT '货物存放地址' AFTER `goods_supply_id`;
+ALTER TABLE `orders` ADD `contract_type` VARCHAR(255) NULL COMMENT '合同编号' AFTER `goods_save_adr`;
+ALTER TABLE `orders` ADD `other_file` VARCHAR(255) NULL COMMENT '其他文件' AFTER `contract_type`;
+ALTER TABLE `orders` ADD `purchasing_order` VARCHAR(255) NULL COMMENT '采购订单' AFTER `contract_type`;
+ALTER TABLE `orders` CHANGE `user_company` `user_company` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '用户公司名称', CHANGE `user_principal` `user_principal` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '用户方负责人', CHANGE `user_tel` `user_tel` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '用户方联系方式', CHANGE `user_email` `user_email` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '用户方联系邮箱', CHANGE `supplier_id` `supplier_id` INT(11) NULL DEFAULT '0' COMMENT '供应商编号', CHANGE `supplier_name` `supplier_name` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '供应商名字', CHANGE `supplier_principal` `supplier_principal` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '供应商负责人', CHANGE `supplier_tel` `supplier_tel` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '供应商联系电话', CHANGE `supplier_email` `supplier_email` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '供应商联系邮箱', CHANGE `customs_port` `customs_port` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '报关口岸';
+ALTER TABLE `orders` CHANGE `original_place` `original_place` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '境内货源地';
+ALTER TABLE `order_goods` CHANGE `goods_image` `goods_image` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '商品图片';
+ALTER TABLE `order_goods` CHANGE `hs_code` `hs_code` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '';
+ALTER TABLE `order_goods` CHANGE `goods_taxrate` `goods_taxrate` FLOAT(5,3) NULL;
+

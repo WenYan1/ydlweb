@@ -6,14 +6,6 @@
 <link rel="stylesheet" type="text/css" href="/css/ydlbam_css/public/jquery.datetimepicker.css"/ >
 <script type="text/javascript" src="/js/ydlbam_js/public/jquery.datetimepicker.js"></script>
 <div class="body-main">
-	<?php
-		//var_dump($models);
-		//var_dump($pages);
-		//var_dump($startTime);
-		//var_dump($endTime);
-		//var_dump($email);
-		//var_dump($page);
-	?>
 	<div class="main-content">
 		<div class="content-position">
 			<span class="text-name">您的位置： </span>

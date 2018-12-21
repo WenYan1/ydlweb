@@ -42,8 +42,7 @@
 			<div>
 			<p class="font-title-size privider-sapce-top"> 1.收汇方式与报关方式</p>
 			</div>
-			<form actoin=<?php echo Yii::$app->urlManager->createUrl(['add']); ?>
-				enctype="multipart/form-data" method="post">
+			<form actoin=<?php echo Yii::$app->urlManager->createUrl(['add']); ?> enctype="multipart/form-data" method="post">
 			<div class="container-fluid add-privider-form">
 			
 				<div class="row-fluid col-md-12 input-height">
@@ -51,9 +50,9 @@
 						<p>服务类型 :</p>
 					</div>
 					<div class="export-right">
-						<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp退税&nbsp&nbsp</label>
-						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp代采购</label>
-						<label><input name="#####" type="radio" value="3" />&nbsp&nbsp退税+代采购</label>
+						<p><label><input  name="service_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp退税&nbsp&nbsp</label>
+						<label><input name="service_type" type="radio" value="2" />&nbsp&nbsp代采购</label>
+						<label><input name="service_type" type="radio" value="3" />&nbsp&nbsp退税+代采购</label>
 						</p>
 					</div>
 				</div>
@@ -62,9 +61,9 @@
 						<p>结算方式 :</p>
 					</div>
 					<div class="export-right">
-						<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp先定金再交货时付尾款&nbsp&nbsp</label>
-						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp交货时付全款</label>
-						<label><input name="#####" type="radio" value="3" />&nbsp&nbsp交货后付款</label></p>
+						<p><label><input  name="settlement_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp先定金再交货时付尾款&nbsp&nbsp</label>
+						<label><input name="settlement_type" type="radio" value="2" />&nbsp&nbsp交货时付全款</label>
+						<label><input name="settlement_type" type="radio" value="3" />&nbsp&nbsp交货后付款</label></p>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -72,7 +71,7 @@
 						<p>报关口岸 :</p>
 					</div>
 					<div class="col-md-7">
-						<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+						<input class="input-padding" type="text" id="customs_port" name="customs_port" value=""/>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -81,8 +80,8 @@
 					</div>
 					<div class="col-md-7">
 						<div class="export-right">
-						<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp客户自行报关&nbsp&nbsp</label>
-						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp易贸通报关（提供报关资料）</label></p>
+						<p><label><input  name="customs_port_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp客户自行报关&nbsp&nbsp</label>
+						<label><input name="customs_port_type" type="radio" value="2" />&nbsp&nbsp易贸通报关（提供报关资料）</label></p>
 					</div>
 					</div>
 				</div>	
@@ -91,7 +90,7 @@
 						<p>报关联系人 :</p>
 					</div>
 					<div class="col-md-7">
-						<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+						<input class="input-padding" type="text" id="customs_contact" name="customs_contact" value=""/>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -99,7 +98,7 @@
 						<p>报关联系方式 :</p>
 					</div>
 					<div class="col-md-7">
-						<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+						<input class="input-padding" type="text" id="customs_contact_tel" name="customs_contact_tel" value=""/>
 					</div>
 				</div>
 				</div>
@@ -113,89 +112,87 @@
 							<p>报关币种 :</p>
 						</div>
 						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp美金USD&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp人民币RMB</label></p>
+							<p><label><input  name="customs_currency" type="radio" value="1" checked="checked"/>&nbsp&nbsp美金USD&nbsp&nbsp</label>
+							<label><input name="customs_currency" type="radio" value="2" />&nbsp&nbsp人民币RMB</label></p>
 					</div>
 				</div>
 			
 				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>成交方式 :</p>
-						</div>
-						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbspFOB&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbspCIF</label>
-							<label><input name="#####" type="radio" value="3" />&nbsp&nbspC&F </label></p>
-						</div>
-					</div>
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>成交方式 :</p>
+                    </div>
+                    <div class="export-right">
+                        <p><label><input  name="cost_type" type="radio" value="1" checked="checked"/>&nbsp&nbspFOB&nbsp&nbsp</label>
+                        <label><input name="cost_type" type="radio" value="2" />&nbsp&nbspCIF</label>
+                        <label><input name="cost_type" type="radio" value="3" />&nbsp&nbspC&F </label></p>
+                    </div>
+                </div>
 				
 			
 				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>录入价格方式 :</p>
-						</div>
-						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp指定货物报关发票金额&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp指定货物报关美金金额</label>
-							</p>
-						</div>
-					</div>
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>录入价格方式 :</p>
+                    </div>
+                    <div class="export-right">
+                        <p><label><input  name="input_price_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp指定货物报关发票金额&nbsp&nbsp</label>
+                        <label><input name="input_price_type" type="radio" value="2" />&nbsp&nbsp指定货物报关美金金额</label>
+                        </p>
+                    </div>
+                </div>
 				
 	
 				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>包装方式 :</p>
-						</div>
-						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp整装（同一包装中只含一种商品）&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp混装（任一包装中含两种或以上产品）</label>
-							</p>
-						</div>
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>包装方式 :</p>
+                    </div>
+                    <div class="export-right">
+                        <p><label><input  name="packing_way" type="radio" value="1" checked="checked"/>&nbsp&nbsp整装（同一包装中只含一种商品）&nbsp&nbsp</label>
+                        <label><input name="packing_way" type="radio" value="2" />&nbsp&nbsp混装（任一包装中含两种或以上产品）</label>
+                        </p>
+                    </div>
 					
 				</div>
-			
+
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>运抵国（地区） :</p>
+                    </div>
+                    <div class="col-md-7">
+                        <input class="input-padding" type="text" id="destination_country_or_area" name="destination_country_or_area" value=""/>
+                    </div>
+                </div>
+
+
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>到达口岸 :</p>
+                    </div>
+                    <div class="col-md-7">
+                        <input class="input-padding" type="text" id="arrive_port" name="arrive_port" value=""/>
+                    </div>
+                </div>
+
 				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>运抵国（地区） :</p>
-						</div>
-						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
-						</div>
-					</div>
-			
-				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>到达口岸 :</p>
-						</div>
-						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
-						</div>
-					</div>
-			
-				
-					<div class="row-fluid col-md-12 input-height">
-						<div class="col-md-3 col-md-offset-2">
-							<p>装柜方式 :</p>
-						</div>
-						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp整柜出口&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp拼柜出口</label>
-							<label><input name="#####" type="radio" value="3" />&nbsp&nbsp不使用集装箱出口</label>
-							</p>
-						</div>
-					
-				</div>
+                <div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>装柜方式 :</p>
+                    </div>
+                    <div class="export-right">
+                        <p><label><input  name="risk_container_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp整柜出口&nbsp&nbsp</label>
+                        <label><input name="risk_container_type" type="radio" value="2" />&nbsp&nbsp拼柜出口</label>
+                        <label><input name="risk_container_type" type="radio" value="3" />&nbsp&nbsp不使用集装箱出口</label>
+                        </p>
+                    </div>
+                </div>
 				<div class="row-fluid col-md-12 input-height">
 						<div class="col-md-3 col-md-offset-2">
 							<p>整体包装件数 :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="transport_package_count" name="transport_package_count" value=""/>
 						</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -203,46 +200,66 @@
 							<p>包装种类 :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="pack_type_list" name="pack_type_list" value=""/>
 						</div>
 				</div>
 				<div class="container-fluid add-privider-form" >
 					<table id="table" class="table">
-								<thead>
-									<tr>
-										<th style="width:10%">出货产品清单</th>
-										<th style="width: 10%">总净重(KG)</th>
-										<th style="width: 10%">总毛重(KG)</th>
-										<th style="width:10%">产品数量和单位</th>
-										<th style="width:10%">单价</th>
-										<th style="width: 10%">货值</th>
-										<th style="width: 10%">法定数量和单位</th>
-										<th style="width: 10%">开票人</th>
-										<th style="width: 10%">估算汇率</th>
-									</tr>
-								</thead>
-								<form>
-									<tbody style="background: #fff;">
-										<tr>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value=""  style="width:200px" /></td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value=""  style="width:50px"/></td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	</td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px" /></td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></br>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	<input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/>
-																	</td>
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:200px"/></td>	
-											<td style="width: 10%"><input class="input-padding" type="text" id="#####" name="#####" value="" style="width:50px"/></td>											
-										</tr>
-									</tbody>
-								</form>
-							</table>
+                        <thead>
+                            <tr>
+                                <th style="width:10%">出货产品清单</th>
+                                <th style="width: 10%">总净重(KG)</th>
+                                <th style="width: 10%">总毛重(KG)</th>
+                                <th style="width:10%">产品数量和单位</th>
+                                <th style="width:10%">单价</th>
+                                <th style="width: 10%">货值</th>
+                                <th style="width: 10%">法定数量和单位</th>
+                                <th style="width: 10%">开票人</th>
+                                <th style="width: 10%">估算汇率</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: #fff;">
+                            <tr>
+                                <td style="width: 10%">
+                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 180px;">
+                                        <option value="">请选择</option>
+                                        <?php foreach ($goods as $item){ ?>
+                                            <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:50px"/></td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:50px"/></td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:50px"/>
+                                    <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
+                                        <option value=""></option>
+                                        <?php $unit_list = Tool::getUnitList();
+                                            foreach ($unit_list as $_key => $_item){
+                                        ?>
+                                        <option value="<?=$_key?>"><?=$_item?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:50px"/></td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:50px" /></td>
+                                <td style="width: 10%">
+                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:50px"/>
+                                    套</br>
+                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:50px"/>
+                                    千克
+                                </td>
+                                <td style="width: 10%">
+                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 180px;">
+                                        <option value="">请选择</option>
+		                                <?php foreach ($supplier as $item){ ?>
+                                            <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
+		                                <?php } ?>
+                                    </select>
+                                </td>
+                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:50px"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
 				</div>
 			
 				
@@ -258,7 +275,7 @@
 							<p>预计出货日期:</p>
 						</div>
 							<div class="time col-md-7">
-								<input class="input-padding" id="date" name="#####" type="text" >
+								<input class="input-padding" id="delivery_time" name="delivery_time" type="text" >
 							</div>
 					</div>
 				
@@ -269,7 +286,7 @@
 							<p>境外收货人 :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="buyers_name" name="buyers_name" value=""/>
 						</div>
 				
 					</div>
@@ -279,7 +296,7 @@
 							<p>地址 :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="buyers_address" name="buyers_address" value=""/>
 						</div>
 					</div>
 			
@@ -289,7 +306,7 @@
 							<p>联系方式:</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="buyers_contact" name="buyers_contact" value=""/>
 						</div>
 					</div>
 				
@@ -300,7 +317,7 @@
 							<p>贸易国（地区） :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="trading_country" name="trading_country" value=""/>
 						</div>
 					</div>
 				
@@ -310,8 +327,8 @@
 							<p>是否特殊关系 :</p>
 						</div>
 						<div class="export-right">
-							<p><label><input  name="#####" type="radio" value="1" checked="checked"/>&nbsp&nbsp是&nbsp&nbsp</label>
-							<label><input name="#####" type="radio" value="2" />&nbsp&nbsp否</label>
+							<p><label><input  name="is_special_relation" type="radio" value="1" checked="checked"/>&nbsp&nbsp是&nbsp&nbsp</label>
+							<label><input name="is_special_relation" type="radio" value="2" />&nbsp&nbsp否</label>
 							</p>
 						</div>
 					</div>
@@ -323,7 +340,7 @@
 							<p>境内货源地 :</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="goods_supply_id" name="goods_supply_id" value=""/>
 						</div>
 					</div>
 				
@@ -334,7 +351,7 @@
 							<p>目前货物存放地址:</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="goods_save_adr" name="goods_save_adr" value=""/>
 						</div>
 					</div>
 				
@@ -345,7 +362,7 @@
 							<p>合同编号:</p>
 						</div>
 						<div class="col-md-7">
-							<input class="input-padding" type="text" id="#####" name="#####" value=""/>
+							<input class="input-padding" type="text" id="contract_type" name="contract_type" value=""/>
 						</div>
 					</div>
 				</div>
@@ -360,16 +377,16 @@
                             上传采购订单或PI：
                         </div>
                         <div class="col-md-2" >
-                            <img id = "business-license-btn" src="../images/upload_bg.png"/>
-                            <input id="business-license-input" type="file"  name="#####" />
+                            <img id = "purchasing_order_btn" src="../images/upload_bg.png"/>
+                            <input id="purchasing_order_input" type="file"  name="purchasing_order" />
                         </div>
             
                         <div class="col-md-1" >
                             其他：
                         </div>
                         <div class="col-md-2" >
-                            <img id="other_image-btn" src="../images/upload_bg.png"/>
-                            <input id="other_image-input" type="file"  name="#####"/>
+                            <img id="other_file_btn" src="../images/upload_bg.png"/>
+                            <input id="other_file_input" type="file"  name="other_file"/>
                         </div>
                     </div>
                 
@@ -385,7 +402,7 @@
 		</div>
 </div>
 		<script>
-	    	$('#date').datetimepicker({
+	    	$('#delivery_time').datetimepicker({
 	    		lang:'ch',
 	    		format:'Y-m-d',
 	    		timepicker:false,

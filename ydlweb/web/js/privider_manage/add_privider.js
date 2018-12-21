@@ -2,197 +2,42 @@ var csrfToken = $('meta[name="csrf-token"]').attr("content");
 var source;
 var bl_size = 0;
 var tr_size = 0;
-var oc_size = 0;
 $(document).ready(function(){
-    customListner();
 	aboutUploadImg();
     submitForm();
 });
 
 function aboutUploadImg(){
 
-	$("#business-license-btn").click(function(){
-		$("#business-license-input").click();
+	$("#purchasing_order_btn").click(function(){
+		$("#purchasing_order_input").click();
 	});
-	$("#tax-reg-btn").click(function(){
-		$("#tax-reg-input").click();
+	$("#other_file_btn").click(function(){
+		$("#other_file_input").click();
 	});
-	$("#organization-code-btn").click(function(){
-		$("#organization-code-input").click();
-	});
-	$("#other_image-btn").click(function(){
-		$("#other_image-input").click();
-	});
-		/*var ei = $("#large");
-        ei.hide();
-        $("#business-license-btn").mousemove(function(e){
-                ei.css({top:350,left:500}).html('<img style="border:1px solid gray; width:300px;height: 300px;" src="' + this.src + '" />').show();
-        }).mouseout( function(){
-                ei.hide("slow");
-        });
-        $("#tax-reg-btn").mousemove(function(e){
-                ei.css({top:350,left:500}).html('<img style="border:1px solid gray; width:300px;height: 300px;" src="' + this.src + '" />').show();
-        }).mouseout( function(){
-                ei.hide("slow");
-        });
-        $("#organization-code-btn").mousemove(function(e){
-                ei.css({top:e.pageX,left:e.pageY}).html('<img style="border:1px solid gray; width:300px;height: 300px;" src="' + this.src + '" />').show();
-        }).mouseout( function(){
-                ei.hide("slow");
-        });
-*/
 
-    $("#business-license-input").change(function(){
+    $("#purchasing_order_input").change(function(){
         var src = window.URL.createObjectURL(this.files[0]);
         bl_size = this.files[0].size;
-        if(bl_size > 7*1024*1024){
-            showFailHint("上传图片不能大于7MB");
+        if(bl_size > 8*1024*1024){
+            showFailHint("上传采购订单或PI不能大于8MB");
         }
-        $("#business-license-btn").attr("src",src);
+        $("#purchasing_order_btn").attr("src",src);
         
     });
-    $("#tax-reg-input").change(function(){
+
+    $("#other_file_input").change(function(){
         var src = window.URL.createObjectURL(this.files[0]);
-        tr_size = this.files[0].size;  
-        if(this.files[0].size > 1024*1024){
-           showFailHint("上传图片不能大于1MB");
+        tr_size = this.files[0].size;
+        if(tr_size > 8*1024*1024){
+            showFailHint("上传其他附件不能大于8MB");
         }
-        $("#tax-reg-btn").attr("src",src);
-        
-    });
-    $("#organization-code-input").change(function(){
-        var src = window.URL.createObjectURL(this.files[0]);
-        oc_size = this.files[0].size;  
-        if(oc_size >1024*1024){
-            showFailHint("上传图片不能大于1MB");
-        }
-        $("#organization-code-btn").attr("src",src);
-        
-    });
-    $("#other_image-input").change(function(){
-        var src = window.URL.createObjectURL(this.files[0]);
-        oc_size = this.files[0].size;
-        if(oc_size >1024*1024){
-            showFailHint("上传图片不能大于1MB");
-        }
-        $("#other_image-btn").attr("src",src);
+        $("#other_file_btn").attr("src",src);
 
     });
+
 }
 
-function customListner(){
-
-    $("#province_id").change(function(){
-
-        var parent_id = $("#province_id option:selected").val();
-        var province_name = $("#province_id option:selected").text();
-        $("#province_hide").val(province_name);
-        $.post("lower-area",
-                {
-                    "parent_id":parent_id,
-                    "_csrf":csrfToken
-                },
-        function(data){
-            var contentData = $.parseJSON(data).data;
-            createCitySelect(contentData);      
-        });
-
-    });
-    
-    
-    $('#detail-address').bind('input propertychange', function() { 
-		$("#source").html();	
-        source = $("#province_id option:selected").text() 
-                    + $("#city_id option:selected").text()
-                     //+  $("#county_id option:selected").text()
-                   //  + $("#detail-address").val();
-        $("#source").html(source);
-    });
-    
-
-    $("#province_id").trigger("change");
-    
-}
-
-function createCitySelect(data){
-
-    var _selected = $("#city_hide").attr('data-id');
-
-    var str = '';
-    str += '<select id="city_id" name="city_id">';
-        for(var i=0;i<data.length;i++){
-            if(i == 0){
-                str += '<option selected="selected" value="'+ data[i].region_id + 
-                '">' + data[i].region_name +'</option>';
-            }else{
-                str += '<option value="'+ data[i].region_id + '" '+(_selected == data[i].region_id ? 'selected' : '')+'>' + data[i].region_name +'</option>';
-            }
-        }
-    
-    str += '</select>';                
-                        
-    if($("#city_id").length > 0){
-        $("#city_id").remove();
-    }
-    $("#province_hide").after(str);
-
-    $("#city_id").change(function(){
-
-        var city_id = $("#city_id option:selected").val();
-        var city_name = $("#city_id option:selected").text();
-        $("#city_hide").val(city_name);
-
-        $.post("lower-area",
-                {
-                    "parent_id":city_id,
-                    "_csrf":csrfToken
-                },
-        function(data){
-            var contentData = $.parseJSON(data).data;
-            createCountySelect(contentData);      
-        });
-
-    });
-
-    $("#city_id").trigger("change");
-}
-
-function createCountySelect(data){
-    var _selected = $("#county_hide").attr('data-id');
-
-    var str = '';
-    str += '<select id="county_id" name="county_id">';
-        for(var i=0;i<data.length;i++){
-            if(i == 0){
-                str += '<option value="'+ data[i].region_id + '">' + data[i].region_name +'</option>';
-            }else{
-                str += '<option value="'+ data[i].region_id + '" '+(_selected == data[i].region_id ? 'selected' : '')+'>' + data[i].region_name +'</option>';
-            }
-        }
-    
-    str += '</select>';                
-                        
-    if($("#county_id").length > 0){
-        $("#county_id").remove();
-    }
-    $("#city_hide").after(str);
-
-    $("#county_id").change(function(){
-
-        var county_name = $("#county_id option:selected").text();
-    
-        $("#county_hide").val(county_name);
-
-        var source = $("#province_id option:selected").text() 
-                    + $("#city_id option:selected").text()
-                    // +  $("#county_id option:selected").text()
-                    // + $("#detail-address").val();
-        $("#source").html(source);
-    });
-
-    $("#county_id").trigger("change");
-
-}
 
 function submitForm(){
     $(".submit-btn").click(function(){
@@ -202,58 +47,99 @@ function submitForm(){
 
 function checkAndSubmit(){
 
-    var code = $("#code").val();
-    var name = $("#name").val();
-    var date = $("#date").val();
-    var linkMen = $("#link-men").val();
-    var linkMenPhone = $("#link-men-phone").val();
-    var province = $("#province_id option:selected").val();
-    var city = $("#city_id option:selected").val();
-    var counties = $("#county_id option:selected").val();
-    var detail_address = $("#detail-address").val();
-    $("#source-hide").val(source);
-    //$("#tax-rate").trigger("change");
-    var taxRate = $("#tax-rate").val();
-    var exportRight = $('input:radio[name="export_right"]:checked').val();
-    var img1 = $("#business-license-input").val() || $("#business-license-hide").val();
-    var img2 = $("#tax-reg-input").val() || $("#tax-reg-hide").val();
-    var img3 = $("#organization-code-input").val() || $("#organization-code-hide").val();
+    var customs_port = $("#customs_port").val();
+    var customs_contact = $("#customs_contact").val();
+    var customs_contact_tel = $("#customs_contact_tel").val();
+    var destination_country_or_area = $("#destination_country_or_area").val();
+    var transport_package_count = $("#transport_package_count").val();
+    var pack_type_list = $("#pack_type_list").val();
+    var arrive_port = $("#arrive_port").val();
+    var net_weight = $("#net_weight").val();
 
-    if(checkData(code)){
-        showFailHint("纳税人识别号内容不能为空！");
-    }else if(checkData(name)){
-        showFailHint("开票公司名称内容不能为空！");
-    }else if(checkData(date)){
-        showFailHint("一般纳税人认定时间内容不能为空！");
-    }else if(checkData(linkMen)){
-        showFailHintalert("开票人财务联系人内容不能为空！");
-    }else if(checkData(linkMenPhone)){
-        showFailHint("开票人财务联系人电话内容不能为空！");
-    }else if(checkData(detail_address)) {
-        showFailHint("开票人详细地址内容不能为空！");
-        // }else if(checkData(source)){
-        //     showFailHint("境内资源地内容不能为空！");
-        // }
-        //else if(checkData(taxRate)){
-        //  showFailHint("开票人增值税率内容为空！");
-        //}
-    }else if(checkData(img1)){
-        showFailHint("请上传营业执照！");
-    }else if(checkData(img2)){
-        showFailHint("请上传一般纳税人认证书！");
-    }else if(checkData(img3)){
-        showFailHint("请上传以往开发的发票样本！");
-    }else if(bl_size > 7*1024*1024){
-        showFailHint("上传图片不能大于7MB");
-    }else if(tr_size > 1024*1024){
-        showFailHint("上传图片不能大于1MB");
-    }else if(oc_size > 1024*1024){
-        showFailHint("上传图片不能大于1MB");
-    }
-	//else if(checkPhone(linkMenPhone)){
-       //     alert("手机格式不正确！");
-    //}
-	else{
+    var gross_weight = $("#gross_weight").val();
+    var box_number = $("#box_number").val();
+    var box_unit = $("#box_unit").val();
+    var goods_price = $("#goods_price").val();
+    var subtotal = $("#subtotal").val();
+    var standard_count = $("#standard_count").val();
+    var standard_count2 = $("#standard_count2").val();
+    var supplier_id = $("#supplier_id").val();
+    var estimate = $("#estimate").val();
+    var delivery_time = $("#delivery_time").val();
+    var buyers_name = $("#buyers_name").val();
+    var buyers_address = $("#buyers_address").val();
+    var buyers_contact = $("#buyers_contact").val();
+    var trading_country = $("#trading_country").val();
+    var goods_supply_id = $("#goods_supply_id").val();
+    var goods_save_adr = $("#goods_save_adr").val();
+    var contract_type = $("#contract_type").val();
+
+
+
+    var img1 = $("#purchasing_order_input").val() || $("#purchasing_order_hide").val();
+    var img2 = $("#other_file_input").val() || $("#other_file_hide").val();
+
+    //else if (checkData(img1)) {
+    //         showFailHint("请上传采购订单或PI！");
+    //     } else if (checkData(img2)) {
+    //         showFailHint("请上传其他！");
+    //     }
+
+    if (checkData(customs_port)) {
+        showFailHint("报关口岸内容不能为空！");
+    } else if (checkData(customs_contact)) {
+        showFailHint("报关联系人内容不能为空！");
+    } else if (checkData(customs_contact_tel)) {
+        showFailHint("报关联系方式内容不能为空！");
+    } else if (checkData(destination_country_or_area)) {
+        showFailHint("运抵国（地区）内容不能为空！");
+    }else if (checkData(arrive_port)) {
+        showFailHint("到达口岸内容不能为空！");
+    } else if (checkData(transport_package_count)) {
+        showFailHint("整体包装件数内容不能为空！");
+    } else if (checkData(pack_type_list)) {
+        showFailHint("包装种类内容不能为空！");
+    } else if (checkData(goods_id)) {
+        showFailHint("出货产品内容不能为空！");
+    } else if (checkData(net_weight)) {
+        showFailHint("总净重(KG)内容不能为空！");
+    } else if (checkData(gross_weight)) {
+        showFailHint("总毛重(KG)内容不能为空！");
+    } else if (checkData(box_number)) {
+        showFailHint("产品数量和单位内容不能为空！");
+    } else if (checkData(box_unit)) {
+        showFailHint("产品数量和单位内容不能为空！");
+    } else if (checkData(goods_price)) {
+        showFailHint("单价内容不能为空！");
+    } else if (checkData(subtotal)) {
+        showFailHint("货值内容不能为空！");
+    } else if (checkData(standard_count)) {
+        showFailHint("法定数量和单位内容不能为空！");
+    } else if (checkData(supplier_id)) {
+        showFailHint("开票人内容不能为空！");
+    } else if (checkData(estimate)) {
+        showFailHint("估算汇率内容不能为空！");
+    } else if (checkData(delivery_time)) {
+        showFailHint("预计出货日期内容不能为空！");
+    } else if (checkData(buyers_name)) {
+        showFailHint("境外收货人内容不能为空！");
+    } else if (checkData(buyers_address)) {
+        showFailHint("地址内容不能为空！");
+    } else if (checkData(buyers_contact)) {
+        showFailHint("联系方式内容不能为空！");
+    } else if (checkData(trading_country)) {
+        showFailHint("贸易国（地区）内容不能为空！");
+    } else if (checkData(goods_supply_id)) {
+        showFailHint("境内货源地内容不能为空！");
+    } else if (checkData(goods_save_adr)) {
+        showFailHint("目前货物存放地址内容不能为空！");
+    } else if (checkData(contract_type)) {
+        showFailHint("合同编号内容不能为空！");
+    } else if (bl_size > 8 * 1024 * 1024) {
+        showFailHint("上传采购订单或PI不能大于8MB");
+    } else if (tr_size > 8 * 1024 * 1024) {
+        showFailHint("上传其他附件不能大于8MB");
+    } else {
         $("#sumbit-real").click();
     }
 }
@@ -265,7 +151,7 @@ function checkPhone(data){
 }
 
 function checkData(data){
-    return data.length <= 0;
+    return data===undefined ? true : data.length <= 0;
 }
 
 function showSuccessHint(msg){
