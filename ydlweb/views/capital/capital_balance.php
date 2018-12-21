@@ -128,6 +128,7 @@
              <table id="bill">
             <thead>
               <tr>
+				<th>序号</th>
                 <th>金额</th>
 				<th>币种</th>
                 <th>转账银行</th>
@@ -138,10 +139,11 @@
               </tr>
             </thead>
             <tbody>
-            <?php
+            <?php  $i = 1;
                 foreach ($models as $key => $value) {
             ?>
               <tr>
+				<td><?php echo ($page - 1) * 10 + $i; ?></td>
                 <td><?php echo $value['recharge_amount']; ?></td>
 				<td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?php echo $value['bank_name'] ?></td> 
@@ -157,7 +159,7 @@
                 </td>
                 <td><a data-id="<?=$value['id']?>" data-apply="true">申请结汇</a></td>
               </tr>
-            <?php } ?>
+            <?php $i++; } ?>
             </tbody>
           </table>
 		  <?php
@@ -166,23 +168,25 @@
              <table>
             <thead>
               <tr>
+				<th>序号</th>
                 <th>金额</th>
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
-				<th>关联订单</th>
+				<th>关联的订单</th>
               </tr>
             </thead>
             <tbody>
-            <?php foreach ($models as $key => $value) { ?>
+            <?php   $i = 1; foreach ($models as $key => $value) { ?>
               <tr>
+				<td><?php echo ($page - 1) * 10 + $i; ?></td>
                 <td><?=$value['capital']?></td>
                 <td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?=$value['exchange_rate']?></td>
                 <td><?=$value['exchange_settlement_rmb']?></td>
 				 <td> </td>
               </tr>
-            <?php } ?>
+            <?php  $i++; } ?>
             </tbody>
           </table>
         <?php

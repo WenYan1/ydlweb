@@ -59,7 +59,7 @@ class CapitalController extends HomeBaseController
 			$query->andWhere(['<', 'order_state', 9])->andWhere(['<=', 'delivery_time', $timeDifference])->andWhere(['>=', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 3) {
 			$query->andWhere(['<>', 'delivery_time', 0])->andWhere(['<', 'order_state', 9])->andWhere(['<', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
-		} else if ($filter == 4) {
+		} else if ($filter == 5) {
 			$query->andWhere(['>=', 'order_state', 8])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else {
 			$this->redirect('/capital/index');

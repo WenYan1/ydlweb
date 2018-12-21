@@ -81,61 +81,30 @@
         	<?php
 if ($filter == 1) {
 	?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size default-blue under-line">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
+            <p id="state-pay" style="margin-left:24px;" class="font-content-size default-blue under-line" >付款</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default" >额度管理</p>
 			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
+			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+			
+		
+          
+            <?php } else if ($filter == 3) {?>
+            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default" >付款</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line " >额度管理</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default" >结算记录</p>
 			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
 			
 			
 
-            <?php } else if ($filter == 2) {?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size default-blue under-line">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
-			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
-			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
-			
-			
-          
-            <?php } else if ($filter == 3) {?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size default-blue under-line">逾期还款</p>
-			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
-			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
-			
-			
-           
-            <?php } else if ($filter == 4) {?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
-			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
-			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size default-blue under-line">其他</p>-->
-			
-		
               <?php } else if ($filter == 5) {?>
-            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size font-color-default">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
-			<p id="state-st" style="margin-left:96px;" class="font-content-size default-blue under-line">结算记录</p>
+            <p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default" >付款</p>
+            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default" >额度管理</p>
+			<p id="state-st" style="margin-left:96px;" class="font-content-size default-blue under-line" >结算记录</p>
 			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
 			
 			
            
-            <?php } else {?>
-			<p id="state-pay" style="margin-left:24px;" class="font-content-size font-color-default">付款</p>
-			<p id="state-ct" style="margin-left:96px;" class="font-content-size default-blue under-line">额度使用情况</p>
-            <p id="state-se" style="margin-left:96px;" class="font-content-size font-color-default">还信用额度</p>
-            <p id="state-of" style="margin-left:96px;" class="font-content-size font-color-default">逾期还款</p>
-			<p id="state-st" style="margin-left:96px;" class="font-content-size font-color-default">结算记录</p>
-			<!--<p id="state-dr" style="margin-left:96px;" class="font-content-size font-color-default">其他</p>-->
+           
 			
 			
             <?php }?>
@@ -152,6 +121,7 @@ if ($filter == 1) {
                 <table class="table-show">
                     <thead>
                       <tr>
+						<th class="number" style="width:4%">序号</th>
                         <th class="capital-manager-1 ">订单号</th>
                         <th class="capital-manager-2">订单金额(元)</th>
                         <th class="capital-manager-3">供应商</th>
@@ -163,7 +133,7 @@ if ($filter == 1) {
                       </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($models as $key => $value) {
+                        <?php   $i = 1; foreach ($models as $key => $value) {
 		$state_info = '';
 		$state_code = $value['order_state'];
 		if ($state_code == '0') {
@@ -189,6 +159,7 @@ if ($filter == 1) {
 		}
 		?>
                         <tr>
+							<td class="number " style="width:4%"><?php echo ($page - 1) * 10 + $i; ?></td>
                             <td class="capital-manager-1"><?php echo $value['order_sn']; ?></td>
                             <td class="capital-manager-2"><?php echo $value['order_total']; ?></td>
                             <td class="capital-manager-3"><?php echo $value['supplier_name']; ?></td>
@@ -206,7 +177,7 @@ if ($filter == 1) {
                                 <?php }?>
                             </td>
                           </tr>
-                        <?php }?>
+                        <?php   $i ++;}?>
                  </tbody>
                 </table>
             <?php } else if ($filter == 2) {
@@ -226,7 +197,7 @@ if ($filter == 1) {
                       </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($models as $key => $value) {
+                        <?php  foreach ($models as $key => $value) {
                     		$state_info = '';
                     		$state_code = $value['order_state'];
                     		if ($state_code == '0') {
@@ -269,19 +240,20 @@ if ($filter == 1) {
                 <table >
                     <thead>
                       <tr>
+						<th class="number " style="width:4%">序号</th>
                         <th class="overdue-1">订单号</th>
                         <th class="overdue-2">订单金额(元)</th>
                         <th class="overdue-3">供应商</th>
-                        <th class="overdue-4">创建时间</th>
-                        <th class="overdue-5">状态</th>
-                        <th class="overdue-6">已付定金(元)</th>
-                        <th class="overdue-7">已付尾款(元)</th>
-                        <th class="overdue-8">逾期汇款金额(元)</th>
+						<th class="overdue-4">额度使用金额</th>
+						<th class="overdue-5">开始时间</th>
+						<th class="overdue-6">到期时间</th>
+						<th class="overdue-7">预计费用</th>
+						<th class="overdue-8">预计总还款</th>
                         <th class="overdue-9">操作</th>
                       </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($models as $key => $value) {
+                        <?php $i = 1; foreach ($models as $key => $value) {
                     		$state_info = '';
                     		$state_code = $value['order_state'];
                     		if ($state_code == '0') {
@@ -307,17 +279,18 @@ if ($filter == 1) {
                     		}
                     	?>
                       <tr>
+						<td class="number " style="width:4%"><?php echo ($page - 1) * 10 + $i; ?></td>
                         <td class="overdue-1"><?php echo $value['order_sn']; ?></td>
                         <td class="overdue-2"><?php echo $value['order_total']; ?></td>
                         <td class="overdue-3"><?php echo $value['supplier_name']; ?></td>
-                        <td class="overdue-4"><?php echo date("Y-m-d", $value['created_at']); ?></td>
-                        <td class="overdue-5"><?php echo $state_info; ?></td>
-                        <td class="overdue-6"><?php if ($value['is_pay'] == 0) {echo 0;} else {echo $firstpayment_amount;}?></td>
-                        <td class="overdue-7"><?php echo $value['already_pay']; ?></td>
-                        <td class="overdue-8"><?php echo $value['settlement_money']; ?></td>
+                        <td class="overdue-4"></td>
+                        <td class="overdue-5"><?php echo date("Y-m-d", $value['created_at']); ?></td>
+                        <td class="overdue-6"></td>
+                        <td class="overdue-7"></td>
+                        <td class="overdue-8"></td>
                         <td class="overdue-9"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/settlement', 'order_id' => $value['id']]); ?>">结汇</a></td>
                       </tr>
-                      <?php }?>
+                      <?php  $i++;}?>
                     </tbody>
               </table>
             <?php } else if($filter == 4){
@@ -377,29 +350,29 @@ if ($filter == 1) {
              <table >
             <thead>
               <tr>
-                <th class="balance-1">流水单号</th>
-                <th class="balance-2">金额</th>
-                <th class="balance-3">资金类型</th>
-                <th class="balance-4">资金说明</th>
-                <th class="balance-5">时间</th>
+				<th class="number " style="width:4%">序号</th>
+				<th class="balance-2">订单号</th>
+                <th class="balance-3">流水单号</th>
+                <th class="balance-4">金额</th>
+                <th class="balance-5">资金类型</th>
+                <th class="balance-6">资金说明</th>
+                <th class="balance-7">时间</th>
               </tr>
               
             </thead>
             <tbody>
             
-            <?php
-                foreach ($models as $key => $value) {
-            ?>
+         
               <tr>
-                <td class="balance-1"></td>
+				<td class="number " style="width:4%"></td>
                 <td class="balance-2"></td>
-                <td class="balance-3">
-                    
-                </td>
+                <td class="balance-3"></td>
                 <td class="balance-4"></td>
                 <td class="balance-5"></td>
+                <td class="balance-6"></td>
+				<td class="balance-7"></td>
               </tr>
-            <?php } ?>
+         
             </tbody>
           </table>
         <?php } ?>

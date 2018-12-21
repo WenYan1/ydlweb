@@ -73,8 +73,8 @@ if($this->context->_popSuccessMessage()) {
 <div class="main">
     <div class="row">
         <div class="col-md-12" >
-            <div class="">
-                <div  style="margin-top:20px ;background: #f5f5f5;">
+            
+                <div  style="background: #f5f5f5;">
                     <table id="table" class="table">
                         <thead>
                         <tr>
@@ -170,7 +170,7 @@ if($this->context->_popSuccessMessage()) {
 					?>
 
                 </div>
-            </div>
+            
         </div>
     </div>
     <nav class="page-number">
