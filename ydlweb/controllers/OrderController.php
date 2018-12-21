@@ -141,6 +141,12 @@ public function behaviors()
 				$other_file = $dir . $temp['newName'];
 			}
 
+			$supplier = Suppliers::find()->where("id in({$goodsData[0]['supplier_id']})")->orderBy(['id' => SORT_DESC])->one();
+			if (!empty($supplier)){
+				$post['supplier_id'] = $supplier['id'];
+				$post['supplier_name'] = $supplier['company_name'];
+			}
+
 			$connection = Yii::$app->db;
 			$transaction = $connection->beginTransaction();
 
