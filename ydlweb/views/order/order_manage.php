@@ -113,7 +113,8 @@ if($this->context->_popSuccessMessage()) {
                                         <select data-service-type="true" data-order-id="<?php echo $data['id'];?>" style="width: 100px">
                                             <option value="">请选择</option>
                                             <option value="1" <?=$data['service_type'] == '1' ? 'selected' : ''?>>退税</option>
-                                            <option value="2" <?=$data['service_type'] == '2' ? 'selected' : ''?>>退税+代采购</option>
+                                            <option value="2" <?=$data['service_type'] == '2' ? 'selected' : ''?>>代采购</option>
+                                            <option value="3" <?=$data['service_type'] == '3' ? 'selected' : ''?>>退税+代采购</option>
                                         </select>
                                     </td>
                                     <td>
