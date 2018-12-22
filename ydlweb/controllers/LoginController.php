@@ -129,8 +129,8 @@ class LoginController extends \yii\web\Controller
                                     } else if($userModel->state == -1) {
                                             return Tool::outputError('你的账户已被禁用,请联系客服');  
                                     } else {
-                                            return Tool::outputError('666');  
-                                    }
+		                                return Tool::outputError('你的账户已被禁用,请联系客服');
+	                                }
                                 } else {
                                         return Tool::outputError('你输入的账号或密码错误');
                                 }

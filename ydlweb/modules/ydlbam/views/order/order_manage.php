@@ -76,7 +76,7 @@
 						<th>账号</th>
 						<th>供应商名称</th>
 						<th>发票金额</th>
-						<th>申报美金总金额</th>
+						<th>报关金额</th>
 						<th>时间</th>
 						<th>状态</th>
 					</tr>
@@ -94,18 +94,26 @@
 							<a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/order/order-detail','id'=>$models[$i]['id']]); ?>">
 								<?php echo $models[$i]['order_sn']; ?></a>
 							</td>
-                        <td><input class="" type="text" data-settlement-type="true" value="<?php echo $models[$i]['settlement_type'];?>" data-order-id="<?php echo $models[$i]['id'];?>;?>" title="鼠标离开后保存"></td>
+                        <td>
+                            <select data-settlement-type="true" data-order-id="<?php echo $models[$i]['id'];?>" style="width: 100px">
+                                <option value="">请选择</option>
+                                <option value="1" <?=$models[$i]['settlement_type'] == '1' ? 'selected' : ''?>>先定金再交货时付尾款</option>
+                                <option value="2" <?=$models[$i]['settlement_type'] == '2' ? 'selected' : ''?>>交货时付全款</option>
+                                <option value="3" <?=$models[$i]['settlement_type'] == '3' ? 'selected' : ''?>>交货后付款</option>
+                            </select>
+                        </td>
                         <td>
                             <select data-service-type="true" data-order-id="<?php echo $models[$i]['id'];?>" style="width: 100px">
                                 <option value="">请选择</option>
                                 <option value="1" <?=$models[$i]['service_type'] == '1' ? 'selected' : ''?>>退税</option>
-                                <option value="2" <?=$models[$i]['service_type'] == '2' ? 'selected' : ''?>>退税+代采购</option>
+                                <option value="2" <?=$models[$i]['service_type'] == '2' ? 'selected' : ''?>>代采购</option>
+                                <option value="3" <?=$models[$i]['service_type'] == '3' ? 'selected' : ''?>>退税+代采购</option>
                             </select>
                         </td>
 							<td><?php echo $models[$i]['email']; ?></td>
 							<td><?php echo $models[$i]['supplier_name']; ?></td>
-							<td><?php echo $models[$i]['order_total']; ?></td>
-							<td><?php echo $models[$i]['usd_total']; ?></td>
+							<td><?=!empty($orders_goods[$models[$i]['id']]['invoice_amount']) ? $orders_goods[$models[$i]['id']]['invoice_amount'] : ''?></td>
+							<td><?=!empty($orders_goods[$models[$i]['id']]['subtotal']) ? $orders_goods[$models[$i]['id']]['subtotal'] : ''?></td>
 							<td><?php echo date(("Y-m-d"), $models[$i]['created_at']);?></td>
 
 								<td><?php

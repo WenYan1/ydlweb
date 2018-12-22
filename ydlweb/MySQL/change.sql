@@ -116,3 +116,6 @@ ALTER TABLE `order_goods` CHANGE `hs_code` `hs_code` VARCHAR(30) CHARACTER SET u
 ALTER TABLE `order_goods` CHANGE `goods_taxrate` `goods_taxrate` FLOAT(5,3) NULL;
 ALTER TABLE `order_goods` ADD `invoice_amount` VARCHAR(255) NULL COMMENT '开票金额' AFTER `subtotal`;
 
+-- 张俊杰 2018-12-22 11:00
+ALTER TABLE `orders` ADD `buyers_address` VARCHAR(255) NULL COMMENT '境外收货人地址' AFTER `buyers_name`;
+ALTER TABLE `orders` ADD `buyers_contact` VARCHAR(255) NULL COMMENT '境外收货人 联系方式' AFTER `buyers_address`;

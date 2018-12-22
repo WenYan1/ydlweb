@@ -112,8 +112,10 @@
 							<p>报关币种 :</p>
 						</div>
 						<div class="export-right">
-							<p><label><input  name="customs_currency" type="radio" value="1" checked="checked"/>&nbsp&nbsp美金USD&nbsp&nbsp</label>
-							<label><input name="customs_currency" type="radio" value="2" />&nbsp&nbsp人民币RMB</label></p>
+							<p>
+                                <label><input  name="customs_currency" type="radio" value="1" checked="checked"/>&nbsp&nbsp人民币RMB&nbsp&nbsp</label>
+							    <label><input name="customs_currency" type="radio" value="2" />&nbsp&nbsp美金USD</label>
+                            </p>
 					</div>
 				</div>
 			

@@ -204,6 +204,13 @@ public function behaviors()
 			$goodsModel = $goodsModel->findBySupplier($condition);
 			$goodsModel = Tool::convert2Array($goodsModel);
 
+			$suppliersModel = $suppliersModel->findByUserId($session['uid']);
+			$suppliersModel = Tool::convert2Array($suppliersModel);
+			return $this->render('add_order_1', [
+				'supplier' => $suppliersModel,
+				'goods' => $goodsModel,
+			]);
+
 			if ($userModel->state === -2) {
 				$this->_setErrorMessage('您还存在逾期订单未支付,暂时不能下单');
 				$this->redirect(Yii::$app->request->referrer);
@@ -384,10 +391,20 @@ public function behaviors()
 			$payLogs = Tool::convert2Array($payLogs);
 			$ordersModel = $ordersModel->attributes;
 
+			$goodsModel = new Goods;
+			$goodsModel = $goodsModel->findBySupplier(['user_id'=>$session['uid']]);
+			$goodsModel = Tool::convert2Array($goodsModel);
+
+			$suppliersModel = new Suppliers;
+			$suppliersModel = $suppliersModel->findByUserId($session['uid']);
+			$suppliersModel = Tool::convert2Array($suppliersModel);
+
 			return $this->render('order_detail', [
 				'order' => $ordersModel,
 				'orderGoods' => $orderGoods,
 				'payLogs' => $payLogs,
+				'goods' => $goodsModel,
+				'supplier' => $suppliersModel,
 			]);
 		} else {
 			$this->_setErrorMessage($message);

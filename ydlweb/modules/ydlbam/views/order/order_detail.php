@@ -80,174 +80,262 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 			</div>
 		</div>
 		<div class="orange-label">
-			<p>基本信息</p>
+			<p>1.收汇方式与报关方式</p>
 		</div>
-		<div class="down-line row">
-			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-3 col-xs-3">
-					<span>供应商：</span>
-					<span><?php echo $order['supplier_name'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span>联系人：</span>
-					<span><?php echo $order['supplier_principal'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span>联系电话：</span>
-					<span><?php echo $order['supplier_tel'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span>邮箱：</span>
-					<span><?php echo $order['supplier_email'];?></span>
-				</div>
-			</div>
-			<div class="space_top" style="min-width: 1000px">
-				<div class="col-md-3 col-xs-3">
-					<span>我&nbsp&nbsp&nbsp方：</span>
-					<span><?php echo $order['user_company'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span>联系人：</span>
-					<span><?php echo $order['user_principal'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span>联系电话：</span>
-					<span><?php echo $order['user_tel'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3" >
-					<span>邮箱：</span>
-					<span><?php echo $order['user_email'];?></span>
-				</div>
-			</div>
 
-		</div>
-		<div class="down-line row">
-			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-3 col-xs-3 ">
-					<span  >订单总金额(元)：</span>
-					<span  ><?php echo $order['order_total'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span class="col-md-offset-1">首付款(元)：</span>
-					<span >&nbsp<?php echo $order['firstpayment_amount'];?></span>
-				</div>
-                <div class="col-md-2 col-xs-2">
-                    <input class="form-control" type="text" name="first_payment_remark" value="<?php echo $order['first_payment_remark'];?>" data-fk="true" data-id="<?php echo $order['id'];?>" placeholder="首付款(元) 风控备注" title="输入完成，失去焦点后自动保存">
+        <div class="container-fluid">
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">服务类型 :</span>
                 </div>
-				<div class="col-md-4 col-xs-4 " >
-					<span class="col-md-offset-3">总净重(kg):</span>
-					<span>&nbsp&nbsp<?php echo $order['net_weight'];?></span>
-				</div>
-
-			</div>
-			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-3 col-xs-3 ">
-					<span>总毛重(kg)：</span>
-					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['gross_weoght'];?></span>
-				</div>
-				<div class="col-md-3 col-xs-3">
-					<span class="col-md-offset-1">境内货源地：</span>
-					<span ><?php echo $order['original_place'];?></span>
-				</div>
-                <div class="col-md-2 col-xs-2">
-                    <input class="form-control" type="text" name="original_place_remark" value="<?php echo $order['original_place_remark'];?>" data-fk="true" data-id="<?php echo $order['id'];?>" placeholder="境内货源地 风控备注" title="输入完成，失去焦点后自动保存">
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_service_type($order['service_type'])?></span>
                 </div>
-				<div class="col-md-4 col-xs-4 " >
-					<span class="col-md-offset-3">总数量:</span>
-					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['total_quantity'];?></span>
-				</div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">结算方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=ZJJConfig::get_settlement_type($order['settlement_type'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关口岸 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['customs_port'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_customs_port_type($order['customs_port_type'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关联系人 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['customs_contact'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关联系方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['customs_contact_tel'];?></span>
+                </div>
+            </div>
+        </div>
 
-			</div>
-
-			<div class="space_top " style="min-width: 1000px">
-				<div class="col-md-3 col-xs-3 ">
-
-				</div>
-				<div class="col-md-5 col-xs-5">
-
-				</div>
-				<div class="col-md-4 col-xs-4 " >
-					<span class="col-md-offset-3">总箱数:</span>
-					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $order['total_box'];?></span>
-				</div>
-
-			</div>
-		</div>
         <div class="orange-label">
-            <p>报关信息</p>
+            <p>2.产品及开票人信息</p>
         </div>
-        <div class="down-line row">
-            <div class="col-md-3 col-xs-3 ">
-                <span >报关口岸：</span>
-                <span>&nbsp&nbsp&nbsp<?php echo $order['customs_port'];?></span>
+
+        <div class="container-fluid">
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关币种 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_customs_currency($order['customs_currency'])?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span >到达口岸：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['arrive_port'];?></span>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">成交方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=ZJJConfig::get_cost_type($order['cost_type'])?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span>申报美金单价：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['usd_unit_price'];?></span>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">录入价格方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_input_price_type($order['input_price_type'])?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span >商品编码：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['commodity_code'];?></span>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">包装方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_packing_way($order['packing_way'])?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span >报关单号：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['customs_declaration'];?></span>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">运抵国（地区） :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['destination_country_or_area'];?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span >出口日期：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['date_departure'];?></span>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">到达口岸 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['arrive_port'];?></span>
+                </div>
             </div>
-            <div class="col-md-3 col-xs-3">
-                <span >申报美金总价：</span>
-                <span >&nbsp&nbsp&nbsp<?php echo $order['usd_total'];?></span>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">装柜方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_risk_container_type($order['risk_container_type'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">整体包装件数 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['transport_package_count'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">包装种类 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['pack_type_list'];?></span>
+                </div>
             </div>
         </div>
-		<div class="orange-label">
-			<p>已添加商品</p>
-		</div>
-		<div class="row space_top order_detail">
-			<div class="col-md-12 col-xs-12">
-				<table id="table">
-					<thead>
-						<tr>
-							<th>序号</th>
-							<th>产品图片</th>
-							<th>报关品名</th>
-							<th>毛重(kg)</th>
-							<th>净重(kg)</th>
-							<th>箱数</th>
-							<th>单价(元)</th>
-							<th>数量</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr style="height:5px;"></tr>
-						<?php for ($i = 0; $i < count($orderGoods); $i++) {?>
-						<tr  >
-							<td>1</td>
-							<td>
-								<a target="_blank" href="<?php echo $img_source.$orderGoods[$i]['goods_image'];?>">
-									<img src=<?php echo $img_source.$orderGoods[$i]['goods_image'];?> alt="图片" style="height: 40px;width: 60px;">
-								</a>
-							</td>
-							<td><?php echo $orderGoods[$i]['goods_name'];?></td>
-							<td><?php echo $orderGoods[$i]['gross_weight'];?></td>
-							<td><?php echo $orderGoods[$i]['net_weight'];?></td>
-							<td><?php echo $orderGoods[$i]['box_number'];?></td>
-							<td><?php echo $orderGoods[$i]['goods_price'];?></td>
-							<td><?php echo $orderGoods[$i]['goods_num'];?></td>
-						</tr>
-						<?php
-					}
-					?>
-				</tbody>
-			</table>
-		</div>
-	</div>
+        <div class="container-fluid" >
+            <table id="table"  class="table" >
+                <thead>
+                <tr>
+                    <th>出货产品清单</th>
+                    <th>总净重(Kg)</th>
+                    <th>总毛重(kg)</th>
+                    <th>产品数量和单位</th>
+                    <th>单价</th>
+                    <th>货值</th>
+                    <th>法定数量和单位</th>
+                    <th>开票人</th>
+                    <th>开票金额</th>
+                    <th>估算汇率</th>
+                </tr>
+                </thead>
+                <tbody style="background: #fff;">
+				<?php $i = 1;foreach($orderGoods as $data) {?>
+                    <tr id="sure-goods">
+                        <td>
+							<?php foreach ($goods as $item){
+								if ($item['id'] == $data['goods_id']){
+									echo $item['goods_name'];
+								}else{
+									echo '';
+								}
+								?>
+							<?php } ?>
+                        </td>
+                        <td><?php echo $data['net_weight'];?></td>
+                        <td><?php echo $data['gross_weight'];?></td>
+                        <td><?php echo $data['box_number'];?>/<?=Tool::getGoodsUnit($data['box_unit']);?></td>
+                        <td><?=$data['goods_price'];?></td>
+                        <td><?=$data['subtotal'];?></td>
+                        <td><?=$data['standard_count'];?>套 / <?=$data['standard_count2'];?>千克</td>
+                        <td>
+							<?php foreach ($supplier as $item){
+								if ($item['id'] == $data['supplier_id']){
+									echo $item['company_name'];
+								}else{
+									echo '';
+								}
+								?>
+							<?php } ?>
+                        </td>
+                        <td><?php echo $data['invoice_amount'];?></td>
+                        <td><?php echo $data['estimate'];?>%</td>
+                    </tr>
+					<?php $i++; } ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="orange-label">
+            <p>3.报关信息</p>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">预计出货日期 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=date('Y-m-d',$order['delivery_time']);?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">境外收货人 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=$order['buyers_name'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">地址 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['buyers_address'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">联系方式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['buyers_contact'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">贸易国（地区） :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['trading_country']?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">是否特殊关系 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_is($order['is_special_relation'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">境内货源地 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['goods_supply_id']?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">合同编号 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['contract_type']?></span>
+                </div>
+            </div>
+        </div>
+
 	<div class="orange-label">
 		<p>付款详情</p>
 	</div>

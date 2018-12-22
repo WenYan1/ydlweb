@@ -2,7 +2,10 @@
 
 namespace app\modules\ydlbam\controllers;
 
+use app\models\Goods;
+use app\models\OrderGoods;
 use app\models\Orders;
+use app\models\Suppliers;
 use Tool;
 use Yii;
 use yii\data\Pagination;
@@ -71,6 +74,23 @@ class OrderController extends AdminBaseController {
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
 		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
 		$models = Tool::convert2Array($models);
+
+		$order_ids = '';
+
+		foreach ($models as $item){
+			$order_ids .= $order_ids === '' ? $item['id'] : ','.$item['id'];
+		}
+
+		// todo 多个产品调整此处  $_orders_goods[$item['order_id']] 为 $_orders_goods[$item['order_id']][]
+		$_orders_goods = array();
+		if (!empty($order_ids)){
+			$orders_goods = OrderGoods::find()->where("order_id in($order_ids)")->orderBy(['id' => SORT_DESC])->all();
+			$orders_goods = Tool::convert2Array($orders_goods);
+			foreach ($orders_goods as $item){
+				$_orders_goods[$item['order_id']] = $item;
+			}
+		}
+
 		return $this->render('order_manage', [
 			'models' => $models,
 			'pages' => $pages,
@@ -81,6 +101,7 @@ class OrderController extends AdminBaseController {
 			'email' => $request->get('email'),
 			'supplierName' => $supplierName,
 			'downPatment' => $downPatment,
+			'orders_goods' => $_orders_goods,
 			'page' => $page,
 		]);
 	}
@@ -100,10 +121,18 @@ class OrderController extends AdminBaseController {
 			$payLogs = Tool::convert2Array($payLogs);
 			$ordersModel = $ordersModel->attributes;
 
+			$goodsModel = Goods::find()->all();
+			$goodsModel = Tool::convert2Array($goodsModel);
+
+			$suppliersModel = Suppliers::find()->all();
+			$suppliersModel = Tool::convert2Array($suppliersModel);
+
 			return $this->render('order_detail', [
-				'order' => $ordersModel,
+				'order'      => $ordersModel,
 				'orderGoods' => $orderGoods,
-				'payLogs' => $payLogs,
+				'payLogs'    => $payLogs,
+				'goods'      => $goodsModel,
+				'supplier'   => $suppliersModel,
 			]);
 		} else {
 			$this->_setErrorMessage($message);

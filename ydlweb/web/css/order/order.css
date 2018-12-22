@@ -428,3 +428,14 @@ div.down-div2 p{
 div.down-div2 p:hover{
 	background-color: #efefef;
 }
+
+.name-float{
+	display: block;
+	float: right;
+	line-height: 36px;
+}
+.value-float{
+	display: block;
+	float: left;
+	line-height: 36px;
+}

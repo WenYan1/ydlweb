@@ -69,7 +69,7 @@ function search(){
 }
 
 function bindSettlementType() {
-    $(".table-border").on("blur","[data-settlement-type='true']",function () {
+    $(".table-border").on("change","[data-settlement-type='true']",function () {
         var id = $(this).attr("data-order-id");
         var val = $(this).val();
         var csrfToken = $("#_csrf").val();

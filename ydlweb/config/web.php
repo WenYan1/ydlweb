@@ -3,6 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 Yii::$classMap['Salt'] = '@app/libs/Salt.php';
 Yii::$classMap['Tool'] = '@app/libs/Tool.php';
+Yii::$classMap['ZJJConfig'] = '@app/libs/ZJJConfig.php';
 Yii::$classMap['Upload'] = '@app/libs/Upload.php';
 
 $config = [
