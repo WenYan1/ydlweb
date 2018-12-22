@@ -1,6 +1,7 @@
 <?php
-$img_source = "http://172.18.240.62:8080/uploads/";
+//$img_source = "http://172.18.240.62:8080/uploads/";
 // var_dump ($payLogs);
+$img_source = "/uploads/";
 ?>
 <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>"/>
 <link rel="stylesheet" href="/css/ydlbam_css/css_order/order.css">
@@ -332,6 +333,31 @@ $img_source = "http://172.18.240.62:8080/uploads/";
                 </div>
                 <div class="col-xs-9">
                     <span class="text-value value-float"><?=$order['contract_type']?></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="orange-label">
+            <p>4.附件上传</p>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">上传采购订单或PI :</span>
+                </div>
+                <div class="col-xs-4">
+                    <a href="<?=!empty($order['purchasing_order']) ? $img_source.$order['purchasing_order'] : '../images/upload_bg.png'?>" target="_blank">
+                        <img src="<?=!empty($order['purchasing_order']) ? $img_source.$order['purchasing_order'] : '../images/upload_bg.png'?>" width="200">
+                    </a>
+                </div>
+                <div class="col-xs-2">
+                    <span class="text-name name-float">其他 :</span>
+                </div>
+                <div class="col-xs-4">
+                    <a href="<?=!empty($order['other_file']) ? $img_source.$order['other_file'] : '../images/upload_bg.png'?>" target="_blank">
+                        <img src="<?=!empty($order['other_file']) ? $img_source.$order['other_file'] : '../images/upload_bg.png'?>" width="200">
+                    </a>
                 </div>
             </div>
         </div>
