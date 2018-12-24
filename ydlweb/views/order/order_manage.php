@@ -37,7 +37,7 @@ if($this->context->_popSuccessMessage()) {
 	</div>
 	<div class="row-fluid col-md-12" >
 		<div class="orange-label">
-			<p class="label-title">已添加的产品</p>
+			<p class="label-title">已添加的订单</p>
 			<p class="label-total">(共计: <?php echo $pages->totalCount; ?>)</p>
 		</div>
 	</div>

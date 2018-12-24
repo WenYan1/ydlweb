@@ -58,13 +58,41 @@
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
+						<p>需要垫款天数:</p>
+					</div>
+					<div class="export-right">
+						<p><label><input  name="advance_days" type="radio" value="1" checked="checked"/>&nbsp&nbsp90天&nbsp&nbsp</label>
+						<label><input name="advance_days" type="radio" value="2" />&nbsp&nbsp120天</label>
+						</p>
+					</div>
+				</div>
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
 						<p>结算方式 :</p>
 					</div>
 					<div class="export-right">
-						<p><label><input  name="settlement_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp先定金再交货时付尾款&nbsp&nbsp</label>
+						<p><label><input  name="settlement_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp先订金再交货时付尾款&nbsp&nbsp</label>
 						<label><input name="settlement_type" type="radio" value="2" />&nbsp&nbsp交货时付全款</label>
 						<label><input name="settlement_type" type="radio" value="3" />&nbsp&nbsp交货后付款</label></p>
 					</div>
+				</div>
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
+						<p>订金比例:</p>
+					</div>
+					<div class="col-md-7">
+						<input class=""  type="text" id="deposit_ratio" name="#####" value=""/>%
+					</div>
+		
+				</div>
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
+						<p>订金金额:</p>
+					</div>
+					<div class="col-md-7">
+						<input class="" type="text" id="order_amount" name="#####" value=""/>
+					</div>
+		
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
@@ -81,10 +109,20 @@
 					<div class="col-md-7">
 						<div class="export-right">
 						<p><label><input  name="customs_port_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp客户自行报关&nbsp&nbsp</label>
-						<label><input name="customs_port_type" type="radio" value="2" />&nbsp&nbsp易贸通报关（提供报关资料）</label></p>
+						<label><input name="customs_port_type" type="radio" value="2" />&nbsp&nbsp易贸通报关</label></p>
 					</div>
 					</div>
 				</div>	
+					<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
+						<p>报关形式 :</p>
+					</div>
+					<div class="col-md-7">
+						<div class="export-right"><label><input name="#####" type="radio" value="1" />有纸化报关（易贸通寄出纸质报关资料）&nbsp&nbsp</label>
+						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp无纸化报关（易贸通提供电子版报关资料）</label></p>
+					</div>
+					</div>
+				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
 						<p>报关联系人 :</p>
@@ -95,7 +133,7 @@
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
-						<p>报关联系方式 :</p>
+						<p>联系方式 :</p>
 					</div>
 					<div class="col-md-7">
 						<input class="input-padding" type="text" id="customs_contact_tel" name="customs_contact_tel" value=""/>
@@ -113,8 +151,8 @@
 						</div>
 						<div class="export-right">
 							<p>
-                                <label><input  name="customs_currency" type="radio" value="1" checked="checked"/>&nbsp&nbsp人民币RMB&nbsp&nbsp</label>
-							    <label><input name="customs_currency" type="radio" value="2" />&nbsp&nbsp美金USD</label>
+                                <label><input  name="customs_currency" type="radio" value="1" checked="checked"/>&nbsp&nbsp美金USD</label>
+							    <label><input name="customs_currency" type="radio" value="2" />&nbsp&nbsp人民币RMB&nbsp&nbsp</label>
                             </p>
 					</div>
 				</div>
@@ -138,8 +176,8 @@
                         <p>录入价格方式 :</p>
                     </div>
                     <div class="export-right">
-                        <p><label><input  name="input_price_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp指定货物报关发票金额&nbsp&nbsp</label>
-                        <label><input name="input_price_type" type="radio" value="2" />&nbsp&nbsp指定货物报关美金金额</label>
+                        <p><label><input  name="input_price_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp报关发票金额固定&nbsp&nbsp</label>
+                        <label><input name="input_price_type" type="radio" value="2" />&nbsp&nbsp报关美金金额固定</label>
                         </p>
                     </div>
                 </div>
@@ -189,7 +227,115 @@
                         </p>
                     </div>
                 </div>
-				<div class="row-fluid col-md-12 input-height">
+				
+				<div class="container-fluid add-privider-form" >
+					<table id="table" class="table">
+                        <thead>
+                            <tr>
+                                <th >出货产品清单</th>
+								<th >产品退税率</th>
+                                <th >总净重(KG)</th>
+                                <th >总毛重(KG)</th>
+                                <th>产品数量和单位</th>
+								<th >法定数量和单位</th>
+                                <th >含税单价</th>
+								<th >开票金额</th>
+                                <th >开票人</th>
+								<th >退税手续费</th>
+								<th >预计费用</th>
+								<th >利息报价</th>
+								<th >预计利息</th>
+								<th >报关汇率</th>
+                                <th >报关总金额</th>
+								<th >报关单价</th>
+                               
+								
+								
+                            </tr>
+                        </thead>
+                        <tbody style="background: #fff;">
+                            <tr>
+							<!--出货产品清单-->
+                                <td style="width: 6%">
+                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 140px;">
+                                        <option value="">请选择</option>
+                                        <?php foreach ($goods as $item){ ?>
+                                            <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+								<!--产品退税率-->
+								<td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="tax_rebate_rate" value=""  style="width:25px"/>%</td>
+                               <!--总净重-->
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:25px"/></td>
+                                <!--总毛重-->
+								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:25px"/></td>
+                                <!--产品数量和单位--> 
+								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:25px"/>
+                                    <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
+                                        <option value=""></option>
+                                        <?php $unit_list = Tool::getUnitList();
+                                            foreach ($unit_list as $_key => $_item){
+                                        ?>
+                                        <option value="<?=$_key?>"><?=$_item?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+								<!--法定数量和单位-->
+								  <td style="width: 6%">
+                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:25px"/>
+									 <select name="#####" id="#####" style="width: 40px;">
+                                        <option value=""></option>
+                                        <?php $unit_list = Tool::getUnitList();
+                                            foreach ($unit_list as $_key => $_item){
+                                        ?>
+                                        <option value="<?=$_key?>"><?=$_item?></option>
+                                        <?php } ?>
+                                    </select>
+									</br>
+                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:25px"/>
+                                     <select name="#####" id="#####" style="width: 40px;">
+                                        <option value=""></option>
+                                        <?php $unit_list = Tool::getUnitList();
+                                            foreach ($unit_list as $_key => $_item){
+                                        ?>
+                                        <option value="<?=$_key?>"><?=$_item?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+								<!--含税单价-->
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:25px"/></td>
+                               <!--开票金额-->
+							   <td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text"   name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:25px"/></td>
+								<!--开票人-->	
+							   <td style="width: 6%">
+                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 140px;">
+                                        <option value="">请选择</option>
+		                                <?php foreach ($supplier as $item){ ?>
+                                            <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
+		                                <?php } ?>
+                                    </select>
+                                </td>
+								<!--退税手续费-->
+							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" style="width:25px"/>%</td>
+							   <!--预计费用-->
+							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_cost" value="" style="width:25px"/></td>
+                               <!--利息报价-->
+							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" style="width:25px"/>%</td>
+							  <!--预计利息-->
+							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_interest" value="" style="width:25px"/></td>
+							  <!--报关汇率-->
+							  <td style="width: 6%"><input onkeyup="cost(this);"  class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:25px"/></td>
+                               <!--报关总金额-->
+							  <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:25px" /></td>
+							 <!--报关单价-->
+							 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="customs_declaration_price" value="" style="width:25px"/></td>
+								
+                            </tr>
+                        </tbody>
+                    </table>
+				</div>
+			<div class="row-fluid col-md-12 input-height">
 						<div class="col-md-3 col-md-offset-2">
 							<p>整体包装件数 :</p>
 						</div>
@@ -205,67 +351,6 @@
 							<input class="input-padding" type="text" id="pack_type_list" name="pack_type_list" value=""/>
 						</div>
 				</div>
-				<div class="container-fluid add-privider-form" >
-					<table id="table" class="table">
-                        <thead>
-                            <tr>
-                                <th >出货产品清单</th>
-                                <th >总净重(KG)</th>
-                                <th >总毛重(KG)</th>
-                                <th>产品数量和单位</th>
-                                <th >单价</th>
-                                <th >货值</th>
-                                <th >法定数量和单位</th>
-                                <th >开票人</th>
-                                <th >开票金额</th>
-                                <th >估算汇率</th>
-                            </tr>
-                        </thead>
-                        <tbody style="background: #fff;">
-                            <tr>
-                                <td style="width: 10%">
-                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 140px;">
-                                        <option value="">请选择</option>
-                                        <?php foreach ($goods as $item){ ?>
-                                            <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
-                                        <?php } ?>
-                                    </select>
-                                </td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:50px"/></td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:50px"/></td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:50px"/>
-                                    <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
-                                        <option value=""></option>
-                                        <?php $unit_list = Tool::getUnitList();
-                                            foreach ($unit_list as $_key => $_item){
-                                        ?>
-                                        <option value="<?=$_key?>"><?=$_item?></option>
-                                        <?php } ?>
-                                    </select>
-                                </td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:50px"/></td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:50px" /></td>
-                                <td style="width: 10%">
-                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:50px"/>
-                                    套</br>
-                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:50px"/>
-                                    千克
-                                </td>
-                                <td style="width: 10%">
-                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 140px;">
-                                        <option value="">请选择</option>
-		                                <?php foreach ($supplier as $item){ ?>
-                                            <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
-		                                <?php } ?>
-                                    </select>
-                                </td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:50px"/></td>
-                                <td style="width: 10%"><input class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:50px"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-				</div>
-			
 				
 				</div>
 				</div>

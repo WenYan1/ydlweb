@@ -189,3 +189,66 @@ function showFailHint(msg){
 function hideFailHint(){
     $(".hint-dialog_fail").hide();
 }
+
+function cost(){
+	//预计费用=开票金额/1.16*退税率*退税手续费
+	var invoice_amount =$("#invoice_amount").val();
+	var tax_rebate_rate=$("#tax_rebate_rate").val();
+	var procedure_rate=$("#procedure_rate").val();
+	
+	var tax =parseFloat(invoice_amount)/1.16*parseFloat(tax_rebate_rate)/100;
+	console.log(invoice_amount);
+	var  sum=tax*parseFloat(procedure_rate)/100;
+	var estimated_cost=sum.toFixed(2);
+	$("#estimated_cost").val(estimated_cost);
+	//预计利息=（开票金额-税款-订金）*利息报价/360*天数
+	var  interest_offer =$("#interest_offer").val();
+	var amount = getRadioButtonChecked("advance_days");
+	var advance_days=0;
+	if(amount=="1"){
+		advance_days=90;
+	}else{
+		advance_days=120;
+	}
+	var deposit=0;
+	var a=0;
+	if($("#deposit_ratio").val()==''){
+		deposit=$("#order_amount").val();
+		a=parseFloat(invoice_amount)-tax-deposit;
+	}else if($("#order_amount").val()==''){
+		deposit=parseFloat($("#deposit_ratio").val())/100;
+		a=parseFloat(invoice_amount)-tax-parseFloat(invoice_amount)*deposit;
+	}
+	console.log(a+"aaa"+deposit);
+	var estimated_interest=(a*parseFloat(interest_offer)/36000*parseFloat(advance_days)).toFixed(2);
+	$("#estimated_interest").val(estimated_interest);	
+	//报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率
+	var invoice_amount_1=parseFloat(invoice_amount)-tax;//发票金额
+	var estimate =parseFloat($("#estimate").val());
+	var b =invoice_amount_1+parseFloat(estimated_cost)+parseFloat(estimated_interest);
+	var subtotal =b/estimate;
+	$("#subtotal").val(subtotal.toFixed(2));
+	
+	//报关单价=报关总金额/产品数量
+	
+	var box_number = $("#box_number").val();
+	
+	$("#customs_declaration_price").val((subtotal/parseInt(box_number)).toFixed(2));
+	
+}
+
+
+function getRadioButtonChecked(tagNameAttr){
+    var radio_tag = document.getElementsByName(tagNameAttr);
+    for(var i=0;i<radio_tag.length;i++){
+        if(radio_tag[i].checked){
+            var checkvalue = radio_tag[i].value;            
+            return checkvalue;
+        }
+    }
+}
+
+
+
+
+
