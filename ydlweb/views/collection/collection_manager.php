@@ -102,37 +102,38 @@ if($this->context->_popSuccessMessage()) {
                                 <td><?=$data['order_number']?></td>
 								<td></td>
 								<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
-                                <td><input name="#####" type="text" id="#####" value=""  style="width: 54px;">
+                                <td>
                                     <?php if (!empty($data['tax_refund'])){ ?>
-                                    <a href="<?php echo $img_source.$data['tax_refund']?>">下载</a>
+                                    <a href="<?php echo $img_source.$data['tax_refund']?>">已上传</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
-                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
+                                <td>
                                     <?php if (!empty($data['supply_contract'])){ ?>
-                                    <a href="<?php echo $img_source.$data['supply_contract']?>">下载</a>
+                                    <a href="<?php echo $img_source.$data['supply_contract']?>">已上传</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
-                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
+                                <td>
                                     <?php if (!empty($data['invoice'])){ ?>
-                                    <a href="<?php echo $img_source.$data['invoice']?>">下载</a>
+                                    <a href="<?php echo $img_source.$data['invoice']?>">已上传</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
 								
-                                <td><input name="#####" type="text" id="#####" value="" style="width: 54px;">
+                                <td>
 									 <?php if (!empty($data['is_identification'])){ ?>
-                                    <a href="<?php echo $img_source.$data['is_identification']?>">下载</a>
+                                    <a href="<?php echo $img_source.$data['is_identification']?>">已上传</a>
                                     <?php } else { ?>
                                         未上传
                                     <?php } ?>
                                 </td>
 								<td>
-									<input name="#####" type="text" id="#####" value="" style="width: 54px;">
+									<?=$data['foreign_exchange_status'] == 1 ? '已收齐' : ''?>
+									<?=$data['foreign_exchange_status'] == 2 ? '未收齐' : ''?>
 								</td>
                                 <td><?=$data['anticipated_tax_refund']?></td>
                                 <td>

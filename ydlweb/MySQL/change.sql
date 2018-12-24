@@ -119,3 +119,6 @@ ALTER TABLE `order_goods` ADD `invoice_amount` VARCHAR(255) NULL COMMENT '开票
 -- 张俊杰 2018-12-22 11:00
 ALTER TABLE `orders` ADD `buyers_address` VARCHAR(255) NULL COMMENT '境外收货人地址' AFTER `buyers_name`;
 ALTER TABLE `orders` ADD `buyers_contact` VARCHAR(255) NULL COMMENT '境外收货人 联系方式' AFTER `buyers_address`;
+
+-- 张俊杰 2018-12-24 16:00
+ALTER TABLE `collection` ADD `foreign_exchange_status` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '外汇状态0未处理 1已收齐 2未收齐' AFTER `is_end`;

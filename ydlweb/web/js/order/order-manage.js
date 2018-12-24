@@ -74,13 +74,11 @@ function bindSettlementType() {
         var val = $(this).val();
         var csrfToken = $("#_csrf").val();
 
-        $.post("/order/change-service-type",
-            {
+        $.post("/order/change-service-type", {
                 "order_id":id,
                 "service_type":val,
                 "_csrf":csrfToken
-            },
-            function(data){
+            }, function(data){
                 var contentData = $.parseJSON(data);
                 if (contentData.state == 1){
                     art.dialog.tips("操作成功");

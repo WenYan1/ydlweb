@@ -61,4 +61,36 @@ class CollectionController extends AdminBaseController
 		]);
 	}
 
+	public function actionChangeStateType()
+	{
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		if ($request->isPost) {
+			$CollectionModel = new Collection;
+			$condition = [];
+			$condition['id'] = $request->post('id');
+			$Collection = $CollectionModel->findById($condition,$message);
+			if($Collection) {
+				$Collection->foreign_exchange_status = $request->post('val');
+
+				if($Collection->save()) {
+					$arr = array(
+						'state' => 1
+					);
+					$json = Tool::array2Json($arr);
+					exit($json);
+				}
+			}
+		}
+
+		$arr = array(
+			'state' => 0
+		);
+
+		$json = Tool::array2Json($arr);
+		exit($json);
+	}
+
 }

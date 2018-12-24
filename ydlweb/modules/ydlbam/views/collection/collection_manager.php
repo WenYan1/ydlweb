@@ -94,7 +94,13 @@
                         </td>
                          <td>未上传
                                 </td>
-						<td><input name="#####" type="text" id="#####" value=""></td>
+						<td>
+                            <select data-state-bind="true" data-id="<?=$data['id']?>">
+                                <option value="0"></option>
+                                <option value="1" <?=$data['foreign_exchange_status'] == 1 ? 'selected' : ''?>>已收齐</option>
+                                <option value="2" <?=$data['foreign_exchange_status'] == 2 ? 'selected' : ''?>>未收齐</option>
+                            </select>
+                        </td>
                         <td><?=$data['anticipated_tax_refund']?></td>
                         <td>
 							<?php
@@ -147,5 +153,24 @@
         lang:'ch',
         format:'Y-m-d',
         timepicker:false,
+    });
+
+    $(".table-border").on('change','[data-state-bind="true"]',function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/ydlbam/collection/change-state-type", {
+            "id":id,
+            "val":val,
+            "_csrf":csrfToken
+        }, function(data){
+            var contentData = $.parseJSON(data);
+            if (contentData.state == 1){
+                alert("操作成功");
+            }else{
+                alert("操作失败，稍后重试");
+            }
+        });
     });
 </script>
