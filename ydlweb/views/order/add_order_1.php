@@ -257,7 +257,7 @@
                             <tr>
 							<!--出货产品清单-->
                                 <td style="width: 6%">
-                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 140px;">
+                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 60px;">
                                         <option value="">请选择</option>
                                         <?php foreach ($goods as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
@@ -265,13 +265,13 @@
                                     </select>
                                 </td>
 								<!--产品退税率-->
-								<td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="tax_rebate_rate" value=""  style="width:25px"/>%</td>
+								<td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="tax_rebate_rate" value=""  style="width:30px"/>%</td>
                                <!--总净重-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:25px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:60px"/></td>
                                 <!--总毛重-->
-								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:25px"/></td>
+								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:60px"/></td>
                                 <!--产品数量和单位--> 
-								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:25px"/>
+								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:60px"/>
                                     <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
@@ -283,7 +283,7 @@
                                 </td>
 								<!--法定数量和单位-->
 								  <td style="width: 6%">
-                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:25px"/>
+                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:60px"/>
 									 <select name="#####" id="#####" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
@@ -293,7 +293,7 @@
                                         <?php } ?>
                                     </select>
 									</br>
-                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:25px"/>
+                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:60px"/>
                                      <select name="#####" id="#####" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
@@ -304,12 +304,12 @@
                                     </select>
                                 </td>
 								<!--含税单价-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:25px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:50px"/></td>
                                <!--开票金额-->
-							   <td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text"   name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:25px"/></td>
+							   <td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text"   name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:60px"/></td>
 								<!--开票人-->	
 							   <td style="width: 6%">
-                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 140px;">
+                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 60px;">
                                         <option value="">请选择</option>
 		                                <?php foreach ($supplier as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
@@ -317,19 +317,19 @@
                                     </select>
                                 </td>
 								<!--退税手续费-->
-							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" style="width:25px"/>%</td>
+							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" style="width:20px"/>%</td>
 							   <!--预计费用-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_cost" value="" style="width:25px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_cost" value="" style="width:60px"/></td>
                                <!--利息报价-->
-							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" style="width:25px"/>%</td>
+							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" style="width:40px"/>%</td>
 							  <!--预计利息-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_interest" value="" style="width:25px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_interest" value="" style="width:60px"/></td>
 							  <!--报关汇率-->
-							  <td style="width: 6%"><input onkeyup="cost(this);"  class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:25px"/></td>
+							  <td style="width: 6%"><input onkeyup="cost(this);"  class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:60px"/></td>
                                <!--报关总金额-->
-							  <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:25px" /></td>
+							  <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:60px" /></td>
 							 <!--报关单价-->
-							 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="customs_declaration_price" value="" style="width:25px"/></td>
+							 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="customs_declaration_price" value="" style="width:60px"/></td>
 								
                             </tr>
                         </tbody>
