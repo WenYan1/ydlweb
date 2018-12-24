@@ -92,23 +92,13 @@
 
 						<td>
 							<a href="<?php echo Yii::$app->urlManager->createUrl(['ydlbam/order/order-detail','id'=>$models[$i]['id']]); ?>">
-								<?php echo $models[$i]['order_sn']; ?></a>
+								<?php echo $models[$i]['contract_type']; ?></a>
 							</td>
                         <td>
-                            <select data-settlement-type="true" data-order-id="<?php echo $models[$i]['id'];?>" style="width: 100px">
-                                <option value="">请选择</option>
-                                <option value="1" <?=$models[$i]['settlement_type'] == '1' ? 'selected' : ''?>>先定金再交货时付尾款</option>
-                                <option value="2" <?=$models[$i]['settlement_type'] == '2' ? 'selected' : ''?>>交货时付全款</option>
-                                <option value="3" <?=$models[$i]['settlement_type'] == '3' ? 'selected' : ''?>>交货后付款</option>
-                            </select>
+	                        <?=ZJJConfig::get_settlement_type($models[$i]['settlement_type']);?>
                         </td>
                         <td>
-                            <select data-service-type="true" data-order-id="<?php echo $models[$i]['id'];?>" style="width: 100px">
-                                <option value="">请选择</option>
-                                <option value="1" <?=$models[$i]['service_type'] == '1' ? 'selected' : ''?>>退税</option>
-                                <option value="2" <?=$models[$i]['service_type'] == '2' ? 'selected' : ''?>>代采购</option>
-                                <option value="3" <?=$models[$i]['service_type'] == '3' ? 'selected' : ''?>>退税+代采购</option>
-                            </select>
+	                        <?=ZJJConfig::get_service_type($models[$i]['service_type']);?>
                         </td>
 							<td><?php echo $models[$i]['email']; ?></td>
 							<td><?php echo $models[$i]['supplier_name']; ?></td>

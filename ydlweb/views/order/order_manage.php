@@ -107,23 +107,13 @@ if($this->context->_popSuccessMessage()) {
 								?>
 								<tr>
 									<td><?php echo ($page - 1) * 10 + $i; ?></td>
-									<td><?php echo $data['order_sn']; ?></td>
+									<td><?php echo $data['contract_type']; ?></td>
 									<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                                     <td>
-                                        <select data-service-type="true" data-order-id="<?php echo $data['id'];?>" style="width: 100px">
-                                            <option value="">请选择</option>
-                                            <option value="1" <?=$data['service_type'] == '1' ? 'selected' : ''?>>退税</option>
-                                            <option value="2" <?=$data['service_type'] == '2' ? 'selected' : ''?>>代采购</option>
-                                            <option value="3" <?=$data['service_type'] == '3' ? 'selected' : ''?>>退税+代采购</option>
-                                        </select>
+                                        <?=ZJJConfig::get_service_type($data['service_type']);?>
                                     </td>
                                     <td>
-                                        <select data-settlement-type="true" data-order-id="<?php echo $data['id'];?>" style="width: 170px">
-                                            <option value="">请选择</option>
-                                            <option value="1" <?=$data['settlement_type'] == '1' ? 'selected' : ''?>>先定金再交货时付尾款</option>
-                                            <option value="2" <?=$data['settlement_type'] == '2' ? 'selected' : ''?>>交货时付全款</option>
-                                            <option value="3" <?=$data['settlement_type'] == '3' ? 'selected' : ''?>>交货后付款</option>
-                                        </select>
+                                        <?=ZJJConfig::get_settlement_type($data['settlement_type']);?>
                                     </td>
 									<td><?php echo $data['supplier_name']; ?></td>
                                    
