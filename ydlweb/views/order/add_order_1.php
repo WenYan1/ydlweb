@@ -61,7 +61,7 @@
 						<p>退税手续费:</p>
 					</div>
 					<div class="col-md-7">
-						<input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" />%
+						<input data-action="cost" class="input-padding" type="text" name="drawback_brokerage" id="drawback_brokerage" value="" />%
 					</div>
 		
 				</div>
@@ -83,7 +83,7 @@
 						<p>年化利息报价:</p>
 					</div>
 					<div class="col-md-7">
-						<input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" />%
+						<input data-action="cost" class="input-padding" type="text" name="interest_offer" id="interest_offer" value="" />%
 					</div>
 		
 				</div>
@@ -102,7 +102,7 @@
 						<p>订金比例:</p>
 					</div>
 					<div class="col-md-7">
-						<input class=""  type="text" id="deposit_ratio" name="#####" value=""/>%
+						<input class=""  type="text" id="deposit_ratio" name="deposit_ratio" value=""/>%
 					</div>
 		
 				</div>
@@ -112,7 +112,7 @@
 						<p>或订金金额:</p>
 					</div>
 					<div class="col-md-7">
-						<input class="" type="text" id="order_amount" name="#####" value=""/>
+						<input class="" type="text" id="order_amount" name="order_amount" value=""/>
 					</div>
 		
 				</div>
@@ -141,8 +141,8 @@
 					</div>
 					<div class="col-md-7">
 						<div class="export-right">
-						<p><label><input name="#####" type="radio" value="1" />有纸化报关（易贸通寄出纸质报关资料）&nbsp&nbsp</label>
-						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp无纸化报关（易贸通提供电子版报关资料）</label></p>
+						<p><label><input name="customs_port_froms" type="radio" value="1" checked="checked"/>有纸化报关（易贸通寄出纸质报关资料）&nbsp&nbsp</label>
+						<label><input name="customs_port_froms" type="radio" value="2" />&nbsp&nbsp无纸化报关（易贸通提供电子版报关资料）</label></p>
 					</div>
 					</div>
 				</div>
@@ -255,7 +255,7 @@
 					<table id="table" class="table">
                         <thead>
                             <tr>
-                                <th >出货产品清单</th>
+                                <th>出货产品清单</th>
 								<th >产品退税率</th>
                                 <th >总净重(KG)</th>
                                 <th >总毛重(KG)</th>
@@ -266,21 +266,17 @@
                                 <th >开票人</th>
 								<th >预计税款</th>
 								<th >预计费用</th>
-								
 								<th >预计利息</th>
 								<th >报关汇率</th>
                                 <th >报关总金额</th>
 								<th >报关单价</th>
-                               
-								
-								
                             </tr>
                         </thead>
                         <tbody style="background: #fff;">
                             <tr>
 							<!--出货产品清单-->
                                 <td style="width: 6%">
-                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 100px;">
+                                    <select name="goods[0][goods_id]" id="goods_id" data-field="true" data-field-name="goods_id" style="width: 100px;">
                                         <option value="">请选择</option>
                                         <?php foreach ($goods as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
@@ -288,14 +284,14 @@
                                     </select>
                                 </td>
 								<!--产品退税率-->
-								<td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="tax_rebate_rate" value=""  style="width:30px"/>%</td>
+								<td style="width: 6%"><input data-action="cost" class="input-padding" type="text" name="goods[0][tax_rebate_rate]" data-field="true" data-field-name="tax_rebate_rate" value=""  style="width:30px"/>%</td>
                                <!--总净重-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value=""  style="width:60px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value="" data-field="true" data-field-name="net_weight" style="width:60px"/></td>
                                 <!--总毛重-->
-								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:60px"/></td>
+								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" data-field="true" data-field-name="gross_weight" value="" style="width:60px"/></td>
                                 <!--产品数量和单位--> 
-								<td style="width: 6%"><input class="input-padding"  onkeyup="cost(this);" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:60px"/>
-                                    <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
+								<td style="width: 6%"><input class="input-padding" data-action="cost" type="text" name="goods[0][box_number]" data-field="true" data-field-name="box_number" id="box_number" value="" style="width:60px"/>
+                                    <select name="goods[0][box_unit]" id="box_unit" data-field="true" data-field-name="box_unit" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
                                             foreach ($unit_list as $_key => $_item){
@@ -306,8 +302,8 @@
                                 </td>
 								<!--法定数量和单位-->
 								  <td style="width: 6%">
-                                    <input class="input-padding" type="text" name="goods[0][standard_count]" id="standard_count" value="" style="width:60px"/>
-									 <select name="#####" id="#####" style="width: 40px;">
+                                    <input class="input-padding" type="text" name="goods[0][standard_count]" data-field="true" data-field-name="standard_count" id="standard_count" value="" style="width:60px"/>
+									 <select name="goods[0][standard_count_unit]" data-field="true" data-field-name="standard_count_unit" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
                                             foreach ($unit_list as $_key => $_item){
@@ -316,8 +312,8 @@
                                         <?php } ?>
                                     </select>
 									</br>
-                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" id="standard_count2" value="" style="width:60px"/>
-                                     <select name="#####" id="#####" style="width: 40px;">
+                                    <input class="input-padding" type="text" name="goods[0][standard_count2]" data-field="true" data-field-name="standard_count2" id="standard_count2" value="" style="width:60px"/>
+                                     <select name="goods[0][standard_count2_unit]" data-field="true" data-field-name="standard_count2_unit" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
                                             foreach ($unit_list as $_key => $_item){
@@ -327,12 +323,12 @@
                                     </select>
                                 </td>
 								<!--含税单价-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][goods_price]" id="goods_price" value="" style="width:50px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][goods_price]" data-field="true" data-field-name="goods_price" id="goods_price" value="" style="width:50px"/></td>
                                <!--开票金额-->
-							   <td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text"   name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:60px"/></td>
+							   <td style="width: 6%"><input data-action="cost" class="input-padding" type="text" name="goods[0][invoice_amount]" data-field="true" data-field-name="invoice_amount" id="invoice_amount" value="" style="width:60px"/></td>
 								<!--开票人-->	
 							   <td style="width: 6%">
-                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 100px;">
+                                    <select name="goods[0][supplier_id]" data-field="true" data-field-name="supplier_id" id="supplier_id" style="width: 100px;">
                                         <option value="">请选择</option>
 		                                <?php foreach ($supplier as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
@@ -340,23 +336,26 @@
                                     </select>
                                 </td>
 								 <!--预计税款-->
-								 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="tax_cost" value="" style="width:60px"/></td>
+								 <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][tax_cost]" data-field="true" data-field-name="tax_cost" id="tax_cost" value="" style="width:60px"/></td>
 							   <!--预计费用-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_cost" value="" style="width:60px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][estimated_cost]" data-field="true" data-field-name="estimated_cost" id="estimated_cost" value="" style="width:60px"/></td>
                              
 							  <!--预计利息-->
-							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_interest" value="" style="width:60px"/></td>
+							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][estimated_interest]" data-field="true" data-field-name="estimated_interest" id="estimated_interest" value="" style="width:60px"/></td>
 							  <!--报关汇率-->
-							  <td style="width: 6%"><input onkeyup="cost(this);"  class="input-padding" type="text" name="goods[0][estimate]" id="estimate" value="" style="width:60px"/></td>
+							  <td style="width: 6%"><input data-action="cost"  class="input-padding" type="text" name="goods[0][estimate]" data-field="true" data-field-name="estimate" id="estimate" value="" style="width:60px"/></td>
                                <!--报关总金额-->
-							  <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" style="width:60px" /></td>
+							  <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][subtotal]" id="subtotal" value="" data-field="true" data-field-name="subtotal" style="width:60px" /></td>
 							 <!--报关单价-->
-							 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="customs_declaration_price" value="" style="width:60px"/></td>
-								
+							 <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][customs_declaration_price]" data-field="true" data-field-name="customs_declaration_price"  id="customs_declaration_price" value="" style="width:60px"/></td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="left" style="width: 100px">
+                        <p id="add_product" class="btn btn-primary" style="color: #ffffff">添加产品</p>
+                    </div>
 				</div>
+
 			<div class="row-fluid col-md-12 input-height">
 						<div class="col-md-3 col-md-offset-2">
 							<p>整体包装件数 :</p>
@@ -518,6 +517,106 @@
 	    		format:'Y-m-d',
 	    		timepicker:false,
 	    	});
+
+	    	var ZJJ = {
+                orderName: function () {
+                    $("#table tbody tr").each(function (i) {
+                        var tr = $(this);
+                        var fields = tr.find('[data-field="true"]');
+                        console.log(i);
+                        fields.each(function () {
+                            var that = $(this);
+                            var field_name = that.attr('data-field-name');
+                            that.attr('name', 'goods[' + i + '][' + field_name + ']');
+                        });
+                    });
+                },
+                cost:function(){
+                    $("#table tbody tr").each(function () {
+                        var tr = $(this);
+
+                        //预计费用=开票金额/1.16*退税率*退税手续费
+                        var invoice_amount =$("#invoice_amount").val();
+                        var drawback_brokerage=$("#drawback_brokerage").val();
+
+                        //预计利息=（开票金额-税款-订金）*利息报价/360*天数
+                        var  interest_offer =$("#interest_offer").val();
+                        var tax_rebate_rate=tr.find("[data-field-name='tax_rebate_rate']").val();
+
+                        var tax =parseFloat(invoice_amount)/1.16*parseFloat(tax_rebate_rate)/100;
+
+                        //预计税款tax_cost
+                        tr.find("[data-field-name='tax_cost']").val(tax.toFixed(2));
+
+                        var  sum=tax*parseFloat(drawback_brokerage)/100;
+                        var estimated_cost=sum.toFixed(2);
+                        tr.find("[data-field-name='estimated_cost']").val(estimated_cost);
+                        var amount = tr.find("[name='advance_days']:checked").val();
+                        var advance_days=0;
+                        if(amount=="1"){
+                            advance_days=90;
+                        }else if(amount=="2") {
+                            advance_days=120;
+                        }else {
+                            advance_days=0;
+                        }
+
+                        var deposit=0;
+                        var a=0;
+                        if($("#deposit_ratio").val()==''){
+                            deposit=$("#order_amount").val();
+                            a=parseFloat(invoice_amount)-tax-deposit;
+                        }else if($("#order_amount").val()==''){
+                            deposit=parseFloat($("#deposit_ratio").val())/100;
+                            a=parseFloat(invoice_amount)-tax-parseFloat(invoice_amount)*deposit;
+                        }
+
+                        var estimated_interest=(a*parseFloat(interest_offer)/36000*parseFloat(advance_days)).toFixed(2);
+                        tr.find("[data-field-name='estimated_interest']").val(estimated_interest);
+
+                        //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率
+                        var invoice_amount_1=parseFloat(invoice_amount)-tax;//发票金额
+                        var estimate =parseFloat(tr.find("[data-field-name='estimate']").val());
+                        var b =invoice_amount_1+parseFloat(estimated_cost)+parseFloat(estimated_interest);
+                        var subtotal =b/estimate;
+                        tr.find("[data-field-name='subtotal']").val(subtotal.toFixed(2));
+
+                        //报关单价=报关总金额/产品数量
+                        var box_number = tr.find("[data-field-name='box_number']").val();
+
+                        tr.find("[data-field-name='customs_declaration_price']").val((subtotal/parseInt(box_number)).toFixed(2));
+                    });
+                },
+                initCost: function () {
+                    var view = this;
+                    $(".main-content").on("keyup blur", '[data-action="cost"]', function () {
+                        view.cost();
+                    });
+                },
+                init:function(){
+	    	        var view = this;
+                    $("#table").on('click','[data-action="delete"]',function(){
+                        $(this).parents().eq(1).remove();
+                        view.orderName();
+                    });
+
+                    $("#add_product").on('click',function(){
+                        var table = $("#table");
+                        var template = table.find("tbody tr").eq(0);
+                        var tr = $(template).clone();
+
+                        tr.find("input").val("");
+                        tr.find("td").eq(0).prepend('<a href="javascript:;" data-action="delete"><i class="glyphicon glyphicon-remove"></i></a>');
+
+                        table.find("tbody").append(tr);
+                        view.orderName();
+                    });
+
+                    view.initCost();
+                }
+            };
+
+            ZJJ.init();
 	  	</script>
 		
 

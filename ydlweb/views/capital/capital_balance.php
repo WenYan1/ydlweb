@@ -184,7 +184,11 @@
                 <td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?=$value['exchange_rate']?></td>
                 <td><?=$value['exchange_settlement_rmb']?></td>
-				 <td>YMT2018110700<?php echo ($page - 1) * 10 + $i; ?> </td>
+				 <td>
+					 <?php foreach ($orders as $item){ if ($value['order_id'] == $item['id']){ ?>
+						 <?=$item['order_sn']?>
+					 <?php } } ?>
+                 </td>
               </tr>
             <?php  $i++; } ?>
             </tbody>

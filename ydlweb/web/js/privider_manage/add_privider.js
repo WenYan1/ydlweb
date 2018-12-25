@@ -251,8 +251,10 @@ function hideFailHint(){
 function cost(){
 	//预计费用=开票金额/1.16*退税率*退税手续费
 	var invoice_amount =$("#invoice_amount").val();
-	var tax_rebate_rate=$("#tax_rebate_rate").val();
-	var procedure_rate=$("#procedure_rate").val();
+	var drawback_brokerage=$("#drawback_brokerage").val();
+
+
+    var tax_rebate_rate=$("#tax_rebate_rate").val();
 	
 	var tax =parseFloat(invoice_amount)/1.16*parseFloat(tax_rebate_rate)/100;
 	console.log(invoice_amount)
@@ -260,7 +262,7 @@ function cost(){
 	//预计税款tax_cost
 	$("#tax_cost").val(tax.toFixed(2));
 	
-	var  sum=tax*parseFloat(procedure_rate)/100;
+	var  sum=tax*parseFloat(drawback_brokerage)/100;
 	var estimated_cost=sum.toFixed(2);
 	$("#estimated_cost").val(estimated_cost);
 	//预计利息=（开票金额-税款-订金）*利息报价/360*天数

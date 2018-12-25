@@ -95,10 +95,50 @@ $img_source = "/uploads/";
             </div>
             <div class="row-fluid col-xs-12">
                 <div class="col-xs-2">
+                    <span class="text-name name-float">退税手续费 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=$order['drawback_brokerage'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">需要垫款天数 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_advance_days($order['advance_days'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">年化利息报价 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=$order['interest_offer'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
                     <span class="text-name name-float">结算方式 :</span>
                 </div>
                 <div class="col-xs-9">
                     <span class="value-float"><?=ZJJConfig::get_settlement_type($order['settlement_type'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">订金比例 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=$order['deposit_ratio'];?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-xs-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">或订金金额 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="value-float"><?=$order['order_amount'];?></span>
                 </div>
             </div>
             <div class="row-fluid col-sm-12">
@@ -115,6 +155,14 @@ $img_source = "/uploads/";
                 </div>
                 <div class="col-xs-9">
                     <span class="text-value value-float"><?=ZJJConfig::get_customs_port_type($order['customs_port_type'])?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">报关形式 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=ZJJConfig::get_customs_port_froms($order['customs_port_type'])?></span>
                 </div>
             </div>
             <div class="row-fluid col-sm-12">
@@ -196,6 +244,72 @@ $img_source = "/uploads/";
                     <span class="text-value value-float"><?=ZJJConfig::get_risk_container_type($order['risk_container_type'])?></span>
                 </div>
             </div>
+        </div>
+
+        <div class="container-fluid" >
+            <table id="table"  class="table" >
+                <thead>
+                <tr>
+                    <th >出货产品清单</th>
+                    <th >产品退税率</th>
+                    <th >总净重(KG)</th>
+                    <th >总毛重(KG)</th>
+                    <th>产品数量和单位</th>
+                    <th >法定数量和单位</th>
+                    <th >含税单价</th>
+                    <th >开票金额</th>
+                    <th >开票人</th>
+                    <th >预计税款</th>
+                    <th >预计费用</th>
+                    <th >预计利息</th>
+                    <th >报关汇率</th>
+                    <th >报关总金额</th>
+                    <th >报关单价</th>
+                </tr>
+                </thead>
+                <tbody style="background: #fff;">
+				<?php $i = 1;foreach($orderGoods as $data) {?>
+                    <tr id="sure-goods">
+                        <td>
+							<?php foreach ($goods as $item){
+								if ($item['id'] == $data['goods_id']){
+									echo $item['goods_name'];
+								}else{
+									echo '';
+								}
+								?>
+							<?php } ?>
+                        </td>
+                        <td><?php echo $data['tax_rebate_rate'];?></td>
+                        <td><?php echo $data['net_weight'];?></td>
+                        <td><?php echo $data['gross_weight'];?></td>
+                        <td><?php echo $data['box_number'];?>/<?=Tool::getGoodsUnit($data['box_unit']);?></td>
+                        <td><?=$data['standard_count'];?><?=Tool::getGoodsUnit($data['standard_count_unit']);?> / <?=$data['standard_count2'];?><?=Tool::getGoodsUnit($data['standard_count2_unit']);?></td>
+                        <td><?=$data['goods_price'];?></td>
+                        <td><?=$data['invoice_amount'];?></td>
+                        <td>
+							<?php foreach ($supplier as $item){
+								if ($item['id'] == $data['supplier_id']){
+									echo $item['company_name'];
+								}else{
+									echo '';
+								}
+								?>
+							<?php } ?>
+                        </td>
+                        <td><?php echo $data['tax_cost'];?></td>
+                        <td><?php echo $data['estimated_cost'];?></td>
+                        <td><?php echo $data['estimated_interest'];?></td>
+                        <td><?php echo $data['estimate'];?>%</td>
+                        <td><?php echo $data['subtotal'];?></td>
+                        <td><?php echo $data['customs_declaration_price'];?></td>
+                    </tr>
+					<?php $i++; } ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container-fluid">
             <div class="row-fluid col-sm-12">
                 <div class="col-xs-2">
                     <span class="text-name name-float">整体包装件数 :</span>
@@ -212,58 +326,6 @@ $img_source = "/uploads/";
                     <span class="text-value value-float"><?=$order['pack_type_list'];?></span>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid" >
-            <table id="table"  class="table" >
-                <thead>
-                <tr>
-                    <th>出货产品清单</th>
-                    <th>总净重(Kg)</th>
-                    <th>总毛重(kg)</th>
-                    <th>产品数量和单位</th>
-                    <th>单价</th>
-                    <th>货值</th>
-                    <th>法定数量和单位</th>
-                    <th>开票人</th>
-                    <th>开票金额</th>
-                    <th>估算汇率</th>
-                </tr>
-                </thead>
-                <tbody style="background: #fff;">
-				<?php $i = 1;foreach($orderGoods as $data) {?>
-                    <tr id="sure-goods">
-                        <td>
-							<?php foreach ($goods as $item){
-								if ($item['id'] == $data['goods_id']){
-									echo $item['goods_name'];
-								}else{
-									echo '';
-								}
-								?>
-							<?php } ?>
-                        </td>
-                        <td><?php echo $data['net_weight'];?></td>
-                        <td><?php echo $data['gross_weight'];?></td>
-                        <td><?php echo $data['box_number'];?>/<?=Tool::getGoodsUnit($data['box_unit']);?></td>
-                        <td><?=$data['goods_price'];?></td>
-                        <td><?=$data['subtotal'];?></td>
-                        <td><?=$data['standard_count'];?>套 / <?=$data['standard_count2'];?>千克</td>
-                        <td>
-							<?php foreach ($supplier as $item){
-								if ($item['id'] == $data['supplier_id']){
-									echo $item['company_name'];
-								}else{
-									echo '';
-								}
-								?>
-							<?php } ?>
-                        </td>
-                        <td><?php echo $data['invoice_amount'];?></td>
-                        <td><?php echo $data['estimate'];?>%</td>
-                    </tr>
-					<?php $i++; } ?>
-                </tbody>
-            </table>
         </div>
 
         <div class="orange-label">
@@ -325,6 +387,14 @@ $img_source = "/uploads/";
                 </div>
                 <div class="col-xs-9">
                     <span class="text-value value-float"><?=$order['goods_supply_id']?></span>
+                </div>
+            </div>
+            <div class="row-fluid col-sm-12">
+                <div class="col-xs-2">
+                    <span class="text-name name-float">目前货物存放地址 :</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="text-value value-float"><?=$order['goods_save_adr']?></span>
                 </div>
             </div>
             <div class="row-fluid col-sm-12">

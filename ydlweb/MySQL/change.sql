@@ -122,3 +122,20 @@ ALTER TABLE `orders` ADD `buyers_contact` VARCHAR(255) NULL COMMENT '境外收�
 
 -- 张俊杰 2018-12-24 16:00
 ALTER TABLE `collection` ADD `foreign_exchange_status` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '外汇状态0未处理 1已收齐 2未收齐' AFTER `is_end`;
+
+-- 张俊杰 2018-12-25 12:00
+ALTER TABLE `orders` ADD `drawback_brokerage` VARCHAR(30) NULL COMMENT '退税手续费' AFTER `drawback_money`;
+ALTER TABLE `orders` ADD `interest_offer` VARCHAR(30) NULL COMMENT '年化利息报价' AFTER `purchasing_order`;
+ALTER TABLE `orders` ADD `deposit_ratio` VARCHAR(30) NULL COMMENT '订金比例' AFTER `interest_offer`;
+ALTER TABLE `orders` ADD `order_amount` VARCHAR(30) NULL COMMENT '或订金金额' AFTER `order_total`;
+ALTER TABLE `orders` ADD `customs_port_froms` TINYINT(1) NULL DEFAULT '0' COMMENT '报关形式 1有纸化报关 2无纸化报关' AFTER `customs_port_type`;
+ALTER TABLE `order_goods` ADD `tax_rebate_rate` VARCHAR(30) NULL COMMENT '产品退税率' AFTER `supplier_id`;
+ALTER TABLE `order_goods` ADD `tax_cost` VARCHAR(30) NULL COMMENT '预计税款' AFTER `tax_rebate_rate`;
+ALTER TABLE `order_goods` ADD `estimated_cost` VARCHAR(30) NULL COMMENT '预计费用' AFTER `estimate`;
+ALTER TABLE `order_goods` ADD `estimated_interest` VARCHAR(30) NULL COMMENT '预计利息' AFTER `estimated_cost`;
+ALTER TABLE `order_goods` ADD `customs_declaration_price` VARCHAR(30) NULL COMMENT '报关单价' AFTER `estimated_interest`;
+ALTER TABLE `orders` ADD `advance_days` TINYINT(1) UNSIGNED NULL DEFAULT '0' COMMENT '需垫款天数 190 2120 3不需要' AFTER `deposit_ratio`;
+ALTER TABLE `orders` ADD `customs_money` VARCHAR(30) NULL COMMENT '报关金额' AFTER `invoice_amount`;
+ALTER TABLE `order_goods` ADD `standard_count_unit` VARCHAR(30) NULL COMMENT '单位 台、座' AFTER `standard_count`;
+ALTER TABLE `order_goods` ADD `standard_count2_unit` VARCHAR(30) NULL COMMENT '单位 台、座' AFTER `standard_count2`;
+ALTER TABLE `order_goods` CHANGE `standard_count2` `standard_count2` VARCHAR(30) NULL DEFAULT NULL COMMENT '法定数量和单位2';
