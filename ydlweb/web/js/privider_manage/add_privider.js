@@ -16,6 +16,63 @@ function aboutUploadImg(){
 		$("#other_file_input").click();
 	});
 
+	$("#business-license-btn").click(function(){
+		$("#business-license-input").click();
+	});
+
+	$("#tax-reg-btn").click(function(){
+		$("#tax-reg-input").click();
+	});
+	$("#organization-code-btn").click(function(){
+		$("#organization-code-input").click();
+	});
+	
+	$("#other_image-btn").click(function(){
+		$("#other_image-input").click();
+	});
+	
+	 $("#business-license-input").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        bl_size = this.files[0].size;
+        if(bl_size > 8*1024*1024){
+            showFailHint("上传不能大于8MB");
+        }
+        $("#business-license-btn").attr("src",src);
+        
+    });
+	
+	
+	 $("#tax-reg-input").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        bl_size = this.files[0].size;
+        if(bl_size > 8*1024*1024){
+            showFailHint("上传不能大于8MB");
+        }
+        $("#tax-reg-btn").attr("src",src);
+        
+    });
+	
+	 $("#organization-code-input").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        bl_size = this.files[0].size;
+        if(bl_size > 8*1024*1024){
+            showFailHint("上传不能大于8MB");
+        }
+        $("#organization-code-btn").attr("src",src);
+        
+    });
+	
+	 $("#other_image-input").change(function(){
+        var src = window.URL.createObjectURL(this.files[0]);
+        bl_size = this.files[0].size;
+        if(bl_size > 8*1024*1024){
+            showFailHint("上传不能大于8MB");
+        }
+        $("#other_image-btn").attr("src",src);
+        
+    });
+	
+	
     $("#purchasing_order_input").change(function(){
         var src = window.URL.createObjectURL(this.files[0]);
         bl_size = this.files[0].size;
@@ -86,9 +143,10 @@ function checkAndSubmit(){
     //         showFailHint("请上传其他！");
     //     }
 
-    if (checkData(customs_port)) {
-        showFailHint("报关口岸内容不能为空！");
-    } else if (checkData(customs_contact)) {
+   // if (checkData(customs_port)) {
+     //   showFailHint("报关口岸内容不能为空！");
+//    } else
+	if (checkData(customs_contact)) {
         showFailHint("报关联系人内容不能为空！");
     } else if (checkData(customs_contact_tel)) {
         showFailHint("报关联系方式内容不能为空！");

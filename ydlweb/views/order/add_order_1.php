@@ -130,8 +130,8 @@
 					</div>
 					<div class="col-md-7">
 						<div class="export-right">
-						<p><label><input  name="customs_port_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp客户自行报关&nbsp&nbsp</label>
-						<label><input name="customs_port_type" type="radio" value="2" />&nbsp&nbsp易贸通报关</label></p>
+						<p><label><input  name="customs_port_type" type="radio" value="1" checked="checked"/>&nbsp&nbsp客户指定报关行&nbsp&nbsp</label>
+						<label><input name="customs_port_type" type="radio" value="2" />&nbsp&nbsp易贸通指定报关行</label></p>
 					</div>
 					</div>
 				</div>	
