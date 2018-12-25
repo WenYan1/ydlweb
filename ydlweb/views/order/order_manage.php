@@ -117,8 +117,8 @@ if($this->context->_popSuccessMessage()) {
                                     </td>
 									<td><?php echo $data['supplier_name']; ?></td>
                                    
-									<td><?=!empty($orders_goods[$data['id']]['invoice_amount']) ? $orders_goods[$data['id']]['invoice_amount'] : ''?></td>
-									<td><?=!empty($orders_goods[$data['id']]['subtotal']) ? $orders_goods[$data['id']]['subtotal'] : ''?></td>
+									<td><?=$data['invoice_amount']?></td>
+									<td><?=$data['customs_money']?></td>
 									<td><?php echo empty($data['delivery_time']) ? '' : date("Y-m-d", $data['delivery_time']);?></td>
 									 <td><?php
 										if ($data['order_state']==0) {

@@ -42,6 +42,30 @@ class ZJJConfig
 	}
 
 	/**
+	 * 需要垫款天数
+	 * @return array
+	 */
+	public static function get_config_advance_days()
+	{
+		return array(
+			1 => '90天',
+			2 => '120天',
+			3 => '不需要'
+		);
+	}
+
+	public static function get_advance_days($key)
+	{
+		if (!empty($key)) {
+			$arr = ZJJConfig::get_config_service_type();
+
+			return !empty($arr[$key]) ? $arr[$key] : '';
+		}
+
+		return '';
+	}
+
+	/**
 	 * 获取结算方式数组
 	 * @return array
 	 */
@@ -81,6 +105,29 @@ class ZJJConfig
 	{
 		if (!empty($key)) {
 			$arr = ZJJConfig::get_config_customs_port_type();
+
+			return !empty($arr[$key]) ? $arr[$key] : '';
+		}
+
+		return '';
+	}
+
+	/**
+	 * 报关形式
+	 * @return array
+	 */
+	public static function get_config_customs_port_froms()
+	{
+		return array(
+			1 => '有纸化报关',
+			2 => '无纸化报关'
+		);
+	}
+
+	public static function get_customs_port_froms($key)
+	{
+		if (!empty($key)) {
+			$arr = ZJJConfig::get_config_customs_port_froms();
 
 			return !empty($arr[$key]) ? $arr[$key] : '';
 		}

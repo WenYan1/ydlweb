@@ -106,7 +106,7 @@ public function behaviors()
 
 			$ordersModel = new Orders;
 			$post = $request->post();
-			$post['order_sn'] = Tool::build_order_no();
+			$post['order_sn'] = $post['contract_type'];
 			$post['user_id'] = $_SESSION['uid'];
 			$post['email'] = $_SESSION['userEmail'];
 			$post['delivery_time'] = empty($post['delivery_time']) ? '' : strtotime($post['delivery_time']);
@@ -159,7 +159,17 @@ public function behaviors()
 					$post['other_file'] = $other_file;
 				}
 
+				$invoice_amount = 0;
+				$customs_money = 0;
+				foreach ($goodsData as $key => $item) {
+					$invoice_amount += $item['invoice_amount'];
+					$customs_money += $item['subtotal'];
+				}
+
+				$post['invoice_amount'] = $invoice_amount;
+				$post['customs_money'] = $customs_money;
 				$order = $ordersModel->add($post, $message);
+				$transaction->rollBack();
 				if ($order) {
 					$order_id = $order->id;
 					if (empty($goodsData)) {
@@ -170,7 +180,7 @@ public function behaviors()
 						foreach ($goodsData as $key => $item){
 							$goodsData[$key]['order_id'] = $order_id;
 						}
-						$result = $connection->createCommand()->batchInsert(OrderGoods::tableName(), ['goods_id','net_weight','gross_weight','box_number','box_unit','goods_price','subtotal','standard_count','standard_count2','supplier_id','invoice_amount','estimate','order_id'], $goodsData)->execute();
+						$result = $connection->createCommand()->batchInsert(OrderGoods::tableName(), ['goods_id','tax_rebate_rate','net_weight','gross_weight','box_number','box_unit','standard_count','standard_count_unit','standard_count2','standard_count2_unit','goods_price','invoice_amount','supplier_id','tax_cost','estimated_cost','estimated_interest','estimate','subtotal','customs_declaration_price','order_id'], $goodsData)->execute();
 						if ($result) {
 							$transaction->commit();
 							$this->_setSuccessMessage($message);
