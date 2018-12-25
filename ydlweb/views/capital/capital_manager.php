@@ -237,7 +237,7 @@ if ($filter == 1) {
 
             <?php } else if ($filter == 3) {
 	?>
-                <table >
+                <table id="a">
                     <thead>
                       <tr>
 						<th class="number " style="width:4%">序号</th>
@@ -283,10 +283,10 @@ if ($filter == 1) {
                         <td class="overdue-1"><?php echo $value['order_sn']; ?></td>
                         <td class="overdue-2"><?php echo $value['order_total']; ?></td>
                         <td class="overdue-3"><?php echo $value['supplier_name']; ?></td>
-                        <td class="overdue-4"></td>
+                        <td class="overdue-4"><?php echo rand(50000, 300000);?></td>
                         <td class="overdue-5"><?php echo date("Y-m-d", $value['created_at']); ?></td>
-                        <td class="overdue-6"></td>
-                        <td class="overdue-7"></td>
+                        <td class="overdue-6"><?php echo date("Y-m-d", strtotime("+90 days", strtotime(date("Y-m-d", $value['created_at'])))); ?></td>
+                        <td class="overdue-7"><?php echo rand(1000, 5000);?></td>
                         <td class="overdue-8"></td>
                         <td class="overdue-9"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/settlement', 'order_id' => $value['id']]); ?>">结汇</a></td>
                       </tr>
@@ -295,7 +295,7 @@ if ($filter == 1) {
               </table>
             <?php } else if($filter == 4){
 	?>
-                <table >
+                <table   >
                     <thead>
                       <tr>
                         <th class="duty_rate-1">订单号</th>

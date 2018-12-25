@@ -58,13 +58,34 @@
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
+						<p>退税手续费:</p>
+					</div>
+					<div class="col-md-7">
+						<input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" />%
+					</div>
+		
+				</div>
+					
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
 						<p>需要垫款天数:</p>
 					</div>
 					<div class="export-right">
-						<p><label><input  name="advance_days" type="radio" value="1" checked="checked"/>&nbsp&nbsp90天&nbsp&nbsp</label>
+						<p>
+						<label><input  name="advance_days" type="radio" value="1" checked="checked"/>&nbsp&nbsp90天&nbsp&nbsp</label>
 						<label><input name="advance_days" type="radio" value="2" />&nbsp&nbsp120天</label>
+						<label><input name="advance_days" type="radio" value="3" />&nbsp&nbsp不需要</label>
 						</p>
 					</div>
+				</div>
+				<div class="row-fluid col-md-12 input-height">
+					<div class="col-md-3 col-md-offset-2">
+						<p>年化利息报价:</p>
+					</div>
+					<div class="col-md-7">
+						<input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" />%
+					</div>
+		
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
@@ -85,9 +106,10 @@
 					</div>
 		
 				</div>
+				
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
-						<p>订金金额:</p>
+						<p>或订金金额:</p>
 					</div>
 					<div class="col-md-7">
 						<input class="" type="text" id="order_amount" name="#####" value=""/>
@@ -118,7 +140,8 @@
 						<p>报关形式 :</p>
 					</div>
 					<div class="col-md-7">
-						<div class="export-right"><label><input name="#####" type="radio" value="1" />有纸化报关（易贸通寄出纸质报关资料）&nbsp&nbsp</label>
+						<div class="export-right">
+						<p><label><input name="#####" type="radio" value="1" />有纸化报关（易贸通寄出纸质报关资料）&nbsp&nbsp</label>
 						<label><input name="#####" type="radio" value="2" />&nbsp&nbsp无纸化报关（易贸通提供电子版报关资料）</label></p>
 					</div>
 					</div>
@@ -241,9 +264,9 @@
                                 <th >含税单价</th>
 								<th >开票金额</th>
                                 <th >开票人</th>
-								<th >退税手续费</th>
+								<th >预计税款</th>
 								<th >预计费用</th>
-								<th >利息报价</th>
+								
 								<th >预计利息</th>
 								<th >报关汇率</th>
                                 <th >报关总金额</th>
@@ -257,7 +280,7 @@
                             <tr>
 							<!--出货产品清单-->
                                 <td style="width: 6%">
-                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 60px;">
+                                    <select name="goods[0][goods_id]" id="goods_id" style="width: 100px;">
                                         <option value="">请选择</option>
                                         <?php foreach ($goods as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['goods_name']?></option>
@@ -271,7 +294,7 @@
                                 <!--总毛重-->
 								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" value="" style="width:60px"/></td>
                                 <!--产品数量和单位--> 
-								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:60px"/>
+								<td style="width: 6%"><input class="input-padding"  onkeyup="cost(this);" type="text" name="goods[0][box_number]" id="box_number" value="" style="width:60px"/>
                                     <select name="goods[0][box_unit]" id="box_unit" style="width: 40px;">
                                         <option value=""></option>
                                         <?php $unit_list = Tool::getUnitList();
@@ -309,19 +332,18 @@
 							   <td style="width: 6%"><input  onkeyup="cost(this);" class="input-padding" type="text"   name="goods[0][invoice_amount]" id="invoice_amount" value="" style="width:60px"/></td>
 								<!--开票人-->	
 							   <td style="width: 6%">
-                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 60px;">
+                                    <select name="goods[0][supplier_id]" id="supplier_id" style="width: 100px;">
                                         <option value="">请选择</option>
 		                                <?php foreach ($supplier as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
 		                                <?php } ?>
                                     </select>
                                 </td>
-								<!--退税手续费-->
-							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="procedure_rate" value="" style="width:20px"/>%</td>
+								 <!--预计税款-->
+								 <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="tax_cost" value="" style="width:60px"/></td>
 							   <!--预计费用-->
 							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_cost" value="" style="width:60px"/></td>
-                               <!--利息报价-->
-							   <td style="width: 6%"><input onkeyup="cost(this);" class="input-padding" type="text" name="#####" id="interest_offer" value="" style="width:40px"/>%</td>
+                             
 							  <!--预计利息-->
 							   <td style="width: 6%"><input class="input-padding" type="text" name="#####" id="estimated_interest" value="" style="width:60px"/></td>
 							  <!--报关汇率-->

@@ -9,6 +9,7 @@ var STATE_ARRAY = [1,2,3,4,5,6];
 $(document).ready(function(){
 	filter();
 	hint();
+	caculPrice();
 });
 
 function filter(){
@@ -102,6 +103,16 @@ function hint(){
 	$('[data-toggle="tooltip"]').tooltip(100);
 } 
 
-
-
+function caculPrice(){
+			var table =document.getElementById("a");
+			var sum=0;
+		
+			for(var i=1;i<table.rows.length-1;i++){
+				var price=parseFloat(table.rows[i].cells[4].innerHTML);
+				var num=parseFloat(table.rows[i].cells[7].innerHTML);
+				sum=price+num;
+				table.rows[i].cells[8].innerHTML=sum;
+			}
+		
+}
 

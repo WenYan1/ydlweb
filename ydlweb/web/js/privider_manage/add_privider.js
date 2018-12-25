@@ -197,7 +197,11 @@ function cost(){
 	var procedure_rate=$("#procedure_rate").val();
 	
 	var tax =parseFloat(invoice_amount)/1.16*parseFloat(tax_rebate_rate)/100;
-	console.log(invoice_amount);
+	console.log(invoice_amount)
+	
+	//预计税款tax_cost
+	$("#tax_cost").val(tax.toFixed(2));
+	
 	var  sum=tax*parseFloat(procedure_rate)/100;
 	var estimated_cost=sum.toFixed(2);
 	$("#estimated_cost").val(estimated_cost);
@@ -207,8 +211,10 @@ function cost(){
 	var advance_days=0;
 	if(amount=="1"){
 		advance_days=90;
-	}else{
+	}else if(amount=="2") {
 		advance_days=120;
+	}else {
+		advance_days=0;
 	}
 	var deposit=0;
 	var a=0;
@@ -234,6 +240,8 @@ function cost(){
 	var box_number = $("#box_number").val();
 	
 	$("#customs_declaration_price").val((subtotal/parseInt(box_number)).toFixed(2));
+	
+	
 	
 }
 

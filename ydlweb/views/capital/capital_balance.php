@@ -177,14 +177,14 @@
               </tr>
             </thead>
             <tbody>
-            <?php   $i = 1; foreach ($models as $key => $value) { ?>
+            <?php $Y='YMT20181107000';  $i = 1; foreach ($models as $key => $value) { ?>
               <tr>
 				<td><?php echo ($page - 1) * 10 + $i; ?></td>
                 <td><?=$value['capital']?></td>
                 <td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?=$value['exchange_rate']?></td>
                 <td><?=$value['exchange_settlement_rmb']?></td>
-				 <td> </td>
+				 <td>YMT2018110700<?php echo ($page - 1) * 10 + $i; ?> </td>
               </tr>
             <?php  $i++; } ?>
             </tbody>
