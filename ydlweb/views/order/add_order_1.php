@@ -536,7 +536,7 @@
                         var tr = $(this);
 
                         //预计费用=开票金额/1.16*退税率*退税手续费
-                        var invoice_amount =$("#invoice_amount").val();
+                        var invoice_amount =tr.find("[data-field-name='invoice_amount']").val();
                         var drawback_brokerage=$("#drawback_brokerage").val();
 
                         //预计利息=（开票金额-税款-订金）*利息报价/360*天数
