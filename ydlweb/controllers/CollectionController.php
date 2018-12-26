@@ -201,9 +201,16 @@ class CollectionController extends HomeBaseController
 			$collectionFiles = $CollectionFileModel->findByCid(['c_id'=>$request->get('id')]);
 			$collectionFiles = Tool::convert2Array($collectionFiles);
 
+			$_collectionFiles = array();
+			if (!empty($collectionFiles)){
+				foreach ($collectionFiles as $item){
+					$_collectionFiles[$item['category']][] = $item;
+				}
+			}
+
 			return $this->render('collection_edit', [
 				'collection' => $collectionModel,
-				'collectionFile' => $collectionFiles
+				'collectionFiles' => $_collectionFiles
 			]);
 		}
 	}
