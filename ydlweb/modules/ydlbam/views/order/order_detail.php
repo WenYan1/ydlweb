@@ -417,16 +417,16 @@ $img_source = "/uploads/";
                     <span class="text-name name-float">上传采购订单或PI :</span>
                 </div>
                 <div class="col-xs-4">
-                    <a href="<?=!empty($order['purchasing_order']) ? $img_source.$order['purchasing_order'] : '../images/upload_bg.png'?>" target="_blank">
-                        <img src="<?=!empty($order['purchasing_order']) ? $img_source.$order['purchasing_order'] : '../images/upload_bg.png'?>" width="200">
+                    <a href="<?=!empty($order['purchasing_order']) ? $img_source.$order['purchasing_order'] : '../images/up.png'?>" target="_blank">
+                        <img src="<?=!empty($order['purchasing_order']) ? Upload::get_file_thumbnail($img_source.$order['purchasing_order']) : '../images/up.png'?>" width="200">
                     </a>
                 </div>
                 <div class="col-xs-2">
                     <span class="text-name name-float">其他 :</span>
                 </div>
                 <div class="col-xs-4">
-                    <a href="<?=!empty($order['other_file']) ? $img_source.$order['other_file'] : '../images/upload_bg.png'?>" target="_blank">
-                        <img src="<?=!empty($order['other_file']) ? $img_source.$order['other_file'] : '../images/upload_bg.png'?>" width="200">
+                    <a href="<?=!empty($order['other_file']) ? $img_source.$order['other_file'] : '../images/up.png'?>" target="_blank">
+                        <img src="<?=!empty($order['other_file']) ? Upload::get_file_thumbnail($img_source.$order['other_file']) : '../images/up.png'?>" width="200">
                     </a>
                 </div>
             </div>
