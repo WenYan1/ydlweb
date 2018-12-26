@@ -31,14 +31,7 @@ class OrderGoods extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['order_id', 'goods_num'], 'integer'],
-            [['goods_price', 'goods_taxrate'], 'number'],
-            [['goods_name', 'goods_image', 'hs_code'], 'required'],
-            [['goods_name'], 'string', 'max' => 60],
-            [['goods_image'], 'string', 'max' => 45],
-            [['hs_code'], 'string', 'max' => 30]
-        ];
+        return [];
     }
 
     /**
