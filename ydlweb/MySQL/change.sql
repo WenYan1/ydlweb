@@ -144,3 +144,27 @@ ALTER TABLE `order_goods` CHANGE `standard_count2` `standard_count2` VARCHAR(30)
 ALTER TABLE `order_goods` CHANGE `estimate` `estimate` VARCHAR(30) NULL DEFAULT NULL COMMENT '估算汇率';
 ALTER TABLE `order_goods` CHANGE `box_number` `box_number` VARCHAR(30) NULL DEFAULT '0' COMMENT '包装箱数', CHANGE `box_unit` `box_unit` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单位', CHANGE `goods_price` `goods_price` VARCHAR(30) NULL DEFAULT '0.00' COMMENT '商品价格', CHANGE `goods_num` `goods_num` VARCHAR(30) NULL DEFAULT '0' COMMENT '商品数量', CHANGE `standard_count` `standard_count` VARCHAR(30) NULL DEFAULT NULL COMMENT '法定数量和单位';
 ALTER TABLE `orders` CHANGE `gross_weoght` `gross_weoght` FLOAT(10,2) NULL DEFAULT '0.00' COMMENT '总毛重', CHANGE `net_weight` `net_weight` FLOAT(10,2) NULL DEFAULT '0.00' COMMENT '总净重', CHANGE `total_quantity` `total_quantity` INT(11) NULL DEFAULT '0' COMMENT '总数量', CHANGE `total_box` `total_box` INT(11) NULL DEFAULT '0' COMMENT '总箱数', CHANGE `total_volume` `total_volume` INT(11) NULL DEFAULT '0' COMMENT '商品总体积', CHANGE `credit_insurance` `credit_insurance` DECIMAL(10,2) NULL DEFAULT '0.00' COMMENT '使用信保金额数', CHANGE `bond` `bond` DECIMAL(10,2) NULL DEFAULT '0.00' COMMENT '订单保证金', CHANGE `service_charge` `service_charge` DECIMAL(8,2) NULL DEFAULT '0.00' COMMENT '信保融资服务费', CHANGE `drawback_money` `drawback_money` DECIMAL(8,2) NULL DEFAULT '0.00' COMMENT '退税金额', CHANGE `transfer_fee` `transfer_fee` DECIMAL(8,2) NULL DEFAULT '0.00' COMMENT '中转手续费', CHANGE `overdue_money` `overdue_money` DECIMAL(8,2) NULL DEFAULT '0.00' COMMENT '逾期金额', CHANGE `settlement_money` `settlement_money` DECIMAL(10,2) NULL DEFAULT '0.00' COMMENT '结汇金额', CHANGE `down_payment` `down_payment` SMALLINT(1) NULL DEFAULT '0' COMMENT '是否有首付款 0:没有,1:有', CHANGE `firstpayment_amount` `firstpayment_amount` INT(11) NULL DEFAULT '0' COMMENT '首付款金额', CHANGE `is_pay` `is_pay` SMALLINT(1) NULL DEFAULT '0' COMMENT '首付款是否支付 0:没有,1:已支付', CHANGE `settlement_cycle` `settlement_cycle` TINYINT(3) NULL DEFAULT '90' COMMENT '结汇周期', CHANGE `settlement_type` `settlement_type` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '结算方式 1先定金再交货时付尾款 2交货时付全款 3交货后付款', CHANGE `already_pay` `already_pay` FLOAT(10,2) NULL DEFAULT '0.00' COMMENT '已支付金额', CHANGE `delivery_time` `delivery_time` INT(11) NULL DEFAULT '0' COMMENT '发货时间', CHANGE `order_state` `order_state` SMALLINT(3) NULL DEFAULT '0' COMMENT '订单状态 0:未审核,-1:审核未通过,-2:取消,2:通过审核,3:工厂生产,4:生产完成,5:发运,6:报关,7:发票,8:退税,9:结汇,10:返还保证金,11:完成';
+
+--
+-- 表的结构 `collection_file`
+--
+
+CREATE TABLE `collection_file` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `c_id` int(11) UNSIGNED DEFAULT NULL COMMENT '父ID',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `category` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '类别 1报关退税单 2供货合同 3增值税发票 4提单',
+  `client_name` varchar(255) DEFAULT NULL COMMENT '原文件名称',
+  `service_path` varchar(255) DEFAULT NULL COMMENT '服务器文件路径',
+  `extension` varchar(255) DEFAULT NULL COMMENT '文件扩展',
+  `file_size` varchar(255) DEFAULT NULL COMMENT '文件大小',
+  `created_at` int(11) DEFAULT NULL COMMENT '上传时间',
+  `updated_at` int(11) DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件上传表';
+
+
+ALTER TABLE `collection_file`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `collection_file`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
