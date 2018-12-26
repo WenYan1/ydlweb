@@ -169,7 +169,7 @@ public function behaviors()
 				$post['invoice_amount'] = $invoice_amount;
 				$post['customs_money'] = $customs_money;
 				$order = $ordersModel->add($post, $message);
-				$transaction->rollBack();
+
 				if ($order) {
 					$order_id = $order->id;
 					if (empty($goodsData)) {
