@@ -487,7 +487,7 @@
                             上传采购订单或PI：
                         </div>
                         <div class="col-md-2" >
-                            <img id = "purchasing_order_btn" src="../images/upload_bg.png"/>
+                            <img id = "purchasing_order_btn" src="../images/up.png"/>
                             <input id="purchasing_order_input" type="file"  name="purchasing_order" />
                         </div>
             
@@ -495,7 +495,7 @@
                             其他：
                         </div>
                         <div class="col-md-2" >
-                            <img id="other_file_btn" src="../images/upload_bg.png"/>
+                            <img id="other_file_btn" src="../images/up.png"/>
                             <input id="other_file_input" type="file"  name="other_file"/>
                         </div>
                     </div>
