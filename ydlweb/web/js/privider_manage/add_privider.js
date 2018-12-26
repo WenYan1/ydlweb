@@ -143,66 +143,62 @@ function checkAndSubmit(){
     //         showFailHint("请上传其他！");
     //     }
 
-   // if (checkData(customs_port)) {
-     //   showFailHint("报关口岸内容不能为空！");
-//    } else
-	if (checkData(customs_contact)) {
-        showFailHint("报关联系人内容不能为空！");
-    } else if (checkData(customs_contact_tel)) {
-        showFailHint("报关联系方式内容不能为空！");
-    } else if (checkData(destination_country_or_area)) {
-        showFailHint("运抵国（地区）内容不能为空！");
-    }else if (checkData(arrive_port)) {
-        showFailHint("到达口岸内容不能为空！");
-    } else if (checkData(transport_package_count)) {
-        showFailHint("整体包装件数内容不能为空！");
-    } else if (checkData(pack_type_list)) {
-        showFailHint("包装种类内容不能为空！");
-    } else if (checkData(goods_id)) {
-        showFailHint("出货产品内容不能为空！");
-    } else if (checkData(net_weight)) {
-        showFailHint("总净重(KG)内容不能为空！");
-    } else if (checkData(gross_weight)) {
-        showFailHint("总毛重(KG)内容不能为空！");
-    } else if (checkData(box_number)) {
-        showFailHint("产品数量和单位内容不能为空！");
-    } else if (checkData(box_unit)) {
-        showFailHint("产品数量和单位内容不能为空！");
-    } else if (checkData(goods_price)) {
-        showFailHint("单价内容不能为空！");
-    } else if (checkData(subtotal)) {
-        showFailHint("货值内容不能为空！");
-    } else if (checkData(standard_count)) {
-        showFailHint("法定数量和单位内容不能为空！");
-    } else if (checkData(supplier_id)) {
-        showFailHint("开票人内容不能为空！");
-    } else if (checkData(invoice_amount)) {
-        showFailHint("开票金额内容不能为空！");
-    } else if (checkData(estimate)) {
-        showFailHint("估算汇率内容不能为空！");
-    } else if (checkData(delivery_time)) {
-        showFailHint("预计出货日期内容不能为空！");
-    } else if (checkData(buyers_name)) {
-        showFailHint("境外收货人内容不能为空！");
-    } else if (checkData(buyers_address)) {
-        showFailHint("地址内容不能为空！");
-    } else if (checkData(buyers_contact)) {
-        showFailHint("联系方式内容不能为空！");
-    } else if (checkData(trading_country)) {
-        showFailHint("贸易国（地区）内容不能为空！");
-    } else if (checkData(goods_supply_id)) {
-        showFailHint("境内货源地内容不能为空！");
-    } else if (checkData(goods_save_adr)) {
-        showFailHint("目前货物存放地址内容不能为空！");
-    } else if (checkData(contract_type)) {
-        showFailHint("合同编号内容不能为空！");
-    } else if (bl_size > 8 * 1024 * 1024) {
-        showFailHint("上传采购订单或PI不能大于8MB");
-    } else if (tr_size > 8 * 1024 * 1024) {
-        showFailHint("上传其他附件不能大于8MB");
-    } else {
+ 
+	//if (checkData(customs_contact_tel)) {
+   //     showFailHint("报关联系方式内容不能为空！");
+   // } else if (checkData(destination_country_or_area)) {
+   //     showFailHint("运抵国（地区）内容不能为空！");
+   // }else if (checkData(arrive_port)) {
+   //     showFailHint("到达口岸内容不能为空！");
+   // } else if (checkData(transport_package_count)) {
+    //    showFailHint("整体包装件数内容不能为空！");
+   // } else if (checkData(pack_type_list)) {
+    //    showFailHint("包装种类内容不能为空！");
+   // } else if (checkData(goods_id)) {
+     //   showFailHint("出货产品内容不能为空！");
+    //} else if (checkData(net_weight)) {
+    //    showFailHint("总净重(KG)内容不能为空！");
+    //} else if (checkData(gross_weight)) {
+   //     showFailHint("总毛重(KG)内容不能为空！");
+   // } else if (checkData(box_number)) {
+    //    showFailHint("产品数量和单位内容不能为空！");
+   // } else if (checkData(box_unit)) {
+     //   showFailHint("产品数量和单位内容不能为空！");
+   // } else if (checkData(goods_price)) {
+     //   showFailHint("单价内容不能为空！");
+   // } else if (checkData(subtotal)) {
+     //   showFailHint("货值内容不能为空！");
+   // } else if (checkData(standard_count)) {
+    //    showFailHint("法定数量和单位内容不能为空！");
+  //  } else if (checkData(supplier_id)) {
+    //    showFailHint("开票人内容不能为空！");
+   // } else if (checkData(invoice_amount)) {
+      //  showFailHint("开票金额内容不能为空！");
+   // } else if (checkData(estimate)) {
+     //   showFailHint("估算汇率内容不能为空！");
+    //} else if (checkData(delivery_time)) {
+       // showFailHint("预计出货日期内容不能为空！");
+    //} else if (checkData(buyers_name)) {
+       // showFailHint("境外收货人内容不能为空！");
+   // } else if (checkData(buyers_address)) {
+     //   showFailHint("地址内容不能为空！");
+   // } else if (checkData(buyers_contact)) {
+    //    showFailHint("联系方式内容不能为空！");
+   // } else if (checkData(trading_country)) {
+     //   showFailHint("贸易国（地区）内容不能为空！");
+   // } else if (checkData(goods_supply_id)) {
+     //   showFailHint("境内货源地内容不能为空！");
+   // } else if (checkData(goods_save_adr)) {
+    //    showFailHint("目前货物存放地址内容不能为空！");
+   // } else if (checkData(contract_type)) {
+   //     showFailHint("合同编号内容不能为空！");
+  //  } else if (bl_size > 8 * 1024 * 1024) {
+     //   showFailHint("上传采购订单或PI不能大于8MB");
+   // } else if (tr_size > 8 * 1024 * 1024) {
+   //     showFailHint("上传其他附件不能大于8MB");
+  //  } else {
         $("#sumbit-real").click();
-    }
+  //  }
 }
 
 function checkPhone(data){
