@@ -59,74 +59,85 @@
 							<span class="text-value value-float"><?php echo $collection["is_end"] == 1 ? '是' : '否';?></span>
 						</div>
 					</div>
-                    <div class="row-fluid col-sm-12">
-                        <div class="col-xs-2">
-                            <span class="text-name name-float">报关单退税联：</span>
+                    <div class="container-fluid submit-img" style="background-color: #FAFAFA;">
+                        <div class="row-fluid col-md-12">
+                            <div class="col-md-2" >
+                                <p style="display:block;float:right;">上传报关单退税联 :</p>
+                            </div>
+                            <div class="col-md-10" data-category="1">
+								<?php if (!empty($collectionFiles[1])){
+									foreach ($collectionFiles[1] as $key => $item){ ?>
+                                        <div style="width: 120px;float: left;margin-right: 8px" data-key="<?=$key?>" data-box="true">
+                                            <a href="<?=$img_source.$item['service_path']?>" target="_blank">
+                                                <div class="thumbnail">
+                                                    <img src="<?=Upload::get_file_thumbnail($img_source.$item['service_path'])?>" data-action="upload" style="height: 120px;width: 120px;"/>
+                                                </div>
+                                            </a>
+                                        </div>
+									<?php } }  ?>
+                            </div>
+                            <div class="space"></div>
+                            <div class="col-md-2" >
+                                <p style="display:block;float:right;">上传供货合同 :</p>
+                            </div>
+                            <div class="col-md-10" data-category="2">
+								<?php if (!empty($collectionFiles[2])){
+									foreach ($collectionFiles[2] as $key => $item){ ?>
+                                        <div style="width: 120px;float: left;margin-right: 8px" data-key="<?=$key?>" data-box="true">
+                                            <a href="<?=$img_source.$item['service_path']?>" target="_blank">
+                                                <div class="thumbnail">
+                                                    <img src="<?=Upload::get_file_thumbnail($img_source.$item['service_path'])?>" data-action="upload" style="height: 120px;width: 120px;"/>
+                                                </div>
+                                            </a>
+                                        </div>
+
+									<?php } }  ?>
+                            </div>
+                            <div class="space"></div>
+                            <div class="col-md-2" >
+                                <p style="display:block;float:right;">上传增值税发票 :</p>
+                            </div>
+                            <div class="col-md-10" data-category="3">
+								<?php if (!empty($collectionFiles[3])){
+									foreach ($collectionFiles[3] as $key => $item){ ?>
+                                        <div style="width: 120px;float: left;margin-right: 8px" data-key="<?=$key?>" data-box="true">
+                                            <div class="thumbnail">
+                                                <a href="<?=$img_source.$item['service_path']?>" target="_blank">
+                                                    <div class="thumbnail">
+                                                        <img src="<?=Upload::get_file_thumbnail($img_source.$item['service_path'])?>" data-action="upload" style="height: 120px;width: 120px;"/>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+									<?php } }  ?>
+                            </div>
+                            <div class="space"></div>
+                            <div class="col-md-2" >
+                                <p style="display:block;float:right;">上传提单 :</p>
+                            </div>
+                            <div class="col-md-10" data-category="4">
+								<?php if (!empty($collectionFiles[4])){
+									foreach ($collectionFiles[4] as $key => $item){ ?>
+                                        <div style="width: 120px;float: left;margin-right: 8px" data-key="<?=$key?>" data-box="true">
+                                            <div class="thumbnail">
+                                                <a href="<?=$img_source.$item['service_path']?>" target="_blank">
+                                                    <div class="thumbnail">
+                                                        <img src="<?=Upload::get_file_thumbnail($img_source.$item['service_path'])?>" data-action="upload" style="height: 120px;width: 120px;"/>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+									<?php } }  ?>
+                            </div>
                         </div>
-                        <div class="col-xs-2">
-                            <img id="business-license-btn" src="<?php  echo $img_source.$collection["tax_refund"];?>" class="company-image " alt="报关单退税联">
+                        <div class="row-fluid col-md-12">
+
                         </div>
-                        <div class="col-xs-2">
-                            <span class="text-name name-float">供货合同</span>
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="tax-reg-btn" src="<?php echo $img_source.$collection["supply_contract"];?>" class="company-image " alt="供货合同">
-                        </div>
-                        <div class="col-xs-2">
-                            <span class="text-name name-float">增值税发票：</span>
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="organization-code-btn" src="<?php echo $img_source.$collection["invoice"];?>" class="company-image " alt="增值税发票">
-                        </div>
-				</div>
+                    </div>
 			</div>
 		</form>
-		<div class="modal fade bs-example-modal-lg" id="bl-dialog" tabindex="-1" role="dialog" aria-labelledby="blLabel">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-header" style="border-bottom:0px;">
-					<button type="button" class="close"
-					        data-dismiss="modal" aria-hidden="true">
-						&times;
-					</button>
-					<h4></h4>
-				</div>
-				<div class="modal-content modal-padding">
-					<img  class="big-img" src="<?php echo $img_source.$collection['tax_refund'];?>">
-				</div>
-			</div>
-		</div>
-
-
-		<div class="modal fade bs-example-modal-lg" id="tr-dialog" tabindex="-1" role="dialog" aria-labelledby="trLabel">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-header" style="border-bottom:0px;">
-					<button type="button" class="close"
-					        data-dismiss="modal" aria-hidden="true">
-						&times;
-					</button>
-					<h4></h4>
-				</div>
-				<div class="modal-content modal-padding">
-					<img class="big-img" src="<?php echo $img_source.$collection['supply_contract'];?>">
-				</div>
-			</div>
-		</div>
-
-
-		<div class="modal fade bs-example-modal-lg" id="oc-dialog" tabindex="-1" role="dialog" aria-labelledby="ocLabel">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-header" style="border-bottom:0px;">
-					<button type="button" class="close"
-					        data-dismiss="modal" aria-hidden="true">
-						&times;
-					</button>
-					<h4></h4>
-				</div>
-				<div class="modal-content modal-padding">
-					<img class="big-img" style="" src="<?php echo $img_source. $collection['invoice'];?>">
-				</div>
-			</div>
-		</div>
 
 	</div>
 </div>

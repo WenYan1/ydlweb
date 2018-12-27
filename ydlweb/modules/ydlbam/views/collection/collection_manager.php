@@ -72,28 +72,33 @@
 							<td></td>
 						<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                         <td>
-							<?php if (!empty($data['tax_refund'])){ ?>
-                                <a href="<?php echo $img_source.$data['tax_refund']?>">下载</a>
-							<?php } else { ?>
+		                    <?php if (!empty($Files[$data['id']][1])) { ?>
+                                已上传
+		                    <?php } else { ?>
                                 未上传
-							<?php } ?>
+		                    <?php } ?>
                         </td>
                         <td>
-							<?php if (!empty($data['supply_contract'])){ ?>
-                                <a href="<?php echo $img_source.$data['supply_contract']?>">下载</a>
-							<?php } else { ?>
+		                    <?php if (!empty($Files[$data['id']][2])) { ?>
+                                已上传
+		                    <?php } else { ?>
                                 未上传
-							<?php } ?>
+		                    <?php } ?>
                         </td>
                         <td>
-							<?php if (!empty($data['invoice'])){ ?>
-                                <a href="<?php echo $img_source.$data['invoice']?>">下载</a>
-							<?php } else { ?>
+		                    <?php if (!empty($Files[$data['id']][3])) { ?>
+                                已上传
+		                    <?php } else { ?>
                                 未上传
-							<?php } ?>
+		                    <?php } ?>
                         </td>
-                         <td>未上传
-                                </td>
+                        <td>
+		                    <?php if (!empty($Files[$data['id']][4])) { ?>
+                                已上传
+		                    <?php } else { ?>
+                                未上传
+		                    <?php } ?>
+                        </td>
 						<td>
                             <select data-state-bind="true" data-id="<?=$data['id']?>">
                                 <option value="0"></option>
