@@ -26,7 +26,7 @@
             }
         ?>
 		<script type="text/javascript" src="../public/jquery.datetimepicker.js"></script>
-		<script type="text/javascript" src="../js/privider_manage/add_privider.js"></script>
+		<script type="text/javascript" src="../js/order/order1.js"></script>
 
         	<div style="border-bottom:1px solid #d8d8d8;">
         		<a href='<?php echo Yii::$app->urlManager->createUrl(['order']);?>' class="spacing-left privider-sapce-top">
