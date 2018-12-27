@@ -39,7 +39,7 @@
          </p>
        </div>
        <div>
-        <p class="font-content-size">公司地址：</p>
+        <p class="font-content-size">注册地址：</p>
         <p class="font-title-size font-weight-bold">
           <?php echo $company['country'];?>
           <?php echo $company['city'];?>
@@ -47,7 +47,7 @@
         </p>
       </div>
       <div>
-        <p class="font-content-size">联系人及电话：</p>
+        <p class="font-content-size">联系方式：</p>
         <p class="font-title-size ">
           <?php echo $company['company_tel'];?> 
         </p>
@@ -69,6 +69,8 @@
             echo "90天";
           }elseif ($company['expect_days']==2) {
             echo "120天";
+          }elseif ($company['expect_days']==3) {
+            echo "不需要";
           };?> 
         </p>
       </div>
@@ -79,6 +81,21 @@
 		  <?php echo $company['apply_for'];?> 
       </p>
     </div>
+	 <div>
+        <p class="font-content-size">办公地址：</p>
+        <p class="font-title-size ">
+    
+		  
+      </p>
+    </div>
+	 <div>
+        <p class="font-content-size">联系电话：</p>
+        <p class="font-title-size ">
+    
+		  
+      </p>
+    </div>
+	
   </div>
   <div class="under-line col-md-12 col-lg-12"></div>
 
@@ -93,6 +110,18 @@
         };?>
         <?php } ?>
         <?php } ?>
+      </p>
+    </div>
+	<div>
+      <p class="font-content-size">当前主要销售平台：</p>
+      <p class="font-title-size">
+       
+      </p>
+    </div>
+	<div>
+      <p class="font-content-size">销售规模：</p>
+      <p class="font-title-size">
+        
       </p>
     </div>
   </div>

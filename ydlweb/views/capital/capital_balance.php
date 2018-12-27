@@ -71,13 +71,13 @@
                 </div>
             </div>
         	<a href="<?php echo Yii::$app->urlManager->createUrl(['/capital/recharge']); ?>">
-        		<p class="default-background-blue font-content-size recharge spacing-left">充值</p>
+        		<p class="default-background-blue font-content-size recharge spacing-left">收汇</p>
         	</a>
 
         </div>
         <div class="row-fluid col-md-12" >
             <div class="orange-label">
-                 <p class="label-title">充值结汇</p>
+                 <p class="label-title">收汇结汇</p>
             </div>
         </div>
         <div class="privider-select">
@@ -88,7 +88,7 @@
                  if($type == '3'){
             ?>
 					<div id="type-3" class="table-select select-true">
-                        <p>充值记录</p>
+                        <p>收汇记录</p>
                     </div>
 					<div id="type-4" class="table-select select-false">
                         <p>结汇记录</p>
@@ -99,7 +99,7 @@
                 }else{
             ?>
 					<div id="type-3" class="table-select select-false">
-                        <p>充值记录</p>
+                        <p>收汇记录</p>
                     </div>
 						<div id="type-4" class="table-select select-true">
                         <p>结汇记录</p>

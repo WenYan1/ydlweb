@@ -42,7 +42,7 @@ AppAsset::register($this);
                资金管理 <i class="icon"></i>
            </li>
             <div class="capital-detail">
-				<li class="capital-balance"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital/capital-logs']); ?>'>充值结汇</a></li>
+				<li class="capital-balance"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital/capital-logs']); ?>'>收汇结汇</a></li>
                 <li class="capital-manage"><a href='<?php echo Yii::$app->urlManager->createUrl(['capital']); ?>'>付款还款</a></li>
                 
             </div>

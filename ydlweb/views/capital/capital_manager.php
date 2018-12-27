@@ -68,7 +68,7 @@
         		</div>
         	</div>
         	<a href="<?php echo Yii::$app->urlManager->createUrl(['/capital/recharge']); ?>">
-        		<p class="default-background-blue font-content-size recharge spacing-left">充值</p>
+        		<p class="default-background-blue font-content-size recharge spacing-left">收汇</p>
         	</a>
 
         </div>

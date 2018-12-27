@@ -100,7 +100,7 @@
 		    		</div>
 	    	</div>
 	    	<a href="capital/recharge">
-	        		<p class="default-background-blue font-content-size recharge spacing-left">充值</p>
+	        		<p class="default-background-blue font-content-size recharge spacing-left">收汇</p>
 	        	</a>
 	    </div>
 
