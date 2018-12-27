@@ -47,7 +47,7 @@ if($this->context->_popSuccessMessage()) {
       </div>
       <div class="company-part" style="height: 160px">
         <div class="company-left">
-          公司地址：
+          注册地址：
         </div>
         <div class="company-right">
           <input type="" id="company-country" name='company[country]' value="" placeholder="Country/国家" /><br><br>
@@ -57,7 +57,7 @@ if($this->context->_popSuccessMessage()) {
       </div>
       <div class="company-part">
         <div class="company-left">
-          联系人及电话：
+          联系方式：
         </div>
         <div class="company-right"><input id="company-tel" type="" name='company[company_tel]' value="" />
         </div>
@@ -76,6 +76,7 @@ if($this->context->_popSuccessMessage()) {
         <div class="company-right">
           <label><input name="company[expect_days]" type="radio" value="1">&nbsp&nbsp90天</label> 
           <label><input name="company[expect_days]" type="radio" value="2">&nbsp120天</label> 
+		   <label><input name="company[expect_days]" type="radio" value="3">&nbsp不需要</label> 
         </div>
       </div>
       <!--<div class="company-part">
@@ -96,6 +97,21 @@ if($this->context->_popSuccessMessage()) {
 		<div class="company-right"><input id="company-apply-for" type="" name='company[apply_for]' value="" />
         </div>
       </div>
+	  
+	  <div class="company-left">
+          办公地址：
+        </div>
+        <div class="company-right">
+		<div class="company-right"><input id="" type="" name='#####' value="" />
+        </div>
+      </div>
+	  <div class="company-left">
+          联系电话：
+        </div>
+        <div class="company-right">
+		<div class="company-right"><input id="" type="" name='#####' value="" />
+        </div>
+      </div>
 
       <div class="company-part">
         <div class="company-left">
@@ -109,6 +125,20 @@ if($this->context->_popSuccessMessage()) {
           <input name="" type="checkbox" value="<?php echo $exportRange[$i]['id'];?>" >&nbsp&nbsp<?php echo $exportRange[$i]['name'];?>
         </div>
         <?php }?>
+      </div>
+	   <div class="company-left">
+          当前主要销售平台：
+        </div>
+        <div class="company-right">
+		<div class="company-right"><input id="" type="" name='#####' value="" />
+        </div>
+      </div>
+	   <div class="company-left">
+          销售规模：
+        </div>
+        <div class="company-right">
+		<div class="company-right"><input id="" type="" name='#####' value="" />万美金/月
+        </div>
       </div>
       <input id="export-range" name="company[export_range]" type="hidden" value="">
       <div class="company-submit">
