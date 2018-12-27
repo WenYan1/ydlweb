@@ -103,33 +103,32 @@ if($this->context->_popSuccessMessage()) {
 								<td></td>
 								<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                                 <td>
-                                    <?php if (!empty($data['tax_refund'])){ ?>
-                                    <a href="<?php echo $img_source.$data['tax_refund']?>">已上传</a>
-                                    <?php } else { ?>
+	                                <?php if (!empty($Files[$data['id']][1])) { ?>
+                                        已上传
+	                                <?php } else { ?>
                                         未上传
-                                    <?php } ?>
+	                                <?php } ?>
                                 </td>
                                 <td>
-                                    <?php if (!empty($data['supply_contract'])){ ?>
-                                    <a href="<?php echo $img_source.$data['supply_contract']?>">已上传</a>
-                                    <?php } else { ?>
+	                                <?php if (!empty($Files[$data['id']][2])) { ?>
+                                        已上传
+	                                <?php } else { ?>
                                         未上传
-                                    <?php } ?>
+	                                <?php } ?>
                                 </td>
                                 <td>
-                                    <?php if (!empty($data['invoice'])){ ?>
-                                    <a href="<?php echo $img_source.$data['invoice']?>">已上传</a>
-                                    <?php } else { ?>
+	                                <?php if (!empty($Files[$data['id']][3])) { ?>
+                                        已上传
+	                                <?php } else { ?>
                                         未上传
-                                    <?php } ?>
+	                                <?php } ?>
                                 </td>
-								
                                 <td>
-									 <?php if (!empty($data['is_identification'])){ ?>
-                                    <a href="<?php echo $img_source.$data['is_identification']?>">已上传</a>
-                                    <?php } else { ?>
+	                                <?php if (!empty($Files[$data['id']][4])) { ?>
+                                        已上传
+	                                <?php } else { ?>
                                         未上传
-                                    <?php } ?>
+	                                <?php } ?>
                                 </td>
 								<td>
 									<?=$data['foreign_exchange_status'] == 1 ? '已收齐' : ''?>
