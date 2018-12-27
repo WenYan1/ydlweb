@@ -53,6 +53,8 @@ function submitForm(){
 
 function checkAndSubmit(){
 
+    var drawback_brokerage = $("#drawback_brokerage").val();
+    var interest_offer = $("#interest_offer").val();
     var customs_port = $("#customs_port").val();
     var customs_contact = $("#customs_contact").val();
     var customs_contact_tel = $("#customs_contact_tel").val();
@@ -92,7 +94,11 @@ function checkAndSubmit(){
     //         showFailHint("请上传其他！");
     //     }
 
-    if (checkData(customs_port)) {
+    if (checkData(drawback_brokerage)) {
+        showFailHint("退税手续费内容不能为空！");
+    } else if (checkData(interest_offer)) {
+        showFailHint("年化利息报价内容不能为空！");
+    } else if (checkData(customs_port)) {
         showFailHint("报关口岸内容不能为空！");
     } else if (checkData(customs_contact)) {
         showFailHint("报关联系人内容不能为空！");
