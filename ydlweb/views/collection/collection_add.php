@@ -79,24 +79,55 @@ if($this->context->_popSuccessMessage()) {
 	</div>
 	<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
 		<div class="row-fluid col-md-12">
-			<div class="col-md-4 col-md-offset-1" >
-				<p style="display:block;float:right;">上传报关单退税联、供货合同、增值税发票、提单 :</p>
+			<div class="col-md-4" >
+				<p style="display:block;float:right;">上传报关单退税联 :</p>
 			</div>
-			<div class="col-md-7">
-				<img id = "tax_refund_btn" src="../images/upload_bg.png"/>
-				<input id="tax_refund_input" type="file" accept="image/*" name="tax_refund" />
-				<img id = "supply_contract_btn" src="../images/upload_bg.png"/>
-				<input id="supply_contract_input" type="file" accept="image/*" name="supply_contract" />
-				<img id = "invoice_btn" src="../images/upload_bg.png"/>
-				<input id="invoice_input" type="file" accept="image/*" name="invoice" />
-				<img id = "invoice_btn" src="../images/upload_bg.png"/>
-				<input id="#####" type="file" accept="image/*" name="#####" />
+			<div class="col-md-7" data-category="1">
+                <div style="width: 120px;float: left;margin-right: 8px">
+                    <div>
+                        <img src="../images/up.png" data-action="upload" style="height: 120px;width: 120px;"/>
+                    </div>
+                </div>
 			</div>
+            <div class="space"></div>
+            <div class="col-md-4" >
+                <p style="display:block;float:right;">上传供货合同 :</p>
+            </div>
+            <div class="col-md-7" data-category="2">
+                <div style="width: 120px;float: left;margin-right: 8px">
+                    <div>
+                        <img src="../images/up.png" data-action="upload" style="height: 120px;width: 120px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="col-md-4" >
+                <p style="display:block;float:right;">上传增值税发票 :</p>
+            </div>
+            <div class="col-md-7" data-category="3">
+                <div style="width: 120px;float: left;margin-right: 8px">
+                    <div>
+                        <img src="../images/up.png" data-action="upload" style="height: 120px;width: 120px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="col-md-4" >
+                <p style="display:block;float:right;">上传提单 :</p>
+            </div>
+            <div class="col-md-7" data-category="4">
+                <div style="width: 120px;float: left;margin-right: 8px">
+                    <div>
+                        <img src="../images/up.png" data-action="upload" style="height: 120px;width: 120px;"/>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div class="row-fluid col-md-12">
 
 		</div>
 	</div>
+    <input id="select_file" type="file" name="file" style="display:none;"/>
 	<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 	<input style="display:none;" id="sumbit-real" type="submit" value="Submit">
 </form>
@@ -105,5 +136,143 @@ if($this->context->_popSuccessMessage()) {
 		<p class="submit-btn">提交</p>
 	</div>
 </div>
+<script type="text/javascript">
+    var ZJJ = {
+        category: 1,
+        dir: '<?=$img_source?>',
+        doFileSerialize: function (box) {
+            var view = this;
 
+            var lists = $('[data-category="' + box + '"]').find('[data-box="true"]');
+
+            lists.each(function (i) {
+                var item = $(this);
+                var inputs = item.find("input");
+
+                item.attr('data-key', i);
+
+                inputs.each(function () {
+                    var input = $(this);
+                    var field_name = input.attr('data-field-name');
+
+                    input.attr('name', 'files[' + box + '][' + i + '][' + field_name + ']');
+                });
+            });
+        },
+        getFileTemplate: function (file) {
+            var view = this;
+            var src = get_file_ext(view.dir + file.service_path);
+            src = src === '' ? view.dir + file.service_path : src;
+            return '<div style="width: 120px;float: left;margin-right: 8px" data-box="true">\n' +
+                '<div class="thumbnail">\n' +
+                '<img src="' + src + '" data-action="upload" style="height: 120px;width: 120px;"/>\n' +
+                '<div class="caption">\n' +
+                '<p>' + file.client_name + '</p>\n' +
+                '<p style="display: none" data-action="operation">\n' +
+                '<a href="javascript:;" class="btn btn-primary" data-action="delete" style="color: #ffffff">删除</a>\n' +
+                '</p>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '<input type="hidden" data-field-name="category" value="'+file.category+'"> ' +
+                '<input type="hidden" data-field-name="client_name" value="'+file.client_name+'"> ' +
+                '<input type="hidden" data-field-name="extension" value="'+file.extension+'"> ' +
+                '<input type="hidden" data-field-name="file_size" value="'+file.file_size+'"> ' +
+                '<input type="hidden" data-field-name="service_path" value="'+file.service_path+'"> ' +
+                '</div>';
+        },
+        doUpload: function () {
+            var view = this;
+            var formData = new FormData;
+            var img_file = document.getElementById("select_file");
+            var fileObj = img_file.files[0];
+            var _csrf = $("#_csrf").val();
+            formData.append("file", fileObj);
+            formData.append("category", view.category);
+            formData.append("_csrf", _csrf);
+            showFailHint('上传中...');
+
+            setTimeout(function () {
+                $.ajax({
+                    url: "/collection/do-upload",
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    async: false,
+                    success: function (result) {
+                        hideFailHint();
+                        if (result.state == 1) {
+                            var html = view.getFileTemplate(result.file);
+
+                            var box = result.file.category;
+
+                            $("[data-category='" + box + "']").append(html);
+
+                            view.doFileSerialize(box);
+                        }
+                    }
+                });
+
+                $("#select_file").val("");
+            },200);
+        },
+        initHover: function () {
+            var view = this;
+
+            $(document).on("mouseenter", '[data-box="true"]', function () {
+                var that = $(this);
+                var operation = that.find('[data-action="operation"]');
+                operation.show();
+            });
+
+            $(document).on("mouseleave", '[data-box="true"]', function () {
+                var that = $(this);
+                var operation = that.find('[data-action="operation"]');
+                operation.hide();
+            });
+        },
+        initChangeFile: function () {
+            var view = this;
+            $("#select_file").change(function () {
+                view.doUpload();
+            });
+        },
+        initUploadBtn: function () {
+            var view = this;
+
+            $(document).on("click", '[data-action="upload"]', function () {
+                var that = $(this);
+
+                $("#select_file").trigger('click');
+
+                view.category = that.parents().eq(2).attr('data-category');
+                //view.category = view.category === undefined ? that.parents().eq(4).attr('data-category') : view.category;
+            });
+        },
+        initDeleteBtn: function () {
+            var view = this;
+
+            $(document).on("click", '[data-action="delete"]', function () {
+                var that = $(this);
+
+                var item = that.parents().eq(3);
+
+                item.slideUp(600,function () {
+                    $(this).remove();
+                })
+            });
+        },
+        init: function () {
+            var view = this;
+
+            view.initUploadBtn();
+            view.initChangeFile();
+            view.initHover();
+            view.initDeleteBtn();
+        }
+    };
+
+    ZJJ.init();
+</script>
 

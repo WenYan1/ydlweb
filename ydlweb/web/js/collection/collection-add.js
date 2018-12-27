@@ -4,49 +4,8 @@ var bl_size = 0;
 var tr_size = 0;
 var oc_size = 0;
 $(document).ready(function(){
-	aboutUploadImg();
     submitForm();
 });
-
-function aboutUploadImg(){
-
-	$("#tax_refund_btn").click(function(){
-		$("#tax_refund_input").click();
-	});
-	$("#supply_contract_btn").click(function(){
-		$("#supply_contract_input").click();
-	});
-	$("#invoice_btn").click(function(){
-		$("#invoice_input").click();
-	});
-
-    $("#tax_refund_input").change(function(){
-        var src = window.URL.createObjectURL(this.files[0]);
-        bl_size = this.files[0].size;
-        if(bl_size > 4*1024*1024){
-            showFailHint("上传图片不能大于4MB");
-        }
-        $("#tax_refund_btn").attr("src",src);
-    });
-
-    $("#supply_contract_input").change(function(){
-        var src = window.URL.createObjectURL(this.files[0]);
-        tr_size = this.files[0].size;
-        if(tr_size > 4*1024*1024){
-            showFailHint("上传图片不能大于4MB");
-        }
-        $("#supply_contract_btn").attr("src",src);
-    });
-
-    $("#invoice_input").change(function(){
-        var src = window.URL.createObjectURL(this.files[0]);
-        oc_size = this.files[0].size;
-        if(oc_size > 4*1024*1024){
-            showFailHint("上传图片不能大于4MB");
-        }
-        $("#invoice_btn").attr("src",src);
-    });
-}
 
 
 function submitForm(){
@@ -59,28 +18,25 @@ function checkAndSubmit(){
 
     var order_number = $("#order_number").val();
     var anticipated_tax_refund = $("#anticipated_tax_refund").val();
-    var img1 = $("#tax_refund_input").val() || $("#tax_refund_hide").val();
-    var img2 = $("#supply_contract_input").val() || $("#supply_contract_hide").val();
-    var img3 = $("#invoice_input").val() || $("#invoice_hide").val();
+
+    var img1 = $('[data-category="1"] [data-box="true"]').length;
+    var img2 = $('[data-category="2"] [data-box="true"]').length;
+    var img3 = $('[data-category="3"] [data-box="true"]').length;
+    var img4 = $('[data-category="4"] [data-box="true"]').length;
 
     if(checkData(order_number)){
         showFailHint("订单号内容不能为空！");
     }else if(checkData(anticipated_tax_refund)){
         showFailHint("预计退税款内容不能为空！");
-    }else if(checkData(img1)){
-        showFailHint("上传报关单退税联、供货合同、增值税发票信息不完整！");
-    }else if(checkData(img2)){
-        showFailHint("上传报关单退税联、供货合同、增值税发票信息不完整！");
-    }else if(checkData(img3)){
-        showFailHint("上传报关单退税联、供货合同、增值税发票信息不完整！");
-    }else if(bl_size > 4*1024*1024){
-        showFailHint("上传图片不能大于4MB");
-    }else if(tr_size > 4*1024*1024){
-        showFailHint("上传图片不能大于4MB");
-    }else if(oc_size > 4*1024*1024){
-        showFailHint("上传图片不能大于4MB");
-    }
-	else{
+    }else if(img1 <= 0){
+        showFailHint("请上传报关退税联！");
+    }else if(img2 <= 0){
+        showFailHint("请上传供货合同！");
+    }else if(img3 <= 0){
+        showFailHint("请上传增值税发票！");
+    }else if(img4 <= 0){
+        showFailHint("请上传提单！");
+    } else{
         $("#sumbit-real").click();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CollectionFile;
 use Yii;
 use Tool;
 use Upload;
@@ -70,8 +71,6 @@ class CollectionController extends HomeBaseController
 		if ($request->isPost) {
 			$collectionModel = new Collection;
 
-			$dir = 'collection/';
-
 			$data = [];
 			$data['user_id'] = $session['uid'];
 			$data['user_email'] = $session['userEmail'];
@@ -80,45 +79,65 @@ class CollectionController extends HomeBaseController
 			$data['is_identification'] = $request->post('is_identification');
 			$data['is_end'] = $request->post('is_end');
 
-			$taxRefundFile = UploadedFile::getInstanceByName('tax_refund');
-			$supplyContractFile = UploadedFile::getInstanceByName('supply_contract');
-			$invoiceFile = UploadedFile::getInstanceByName('invoice');
+			$files = $request->post('files');
 
-			if (!empty($taxRefundFile)) {
-				$tempPath = Upload::getPath($dir, $taxRefundFile->getExtension());
-				$tempResult = $taxRefundFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('报关单退税联上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$data['tax_refund'] = $dir . $tempPath['newName'];
-			}
-
-			if (!empty($supplyContractFile)) {
-				$tempPath = Upload::getPath($dir, $supplyContractFile->getExtension());
-				$tempResult = $supplyContractFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('供货合同上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$data['supply_contract'] = $dir . $tempPath['newName'];
-			}
-
-			if (!empty($invoiceFile)) {
-				$tempPath = Upload::getPath($dir, $invoiceFile->getExtension());
-				$tempResult = $invoiceFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('增值税发票上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$data['invoice'] = $dir . $tempPath['newName'];
-			}
+			$connection = Yii::$app->db;
+			$transaction = $connection->beginTransaction();
 
 			$supplier = $collectionModel->add($data, $message);
 			if ($supplier) {
-				$this->_setSuccessMessage($message);
-				$this->redirect('/collection');
+
+				$id = $supplier->id;
+
+				$collectionFile = array();
+				$i = 0;
+				$_time = time();
+				foreach ($files as $category => $item) {
+					if (!empty($item)) {
+						foreach ($item as $file) {
+							$collectionFile[$i]['c_id'] = $id;
+							$collectionFile[$i]['user_id'] = $session['uid'];
+							$collectionFile[$i]['category'] = $category;
+							$collectionFile[$i]['client_name'] = $file['client_name'];
+							$collectionFile[$i]['service_path'] = $file['service_path'];
+							$collectionFile[$i]['extension'] = $file['extension'];
+							$collectionFile[$i]['file_size'] = $file['file_size'];
+							$collectionFile[$i]['created_at'] = $_time;
+							$collectionFile[$i]['updated_at'] = $_time;
+
+							$i++;
+						}
+					}
+				}
+
+				if (!empty($collectionFile)) {
+					$result = $connection->createCommand()->batchInsert(CollectionFile::tableName(), [
+						'c_id',
+						'user_id',
+						'category',
+						'client_name',
+						'service_path',
+						'extension',
+						'file_size',
+						'created_at',
+						'updated_at',
+					], $collectionFile)->execute();
+
+					if ($result) {
+						$transaction->commit();
+						$this->_setSuccessMessage($message);
+						$this->redirect('/collection');
+					} else {
+						$transaction->rollBack();
+						$this->_setErrorMessage($message);
+					}
+				} else {
+					$transaction->rollBack();
+					$this->_setErrorMessage("文件未上传");
+				}
 			} else {
+
+				$transaction->rollBack();
 				$this->_setErrorMessage($message);
 				$this->redirect(Yii::$app->request->referrer);
 			}
@@ -137,8 +156,10 @@ class CollectionController extends HomeBaseController
 
 		if ($request->isPost) {
 			$collectionModel = new Collection;
+			$collectionFilesModel = new CollectionFile;
 
-			$dir = 'collection/';
+			$c_id = $request->post('c_id');
+			$files = $request->post('files');
 
 			$data = [];
 			$data['order_number'] = $request->post('order_number');
@@ -146,75 +167,77 @@ class CollectionController extends HomeBaseController
 			$data['is_identification'] = $request->post('is_identification');
 			$data['is_end'] = $request->post('is_end');
 
-			$taxRefundFile = UploadedFile::getInstanceByName('tax_refund');
-			$supplyContractFile = UploadedFile::getInstanceByName('supply_contract');
-			$invoiceFile = UploadedFile::getInstanceByName('invoice');
-
-			$tax_refund = '';
-			if (!empty($taxRefundFile)) {
-				$tempPath = Upload::getPath($dir, $taxRefundFile->getExtension());
-				$tempResult = $taxRefundFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('报关单退税联上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$tax_refund = $dir . $tempPath['newName'];
-			}
-
-			$supply_contract = '';
-			if (!empty($supplyContractFile)) {
-				$tempPath = Upload::getPath($dir, $supplyContractFile->getExtension());
-				$tempResult = $supplyContractFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('供货合同上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$supply_contract = $dir . $tempPath['newName'];
-			}
-
-			$invoice = '';
-			if (!empty($invoiceFile)) {
-				$tempPath = Upload::getPath($dir, $invoiceFile->getExtension());
-				$tempResult = $invoiceFile->saveAs($tempPath['savePath'] . $tempPath['newName']);
-				if (!$tempResult) {
-					$this->_setErrorMessage('增值税发票上传失败');
-					$this->redirect(Yii::$app->request->referrer);
-				}
-				$invoice = $dir . $tempPath['newName'];
-			}
-
 			$condition = [];
-			$condition['id'] = $request->post('c_id');
+			$condition['id'] = $c_id;
 			$condition['user_id'] = $session['uid'];
 			$collectionModel = $collectionModel->findById($condition, $message);
-			$collection = '';
+
 			if ($collectionModel) {
 				$collectionModel->order_number = $request->post('order_number');
 				$collectionModel->anticipated_tax_refund = $request->post('anticipated_tax_refund');
 				$collectionModel->is_identification = $request->post('is_identification');
 				$collectionModel->is_end = $request->post('is_end');
 
-				if (!empty($tax_refund)) {
-					$collectionModel->tax_refund = $tax_refund;
-				}
-				if (!empty($supply_contract)) {
-					$collectionModel->supply_contract = $supply_contract;
-				}
-				if (!empty($invoice)) {
-					$collectionModel->invoice = $invoice;
+
+				$connection = Yii::$app->db;
+				$transaction = $connection->beginTransaction();
+
+				$collectionFilesModel->actDeleteAll($c_id,$message);
+
+				$collectionFile = array();
+				$i = 0;
+				$_time = time();
+				foreach ($files as $category => $item) {
+					if (!empty($item)) {
+						foreach ($item as $file) {
+							$collectionFile[$i]['c_id'] = $c_id;
+							$collectionFile[$i]['user_id'] = $session['uid'];
+							$collectionFile[$i]['category'] = $category;
+							$collectionFile[$i]['client_name'] = $file['client_name'];
+							$collectionFile[$i]['service_path'] = $file['service_path'];
+							$collectionFile[$i]['extension'] = $file['extension'];
+							$collectionFile[$i]['file_size'] = $file['file_size'];
+							$collectionFile[$i]['created_at'] = $_time;
+							$collectionFile[$i]['updated_at'] = $_time;
+
+							$i++;
+						}
+					}
 				}
 
-				$collection = $collectionModel->save();
+				if (!empty($collectionFile)) {
+					$result = $connection->createCommand()->batchInsert(CollectionFile::tableName(), [
+						'c_id',
+						'user_id',
+						'category',
+						'client_name',
+						'service_path',
+						'extension',
+						'file_size',
+						'created_at',
+						'updated_at',
+					], $collectionFile)->execute();
+
+					if ($result) {
+						$collection = $collectionModel->save();
+						if ($collection) {
+							$transaction->commit();
+							$this->_setSuccessMessage("编辑成功");
+							$this->redirect('/collection');
+						} else {
+							$transaction->rollBack();
+							$this->_setErrorMessage("编辑失败");
+							$this->redirect(Yii::$app->request->referrer);
+						}
+					} else {
+						$transaction->rollBack();
+						$this->_setErrorMessage("编辑失败");
+					}
+				} else {
+					$transaction->rollBack();
+					$this->_setErrorMessage("文件未上传");
+				}
 			}
-
-			if ($collection) {
-				$this->_setSuccessMessage($message);
-				$this->redirect('/collection');
-			} else {
-				$this->_setErrorMessage($message);
-				$this->redirect(Yii::$app->request->referrer);
-			}
-
 
 		} else {
 			$collectionModel = new Collection;
@@ -223,10 +246,54 @@ class CollectionController extends HomeBaseController
 			$condition['user_id'] = $session['uid'];
 			$collectionModel = $collectionModel->findById($condition, $message);
 
+			$CollectionFileModel = new CollectionFile;
+
+			$collectionFiles = $CollectionFileModel->findByCid(['c_id'=>$request->get('id')]);
+			$collectionFiles = Tool::convert2Array($collectionFiles);
+
+			$_collectionFiles = array();
+			if (!empty($collectionFiles)){
+				foreach ($collectionFiles as $item){
+					$_collectionFiles[$item['category']][] = $item;
+				}
+			}
+
 			return $this->render('collection_edit', [
-				'collection' => $collectionModel
+				'collection' => $collectionModel,
+				'collectionFiles' => $_collectionFiles
 			]);
 		}
 	}
 
+	public function actionDoUpload()
+	{
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		if ($request->isPost) {
+			$dir = 'collection/';
+			$imageFile = UploadedFile::getInstanceByName('file');
+
+			$result = array(
+				'client_name' => $imageFile->name,
+				'file_size'   => $imageFile->size
+			);
+
+			$path = Upload::getPath($dir, $imageFile->getExtension());
+			$fileResult = $imageFile->saveAs($path['savePath'] . $path['newName']);
+
+			$result['category'] = $request->post('category');
+			$result['service_path'] = $dir . $path['newName'];
+			$result['extension'] = $imageFile->getExtension();
+
+			if ($fileResult) {
+				$result = Tool::array2Json(array('state' => 1, 'file' => $result));
+			} else {
+				$result = Tool::array2Json(array('state' => 0));
+			}
+
+			exit($result);
+		}
+	}
 }
