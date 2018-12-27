@@ -131,11 +131,11 @@ if($this->context->_popSuccessMessage()) {
                                     </p>
                                 </div>
                             </div>
-                            <input type="hidden" data-field-name="category" name="files[1][<?=$key?>][category]" value="<?=$item['category']?>">
-                            <input type="hidden" data-field-name="client_name" name="files[1][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
-                            <input type="hidden" data-field-name="extension" name="files[1][<?=$key?>][extension]" value="<?=$item['extension']?>">
-                            <input type="hidden" data-field-name="file_size" name="files[1][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
-                            <input type="hidden" data-field-name="service_path" name="files[1][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
+                            <input type="hidden" data-field-name="category" name="files[2][<?=$key?>][category]" value="<?=$item['category']?>">
+                            <input type="hidden" data-field-name="client_name" name="files[2][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
+                            <input type="hidden" data-field-name="extension" name="files[2][<?=$key?>][extension]" value="<?=$item['extension']?>">
+                            <input type="hidden" data-field-name="file_size" name="files[2][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
+                            <input type="hidden" data-field-name="service_path" name="files[2][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
                         </div>
 
 		            <?php } }  ?>
@@ -162,11 +162,11 @@ if($this->context->_popSuccessMessage()) {
                                     </p>
                                 </div>
                             </div>
-                            <input type="hidden" data-field-name="category" name="files[1][<?=$key?>][category]" value="<?=$item['category']?>">
-                            <input type="hidden" data-field-name="client_name" name="files[1][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
-                            <input type="hidden" data-field-name="extension" name="files[1][<?=$key?>][extension]" value="<?=$item['extension']?>">
-                            <input type="hidden" data-field-name="file_size" name="files[1][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
-                            <input type="hidden" data-field-name="service_path" name="files[1][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
+                            <input type="hidden" data-field-name="category" name="files[3][<?=$key?>][category]" value="<?=$item['category']?>">
+                            <input type="hidden" data-field-name="client_name" name="files[3][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
+                            <input type="hidden" data-field-name="extension" name="files[3][<?=$key?>][extension]" value="<?=$item['extension']?>">
+                            <input type="hidden" data-field-name="file_size" name="files[3][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
+                            <input type="hidden" data-field-name="service_path" name="files[3][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
                         </div>
 
 		            <?php } }  ?>
@@ -193,11 +193,11 @@ if($this->context->_popSuccessMessage()) {
                                     </p>
                                 </div>
                             </div>
-                            <input type="hidden" data-field-name="category" name="files[1][<?=$key?>][category]" value="<?=$item['category']?>">
-                            <input type="hidden" data-field-name="client_name" name="files[1][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
-                            <input type="hidden" data-field-name="extension" name="files[1][<?=$key?>][extension]" value="<?=$item['extension']?>">
-                            <input type="hidden" data-field-name="file_size" name="files[1][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
-                            <input type="hidden" data-field-name="service_path" name="files[1][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
+                            <input type="hidden" data-field-name="category" name="files[4][<?=$key?>][category]" value="<?=$item['category']?>">
+                            <input type="hidden" data-field-name="client_name" name="files[4][<?=$key?>][client_name]" value="<?=$item['client_name']?>">
+                            <input type="hidden" data-field-name="extension" name="files[4][<?=$key?>][extension]" value="<?=$item['extension']?>">
+                            <input type="hidden" data-field-name="file_size" name="files[4][<?=$key?>][file_size]" value="<?=$item['file_size']?>">
+                            <input type="hidden" data-field-name="service_path" name="files[4][<?=$key?>][service_path]" value="<?=$item['service_path']?>">
                         </div>
 
 		            <?php } }  ?>

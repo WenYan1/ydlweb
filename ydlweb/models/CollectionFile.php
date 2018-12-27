@@ -81,7 +81,7 @@ class CollectionFile extends \yii\db\ActiveRecord
 	}
 
 	public function actDeleteAll($c_id, &$message) {
-		$result = self::deleteAll('c_id = :c_id', [':c_id' => $c_id]);
+		$result = CollectionFile::deleteAll('c_id = '.$c_id);
 		if($result || $result === 0) {
 			$message = '删除成功';
 			return true;

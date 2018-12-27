@@ -156,6 +156,10 @@ class CollectionController extends HomeBaseController
 
 		if ($request->isPost) {
 			$collectionModel = new Collection;
+			$collectionFilesModel = new CollectionFile;
+
+			$c_id = $request->post('c_id');
+			$files = $request->post('files');
 
 			$data = [];
 			$data['order_number'] = $request->post('order_number');
@@ -164,10 +168,10 @@ class CollectionController extends HomeBaseController
 			$data['is_end'] = $request->post('is_end');
 
 			$condition = [];
-			$condition['id'] = $request->post('c_id');
+			$condition['id'] = $c_id;
 			$condition['user_id'] = $session['uid'];
 			$collectionModel = $collectionModel->findById($condition, $message);
-			$collection = '';
+
 			if ($collectionModel) {
 				$collectionModel->order_number = $request->post('order_number');
 				$collectionModel->anticipated_tax_refund = $request->post('anticipated_tax_refund');
@@ -175,19 +179,65 @@ class CollectionController extends HomeBaseController
 				$collectionModel->is_end = $request->post('is_end');
 
 
+				$connection = Yii::$app->db;
+				$transaction = $connection->beginTransaction();
 
+				$collectionFilesModel->actDeleteAll($c_id,$message);
 
-				$collection = $collectionModel->save();
+				$collectionFile = array();
+				$i = 0;
+				$_time = time();
+				foreach ($files as $category => $item) {
+					if (!empty($item)) {
+						foreach ($item as $file) {
+							$collectionFile[$i]['c_id'] = $c_id;
+							$collectionFile[$i]['user_id'] = $session['uid'];
+							$collectionFile[$i]['category'] = $category;
+							$collectionFile[$i]['client_name'] = $file['client_name'];
+							$collectionFile[$i]['service_path'] = $file['service_path'];
+							$collectionFile[$i]['extension'] = $file['extension'];
+							$collectionFile[$i]['file_size'] = $file['file_size'];
+							$collectionFile[$i]['created_at'] = $_time;
+							$collectionFile[$i]['updated_at'] = $_time;
+
+							$i++;
+						}
+					}
+				}
+
+				if (!empty($collectionFile)) {
+					$result = $connection->createCommand()->batchInsert(CollectionFile::tableName(), [
+						'c_id',
+						'user_id',
+						'category',
+						'client_name',
+						'service_path',
+						'extension',
+						'file_size',
+						'created_at',
+						'updated_at',
+					], $collectionFile)->execute();
+
+					if ($result) {
+						$collection = $collectionModel->save();
+						if ($collection) {
+							$transaction->commit();
+							$this->_setSuccessMessage("编辑成功");
+							$this->redirect('/collection');
+						} else {
+							$transaction->rollBack();
+							$this->_setErrorMessage("编辑失败");
+							$this->redirect(Yii::$app->request->referrer);
+						}
+					} else {
+						$transaction->rollBack();
+						$this->_setErrorMessage("编辑失败");
+					}
+				} else {
+					$transaction->rollBack();
+					$this->_setErrorMessage("文件未上传");
+				}
 			}
-
-			if ($collection) {
-				$this->_setSuccessMessage($message);
-				$this->redirect('/collection');
-			} else {
-				$this->_setErrorMessage($message);
-				$this->redirect(Yii::$app->request->referrer);
-			}
-
 
 		} else {
 			$collectionModel = new Collection;
