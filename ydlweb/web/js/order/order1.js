@@ -5,6 +5,7 @@ var tr_size = 0;
 $(document).ready(function(){
     aboutUploadImg();
     submitForm();
+	
 });
 
 function aboutUploadImg(){

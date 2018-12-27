@@ -26,9 +26,12 @@ $img_source = "/uploads/";
 				<span id="<?php echo $order['order_state'];?>" class="text-value space_left order_state">
 					<?php 
 					if ($order['order_state']==0) {
-						echo '下单审核';
-					} elseif ($order['order_state']==2) {
-						echo '工厂生产';
+						echo '订单审核中';
+					}elseif ($order['order_state']==1) {
+						echo '审核通过';
+					}
+					elseif ($order['order_state']==2) {
+						echo '工厂生产中';
 					}elseif ($order['order_state']==3) {
 						echo '质检装柜';
 					}elseif ($order['order_state']==4) {
@@ -52,8 +55,6 @@ $img_source = "/uploads/";
 					}
 					elseif ($order['order_state']==-1) {
 						echo '审核未通过';
-					}elseif ($order['order_state']==-2) {
-						echo '取消';
 					}
 					?>
 				</span>
@@ -62,8 +63,9 @@ $img_source = "/uploads/";
 				<span class="text-value">修改状态：</span>
 				<input type="hidden" id="order_id" name="order_id"  value="<?php echo $order['id'];?>" />
 				<select name="state" id="select_state" class="text-value space_left option-supplier">
-					<option value="0">下单审核</option>
-					<option value="2">工厂生产</option>	
+					<option value="0">订单审核中</option>
+					<option value="1">审核通过</option>
+					<option value="2">工厂生产中</option>	
 					<option value="3">质检装柜</option>
 					<option value="4">到达口岸</option>
 					<option value="5">报关完成</option>
@@ -75,7 +77,7 @@ $img_source = "/uploads/";
 					<option value="11">还本付息</option>
 					<option value="12">已完成</option>
 					<option value="-1">审核未通过</option>
-					<option value="-2">取消</option>
+				
 				</select>
 				<span id="sure-edit" class="font-blue space_left">确认修改</span>
 			</div>
@@ -95,10 +97,10 @@ $img_source = "/uploads/";
             </div>
             <div class="row-fluid col-xs-12">
                 <div class="col-xs-2">
-                    <span class="text-name name-float">退税手续费 :</span>
+                    <span class="text-name name-float">退税手续费率 :</span>
                 </div>
                 <div class="col-xs-9">
-                    <span class="value-float"><?=$order['drawback_brokerage'];?></span>
+                    <span class="value-float"><?=$order['drawback_brokerage'];?>%</span>
                 </div>
             </div>
             <div class="row-fluid col-xs-12">
@@ -114,7 +116,7 @@ $img_source = "/uploads/";
                     <span class="text-name name-float">年化利息报价 :</span>
                 </div>
                 <div class="col-xs-9">
-                    <span class="value-float"><?=$order['interest_offer'];?></span>
+                    <span class="value-float"><?=$order['interest_offer'];?>%</span>
                 </div>
             </div>
             <div class="row-fluid col-xs-12">
@@ -130,7 +132,7 @@ $img_source = "/uploads/";
                     <span class="text-name name-float">订金比例 :</span>
                 </div>
                 <div class="col-xs-9">
-                    <span class="value-float"><?=$order['deposit_ratio'];?></span>
+                    <span class="value-float"><?=$order['deposit_ratio'];?>%</span>
                 </div>
             </div>
             <div class="row-fluid col-xs-12">
@@ -258,12 +260,12 @@ $img_source = "/uploads/";
                     <th >法定数量和单位</th>
                     <th >含税单价</th>
                     <th >开票金额</th>
-                    <th >开票人</th>
+                    <th >供应商</th>
                     <th >预计税款</th>
-                    <th >预计费用</th>
+                    <th >退税手续费</th>
                     <th >预计利息</th>
                     <th >报关汇率</th>
-                    <th >报关总金额</th>
+                    <th >报关金额</th>
                     <th >报关单价</th>
                 </tr>
                 </thead>
@@ -280,7 +282,7 @@ $img_source = "/uploads/";
 								?>
 							<?php } ?>
                         </td>
-                        <td><?php echo $data['tax_rebate_rate'];?></td>
+                        <td><?php echo $data['tax_rebate_rate'];?>%</td>
                         <td><?php echo $data['net_weight'];?></td>
                         <td><?php echo $data['gross_weight'];?></td>
                         <td><?php echo $data['box_number'];?>/<?=Tool::getGoodsUnit($data['box_unit']);?></td>
@@ -300,7 +302,7 @@ $img_source = "/uploads/";
                         <td><?php echo $data['tax_cost'];?></td>
                         <td><?php echo $data['estimated_cost'];?></td>
                         <td><?php echo $data['estimated_interest'];?></td>
-                        <td><?php echo $data['estimate'];?>%</td>
+                        <td><?php echo $data['estimate'];?></td>
                         <td><?php echo $data['subtotal'];?></td>
                         <td><?php echo $data['customs_declaration_price'];?></td>
                     </tr>

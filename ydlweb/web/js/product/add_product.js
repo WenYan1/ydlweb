@@ -111,7 +111,7 @@ function add_product(){
 		' <input type="text" style="margin-left: 7px" class="p-input height font--content input-padding" name="attr'+ num +'[goods_height]" placeholder="高度" required> </div><span id="write-product-info" style="border: 1px solid #4e99b8" class="complete complete-hide font-content-size">完成</span>' +
 		'</div> </div> <div class="row div col-md-4 col-lg-4"><div class="pack-message pack-space-left space-vertical">'+
 		' <p class="content-size spacing-left product-add-tip font--title" >包装箱内物品描述：</p>'+                  
-		'<textarea class="spacing-left describe font--content input-padding" rows="3" cols="30" name="attr'+ num +'[attr_describe]" placeholder="请添加不多于二十字的描述信息" style="margin-left: 161px;" required></textarea>'+
+		'<textarea class="spacing-left describe font--content input-padding" rows="3" cols="30" name="attr'+ num +'[attr_describe]" placeholder="请添加产品描述" style="margin-left: 161px;" required></textarea>'+
 		' </div> </div></div></div></div>  </li>' ;
 
 		changeTotalNum(count);

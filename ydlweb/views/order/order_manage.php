@@ -46,9 +46,10 @@ if($this->context->_popSuccessMessage()) {
 <div>
 	<p class="font-content-size spacing-left order-supplier">订单状态：</p>
 	<select id="order-status" class="option-supplier">
-		<option value="1">全部</option>	
-		<option value="0">下单审核</option>
-		<option value="2">工厂生产</option>	
+		<option value="">全部</option>	
+		<option value="0">订单审核中</option>
+		<option value="1">审核通过</option>
+		<option value="2">工厂生产中</option>	
 		<option value="3">质检装柜</option>
 		<option value="4">到达口岸</option>
 		<option value="5">报关完成</option>
@@ -93,11 +94,11 @@ if($this->context->_popSuccessMessage()) {
                                 <th>结算方式</th>
 								<th>供应商</th>
                                 
-								<th>发票金额</th>
-								<th>报关金额</th>
+								<th>开票总金额</th>
+								<th>报关总金额</th>
 								<th>报关日期</th>
 								<th>状态</th>
-								<th>下载报关资料</th>
+								<th>报关资料</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -122,9 +123,12 @@ if($this->context->_popSuccessMessage()) {
 									<td><?php echo empty($data['delivery_time']) ? '' : date("Y-m-d", $data['delivery_time']);?></td>
 									 <td><?php
 										if ($data['order_state']==0) {
-											echo '下单审核';
-										} elseif ($data['order_state']==2) {
-											echo '工厂生产';
+											echo '订单审核中';
+										}elseif ($data['order_state']==1) {
+											echo '审核通过';
+										}
+										elseif ($data['order_state']==2) {
+											echo '工厂生产中';
 										}elseif ($data['order_state']==3) {
 											echo '质检装柜';
 										}elseif ($data['order_state']==4) {

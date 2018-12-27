@@ -56,6 +56,7 @@
 					</div>
 					<div class="col-md-7">
 						<input class="input-padding" type="text" id="name" name="company_name" value=""/>
+						<span style="color:#9e9e9e;">需为直接工厂，营业范围内有生产、加工、制造等字样</span>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12 input-height">
@@ -65,6 +66,7 @@
 					<div class="col-md-7">
 						<div class="time">
 							<input class="input-padding" id="date" name="cognizance_time" type="text" >
+							<span style="color:#9e9e9e;">一般纳税人认定时间需满一年</span>
 						</div>
 					</div>
 				</div>	
@@ -141,6 +143,7 @@
 					
 					<div class="col-md-7">
 						<input class="input-padding" type="text" id="tax-rate" name="tax_rate" value=""/>%
+						<span style="color:#9e9e9e;">小规模纳税人不能操作，需为一般纳税人</span>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12">

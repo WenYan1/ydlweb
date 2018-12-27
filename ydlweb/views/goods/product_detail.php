@@ -32,10 +32,10 @@
                     <strong>HS Code:</strong> <?php echo $goods['hs_code_remark'];?><br>
 		        <?php } ?>
 		        <?php if (!empty($goods['original_price_remark'])){ ?>
-                    <strong>报关单价(RMB):</strong> <?php echo $goods['original_price_remark'];?><br>
+                    <strong>含税单价(RMB):</strong> <?php echo $goods['original_price_remark'];?><br>
 		        <?php } ?>
 		        <?php if (!empty($goods['goods_image_remark'])){ ?>
-                    <strong>商品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
+                    <strong>产品图片:</strong> <?php echo $goods['goods_image_remark'];?><br>
 		        <?php } ?>
             </div>
         <?php } ?>
@@ -55,17 +55,10 @@
 				<div class="orange-label">
 					<p class="font-title-size spacing-left">产品信息</p>
 				</div>
+				
 				<div class="row-fluid col-md-12">
 					<div class="col-md-1">
-						<p>供应商 :</p>
-					</div>
-					<div class="col-md-3">
-						<span><?php echo $goods['supplier_name']; ?></span>
-					</div>
-				</div>
-				<div class="row-fluid col-md-12">
-					<div class="col-md-1">
-						<p>商品名称 :</p>
+						<p>报关品名 :</p>
 					</div>
 					<div class="col-md-11">
 						<span><?php echo $goods['goods_name']; ?></span>
@@ -73,19 +66,19 @@
 				</div>
 				<div class="row-fluid col-md-12">
 					<div class="col-md-1">
-						<p>报关单价(RMB) :</p>
+						<p>含税单价(RMB) :</p>
 					</div>
 					<div class="col-md-2">
 						<span><?php echo $goods['original_price']; ?></span>
 					</div>
 					<div class="col-md-1">
-						<p>HS Code :</p>
+						<p>海关编码（HS Code） :</p>
 					</div>
 					<div class="col-md-2">
 						<span><?php echo $goods['hs_code']; ?></span>
 					</div>
 					<div class="col-md-1">
-						<p>税率 :</p>
+						<p>退税率 :</p>
 					</div>
 					<div class="col-md-2">
 						<span><?php echo $goods['goods_taxrate']."%"; ?></span>
@@ -140,7 +133,7 @@
 				</div>-->
 				<div class="row-fluid col-md-12">
 					<div class="col-md-1">
-						<p>商品图片 :</p>
+						<p>产品图片 :</p>
 					</div>
 					<div class="col-md-3">
 						<a target="_Blank" href="<?php echo $img_source.$goods['goods_image']; ?>">
@@ -154,7 +147,7 @@
 			<div class="container-fluid product-detail">
 					
 				<div class="orange-label">
-					<p class="font-title-size spacing-left">包装箱产品信息列表</p>
+					<p class="font-title-size spacing-left">产品信息列表</p>
 				</div>
 				<?php
 					$i = 1;
@@ -169,19 +162,19 @@
 				
 				<div class="row-fluid col-md-12">
 					<div class="col-md-1">
-						<p>包装箱长 :</p>
+						<p>长 :</p>
 					</div>
 					<div class="col-md-1">
 						<span><?php echo $value['goods_long']; ?></span>
 					</div>
 					<div class="col-md-1">
-						<p>包装箱宽 :</p>
+						<p>宽 :</p>
 					</div>
 					<div class="col-md-1">
 						<span><?php echo $value['goods_wide']; ?></span>
 					</div>
 					<div class="col-md-1">
-						<p>包装箱高 :</p>
+						<p>高 :</p>
 					</div>
 					<div class="col-md-1">
 						<span><?php echo $value['goods_height']; ?></span>

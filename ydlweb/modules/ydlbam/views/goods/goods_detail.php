@@ -119,11 +119,8 @@
 									<span class="text-value sapce_left"><?php echo $goods['box_number']?></span>
 								</div>
 							</div>
-						</div>
-
-						<div class="col-md-6 col-xs-6">
 							<div class="col-md-12 col-xs-12">
-								<div class=" col-md-5 col-xs-5">
+								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">尺寸(cm)(长/宽/高)：</span>
 								</div>
 								<div class="col-md-6 col-xs-6">
@@ -131,7 +128,7 @@
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">
-								<div class=" col-md-5 col-xs-5">
+								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">产品总体积：</span>
 								</div>
 								<div class="col-md-6 col-xs-6">
@@ -139,13 +136,13 @@
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">
-								<div class=" col-md-5 col-xs-5">
+								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">图片：</span>
 								</div>
 								<div class="col-md-6 col-xs-6">
 									 <img src="<?php echo $img_source.$goods['goods_image']?>" id="product_img" class="company-image " alt="产品图片">
 								</div>
-								<div class=" col-md-5 col-xs-5">
+								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">或上传历史报关单：</span>
 								</div>
 								<div class="col-md-6 col-xs-6">
@@ -153,7 +150,7 @@
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">
-								<div class=" col-md-5 col-xs-5">
+								<div class=" col-md-4 col-xs-4">
 									<span class="name-float">产品售卖链接：</span>
 								</div>
 								<div class="col-md-6 col-xs-6">
@@ -161,16 +158,20 @@
 								</div>
 							</div>
                             <div class="col-md-12 col-xs-12">
-                                <div class=" col-md-5 col-xs-5">
+                                <div class=" col-md-4 col-xs-4">
                                     <span class="name-float">图片未通过备注：</span>
                                 </div>
                                 <div class="col-md-6 col-xs-6">
                                     <textarea class="form-control" name="goods_image_remark" style=" width: 201px; height: 122px;resize:none"><?php echo $goods['goods_image_remark']?></textarea>
                                 </div>
                             </div>
+						</div>
+
+						
+							
 
 						</div>
-					</div>
+					
 				</div>
 			</div>
 			<div class="orange-label">

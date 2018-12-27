@@ -40,9 +40,9 @@
   <li>
     <div>
      <?php if($order['order_state'] == 0){ ?>
-     <div class="step-name default-blue">下单审核</div>
+     <div class="step-name default-blue">订单审核中</div>
      <?php }else  { ?>
-     <div class="step-name font-grey">下单审核</div>
+     <div class="step-name font-grey">订单审核中</div>
      <?php } ?>
 
      <?php if($order['order_state'] > 0){ ?>
@@ -58,12 +58,13 @@
    </div>
  </li>
 
+
  <li>
   <div>
     <?php if($order['order_state']-2 == 0){ ?>        
-    <div class="step-name default-blue">工厂生产</div>
+    <div class="step-name default-blue">工厂生产中</div>
     <?php }else  { ?>
-    <div class="step-name font-grey">工厂生产</div>
+    <div class="step-name font-grey">工厂生产中</div>
     <?php } ?>
     <?php if(($order['order_state']-2) >0){ ?>
     <img src="../images/blue_line.jpg" alt="" class="blue-line">
@@ -347,7 +348,7 @@
             <span class="text-name name-float">退税手续费 :</span>
         </div>
         <div class="col-xs-9">
-            <span class="value-float"><?=$order['drawback_brokerage'];?></span>
+            <span class="value-float"><?=$order['drawback_brokerage'];?>%</span>
         </div>
     </div>
     <div class="row-fluid col-xs-12">
@@ -363,7 +364,7 @@
             <span class="text-name name-float">年化利息报价 :</span>
         </div>
         <div class="col-xs-9">
-            <span class="value-float"><?=$order['interest_offer'];?></span>
+            <span class="value-float"><?=$order['interest_offer'];?>%</span>
         </div>
     </div>
     <div class="row-fluid col-xs-12">
@@ -379,7 +380,7 @@
             <span class="text-name name-float">订金比例 :</span>
         </div>
         <div class="col-xs-9">
-            <span class="value-float"><?=$order['deposit_ratio'];?></span>
+            <span class="value-float"><?=$order['deposit_ratio'];?>%</span>
         </div>
     </div>
     <div class="row-fluid col-xs-12">
@@ -507,12 +508,12 @@
             <th >法定数量和单位</th>
             <th >含税单价</th>
             <th >开票金额</th>
-            <th >开票人</th>
+            <th >供应商</th>
             <th >预计税款</th>
-            <th >预计费用</th>
+            <th >退税手续费</th>
             <th >预计利息</th>
             <th >报关汇率</th>
-            <th >报关总金额</th>
+            <th >报关金额</th>
             <th >报关单价</th>
         </tr>
         </thead>
@@ -529,7 +530,7 @@
 	                    ?>
 	                <?php } ?>
                 </td>
-                <td><?php echo $data['tax_rebate_rate'];?></td>
+                <td><?php echo $data['tax_rebate_rate'];?>%</td>
                 <td><?php echo $data['net_weight'];?></td>
                 <td><?php echo $data['gross_weight'];?></td>
                 <td><?php echo $data['box_number'];?>/<?=Tool::getGoodsUnit($data['box_unit']);?></td>
@@ -549,7 +550,7 @@
                 <td><?php echo $data['tax_cost'];?></td>
                 <td><?php echo $data['estimated_cost'];?></td>
                 <td><?php echo $data['estimated_interest'];?></td>
-                <td><?php echo $data['estimate'];?>%</td>
+                <td><?php echo $data['estimate'];?></td>
                 <td><?php echo $data['subtotal'];?></td>
                 <td><?php echo $data['customs_declaration_price'];?></td>
             </tr>

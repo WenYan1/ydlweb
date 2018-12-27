@@ -58,7 +58,7 @@
 				</div>
 				<div class="row-fluid col-md-12 input-height">
 					<div class="col-md-3 col-md-offset-2">
-						<p>退税手续费:</p>
+						<p>退税手续费率:</p>
 					</div>
 					<div class="col-md-7">
 						<input data-action="cost" class="input-padding" type="text" name="drawback_brokerage" id="drawback_brokerage" value="" />%
@@ -263,12 +263,12 @@
 								<th >法定数量和单位</th>
                                 <th >含税单价</th>
 								<th >开票金额</th>
-                                <th >开票人</th>
+                                <th >供应商</th>
 								<th >预计税款</th>
-								<th >预计费用</th>
+								<th >退税手续费</th>
 								<th >预计利息</th>
 								<th >报关汇率</th>
-                                <th >报关总金额</th>
+                                <th >报关金额</th>
 								<th >报关单价</th>
                             </tr>
                         </thead>
@@ -337,7 +337,7 @@
                                 </td>
 								 <!--预计税款-->
 								 <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][tax_cost]" data-field="true" data-field-name="tax_cost" id="tax_cost" value="" style="width:60px"/></td>
-							   <!--预计费用-->
+							   <!--退税手续费-->
 							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][estimated_cost]" data-field="true" data-field-name="estimated_cost" id="estimated_cost" value="" style="width:60px"/></td>
                              
 							  <!--预计利息-->
@@ -551,7 +551,7 @@
                         var  sum=tax*parseFloat(drawback_brokerage)/100;
                         var estimated_cost=sum.toFixed(2);
                         tr.find("[data-field-name='estimated_cost']").val(estimated_cost);
-                        var amount = tr.find("[name='advance_days']:checked").val();
+                        var amount = $(".row-fluid").find("[name='advance_days']:checked").val();
                         var advance_days=0;
                         if(amount=="1"){
                             advance_days=90;
@@ -572,6 +572,7 @@
                         }
 
                         var estimated_interest=(a*parseFloat(interest_offer)/36000*parseFloat(advance_days)).toFixed(2);
+						console.log(estimated_interest);
                         tr.find("[data-field-name='estimated_interest']").val(estimated_interest);
 
                         //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率

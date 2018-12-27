@@ -86,7 +86,7 @@
 			</div>
 			<div class="row-fluid col-md-12">
 				<div class="col-md-2">
-					<span class="text-name name-float">公司名称：</span>
+					<span class="text-name name-float">境外公司名称：</span>
 				</div>
 				<div class="col-md-9">
 					<span class="value-float"><?php echo $company['company_name']; ?></span>
@@ -131,7 +131,7 @@
 		<div class="container-fluid">
 			<div class="row-fluid col-md-12">
 				<div class="col-md-2">
-					<span class="text-name name-float">公司名称：</span>
+					<span class="text-name name-float">国内公司名称：</span>
 				</div>
 				<div class="col-md-9">
 					<span class="value-float"><?php echo $company['company_name'];?></span>
@@ -139,12 +139,13 @@
 			</div>
 			<div class="row-fluid col-md-12">
 				<div class="col-md-2">
-					<span class="text-name name-float">公司地址：</span>
+					<span class="text-name name-float">办公地址：</span>
 				</div>
 				<div class="col-md-9">
 					<span class="text-value value-float"><?php echo $company['country'].$company['city'].$company['address'];?></span>
 				</div>
 			</div>
+			
 			<div class="row-fluid col-md-12">
 				<div class="col-md-2">
 					<span class="text-name name-float">电话：</span>
@@ -179,6 +180,7 @@
 					<span class="text-value value-float"><?php if($company['apply_for'] == 0){echo "否";}else{echo "是";}; ?></span>
 				</div>
 			</div>
+			
 			<div class="row-fluid col-md-12">
 				<div class="col-md-2">
 					<span class="text-name name-float">出口产品及大类：</span>
@@ -194,6 +196,22 @@
 				      </p>
 				<div class="col-md-9">
 					<span class="text-value value-float"><?php ?></span>
+				</div>
+			</div>
+			<div class="row-fluid col-md-12">
+				<div class="col-md-2">
+					<span class="text-name name-float">当前销售平台：</span>
+				</div>
+				<div class="col-md-9">
+					<span class="text-value value-float"></span>
+				</div>
+			</div>
+			<div class="row-fluid col-md-12">
+				<div class="col-md-2">
+					<span class="text-name name-float">销售规模：</span>
+				</div>
+				<div class="col-md-9">
+					<span class="text-value value-float">万美金/月</span>
 				</div>
 			</div>
 		</div>
