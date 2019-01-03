@@ -183,7 +183,7 @@ class Suppliers extends \yii\db\ActiveRecord
 
 	public function findByUserId($user_id)
 	{
-		$supplier = self::find()->where(['user_id' => $user_id])->all();
+		$supplier = self::find()->where(['user_id' => $user_id])->orderBy('created_at DESC')->all();
 		return $supplier;
 	}
 

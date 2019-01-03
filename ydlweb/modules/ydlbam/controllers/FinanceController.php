@@ -29,7 +29,7 @@ class FinanceController extends AdminBaseController {
 		
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
+		$models = $query->orderBy('users.updated_at DESC')->offset($pages->offset)->limit($pages->limit)->all();
 
 		return $this->render('fs_manage', [
 			'models' => $models,

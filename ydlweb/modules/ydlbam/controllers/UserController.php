@@ -27,7 +27,7 @@ class UserController extends AdminBaseController {
 		}
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
+		$models = $query->orderBy('updated_at DESC')->offset($pages->offset)->limit($pages->limit)->asArray()->all();
 
 		return $this->render('user_manage', [
 			'models' => $models,

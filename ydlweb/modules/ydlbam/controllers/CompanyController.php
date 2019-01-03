@@ -48,7 +48,7 @@ class CompanyController extends AdminBaseController {
 		 $countQuery = clone $query;
 		//$countQuery = clone $query->orderBy(['companys.created_at' => SORT_DESC]);
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
+		$models = $query->orderBy('created_at DESC')->offset($pages->offset)->limit($pages->limit)->asArray()->all();
 
 		return $this->render('company_certify_manage', [
 			'models' => $models,

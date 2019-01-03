@@ -141,7 +141,7 @@ class Goods extends \yii\db\ActiveRecord
 
 	public function findBySupplier($condition)
 	{
-		$goods = self::find()->where($condition)->all();
+		$goods = self::find()->where($condition)->orderBy('created_at DESC')->all();
 		if ($goods) {
 			return $goods;
 		} else {
