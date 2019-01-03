@@ -412,7 +412,7 @@
             <span class="text-name name-float">报关形式 :</span>
         </div>
         <div class="col-xs-9">
-            <span class="text-value value-float"><?=ZJJConfig::get_customs_port_froms($order['customs_port_type'])?></span>
+            <span class="text-value value-float"><?=ZJJConfig::get_customs_port_froms($order['customs_port_froms'])?></span>
         </div>
     </div>
     <div class="row-fluid col-sm-12">

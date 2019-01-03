@@ -82,9 +82,9 @@ $img_source = "/uploads/";
 				<span id="sure-edit" class="font-blue space_left">确认修改</span>
 			</div>
 		</div>
-		<div class="orange-label">
-			<p>1.收汇方式与报关方式</p>
-		</div>
+        <div class="orange-label">
+            <p class="label-title">1.收汇方式与报关方式</p>
+        </div>
 
         <div class="container-fluid">
             <div class="row-fluid col-xs-12">
@@ -97,7 +97,7 @@ $img_source = "/uploads/";
             </div>
             <div class="row-fluid col-xs-12">
                 <div class="col-xs-2">
-                    <span class="text-name name-float">退税手续费率 :</span>
+                    <span class="text-name name-float">退税手续费 :</span>
                 </div>
                 <div class="col-xs-9">
                     <span class="value-float"><?=$order['drawback_brokerage'];?>%</span>
@@ -164,7 +164,7 @@ $img_source = "/uploads/";
                     <span class="text-name name-float">报关形式 :</span>
                 </div>
                 <div class="col-xs-9">
-                    <span class="text-value value-float"><?=ZJJConfig::get_customs_port_froms($order['customs_port_type'])?></span>
+                    <span class="text-value value-float"><?=ZJJConfig::get_customs_port_froms($order['customs_port_froms'])?></span>
                 </div>
             </div>
             <div class="row-fluid col-sm-12">
@@ -185,8 +185,8 @@ $img_source = "/uploads/";
             </div>
         </div>
 
-        <div class="orange-label">
-            <p>2.产品及开票人信息</p>
+        <div class="orange-label" style="margin-top: 10px">
+            <p class="label-title">2.产品及开票人信息</p>
         </div>
 
         <div class="container-fluid">
@@ -330,8 +330,8 @@ $img_source = "/uploads/";
             </div>
         </div>
 
-        <div class="orange-label">
-            <p>3.报关信息</p>
+        <div class="orange-label" style="margin-top: 20px">
+            <p class="label-title">3.报关信息</p>
         </div>
 
         <div class="container-fluid">

@@ -55,4 +55,15 @@ class OrderGoods extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Orders::className(), ['id' => 'order_id']);
     }
+
+	public function actDeleteAll($o_id, &$message) {
+		$result = OrderGoods::deleteAll('order_id = '.$o_id);
+		if($result || $result === 0) {
+			$message = '删除成功';
+			return true;
+		} else {
+			$message = '删除失败';
+			return false;
+		}
+	}
 }

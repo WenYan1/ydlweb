@@ -168,3 +168,6 @@ ALTER TABLE `collection_file`
 
 ALTER TABLE `collection_file`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- 张俊杰 2018-12-28 09:00
+ALTER TABLE `orders` CHANGE `goods_supply_id` `goods_supply_id` VARCHAR(30) NULL DEFAULT NULL COMMENT '境内货源地', CHANGE `goods_save_adr` `goods_save_adr` VARCHAR(30) NULL DEFAULT NULL COMMENT '货物存放地址';

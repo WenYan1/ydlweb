@@ -57,7 +57,7 @@ class ZJJConfig
 	public static function get_advance_days($key)
 	{
 		if (!empty($key)) {
-			$arr = ZJJConfig::get_config_service_type();
+			$arr = ZJJConfig::get_config_advance_days();
 
 			return !empty($arr[$key]) ? $arr[$key] : '';
 		}
@@ -142,8 +142,8 @@ class ZJJConfig
 	public static function get_config_customs_currency()
 	{
 		return array(
-			1 => '人民币(RMB)',
-			2 => '美金(USD)'
+			2 => '人民币(RMB)',
+			1 => '美金(USD)'
 		);
 	}
 

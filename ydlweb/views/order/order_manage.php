@@ -159,9 +159,14 @@ if($this->context->_popSuccessMessage()) {
 										?></td>
 										<td><a href="javascript:;">下载</a></td>
 										<td class="blue-color">
+                                            <?php if ($data['order_state']==-1){ ?>
+											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-edit','id'=> $data['id']]);?>>
+												编辑
+											</a>|
+                                            <?php } ?>
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-detail','id'=> $data['id']]);?>>
 												查看
-											</a>						
+											</a>
 										</td>
 									</tr>
 									<?php $i++; } ?>	
