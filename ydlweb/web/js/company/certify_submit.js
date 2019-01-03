@@ -27,6 +27,7 @@ function arrFun() {
         var detail = $("#company-detail-address").val();
         var company_tel = $("#company-tel").val();
         var company_expect_money = $("#company-expect-money").val();
+
         if (company_name=='') {
             $("#company-name").focus();
         }else if(country==''){

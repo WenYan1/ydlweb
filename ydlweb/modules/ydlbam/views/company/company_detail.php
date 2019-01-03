@@ -56,11 +56,11 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 		</div>
 		<div class="message-space-top message-space-left">
 			<div class="message-space-top">
-				<span class="text-value">公司名称:</span>
+				<span class="text-value">境外公司名称:</span>
 				<span class="text-value space_left"><?php echo $company['company_name']?></span>
 			</div>
 			<div class="message-space-top">
-				<span class="text-value">公司地址:</span>
+				<span class="text-value">注册地址:</span>
 				<span class="text-value space_left">
 					<?php echo $company['country']?>
 					<?php echo $company['city']?>
@@ -68,9 +68,70 @@ $img_source = "http://172.18.240.62:8080/uploads/";
 				</span>
 			</div>
 			<div class="message-space-top">
-				<span class="text-value">公司电话:</span>
+				<span class="text-value">联系方式:</span>
 				<span class="text-value space_left">
 					<?php echo $company['company_tel']?>
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">期望授信金额:</span>
+				<span class="text-value space_left">
+					<?php echo $company['expect_credit'];?>万美金
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">期望授信天数:</span>
+				<span class="text-value space_left">
+					 <?php
+					 if ($company['expect_days']==1) {
+						 echo "90天";
+					 }elseif ($company['expect_days']==2) {
+						 echo "120天";
+					 }elseif ($company['expect_days']==3) {
+						 echo "不需要";
+					 };?>
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">国内公司名称:</span>
+				<span class="text-value space_left">
+					<?php echo $company['apply_for'];?>
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">办公地址:</span>
+				<span class="text-value space_left">
+					<?=$company['office_address']?>
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">联系电话:</span>
+				<span class="text-value space_left">
+					<?=$company['contact_number']?>
+				</span>
+			</div>
+            <div class="message-space-top">
+                <span class="text-value">出口产品以及大类:</span>
+                <span class="text-value space_left">
+					 <?php $company_data = explode(',', unserialize($company['export_range'])); for ($i = 0; $i < count($company_data); $i++) {?>
+						 <?php for ($a = 0; $a < count($exportRange); $a++) {?>
+							 <?php if($exportRange[$a]['id']==$company_data[$i]) {
+								 echo $exportRange[$a]['name'];
+							 };?>
+						 <?php } ?>
+					 <?php } ?>
+				</span>
+            </div>
+			<div class="message-space-top">
+				<span class="text-value">当前主要销售平台:</span>
+				<span class="text-value space_left">
+					<?=$company['sales_platform']?>
+				</span>
+			</div>
+			<div class="message-space-top">
+				<span class="text-value">销售规模:</span>
+				<span class="text-value space_left">
+					<?=$company['sales_scale']?> 万美金/月
 				</span>
 			</div>
 		</div>

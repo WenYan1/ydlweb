@@ -171,3 +171,8 @@ ALTER TABLE `collection_file`
 
 -- 张俊杰 2018-12-28 09:00
 ALTER TABLE `orders` CHANGE `goods_supply_id` `goods_supply_id` VARCHAR(30) NULL DEFAULT NULL COMMENT '境内货源地', CHANGE `goods_save_adr` `goods_save_adr` VARCHAR(30) NULL DEFAULT NULL COMMENT '货物存放地址';
+ALTER TABLE `companys` CHANGE `apply_for` `apply_for` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '国内公司名称';
+ALTER TABLE `companys` ADD `sales_platform` VARCHAR(255) NULL COMMENT '销售平台' AFTER `export_range`;
+ALTER TABLE `companys` ADD `sales_scale` VARCHAR(255) NULL COMMENT '销售规模' AFTER `export_range`;
+ALTER TABLE `companys` ADD `office_address` VARCHAR(255) NULL COMMENT '办公地址' AFTER `sales_scale`;
+ALTER TABLE `companys` ADD `contact_number` VARCHAR(255) NULL COMMENT '联系电话' AFTER `office_address`;

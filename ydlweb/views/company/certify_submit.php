@@ -79,67 +79,42 @@ if($this->context->_popSuccessMessage()) {
 		   <label><input name="company[expect_days]" type="radio" value="3">&nbsp不需要</label> 
         </div>
       </div>
-      <!--<div class="company-part">
-        <div class="company-left">
-          此公司是否曾经申请信用保险额度：
-        </div>
-        <div class="company-right">
-          <label><input name="company[apply_for]" type="radio" value="1" />&nbsp&nbsp是</label> 
-          <label><input name="company[apply_for]" type="radio" value="0" />&nbsp&nbsp否</label> 
-        </div>
-      </div>
-	  -->
 	   <div class="company-part">
-        <div class="company-left">
-          国内公司名称：
+            <div class="company-left">
+              国内公司名称：
+            </div>
+            <div class="company-right"><input id="company-apply-for" type="" name='company[apply_for]' value="" /></div>
+       </div>
+        <div class="company-part">
+            <div class="company-left">办公地址：</div>
+            <div class="company-right"><input id="" type="" name='company[office_address]' value="" /></div>
         </div>
-        <div class="company-right">
-		<div class="company-right"><input id="company-apply-for" type="" name='company[apply_for]' value="" />
-        </div>
-      </div>
-	  
-	  <div class="company-left">
-          办公地址：
-        </div>
-        <div class="company-right">
-		<div class="company-right"><input id="" type="" name='#####' value="" />
-        </div>
-      </div>
-	  <div class="company-left">
-          联系电话：
-        </div>
-        <div class="company-right">
-		<div class="company-right"><input id="" type="" name='#####' value="" />
-        </div>
-      </div>
 
-      <div class="company-part">
-        <div class="company-left">
-          出口产品以及大类：
+        <div class="company-part">
+	        <div class="company-left">联系电话：</div>
+            <div class="company-right"><input id="" type="" name='company[contact_number]' value="" /></div>
         </div>
-      </div>
 
-      <div class="company-product">
-        <?php for ($i = 0; $i < count($exportRange); $i++) {?>
-        <div class="product-category">
-          <input name="" type="checkbox" value="<?php echo $exportRange[$i]['id'];?>" >&nbsp&nbsp<?php echo $exportRange[$i]['name'];?>
+          <div class="company-part">
+            <div class="company-left">
+              出口产品以及大类：
+            </div>
+              <div class="company-right">
+	              <?php for ($i = 0; $i < count($exportRange); $i++) {?>
+                      <div class="product-category">
+                          <input name="" type="checkbox" value="<?php echo $exportRange[$i]['id'];?>" >&nbsp&nbsp<?php echo $exportRange[$i]['name'];?>
+                      </div>
+	              <?php }?>
+              </div>
+          </div>
+        <div class="company-part">
+            <div class="company-left">当前主要销售平台：</div>
+            <div class="company-right"><input id="" type="" name='company[sales_platform]' value="" /></div>
         </div>
-        <?php }?>
-      </div>
-	   <div class="company-left">
-          当前主要销售平台：
-        </div>
-        <div class="company-right">
-		<div class="company-right"><input id="" type="" name='#####' value="" />
-        </div>
-      </div>
-	   <div class="company-left">
-          销售规模：
-        </div>
-        <div class="company-right">
-		<div class="company-right"><input id="" type="" name='#####' value="" />万美金/月
-        </div>
-      </div>
+        <div class="company-part">
+            <div class="company-left">销售规模：</div>
+            <div class="company-right"><input id="" type="" name='company[sales_scale]' value="" />万美金/月</div>
+         </div>
       <input id="export-range" name="company[export_range]" type="hidden" value="">
       <div class="company-submit">
         <input name="_csrf" type="hidden"  value="<?= Yii::$app->request->csrfToken ?>">

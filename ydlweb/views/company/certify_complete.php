@@ -84,15 +84,15 @@
 	 <div>
         <p class="font-content-size">办公地址：</p>
         <p class="font-title-size ">
-    
+	        <?=$company['office_address']?>
 		  
       </p>
     </div>
 	 <div>
         <p class="font-content-size">联系电话：</p>
         <p class="font-title-size ">
-    
-		  
+
+	        <?=$company['contact_number']?>
       </p>
     </div>
 	
@@ -115,13 +115,13 @@
 	<div>
       <p class="font-content-size">当前主要销售平台：</p>
       <p class="font-title-size">
-       
+	      <?=$company['sales_platform']?>
       </p>
     </div>
 	<div>
       <p class="font-content-size">销售规模：</p>
       <p class="font-title-size">
-        
+	      <?=$company['sales_scale']?> 万美金/月
       </p>
     </div>
   </div>

@@ -3,6 +3,7 @@
 namespace app\modules\ydlbam\controllers;
 
 use app\models\Companys;
+use app\models\Industry;
 use Tool;
 use Yii;
 use yii\data\Pagination;
@@ -71,9 +72,13 @@ class CompanyController extends AdminBaseController {
 		header("Content-type:text/html;charset=utf8");
 		// var_dump($companysModel->attributes);
 
+		$exportRange = new Industry();
+		$data = $exportRange->find()->asArray()->all();
+
 		if ($companysModel) {
 			return $this->render('company_detail', [
 				'company' => $companysModel->attributes,
+				'exportRange' => $data,
 			]);
 		} else {
 			$this->redirect(Yii::$app->request->referrer);
