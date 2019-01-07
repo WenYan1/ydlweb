@@ -82,6 +82,18 @@ class Collection extends \yii\db\ActiveRecord
 		}
 	}
 
+	public function edit($condition, $data, &$message)
+	{
+		$M = self::updateAll($data, $condition);
+		if ($M) {
+			$message = '编辑成功';
+			return true;
+		} else {
+			$message = '编辑失败';
+			return false;
+		}
+	}
+
 	public function findById($condition, &$message)
 	{
 		$collection = self::find()->where($condition)->one();

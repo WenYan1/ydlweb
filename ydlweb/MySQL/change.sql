@@ -176,3 +176,11 @@ ALTER TABLE `companys` ADD `sales_platform` VARCHAR(255) NULL COMMENT '销售平
 ALTER TABLE `companys` ADD `sales_scale` VARCHAR(255) NULL COMMENT '销售规模' AFTER `export_range`;
 ALTER TABLE `companys` ADD `office_address` VARCHAR(255) NULL COMMENT '办公地址' AFTER `sales_scale`;
 ALTER TABLE `companys` ADD `contact_number` VARCHAR(255) NULL COMMENT '联系电话' AFTER `office_address`;
+
+-- 张俊杰 2018-1-7 09:00
+ALTER TABLE `collection` ADD `order_id` INT(11) NULL COMMENT '订单表ID' AFTER `user_id`;
+ALTER TABLE `collection` CHANGE `order_number` `order_number` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单号|合同号';
+ALTER TABLE `collection` ADD `order_status` TINYINT(3) UNSIGNED NULL COMMENT '订单状态' AFTER `foreign_exchange_status`;
+ALTER TABLE `collection` ADD `invoice_amount` VARCHAR(255) NULL COMMENT '发票金额' AFTER `anticipated_tax_refund`;
+ALTER TABLE `orders` ADD `anticipated_tax_refund` VARCHAR(255) NULL COMMENT '预计退税金额' AFTER `invoice_amount`;
+

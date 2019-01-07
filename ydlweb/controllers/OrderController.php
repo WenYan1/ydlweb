@@ -456,13 +456,16 @@ class OrderController extends HomeBaseController
 
 				$invoice_amount = 0;
 				$customs_money = 0;
+				$anticipated_tax_refund = 0;
 				foreach ($goodsData as $key => $item) {
 					$invoice_amount += $item['invoice_amount'];
 					$customs_money += $item['subtotal'];
+					$anticipated_tax_refund += $item['estimated_cost'];
 				}
 
 				$post['invoice_amount'] = $invoice_amount;
 				$post['customs_money'] = $customs_money;
+				$post['anticipated_tax_refund'] = $anticipated_tax_refund;
 				$order = $ordersModel->edit(['id' => $order_id], $post, $message);
 
 				if ($order) {

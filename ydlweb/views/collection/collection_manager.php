@@ -100,7 +100,7 @@ if($this->context->_popSuccessMessage()) {
                             <tr> 
                                 <td><?php echo ($page - 1) * 10 + $i; ?></td>
                                 <td><?=$data['order_number']?></td>
-								<td></td>
+								<td><?=$data['invoice_amount']?></td>
 								<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                                 <td>
 	                                <?php if (!empty($Files[$data['id']][1])) { ?>

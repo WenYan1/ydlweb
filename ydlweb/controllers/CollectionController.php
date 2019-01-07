@@ -43,7 +43,7 @@ class CollectionController extends HomeBaseController
 		$page = $request->get('page') ? $request->get('page') : 1;
 
 		$query = Collection::find()
-			->where(['user_id' => $session['uid']])
+			->where(['user_id' => $session['uid'], 'order_status' => '12'])
 			->andFilterWhere(['is_identification' => $is_identification])
 			->andFilterWhere(['is_end' => $is_end])
 			->andFilterWhere(['like', 'order_number', $order_number])
