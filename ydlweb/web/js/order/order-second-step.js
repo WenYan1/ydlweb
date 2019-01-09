@@ -157,7 +157,7 @@ function lookBigImg(){
 
 function first_pay_check(){
 	var hide_input_html = '<input style="display:none;" name="order_info[firstpayment_amount]" id="firstpay_real">';
-	var customs_money = parseFloat($("#customs_money").text());
+	var invoice_amount = parseFloat($("#invoice_amount").text());
 	$('input:radio').change(function(){
 		if($("#firstpay_real").length > 0){
 			$("#firstpay_real").remove();
@@ -185,7 +185,7 @@ function first_pay_check(){
 					if(checkIntType(price) || checkFloatType(price)){
 						var i = parseFloat(price);
 						$("#first-price-hint1").text("应支付首付款金额为"+  i.toFixed(2) + "元");
-						if(i > parseFloat(customs_money)){
+						if(i > parseFloat(invoice_amount)){
 							$("#first-price-hint1").text("首付款金额不能大于订单总金额！");
 							first_pay_flag = false;
 						}else if(price < 1){
@@ -213,8 +213,8 @@ function first_pay_check(){
 				$("#first-price-2").bind('input propertychange', function() {  
 					if(checkIntType($("#first-price-2").val())){
 						var price2 = parseFloat($("#first-price-2").val());
-						var i = parseFloat(price2 * customs_money/100);
-			        	$("#first-price-hint2").text("应支付首付款金额为"+ price2 + "% * " + customs_money + " = " + i.toFixed(2) + "元");
+						var i = parseFloat(price2 * invoice_amount/100);
+			        	$("#first-price-hint2").text("应支付首付款金额为"+ price2 + "% * " + invoice_amount + " = " + i.toFixed(2) + "元");
 						if(price2 > 100){
 							$("#first-price-hint2").text("百分比不能大于100%！");
 							first_pay_flag = false;

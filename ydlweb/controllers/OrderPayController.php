@@ -137,7 +137,7 @@ class OrderPayController extends HomeBaseController
 	            				$condition['user_id'] = $session['uid'];
 		            			$orderModel = $orderModel->findById($condition,$message);
 		            			if($orderModel) {
-		            				$toPaid = $orderModel->customs_money-$orderModel->already_pay;
+		            				$toPaid = $orderModel->invoice_amount-$orderModel->already_pay;
 		            				if($paymentAmount<=$toPaid) {
 		            					$connection = Yii::$app->db;
 			                    			$transaction = $connection->beginTransaction();
@@ -218,7 +218,7 @@ class OrderPayController extends HomeBaseController
 		            					$data['user_id'] = $session['uid'];
 				            			$orderModel = $orderModel->findById($data,$message);
 				            			if($orderModel) {
-				            				$toPaid = $orderModel->customs_money-$orderModel->already_pay;
+				            				$toPaid = $orderModel->invoice_amount-$orderModel->already_pay;
 				            				if($paymentAmount<=$toPaid) {
 				            					$connection = Yii::$app->db;
 					                    			$transaction = $connection->beginTransaction();
