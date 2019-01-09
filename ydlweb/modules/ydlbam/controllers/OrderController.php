@@ -171,7 +171,7 @@ class OrderController extends AdminBaseController
 
 				$collectionSave = [
 					'user_id'                 => $orderModel->user_id,
-					'user_email'              => $session['email'],
+					'user_email'              => $orderModel->email,
 					'order_id'                => $request->post('order_id'),
 					'order_number'            => $orderModel->contract_type,
 					'is_identification'       => 2,
