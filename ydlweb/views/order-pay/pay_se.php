@@ -49,11 +49,11 @@
             <div class="paying-left"><p class="spacing-left">结汇周期:</p></div>
             <div class="paying-right"><p><?php echo $order['settlement_cycle']; ?></p></div
             <div class="paying-left"><p class="spacing-left">订单总金额(元):</p></div>
-            <div class="paying-right"><p><?php echo $order['order_total']; ?></p></div>
+            <div class="paying-right"><p><?php echo $order['customs_money']; ?></p></div>
             <div class="paying-left"><p class="spacing-left">开票金额(元):</p></div>
-            <div class="paying-right"><p><?php echo $order['order_total']; ?></p></div>
+            <div class="paying-right"><p><?php echo $order['customs_money']; ?></p></div>
             <div class="paying-left"><p class="spacing-left">待支付金额(元):</p></div>
-            <div class="paying-right"><p><?php echo $order['order_total'] - $order['already_pay']; ?></p></div>
+            <div class="paying-right"><p><?php echo $order['customs_money'] - $order['already_pay']; ?></p></div>
             <div class="paying-left"><p class="spacing-left">退税(元):</p></div>
             <div class="paying-right"><p><?php echo $order['drawback_money']; ?></p></div>
             <div class="paying-left"><p class="spacing-left">保证金(元):</p></div>

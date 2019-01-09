@@ -161,12 +161,12 @@ if ($filter == 1) {
                         <tr>
 							<td class="number " style="width:4%"><?php echo ($page - 1) * 10 + $i; ?></td>
                             <td class="capital-manager-1"><?php echo $value['order_sn']; ?></td>
-                            <td class="capital-manager-2"><?php echo $value['order_total']; ?></td>
+                            <td class="capital-manager-2"><?php echo $value['customs_money']; ?></td>
                             <td class="capital-manager-3"><?php echo $value['supplier_name']; ?></td>
                             <td class="capital-manager-4"><?php echo date("Y-m-d", $value['created_at']); ?></td>
                             <td class="capital-manager-5"><?php echo $state_info; ?></td>
                             <td class="capital-manager-6"><?php echo $value['already_pay']; ?></td>
-                            <td class="capital-manager-7"><?php echo $value['order_total'] - $value['already_pay']; ?></td>
+                            <td class="capital-manager-7"><?php echo $value['customs_money'] - $value['already_pay']; ?></td>
                             <td class="capital-manager-8">
                                 <?php if ($value['down_payment'] == 0) {?>
                                 <a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/balance-payment', 'order_id' => $value['id']]); ?>"><?php echo "付款"; ?></a>
@@ -224,7 +224,7 @@ if ($filter == 1) {
                     	?>
                       <tr>
                         <td class="exchange-1"><?php echo $value['order_sn']; ?></td>
-                        <td class="exchange-2"><?php echo $value['order_total']; ?></td>
+                        <td class="exchange-2"><?php echo $value['customs_money']; ?></td>
                         <td class="exchange-3"><?php echo $value['supplier_name']; ?></td>
                         <td class="exchange-4"><?php echo date("Y-m-d", $value['created_at']); ?></td>
                         <td class="exchange-5"><?php echo $state_info; ?></td>
@@ -281,7 +281,7 @@ if ($filter == 1) {
                       <tr>
 						<td class="number " style="width:4%"><?php echo ($page - 1) * 10 + $i; ?></td>
                         <td class="overdue-1"><?php echo $value['order_sn']; ?></td>
-                        <td class="overdue-2"><?php echo $value['order_total']; ?></td>
+                        <td class="overdue-2"><?php echo $value['customs_money']; ?></td>
                         <td class="overdue-3"><?php echo $value['supplier_name']; ?></td>
                         <td class="overdue-4"><?php echo rand(50000, 300000);?></td>
                         <td class="overdue-5"><?php echo date("Y-m-d", $value['created_at']); ?></td>
@@ -335,7 +335,7 @@ if ($filter == 1) {
                 		?>
                       <tr>
                         <td class="duty_rate-1"><?php echo $value['order_sn']; ?></td>
-                        <td class="duty_rate-2"><?php echo $value['order_total']; ?></td>
+                        <td class="duty_rate-2"><?php echo $value['customs_money']; ?></td>
                         <td class="duty_rate-3"><?php echo $value['supplier_name']; ?></td>
                         <td class="duty_rate-4"><?php echo date("Y-m-d", $value['created_at']); ?></td>
                         <td class="duty_rate-5"><?php echo $state_info; ?></td>

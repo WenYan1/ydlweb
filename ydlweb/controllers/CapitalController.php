@@ -54,7 +54,7 @@ class CapitalController extends HomeBaseController
 		$bufferTimeDifference = $nowTime - $overdueTime - $bufferTime; //缓冲时间差
 		$query = Orders::find()->where(['user_id' => $session['uid']]);
 		if ($filter == 1) {
-			$query->andWhere(['or', ['and', 'delivery_time=0', 'order_state>=2'], ['and', 'delivery_time!=0', 'order_state<9', 'delivery_time>' . $timeDifference]])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
+			$query->andWhere(['or', ['and', 'delivery_time=0', 'order_state>=1'], ['and', 'delivery_time!=0', 'order_state<9', 'delivery_time>' . $timeDifference]])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 2) {
 			$query->andWhere(['<', 'order_state', 9])->andWhere(['<=', 'delivery_time', $timeDifference])->andWhere(['>=', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 3) {

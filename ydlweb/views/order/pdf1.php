@@ -107,7 +107,7 @@
 				</tr>	
 				<tr>
 					<td style="width:18%;border-bottom:0px;border-right:0px;">货物报关总价</td>
-					<td style="width:32%;border-bottom:0px;border-right:0px;"><?php echo $order['order_total'].'RMB'?></td>
+					<td style="width:32%;border-bottom:0px;border-right:0px;"><?php echo $order['customs_money'].'RMB'?></td>
 					<td style="width:18%;border-bottom:0px;border-right:0px;">境内货源地</td>
 					<td style="width:32%;border-bottom:0px;"><?php echo $order['original_place']?></td>
 				</tr>

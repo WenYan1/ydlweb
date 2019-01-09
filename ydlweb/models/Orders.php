@@ -22,7 +22,7 @@ use yii\db\ActiveRecord;
  * @property string  $supplier_email
  * @property integer $customs_port
  * @property integer $arrive_port
- * @property double  $order_total
+ * @property double  $customs_money
  * @property string  $original_place
  * @property double  $gross_weoght
  * @property double  $net_weight
@@ -73,7 +73,7 @@ class Orders extends \yii\db\ActiveRecord
 		return [
 			/*[['order_sn', 'user_id', 'supplier_id', 'total_quantity', 'total_box', 'credit_insurance', 'down_payment', 'is_pay', 'already_pay', 'delivery_time', 'order_state', 'created_at'], 'integer'],
 			[['user_company', 'user_principal', 'user_tel', 'user_email', 'supplier_name', 'supplier_principal', 'supplier_tel', 'supplier_email', 'original_place', 'created_at'], 'required'],
-			[['order_total', 'gross_weoght', 'net_weight', 'service_charge', 'drawback_money', 'transfer_fee', 'overdue_money', 'settlement_money'], 'number'],
+			[['customs_money', 'gross_weoght', 'net_weight', 'service_charge', 'drawback_money', 'transfer_fee', 'overdue_money', 'settlement_money'], 'number'],
 			[['user_company', 'supplier_name', 'original_place'], 'string', 'max' => 60],
 			[['user_principal', 'user_email', 'supplier_principal', 'supplier_email'], 'string', 'max' => 30],
 			[['user_tel', 'supplier_tel'], 'string', 'max' => 15]*/
@@ -103,7 +103,7 @@ class Orders extends \yii\db\ActiveRecord
 			'customs_port_type'           => 'customs_port_type',
 			'customs_port_froms'          => 'customs_port_froms',
 			'arrive_port'                 => 'arrive_port',
-			'order_total'                 => 'order_total',
+			'customs_money'                 => 'customs_money',
 			'order_amount'                => 'order_amount',
 			'invoice_amount'              => 'invoice_amount',
 			'customs_money'               => 'customs_money',

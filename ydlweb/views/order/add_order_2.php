@@ -194,7 +194,7 @@ if($this->context->_popSuccessMessage()) {
 			<div class="info-custom">
 				<div class="order-inf">
 					<p>订单总金额(美元)：
-						<span id="order_total_USD">
+						<span id="customs_money_USD">
 						<?php echo round($order_goods['total_price']*($exchange_rate) ,2); ?>
 						(今日汇率：<?php echo $exchange_rate; ?>)
 						</span>
@@ -305,8 +305,8 @@ if($this->context->_popSuccessMessage()) {
 				<div class="info-custom">
 					<div class="order-inf">
 						<p>订单总金额(元)：
-							<span id="order_total"><?php echo $order_goods['total_price'] ?></span>
-							<input type="hidden" name="order_info[order_total]" value="<?php echo $order_goods['total_price'] ?>" />
+							<span id="customs_money"><?php echo $order_goods['total_price'] ?></span>
+							<input type="hidden" name="order_info[customs_money]" value="<?php echo $order_goods['total_price'] ?>" />
 						</p>
 					</div>
 					<div class="div-first-pay">

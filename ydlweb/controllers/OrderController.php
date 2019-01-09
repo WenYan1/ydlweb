@@ -253,7 +253,7 @@ class OrderController extends HomeBaseController
 			//$orderInfo['order_sn'] = $session['order_sn'];
 			$orderInfo['user_id'] = $session['uid'];
 			$orderInfo['email'] = $session['userEmail'];
-			$orderInfo['invoice_amount'] = $orderInfo['order_total'] * 1.17;
+			$orderInfo['invoice_amount'] = $orderInfo['customs_money'] * 1.17;
 			$orderInfo['exchange_rate'] = $this->rmbToUsd();
 			unset($post['order_info']);
 			$connection = Yii::$app->db;
@@ -262,7 +262,7 @@ class OrderController extends HomeBaseController
 				if ($orderInfo['firstpayment_amount'] == 0) {
 					$this->_setErrorMessage('首付款金额不能为0');
 					$this->redirect(Yii::$app->request->referrer);
-				} else if ($orderInfo['firstpayment_amount'] > $orderInfo['order_total']) {
+				} else if ($orderInfo['firstpayment_amount'] > $orderInfo['customs_money']) {
 					$this->_setErrorMessage('首付款金额不能大于订单总金额');
 					$this->redirect(Yii::$app->request->referrer);
 				} else {

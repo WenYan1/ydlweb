@@ -55,11 +55,11 @@
             <div class="has-half-width">
                 <div class="has-top spacing-left">
                     <p class="font-content-size font-grey">订单总额(元)：</p>
-                    <p class="has-all-order-left font-content-size font-color-default"><?php echo $order['order_total']; ?></p>
+                    <p class="has-all-order-left font-content-size font-color-default"><?php echo $order['customs_money']; ?></p>
                 </div>
                 <div class="has-top spacing-left">
                     <p class="font-content-size font-grey">待支付(元)：</p>
-                    <p class="has-payed-left font-content-size font-color-default"><?php echo $order['order_total'] - $order['already_pay']; ?></p>
+                    <p class="has-payed-left font-content-size font-color-default"><?php echo $order['customs_money'] - $order['already_pay']; ?></p>
                 </div>
             </div>
             
