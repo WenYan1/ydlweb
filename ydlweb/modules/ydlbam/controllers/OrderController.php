@@ -170,7 +170,7 @@ class OrderController extends AdminBaseController
 				$collectionInfo = $collectionModel->findById($order_id, $message);
 
 				$collectionSave = [
-					'user_id'                 => $session['uid'],
+					'user_id'                 => $orderModel->user_id,
 					'user_email'              => $session['email'],
 					'order_id'                => $request->post('order_id'),
 					'order_number'            => $orderModel->contract_type,
