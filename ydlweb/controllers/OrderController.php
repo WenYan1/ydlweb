@@ -20,6 +20,7 @@ use app\models\HSCodeTax;
 use mPDF;
 use yii\helpers\VarDumper;
 use yii\web\UploadedFile;
+use Symfony\Component\Process\Process;
 
 class OrderController extends HomeBaseController
 {
@@ -690,6 +691,80 @@ class OrderController extends HomeBaseController
 
 		$json = Tool::array2Json($arr);
 		exit($json);
+	}
+
+	public function actionOrderDownload(){
+
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+
+		$order_id = $request->get('id');
+
+		// 查询订单信息
+		$ordersModel = new Orders;
+		$condition['id'] = $order_id;
+		$condition['user_id'] = $session['uid'];
+		$ordersModel = $ordersModel->findById($condition, $message);
+		if ($ordersModel) {
+			$orderGoods = $ordersModel->orderGoods;
+			$orderGoods = Tool::convert2Array($orderGoods);
+			$payLogs = $ordersModel->orderPayLog;
+			$payLogs = Tool::convert2Array($payLogs);
+			$ordersModel = $ordersModel->attributes;
+
+			$goodsModel = new Goods;
+			$goodsModel = $goodsModel->findBySupplier(['user_id' => $session['uid']]);
+			$goodsModel = Tool::convert2Array($goodsModel);
+
+			$suppliersModel = new Suppliers;
+			$suppliersModel = $suppliersModel->findByUserId($session['uid']);
+			$suppliersModel = Tool::convert2Array($suppliersModel);
+
+			$base_path = Yii::getAlias("@app");
+
+			$template_path = $base_path.'/template/1.docx';
+
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
+
+			// 替换变量
+			$templateProcessor->setValue('created_at',date('Ymd',$ordersModel->created_at)); // 申报日期
+			$templateProcessor->setValue('delivery_time',date('Ymd',$ordersModel->delivery_time)); // 出口日期
+
+			$templateProcessor->setValue('buyers_name',$ordersModel->buyers_name); // 境外收货人
+			$templateProcessor->setValue('arrive_port',$ordersModel->arrive_port); // 指运港
+			$templateProcessor->setValue('customs_port',$ordersModel->customs_port); // 离境口岸
+			$templateProcessor->setValue('trading_country',$ordersModel->trading_country); // 贸易国（地区）
+			$templateProcessor->setValue('destination_country_or_area',$ordersModel->destination_country_or_area); // 贸易国（地区）
+			$templateProcessor->setValue('pack_type_list',$ordersModel->pack_type_list); // 包装种类
+			$templateProcessor->setValue('transport_package_count',$ordersModel->transport_package_count); // 件数
+			$templateProcessor->setValue('contract_type',$ordersModel->contract_type); // 合同编号
+			// 商品信息
+			$templateProcessor->cloneRow('goods_order', "2");
+			$templateProcessor->setValue('goods_order#1',"test");
+			$templateProcessor->setValue('goods_number#1',"test");
+			// 结束替换变量
+
+			$build_order_no = Tool::build_order_no();
+
+			$save_template_path = $base_path.'/web/uploads/template/';
+
+			$docx = $save_template_path.$build_order_no.'.docx';
+			$pdf = $save_template_path;
+
+			$templateProcessor->saveAs($docx);
+
+			echo $cmd = "soffice --headless --convert-to pdf {$docx} --outdir {$pdf}";
+			$process = new Process($cmd);
+			$process->run();
+			// executes after the command finishes
+			if ($process->isSuccessful()) {
+
+				Tool::force_download($pdf);
+			}else{
+
+			}
+		}
 	}
 
 	/*
