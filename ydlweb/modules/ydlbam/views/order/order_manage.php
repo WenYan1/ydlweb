@@ -75,13 +75,13 @@
                         <th>服务类型</th>
 						<th>账号</th>
 						<th>供应商名称</th>
-						<th>发票金额</th>
+						<th>开票金额</th>
 						<th>报关金额</th>
 						<th>时间</th>
 						<th>状态</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody style="font-size: 12px">
 					<tr style="height:5px;"></tr>
 					<?php for ($i = 0; $i < count($models); $i++) {?>
 					<tr <?php if ($i % 2 != 1) {echo "style='background-color:#f5f5f5;'";}?> >
