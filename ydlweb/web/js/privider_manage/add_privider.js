@@ -45,7 +45,7 @@ function aboutUploadImg(){
     $("#business-license-input").change(function(){
         var src = window.URL.createObjectURL(this.files[0]);
         bl_size = this.files[0].size;
-        if(bl_size > 7*1024*1024){
+        if(bl_size > 15*1024*1024){
             showFailHint("上传图片不能大于7MB");
         }
         $("#business-license-btn").attr("src",src);
