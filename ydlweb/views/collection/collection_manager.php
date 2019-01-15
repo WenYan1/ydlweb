@@ -80,7 +80,7 @@ if($this->context->_popSuccessMessage()) {
                         <tr>
                             <th>序号</th>
                             <th>订单号</th>
-							<th>发票金额</th>
+							<th>开票金额</th>
 							<th>创建时间</th>
                             <th>报关单</th>
                             <th>供货合同</th>

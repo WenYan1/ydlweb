@@ -102,7 +102,7 @@ if($this->context->_popSuccessMessage()) {
 								<th>操作</th>
 							</tr>
 						</thead>
-						<tbody style="background: #fff;">
+						<tbody style="background: #fff; font-size: 12px">
 							<?php $i = 1;
 							foreach ($models as $data) {
 								?>

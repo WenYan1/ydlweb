@@ -78,10 +78,8 @@ function checkAndSubmit(){
         showFailHint("退税手续费内容不能为空！");
     } else if (checkData(interest_offer)) {
         showFailHint("年化利息报价内容不能为空！");
-    } else if (checkData(deposit_ratio)) {
-        showFailHint("订金比例内容不能为空！");
-    } else if (checkData(order_amount)) {
-        showFailHint("或订金金额内容不能为空！");
+    } else if (checkData(deposit_ratio) || checkData(order_amount)) {
+        showFailHint("订金比例内容不能为空！或订金金额内容不能为空！");
     } else if (checkData(customs_port)) {
         showFailHint("报关口岸内容不能为空！");
     }  else if (checkData(customs_contact)) {
