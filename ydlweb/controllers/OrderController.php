@@ -762,7 +762,7 @@ class OrderController extends HomeBaseController
 					$templateProcessor->setValue('goods_order#' . ($key + 1), $key + 1);
 					$templateProcessor->setValue('goods_number#' . ($key + 1), !empty($goodsList[$data['goods_id']]['hs_code']) ? $goodsList[$data['goods_id']]['hs_code'] : '');
 					$templateProcessor->setValue('goods_name#' . ($key + 1), !empty($goodsList[$data['goods_id']]['goods_name']) ? $goodsList[$data['goods_id']]['goods_name'] : '');
-					$templateProcessor->setValue('goods_box_number#' . ($key + 1), $data['gross_weight']);
+					$templateProcessor->setValue('goods_box_number#' . ($key + 1), $data['box_number']);
 					$templateProcessor->setValue('goods_box_unit#' . ($key + 1), Tool::getGoodsUnit($data['box_unit']));
 					$templateProcessor->setValue('goods_standard_count#' . ($key + 1), $data['standard_count']);
 					$templateProcessor->setValue('goods_standard_count_unit#' . ($key + 1), Tool::getGoodsUnit($data['standard_count_unit']));
