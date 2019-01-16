@@ -728,17 +728,17 @@ class OrderController extends HomeBaseController
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 			// 替换变量
-			$templateProcessor->setValue('created_at',date('Ymd',$ordersModel->created_at)); // 申报日期
-			$templateProcessor->setValue('delivery_time',date('Ymd',$ordersModel->delivery_time)); // 出口日期
+			$templateProcessor->setValue('created_at',date('Ymd',$ordersModel['created_at'])); // 申报日期
+			$templateProcessor->setValue('delivery_time',date('Ymd',$ordersModel['delivery_time'])); // 出口日期
 
-			$templateProcessor->setValue('buyers_name',$ordersModel->buyers_name); // 境外收货人
-			$templateProcessor->setValue('arrive_port',$ordersModel->arrive_port); // 指运港
-			$templateProcessor->setValue('customs_port',$ordersModel->customs_port); // 离境口岸
-			$templateProcessor->setValue('trading_country',$ordersModel->trading_country); // 贸易国（地区）
-			$templateProcessor->setValue('destination_country_or_area',$ordersModel->destination_country_or_area); // 贸易国（地区）
-			$templateProcessor->setValue('pack_type_list',$ordersModel->pack_type_list); // 包装种类
-			$templateProcessor->setValue('transport_package_count',$ordersModel->transport_package_count); // 件数
-			$templateProcessor->setValue('contract_type',$ordersModel->contract_type); // 合同编号
+			$templateProcessor->setValue('buyers_name',$ordersModel['buyers_name']); // 境外收货人
+			$templateProcessor->setValue('arrive_port',$ordersModel['arrive_port']); // 指运港
+			$templateProcessor->setValue('customs_port',$ordersModel['customs_port']); // 离境口岸
+			$templateProcessor->setValue('trading_country',$ordersModel['trading_country']); // 贸易国（地区）
+			$templateProcessor->setValue('destination_country_or_area',$ordersModel['destination_country_or_area']); // 贸易国（地区）
+			$templateProcessor->setValue('pack_type_list',$ordersModel['pack_type_list']); // 包装种类
+			$templateProcessor->setValue('transport_package_count',$ordersModel['transport_package_count']); // 件数
+			$templateProcessor->setValue('contract_type',$ordersModel['contract_type']); // 合同编号
 			// 商品信息
 			$templateProcessor->cloneRow('goods_order', "2");
 			$templateProcessor->setValue('goods_order#1',"test");
