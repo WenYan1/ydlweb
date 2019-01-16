@@ -157,7 +157,7 @@ if($this->context->_popSuccessMessage()) {
 										}
 
 										?></td>
-										<td><a href="<?php echo Yii::$app->urlManager->createUrl(['order/order-download','id'=> $data['id']]);?>">下载</a></td>
+										<td><a href="<?php echo Yii::$app->urlManager->createUrl(['order/order-download','id'=> $data['id']]);?>" target="_blank">下载</a></td>
 										<td class="blue-color">
                                             <?php if ($data['order_state']==-1){ ?>
 											<a href=<?php echo Yii::$app->urlManager->createUrl(['order/order-edit','id'=> $data['id']]);?>>
