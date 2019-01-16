@@ -9,6 +9,7 @@ use app\models\OrderGoods;
 use app\models\Orders;
 use app\models\Suppliers;
 use app\models\Users;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use Tool;
 use Upload;
 use Yii;
@@ -21,6 +22,7 @@ use mPDF;
 use yii\helpers\VarDumper;
 use yii\web\UploadedFile;
 use Symfony\Component\Process\Process;
+use ZJJConfig;
 
 class OrderController extends HomeBaseController
 {
@@ -693,7 +695,8 @@ class OrderController extends HomeBaseController
 		exit($json);
 	}
 
-	public function actionOrderDownload(){
+	public function actionOrderDownload()
+	{
 
 		$request = Yii::$app->request;
 		$session = Yii::$app->session;
@@ -723,45 +726,84 @@ class OrderController extends HomeBaseController
 
 			$base_path = Yii::getAlias("@app");
 
-			$template_path = $base_path.'/template/1.docx';
+			$template_path = $base_path . '/template/1.docx';
 
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 			// 替换变量
-			$templateProcessor->setValue('created_at',date('Ymd',$ordersModel['created_at'])); // 申报日期
-			$templateProcessor->setValue('delivery_time',date('Ymd',$ordersModel['delivery_time'])); // 出口日期
+			$templateProcessor->setValue('created_at', date('Ymd', $ordersModel['created_at'])); // 申报日期
+			$templateProcessor->setValue('delivery_time', date('Ymd', $ordersModel['delivery_time'])); // 出口日期
 
-			$templateProcessor->setValue('buyers_name',$ordersModel['buyers_name']); // 境外收货人
-			$templateProcessor->setValue('arrive_port',$ordersModel['arrive_port']); // 指运港
-			$templateProcessor->setValue('customs_port',$ordersModel['customs_port']); // 离境口岸
-			$templateProcessor->setValue('trading_country',$ordersModel['trading_country']); // 贸易国（地区）
-			$templateProcessor->setValue('destination_country_or_area',$ordersModel['destination_country_or_area']); // 贸易国（地区）
-			$templateProcessor->setValue('pack_type_list',$ordersModel['pack_type_list']); // 包装种类
-			$templateProcessor->setValue('transport_package_count',$ordersModel['transport_package_count']); // 件数
-			$templateProcessor->setValue('contract_type',$ordersModel['contract_type']); // 合同编号
+			$templateProcessor->setValue('cost_type', ZJJConfig::get_cost_type($ordersModel['cost_type'])); // 成交方式
+			$templateProcessor->setValue('buyers_name', $ordersModel['buyers_name']); // 境外收货人
+			$templateProcessor->setValue('arrive_port', $ordersModel['arrive_port']); // 指运港
+			$templateProcessor->setValue('customs_port', $ordersModel['customs_port']); // 离境口岸
+			$templateProcessor->setValue('trading_country', $ordersModel['trading_country']); // 贸易国（地区）
+			$templateProcessor->setValue('destination_country_or_area', $ordersModel['destination_country_or_area']); // 贸易国（地区）
+			$templateProcessor->setValue('pack_type_list', $ordersModel['pack_type_list']); // 包装种类
+			$templateProcessor->setValue('transport_package_count', $ordersModel['transport_package_count']); // 件数
+			$templateProcessor->setValue('contract_type', $ordersModel['contract_type']); // 合同编号
+
 			// 商品信息
-			$templateProcessor->cloneRow('goods_order', "2");
-			$templateProcessor->setValue('goods_order#1',"test");
-			$templateProcessor->setValue('goods_number#1',"test");
+			$goodsList = array();
+			if (!empty($goodsModel)) {
+				foreach ($goodsModel as $item) {
+					$goodsList[$item['id']] = $item;
+				}
+			}
+			$goods_count = count($orderGoods);
+
+			$sum_net_weight = 0;
+			$sum_gross_weight = 0;
+
+			if ($goods_count > 0) {
+				$templateProcessor->cloneRow('goods_order', "{$goods_count}");
+				foreach ($orderGoods as $key => $data) {
+					$templateProcessor->setValue('goods_order#' . ($key + 1), $key + 1);
+					$templateProcessor->setValue('goods_number#' . ($key + 1), !empty($goodsList[$data['goods_id']]['hs_code']) ? $goodsList[$data['goods_id']]['hs_code'] : '');
+					$templateProcessor->setValue('goods_name#' . ($key + 1), !empty($goodsList[$data['goods_id']]['goods_name']) ? $goodsList[$data['goods_id']]['goods_name'] : '');
+					$templateProcessor->setValue('goods_box_number#' . ($key + 1), $data['gross_weight']);
+					$templateProcessor->setValue('goods_box_unit#' . ($key + 1), Tool::getGoodsUnit($data['box_unit']));
+					$templateProcessor->setValue('goods_standard_count#' . ($key + 1), $data['standard_count']);
+					$templateProcessor->setValue('goods_standard_count_unit#' . ($key + 1), Tool::getGoodsUnit($data['standard_count_unit']));
+					$templateProcessor->setValue('goods_standard_count2#' . ($key + 1), $data['standard_count2']);
+					$templateProcessor->setValue('goods_standard_count2_unit#' . ($key + 1), Tool::getGoodsUnit($data['standard_count2_unit']));
+					$templateProcessor->setValue('goods_customs_declaration_price#' . ($key + 1), $data['customs_declaration_price']);
+					$templateProcessor->setValue('goods_subtotal#' . ($key + 1), $data['subtotal']);
+					$templateProcessor->setValue('customs_currency#' . ($key + 1), ZJJConfig::get_customs_currency($ordersModel['customs_currency']));
+					$templateProcessor->setValue('goods_supply_id#' . ($key + 1), $ordersModel['goods_supply_id']);
+
+					$sum_net_weight += $data['net_weight'];
+					$sum_gross_weight += $data['gross_weight'];
+				}
+			}
+
+			$templateProcessor->setValue('sum_net_weight', $sum_net_weight); // 毛重(千克)
+			$templateProcessor->setValue('sum_gross_weight', $sum_gross_weight); // 净重(千克)
+
 			// 结束替换变量
 
 			$build_order_no = Tool::build_order_no();
 
-			$save_template_path = $base_path.'/web/uploads/template/';
+			$save_template_path = $base_path . '/web/uploads/template/';
 
-			$docx = $save_template_path.$build_order_no.'.docx';
+			$docx = $save_template_path . $build_order_no . '.docx';
 			$pdf = $save_template_path;
 
 			$templateProcessor->saveAs($docx);
 
-			echo $cmd = "soffice --headless --convert-to pdf {$docx} --outdir {$pdf}";
+			$cmd = "\"C:\\Program Files\\LibreOffice\\program\\soffice.exe\" --headless --convert-to pdf \"{$docx}\" --outdir \"{$pdf}\" 2>&1";
+			//$cmd = "/usr/local/bin/soffice --headless --convert-to pdf {$docx} --outdir {$pdf}";
+
 			$process = new Process($cmd);
 			$process->run();
+
 			// executes after the command finishes
 			if ($process->isSuccessful()) {
-
-				Tool::force_download($pdf);
-			}else{
+				sleep(1);
+				$data = file_get_contents($pdf . $build_order_no . '.pdf');
+				Tool::force_download('报关草单.pdf', $data);
+			} else {
 
 			}
 		}
