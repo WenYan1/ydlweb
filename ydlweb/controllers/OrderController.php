@@ -800,7 +800,7 @@ class OrderController extends HomeBaseController
 
 			// executes after the command finishes
 			if ($process->isSuccessful()) {
-				sleep(1);
+				sleep(2);
 				$data = file_get_contents($pdf . $build_order_no . '.pdf');
 				Tool::force_download('报关草单.pdf', $data);
 			} else {
