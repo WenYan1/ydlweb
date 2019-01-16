@@ -778,8 +778,8 @@ class OrderController extends HomeBaseController
 				}
 			}
 
-			$templateProcessor->setValue('sum_net_weight', $sum_net_weight); // 毛重(千克)
-			$templateProcessor->setValue('sum_gross_weight', $sum_gross_weight); // 净重(千克)
+			$templateProcessor->setValue('sum_net_weight', $sum_net_weight); // 净重(千克)
+			$templateProcessor->setValue('sum_gross_weight', $sum_gross_weight); // 毛重(千克)
 
 			// 结束替换变量
 
