@@ -77,6 +77,12 @@
 					<div class="col-md-2">
 						<span><?php echo $goods['hs_code']; ?></span>
 					</div>
+						<div class="col-md-1">
+						<p>申报要素:</p>
+					</div>
+					<div class="col-md-2">
+						<span>#####</span>
+					</div>
 					<div class="col-md-1">
 						<p>退税率 :</p>
 					</div>

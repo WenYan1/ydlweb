@@ -251,6 +251,16 @@
                     </div>
                 </div>
 				
+				<div class="row-fluid col-md-12 input-height">
+                    <div class="col-md-3 col-md-offset-2">
+                        <p>运费:</p>
+                    </div>
+                    <div class="col-md-7">
+                        <input class="input-padding" type="text" id="freight" name="#####" value=""/>
+						<span style="color:#9e9e9e;">美金金额</span>
+                    </div>
+                </div>
+				
 				<div class="container-fluid add-privider-form" >
 					<table id="table" class="table">
                         <thead>
@@ -259,7 +269,7 @@
 								<th >产品退税率</th>
                                 <th >总净重(KG)</th>
                                 <th >总毛重(KG)</th>
-                                <th>产品数量和单位</th>
+                                <th>申报数量和单位</th>
 								<th >法定数量和单位</th>
                                 <th >含税单价</th>
 								<th >开票金额</th>
@@ -289,7 +299,7 @@
 							   <td style="width: 6%"><input class="input-padding" type="text" name="goods[0][net_weight]" id="net_weight" value="" data-field="true" data-field-name="net_weight" style="width:60px"/></td>
                                 <!--总毛重-->
 								<td style="width: 6%"><input class="input-padding" type="text" name="goods[0][gross_weight]" id="gross_weight" data-field="true" data-field-name="gross_weight" value="" style="width:60px"/></td>
-                                <!--产品数量和单位--> 
+                                <!--申报数量和单位--> 
 								<td style="width: 6%"><input class="input-padding" data-action="cost" type="text" name="goods[0][box_number]" data-field="true" data-field-name="box_number" id="box_number" value="" style="width:60px"/>
                                     <select name="goods[0][box_unit]" id="box_unit" data-field="true" data-field-name="box_unit" style="width: 40px;">
                                         <option value=""></option>
@@ -575,11 +585,12 @@
 						console.log(estimated_interest);
                         tr.find("[data-field-name='estimated_interest']").val(estimated_interest);
 
-                        //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率
+                        //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率+运费
                         var invoice_amount_1=parseFloat(invoice_amount)-tax;//发票金额
+						var freight =parseFloat($("#freight").val());
                         var estimate =parseFloat(tr.find("[data-field-name='estimate']").val());
                         var b =invoice_amount_1+parseFloat(estimated_cost)+parseFloat(estimated_interest);
-                        var subtotal =b/estimate;
+                        var subtotal =b/estimate+freight;
                         tr.find("[data-field-name='subtotal']").val(subtotal.toFixed(2));
 
                         //报关单价=报关总金额/产品数量

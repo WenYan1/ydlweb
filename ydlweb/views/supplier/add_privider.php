@@ -143,7 +143,7 @@
 					
 					<div class="col-md-7">
 						<input class="input-padding" type="text" id="tax-rate" name="tax_rate" value=""/>%
-						<span style="color:#9e9e9e;">小规模纳税人不能操作，需为一般纳税人</span>
+						<span style="color:#9e9e9e;">需为一般纳税人,小规模纳税人不能操作</span>
 					</div>
 				</div>
 				<div class="row-fluid col-md-12">

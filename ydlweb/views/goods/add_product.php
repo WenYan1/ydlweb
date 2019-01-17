@@ -71,7 +71,10 @@ if($this->context->_popSuccessMessage()) {
                                     <input id="hs-code" type="text" required="required" name="hs_code" class="font--content input-padding"  id="product-code" value=""><br>
                                     <p id="search-rate">查询</p>
                                 </div>
-
+								<div class="space-top">
+                                    <p class="font-content-size font--title title-width" style="text-align: left;" >申报要素：</p>
+                                   <textarea class=" describe font--content input-padding" rows="3" cols="30" name="#####" placeholder="请填写海关要求的申报格式,如若不会，可为空"></textarea>
+                                </div>
                                 <div class="space-top">
                                     <p class="font-content-size font--title title-width" style="text-align: left;" >产品退税率：</p>
                                     <input type="text" placeholder="如12%税率则填写12" required="required" name="goods_taxrate" id="goods-rate" class="font--content input-padding" value="">

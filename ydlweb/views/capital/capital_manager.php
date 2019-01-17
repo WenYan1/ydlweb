@@ -123,7 +123,7 @@ if ($filter == 1) {
                       <tr>
 						<th class="number" style="width:4%">序号</th>
                         <th class="capital-manager-1 ">订单号</th>
-                        <th class="capital-manager-2">订单金额(元)</th>
+                        <th class="capital-manager-2">开票金额(元)</th>
                         <th class="capital-manager-3">供应商</th>
                         <th class="capital-manager-4">创建时间</th>
                         <th class="capital-manager-5">状态</th>
@@ -188,7 +188,7 @@ if ($filter == 1) {
 
                       <tr>
                         <th class="exchange-1">订单号</th>
-                        <th class="exchange-2">订单金额(元)</th>
+                        <th class="exchange-2">开票金额(元)</th>
                         <th class="exchange-3">供应商</th>
                         <th class="exchange-4">创建时间</th>
                         <th class="exchange-5">状态</th>
@@ -242,7 +242,7 @@ if ($filter == 1) {
                       <tr>
 						<th class="number " style="width:4%">序号</th>
                         <th class="overdue-1">订单号</th>
-                        <th class="overdue-2">订单金额(元)</th>
+                        <th class="overdue-2">开票金额(元)</th>
                         <th class="overdue-3">供应商</th>
 						<th class="overdue-4">额度使用金额</th>
 						<th class="overdue-5">开始时间</th>
@@ -299,7 +299,7 @@ if ($filter == 1) {
                     <thead>
                       <tr>
                         <th class="duty_rate-1">订单号</th>
-                        <th class="duty_rate-2">订单金额(元)</th>
+                        <th class="duty_rate-2">开票金额(元)</th>
                         <th class="duty_rate-3">供应商</th>
                         <th class="duty_rate-4">创建时间</th>
                         <th class="duty_rate-5">状态</th>

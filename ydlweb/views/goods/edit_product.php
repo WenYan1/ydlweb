@@ -75,6 +75,10 @@ if($this->context->_popSuccessMessage()) {
                             <input id="hs-code" type="text" required="required" name="hs_code" class="font--content input-padding"  id="product-code" value="<?php echo $goods['hs_code'];?>"><br>
                             <p id="search-rate">查询</p>
                         </div>
+						<div class="space-top">
+                             <p class="font-content-size font--title title-width" style="text-align: left;" >申报要素：</p>
+                             <textarea class=" describe font--content input-padding" rows="3" cols="30" name="#####" placeholder="请填写海关要求的申报格式,如若不会，可为空"  ></textarea>
+                        </div>
 
                         <div class="space-top">
                             <p class="font-content-size font--title title-width" style="text-align: left;" >产品退税率：</p>

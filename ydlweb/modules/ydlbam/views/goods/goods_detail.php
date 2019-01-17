@@ -85,6 +85,14 @@
                                 </div>
 							</div>
 							<div class="col-md-12 col-xs-12">
+								<div class=" col-md-4 col-xs-4">
+									<span class="name-float">申报要素：</span>
+								</div>
+								<div class="col-md-8 col-xs-8">
+									<span class="text-value sapce_left"><input class="form-control" type="text" name="#####"  value="">#####</span>
+								</div>
+							</div>
+							<div class="col-md-12 col-xs-12">
 								<div class=" col-md-4 col-xs-4" >
 									<span class="name-float">含税单价(元)：</span>
 								</div>

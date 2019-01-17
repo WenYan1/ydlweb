@@ -123,7 +123,7 @@
 					</div>
 					<div class="logistics-image" style="background-image: url('../images/color2.png');">
 						<p class="big-word">费率低</p>
-						<p class="small-word">我们合作的企业，都是双A企业，在海关有比较好的信用，通关免检率非常高。</p>
+						<p class="small-word">线上系统化操作，价格透明，所有开销尽在您的掌握中</p>
 					</div>
 					<div class="logistics-image" style="background-image: url('../images/color3.png');">
 						<p class="big-word">多种货币结汇</p>
