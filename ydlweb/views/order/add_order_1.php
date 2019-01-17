@@ -253,11 +253,11 @@
 				
 				<div class="row-fluid col-md-12 input-height">
                     <div class="col-md-3 col-md-offset-2">
-                        <p>运费:</p>
+                        <p>国内运杂费:</p>
                     </div>
                     <div class="col-md-7">
                         <input class="input-padding" type="text" id="freight" name="#####" value=""/>
-						<span style="color:#9e9e9e;">美金金额</span>
+						<span style="color:#9e9e9e;">RMB</span>
                     </div>
                 </div>
 				
@@ -585,12 +585,12 @@
 						console.log(estimated_interest);
                         tr.find("[data-field-name='estimated_interest']").val(estimated_interest);
 
-                        //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息】/报关汇率+运费
+                        //报关总金额=【发票金额（1-1/1.16*退税率）+预计费用+预计利息+国内运杂费】/报关汇率
                         var invoice_amount_1=parseFloat(invoice_amount)-tax;//发票金额
-						var freight =parseFloat($("#freight").val());
+						var freight =$("#freight").val();
                         var estimate =parseFloat(tr.find("[data-field-name='estimate']").val());
-                        var b =invoice_amount_1+parseFloat(estimated_cost)+parseFloat(estimated_interest);
-                        var subtotal =b/estimate+freight;
+                        var b =invoice_amount_1+parseFloat(estimated_cost)+parseFloat(estimated_interest)+parseFloat(freight);
+                        var subtotal =b/estimate;
                         tr.find("[data-field-name='subtotal']").val(subtotal.toFixed(2));
 
                         //报关单价=报关总金额/产品数量
