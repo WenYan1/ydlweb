@@ -77,7 +77,7 @@
 						<th>供应商名称</th>
 						<th>开票金额</th>
 						<th>报关金额</th>
-						<th>时间</th>
+						
 						<th>状态</th>
 					</tr>
 				</thead>
@@ -104,7 +104,7 @@
 							<td><?php echo $models[$i]['supplier_name']; ?></td>
 							<td><?=!empty($orders_goods[$models[$i]['id']]['invoice_amount']) ? $orders_goods[$models[$i]['id']]['invoice_amount'] : ''?></td>
 							<td><?=!empty($orders_goods[$models[$i]['id']]['subtotal']) ? $orders_goods[$models[$i]['id']]['subtotal'] : ''?></td>
-							<td><?php echo date(("Y-m-d"), $models[$i]['created_at']);?></td>
+							
 
 								<td><?php
 									if ($models[$i]['order_state']==0) {

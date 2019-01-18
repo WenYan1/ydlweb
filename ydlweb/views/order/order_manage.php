@@ -89,7 +89,7 @@ if($this->context->_popSuccessMessage()) {
 							<tr>
 								<th>序号</th>
 								<th>订单号</th>
-								<th>生成日期</th>
+								
 								<th>服务类型</th>
                                 <th>结算方式</th>
 								<th>供应商</th>
@@ -109,7 +109,7 @@ if($this->context->_popSuccessMessage()) {
 								<tr>
 									<td><?php echo ($page - 1) * 10 + $i; ?></td>
 									<td><?php echo $data['contract_type']; ?></td>
-									<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
+									
                                     <td>
                                         <?=ZJJConfig::get_service_type($data['service_type']);?>
                                     </td>
