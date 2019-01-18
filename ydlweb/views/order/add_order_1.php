@@ -257,7 +257,7 @@
                     </div>
                     <div class="col-md-7">
                         <input class="input-padding" type="text" id="freight" name="#####" value=""/>
-						<span style="color:#9e9e9e;">RMB</span>
+						<span style="color:#9e9e9e;">通过腾邦付的国内运杂费RMB，若无写0</span>
                     </div>
                 </div>
 				
