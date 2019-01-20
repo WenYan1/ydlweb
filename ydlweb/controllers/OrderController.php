@@ -463,7 +463,7 @@ class OrderController extends HomeBaseController
 				foreach ($goodsData as $key => $item) {
 					$invoice_amount += $item['invoice_amount'];
 					$customs_money += $item['subtotal'];
-					$anticipated_tax_refund += $item['estimated_cost'];
+					$anticipated_tax_refund += $item['tax_cost'];
 				}
 
 				$post['invoice_amount'] = $invoice_amount;
@@ -762,6 +762,7 @@ class OrderController extends HomeBaseController
 					$templateProcessor->setValue('goods_order#' . ($key + 1), $key + 1);
 					$templateProcessor->setValue('goods_number#' . ($key + 1), !empty($goodsList[$data['goods_id']]['hs_code']) ? $goodsList[$data['goods_id']]['hs_code'] : '');
 					$templateProcessor->setValue('goods_name#' . ($key + 1), !empty($goodsList[$data['goods_id']]['goods_name']) ? $goodsList[$data['goods_id']]['goods_name'] : '');
+					$templateProcessor->setValue('goods_info#' . ($key + 1), !empty($goodsList[$data['goods_id']]['ingredient']) ? $goodsList[$data['goods_id']]['ingredient'] : '');
 					$templateProcessor->setValue('goods_box_number#' . ($key + 1), $data['box_number']);
 					$templateProcessor->setValue('goods_box_unit#' . ($key + 1), Tool::getGoodsUnit($data['box_unit']));
 					$templateProcessor->setValue('goods_standard_count#' . ($key + 1), $data['standard_count']);
@@ -792,8 +793,8 @@ class OrderController extends HomeBaseController
 
 			$templateProcessor->saveAs($docx);
 
-			$cmd = "\"C:\\Program Files\\LibreOffice\\program\\soffice.exe\" --headless --convert-to pdf \"{$docx}\" --outdir \"{$pdf}\" 2>&1";
-			//$cmd = "/usr/local/bin/soffice --headless --convert-to pdf {$docx} --outdir {$pdf}";
+			//$cmd = "\"C:\\Program Files\\LibreOffice\\program\\soffice.exe\" --headless --convert-to pdf \"{$docx}\" --outdir \"{$pdf}\" 2>&1";
+			$cmd = "/usr/local/bin/soffice --headless --convert-to pdf {$docx} --outdir {$pdf}";
 
 			$process = new Process($cmd);
 			$process->run();

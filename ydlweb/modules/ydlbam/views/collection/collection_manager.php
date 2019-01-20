@@ -108,15 +108,11 @@
                         </td>
                         <td><?=$data['anticipated_tax_refund']?></td>
                         <td>
-							<?php
-							if ($data['is_end'] == 1){
-								echo '是';
-							}else if ($data['is_end'] == 2){
-								echo '否';
-							}else{
-								echo '';
-							}
-							?>
+                            <select data-end-bind="true" data-id="<?=$data['id']?>">
+                                <option value="0"></option>
+                                <option value="1" <?=$data['is_end'] == 1 ? 'selected' : ''?>>是</option>
+                                <option value="2" <?=$data['is_end'] == 2 ? 'selected' : ''?>>否</option>
+                            </select>
                         </td>
                         
                         <td class="blue-color">
@@ -166,6 +162,25 @@
         var csrfToken = $("#_csrf").val();
 
         $.post("/ydlbam/collection/change-state-type", {
+            "id":id,
+            "val":val,
+            "_csrf":csrfToken
+        }, function(data){
+            var contentData = $.parseJSON(data);
+            if (contentData.state == 1){
+                alert("操作成功");
+            }else{
+                alert("操作失败，稍后重试");
+            }
+        });
+    });
+
+    $(".table-border").on('change','[data-end-bind="true"]',function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+        var csrfToken = $("#_csrf").val();
+
+        $.post("/ydlbam/collection/change-end-type", {
             "id":id,
             "val":val,
             "_csrf":csrfToken

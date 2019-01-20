@@ -57,24 +57,6 @@ if($this->context->_popSuccessMessage()) {
 				<input class="input-padding" type="text" id="anticipated_tax_refund" name="anticipated_tax_refund" value="<?php echo $collection['anticipated_tax_refund']?>"/>
 			</div>
 		</div>
-		<div class="row-fluid col-md-12">
-			<div class="col-md-3 col-md-offset-2">
-				<p>是否认证 :</p>
-			</div>
-			<div class="export-right">
-				<p><label><input  name="is_identification" type="radio" value="1" <?php echo $collection['is_identification'] == 1 ? 'checked' : ''?> />&nbsp&nbsp是&nbsp&nbsp</label>
-					<label><input name="is_identification" type="radio" value="2" <?php echo $collection['is_identification'] == 2 ? 'checked' : ''?>/>&nbsp&nbsp否</label></p>
-			</div>
-		</div>
-		<div class="row-fluid col-md-12">
-			<div class="col-md-3 col-md-offset-2">
-				<p>是否收齐 :</p>
-			</div>
-			<div class="export-right">
-				<p><label><input  name="is_end" type="radio" value="1" <?php echo $collection['is_end'] == 1 ? 'checked' : ''?>/>&nbsp&nbsp是&nbsp&nbsp</label>
-					<label><input name="is_end" type="radio" value="2" <?php echo $collection['is_end'] == 2 ? 'checked' : ''?>/>&nbsp&nbsp否</label></p>
-			</div>
-		</div>
 
 	</div>
     <div class="container-fluid submit-img" style="background-color: #FAFAFA;">

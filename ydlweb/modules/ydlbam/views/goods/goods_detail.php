@@ -89,7 +89,7 @@
 									<span class="name-float">申报要素：</span>
 								</div>
 								<div class="col-md-8 col-xs-8">
-									<span class="text-value sapce_left"><input class="form-control" type="text" name="#####"  value="">#####</span>
+									<span class="text-value sapce_left"><input class="form-control" type="text" name="ingredient"  value="<?php echo $goods['ingredient']?>"></span>
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">

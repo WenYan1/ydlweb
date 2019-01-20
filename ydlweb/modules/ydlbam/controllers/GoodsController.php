@@ -112,6 +112,7 @@ class GoodsController extends AdminBaseController
 				$goodsModel->hs_code_remark = $request->post('hs_code_remark');
 				$goodsModel->original_price_remark = $request->post('original_price_remark');
 				$goodsModel->goods_image_remark = $request->post('goods_image_remark');
+				$goodsModel->ingredient = $request->post('ingredient');
 				$goods = $goodsModel->save();
 			}
 
