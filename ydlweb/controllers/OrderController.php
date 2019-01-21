@@ -68,11 +68,11 @@ class OrderController extends HomeBaseController
 		$status = $request->get('state');
 		$search = $request->get('search');
 		$page = $request->get('page') ? $request->get('page') : 1;
-		$query = Orders::find()->where(['user_id' => $session['uid']])->andFilterWhere(['order_state' => $status])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
+		$query = Orders::find()->where(['user_id' => $session['uid']])->andFilterWhere(['order_state' => $status])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => 'DESC']);
 
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->orderBy('delivery_time desc')->all();
+		$models = $query->offset($pages->offset)->limit($pages->limit)->orderBy('created_at desc')->all();
 		$models = Tool::convert2Array($models);
 
 		$order_ids = '';
