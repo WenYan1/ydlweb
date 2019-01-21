@@ -48,7 +48,7 @@ class CollectionController extends AdminBaseController
 				$condition = [];
 				$condition['id'] = $item['order_id'];
 				$ordersModel = $ordersModel->findById($condition, $message);
-				$item['order_invoice_amount'] = $ordersModel->invoice_amount;
+				$item['order_invoice_amount'] = $ordersModel['invoice_amount'];
 			}
 
 			$FilesModel = CollectionFile::find()->where('c_id IN(' . $cids . ')')->all();
