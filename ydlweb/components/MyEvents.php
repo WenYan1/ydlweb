@@ -37,9 +37,9 @@ class MyEvents extends Component
                         }
                         Orders::updateAll(['order_frozen'=>1],['id'=>$orderId]);
                         if($user->state !== -2) {
-                                $sql = "update users set state=-2 where id=".$userId;
-                                $command = $connection->createCommand($sql);
-                                $command->execute();
+                                // $sql = "update users set state=-2 where id=".$userId;
+                                // $command = $connection->createCommand($sql);
+                                // $command->execute();
                         }
                 }
 
