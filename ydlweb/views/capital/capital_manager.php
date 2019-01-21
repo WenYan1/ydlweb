@@ -247,7 +247,6 @@ if ($filter == 1) {
 						<th class="overdue-4">额度使用金额</th>
 						<th class="overdue-5">开始时间</th>
 						<th class="overdue-6">到期时间</th>
-						<th class="overdue-7">预计费用</th>
 						<th class="overdue-8">预计总还款</th>
                         <th class="overdue-9">操作</th>
                       </tr>
@@ -286,7 +285,6 @@ if ($filter == 1) {
                         <td class="overdue-4"><?php echo rand(50000, 300000);?></td>
                         <td class="overdue-5"><?php echo date("Y-m-d", $value['created_at']); ?></td>
                         <td class="overdue-6"><?php echo date("Y-m-d", strtotime("+90 days", strtotime(date("Y-m-d", $value['created_at'])))); ?></td>
-                        <td class="overdue-7"><?php echo rand(1000, 5000);?></td>
                         <td class="overdue-8"></td>
                         <td class="overdue-9"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/settlement', 'order_id' => $value['id']]); ?>">结汇</a></td>
                       </tr>
