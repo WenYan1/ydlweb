@@ -41,7 +41,7 @@ class OrderController extends AdminBaseController
 				} else if ($orderSn !== null) {
 					$query->andWhere(['like', 'order_sn', $orderSn])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'user_email', $email])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
 				} else if ($email !== null) {
-					$query->andWhere(['like', 'user_email', $email])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
+					$query->andWhere(['like', 'email', $email])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
 				} else if ($downPatment !== null) {
 					$query->andWhere(['down_payment' => $downPatment])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName]);
 				} else if ($supplierName !== null) {
@@ -59,7 +59,7 @@ class OrderController extends AdminBaseController
 				} else if ($orderSn !== null) {
 					$query->where(['like', 'order_sn', $orderSn])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'user_email', $email])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
 				} else if ($email !== null) {
-					$query->where(['like', 'user_email', $email])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
+					$query->where(['like', 'email', $email])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName])->andFilterWhere(['down_payment' => $downPatment]);
 				} else if ($downPatment !== null) {
 					$query->where(['down_payment' => $downPatment])->andFilterWhere(['>=', 'created_at', $startTimeStamp])->andFilterWhere(['<=', 'created_at', $endTimeStamp])->andFilterWhere(['like', 'supplier_name', $supplierName]);
 				} else if ($supplierName !== null) {
