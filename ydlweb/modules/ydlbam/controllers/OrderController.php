@@ -143,6 +143,33 @@ class OrderController extends AdminBaseController
 			$this->redirect('order');
 		}
 	}
+	
+	/**
+	* 删除订单
+	**/
+	public function actionDeleteOrder(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
+		
+		if ($request->isPost) {
+			$orderModel = new Orders;
+			$id['id'] = $request->post('order_id');
+			$orderModel = $orderModel->findById($id, $message);
+			if ($orderModel) {
+				$ds = $orderModel->delete(); 
+				if($ds){
+					return Tool::outputSuccess('删除成功');
+				}else{
+					return Tool::outputError('删除失败');
+				}
+			}else{
+				return Tool::outputError('数据不存在');
+			}
+		}
+	}
+	
 
 	/**
 	 * @审核订单
@@ -181,6 +208,26 @@ class OrderController extends AdminBaseController
 					'anticipated_tax_refund'  => $orderModel->anticipated_tax_refund,
 					'order_status'            => $orderModel->order_state
 				];
+				
+				/*============计算供应商 已垫付税款金额 ====================*/
+				$supplierModel = new Suppliers;
+				$supplierModel = $supplierModel->findById($orderModel->supplier_id, $message);
+				$orders_goods = Orders::find()->where("supplier_id = {$orderModel->supplier_id}")->all();
+				$orders_goods = Tool::convert2Array($orders_goods);
+				$orderids = $request->post('order_id');
+				foreach ($orders_goods as $item){
+					$orderids .= ',' . $item['id'];
+				}
+				$orders_goods = OrderGoods::find()->where("order_id in($orderids)")->all();
+				$orders_goods = Tool::convert2Array($orders_goods);
+				
+				$tax_paid_advance = 0;
+				foreach ($orders_goods as $item) {
+					$tax_paid_advance += $item['tax_cost'];
+				}
+				$supplierModel->tax_paid_advance = $tax_paid_advance;
+				$supplierModel->save();
+				/*============计算供应商 已垫付税款金额 ====================*/
 
 				// 保存退税
 				if (!empty($collectionInfo)) { // 完成操作

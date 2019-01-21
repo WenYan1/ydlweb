@@ -585,7 +585,7 @@
 <div class="container-fluid">
     <div class="row-fluid col-xs-12">
         <div class="col-xs-2">
-            <span class="text-name name-float">预计出货日期 :</span>
+            <span class="text-name name-float">预计出口日期 :</span>
         </div>
         <div class="col-xs-9">
             <span class="text-value value-float"><?=date('Y-m-d',$order['delivery_time']);?></span>

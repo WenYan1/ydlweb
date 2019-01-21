@@ -72,7 +72,7 @@ class OrderController extends HomeBaseController
 
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
+		$models = $query->offset($pages->offset)->limit($pages->limit)->orderBy('delivery_time desc')->all();
 		$models = Tool::convert2Array($models);
 
 		$order_ids = '';
@@ -167,13 +167,16 @@ class OrderController extends HomeBaseController
 
 				$invoice_amount = 0;
 				$customs_money = 0;
+				$anticipated_tax_refund = 0;
 				foreach ($goodsData as $key => $item) {
 					$invoice_amount += $item['invoice_amount'];
 					$customs_money += $item['subtotal'];
+					$anticipated_tax_refund += $item['tax_cost'];
 				}
 
 				$post['invoice_amount'] = $invoice_amount;
 				$post['customs_money'] = $customs_money;
+				$post['anticipated_tax_refund'] = $anticipated_tax_refund;
 				$order = $ordersModel->add($post, $message);
 
 				if ($order) {
@@ -463,7 +466,7 @@ class OrderController extends HomeBaseController
 				foreach ($goodsData as $key => $item) {
 					$invoice_amount += $item['invoice_amount'];
 					$customs_money += $item['subtotal'];
-					$anticipated_tax_refund += $item['estimated_cost'];
+					$anticipated_tax_refund += $item['tax_cost'];
 				}
 
 				$post['invoice_amount'] = $invoice_amount;
@@ -731,8 +734,10 @@ class OrderController extends HomeBaseController
 			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 			// 替换变量
-			$templateProcessor->setValue('created_at', date('Ymd', $ordersModel['created_at'])); // 申报日期
-			$templateProcessor->setValue('delivery_time', date('Ymd', $ordersModel['delivery_time'])); // 出口日期
+			//$templateProcessor->setValue('created_at', date('Ymd', $ordersModel['created_at'])); // 申报日期
+			//$templateProcessor->setValue('delivery_time', date('Ymd', $ordersModel['delivery_time'])); // 出口日期
+			$templateProcessor->setValue('created_at', ''); // 申报日期
+			$templateProcessor->setValue('delivery_time', ''); // 出口日期
 
 			$templateProcessor->setValue('cost_type', ZJJConfig::get_cost_type($ordersModel['cost_type'])); // 成交方式
 			$templateProcessor->setValue('buyers_name', $ordersModel['buyers_name']); // 境外收货人

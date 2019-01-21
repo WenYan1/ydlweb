@@ -94,6 +94,7 @@ function bind_order_id() {
             {
                 "id":id,
                 "val":val,
+				"fild":'id',
                 "_csrf":csrfToken
             },
             function(data){
@@ -105,6 +106,29 @@ function bind_order_id() {
                 }
             });
     });
+	
+	$("#bill").on("change",'.change-order',function () {
+        var id = $(this).attr("data-id");
+        var val = $(this).val();
+
+        $.post("/capital/change-order",
+            {
+                "id":id,
+                "val":val,
+				"fild":'order_sn',
+                "_csrf":csrfToken
+            },
+            function(data){
+                var contentData = $.parseJSON(data);
+                if (contentData.state == 1){
+                   alert("操作成功");
+                }else{
+                    alert("操作失败，稍后重试");
+                }
+            });
+    });
+	
+	
 
 	$("#bill").on('click','[data-apply="true"]',function () {
 		alert("申请成功")

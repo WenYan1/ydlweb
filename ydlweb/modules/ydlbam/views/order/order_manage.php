@@ -77,8 +77,8 @@
 						<th>供应商名称</th>
 						<th>开票金额</th>
 						<th>报关金额</th>
-						
 						<th>状态</th>
+						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody style="font-size: 12px">
@@ -106,38 +106,27 @@
 							<td><?=!empty($orders_goods[$models[$i]['id']]['subtotal']) ? $orders_goods[$models[$i]['id']]['subtotal'] : ''?></td>
 							
 
-								<td><?php
-									if ($models[$i]['order_state']==0) {
-						echo '下单审核';
-					} elseif ($models[$i]['order_state']==2) {
-						echo '工厂生产';
-					}elseif ($models[$i]['order_state']==3) {
-						echo '质检装柜';
-					}elseif ($models[$i]['order_state']==4) {
-						echo '到达口岸';
-					}elseif ($models[$i]['order_state']==5) {
-						echo '报关完成';
-					}elseif ($models[$i]['order_state']==6) {
-						echo '收集单据';
-					}elseif ($models[$i]['order_state']==7) {
-						echo '收汇';
-					}elseif ($models[$i]['order_state']==8) {
-						echo '垫付税款';
-					}elseif ($models[$i]['order_state']==9) {
-						echo '垫付采购款';
-					}elseif ($models[$i]['order_state']==10) {
-						echo '退税完成';
-					}elseif ($models[$i]['order_state']==11) {
-						echo '还本付息';
-					}elseif ($models[$i]['order_state']==12) {
-						echo '已完成';
-					}
-					elseif ($models[$i]['order_state']==-1) {
-						echo '审核未通过';
-					}elseif ($models[$i]['order_state']==-2) {
-						echo '取消';
-					}
-									?></td>
+								<td>
+								<select name="state" class="select_state" data-id="<?php echo $models[$i]['id'];?>">
+									<option value="0" <?=$models[$i]['order_state'] == 0 ? 'selected' : ''?>>订单审核中</option>
+									<option value="1" <?=$models[$i]['order_state'] == 1 ? 'selected' : ''?>>审核通过</option>
+									<option value="2" <?=$models[$i]['order_state'] == 2 ? 'selected' : ''?>>工厂生产中</option>	
+									<option value="3" <?=$models[$i]['order_state'] == 3 ? 'selected' : ''?>>质检装柜</option>
+									<option value="4" <?=$models[$i]['order_state'] == 4 ? 'selected' : ''?>>到达口岸</option>
+									<option value="5" <?=$models[$i]['order_state'] == 5 ? 'selected' : ''?>>报关完成</option>
+									<option value="6" <?=$models[$i]['order_state'] == 6 ? 'selected' : ''?>>收集单据</option>
+									<option value="7" <?=$models[$i]['order_state'] == 7 ? 'selected' : ''?>>收汇</option>
+									<option value="8" <?=$models[$i]['order_state'] == 8 ? 'selected' : ''?>>垫付税款</option>
+									<option value="9" <?=$models[$i]['order_state'] == 9 ? 'selected' : ''?>>垫付采购款</option>
+									<option value="10" <?=$models[$i]['order_state'] == 10 ? 'selected' : ''?>>退税完成</option>
+									<option value="11" <?=$models[$i]['order_state'] == 11 ? 'selected' : ''?>>还本付息</option>
+									<option value="12" <?=$models[$i]['order_state'] == 12 ? 'selected' : ''?>>已完成</option>
+									<option value="-1" <?=$models[$i]['order_state'] == -1 ? 'selected' : ''?>>审核未通过</option>
+								</select>
+									</td>
+									<td>
+										<a href="javascript:;" class="ondel" data-id="<?php echo $models[$i]['id'];?>">删除</a>
+									</td>
 								</tr>
 								<?php }?>
 							</tbody>
@@ -173,6 +162,49 @@
 				format:'Y-m-d',
 				timepicker:false,
 			});
+			
+			$(".ondel").on('click', function(){
+				var id = $(this).attr("data-id");
+				var val = $(this).val();
+				var csrfToken = $("#_csrf").val();
+				var ds = confirm("确定删除数据吗？");
+				
+				if(ds){
+					$.post("/ydlbam/order/delete-order", {
+						"order_id":id,
+						"state":val,
+						"_csrf":csrfToken
+					}, function(data){
+						var contentData = $.parseJSON(data);
+						if (contentData.status){
+							alert(contentData.message);
+							window.location.reload();
+						}else{
+							alert("操作失败，稍后重试");
+						}
+					});
+				}
+				
+			});
+			
+			$(".select_state").on('change',function () {
+				var id = $(this).attr("data-id");
+				var val = $(this).val();
+				var csrfToken = $("#_csrf").val();
+				$.post("/ydlbam/order/auditing-order", {
+					"order_id":id,
+					"state":val,
+					"_csrf":csrfToken
+				}, function(data){
+					var contentData = $.parseJSON(data);
+					if (contentData.status){
+						alert(contentData.message);
+					}else{
+						alert("操作失败，稍后重试");
+					}
+				});
+			});
+			
 		</script>
 <script type="text/javascript" src="/js/artdialog/jquery.artDialog.js"></script>
 		<script type="text/javascript" src="/js/ydlbam_js/js_order/order_manage.js"></script>

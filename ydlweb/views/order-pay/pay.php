@@ -6,6 +6,10 @@
         <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>"/>
         <link rel="stylesheet" type="text/css" href="../css/order/order.css">
         <script type="text/javascript" src="../js/pay/pay.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../css/public/jquery.datetimepicker.css"/ >  
+        <script type="text/javascript" src="../public/jquery.datetimepicker.js"></script>
+		
         <title>支付</title>
         <?php 
             $img_source = "http://107.170.254.164/uploads/";
@@ -90,7 +94,18 @@
                 <p class="font-bold col-md-1">银行账号:  </p>
                 <input style="padding:2px 6px;" id="account_name" type="text" name="account_name" required="require">
             </div>
+			<div class="space-vertical spacing-left option-third">
+                <p class="font-bold col-md-1">付款时间:  </p>
+				<input type="text" id="recharge_time" name="recharge_time" required="require" class="spacing-left recharge-to-input">
+            </div>
             <input id="submit-real" style="display:none;" type="submit" value="Submit">
             </form>
        </div>
        <p class="submit-payinfo">确定支付</p>
+	    <script>
+                $('#recharge_time').datetimepicker({
+                    lang:'ch',
+                    format:'Y-m-d',
+                    timepicker:false,
+                });
+        </script>

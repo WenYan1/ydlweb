@@ -81,7 +81,7 @@
 						<p>申报要素:</p>
 					</div>
 					<div class="col-md-2">
-						<span>#####</span>
+						<span><?php echo $goods['declaration_element']; ?></span>
 					</div>
 					<div class="col-md-1">
 						<p>退税率 :</p>

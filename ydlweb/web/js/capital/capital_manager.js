@@ -107,11 +107,12 @@ function caculPrice(){
 			var table =document.getElementById("a");
 			var sum=0;
 		
-			for(var i=1;i<table.rows.length-1;i++){
+			for(var i=1;i<table.rows.length;i++){
 				var price=parseFloat(table.rows[i].cells[4].innerHTML);
 				var num=parseFloat(table.rows[i].cells[7].innerHTML);
-				sum=price+num;
-				table.rows[i].cells[8].innerHTML=sum;
+				var num1=parseFloat(table.rows[i].cells[8].innerHTML);
+				sum=price+num+num1;
+				table.rows[i].cells[9].innerHTML=sum;
 			}
 		
 }

@@ -6,6 +6,7 @@ use Yii;
 use Tool;
 use app\models\PayLogs;
 use app\models\Orders;
+use app\models\OrderGoods;
 use app\models\Users;
 use app\models\CapitalLogs;
 use app\controllers\HomeBaseController;
@@ -143,6 +144,7 @@ class OrderPayController extends HomeBaseController
 			                    			$transaction = $connection->beginTransaction();
 			                    			try{
 			                    				$orderModel->already_pay +=$paymentAmount;
+												$orderModel->recharge_time = $request->post('recharge_time');
 			                    				if($orderModel->save()) {
 									$userModel->user_capital -=$paymentAmount;
 									if($userModel->save()) {
@@ -211,6 +213,51 @@ class OrderPayController extends HomeBaseController
 	            				$this->_setErrorMessage('信用额度资金已冻结');
 				               $this->redirect(Yii::$app->request->referrer);
 	            			} else {
+								
+								$userModel->credi_limit; //可用信用额度
+								$paymentAmount; //需要支付的金额
+								if($userModel->credi_limit >= $paymentAmount) {
+									$data['id'] = $request->post('order_id');
+									$data['user_id'] = $session['uid'];
+									$orderModel = $orderModel->findById($data,$message);
+									if($orderModel) {
+										$connection = Yii::$app->db;
+										$transaction = $connection->beginTransaction();
+										$orderModel->already_pay += $paymentAmount; //订单已支付金额
+										$orderModel->credit_insurance +=$paymentAmount; //订单使用信保金额数
+										$orderModel->recharge_time = $request->post('recharge_time');
+										$os = $orderModel->save();
+										
+										$userModel->credi_limit -= $paymentAmount; //用户可用信保金额数
+										$us = $userModel->save();
+										
+										$payData['user_id'] = $session['uid'];
+										$payData['order_id'] = $request->post('order_id');
+										$payData['payment_amount'] = $paymentAmount;
+										$payData['pay_explain'] = '订单支付';
+										$payData['pay_type'] = '信用额度支付';
+										$ps = $payLogsModel->add($payData,$message);
+										
+										if($us && $os && $ps) {
+											$transaction->commit();
+											$this->_setSuccessMessage('支付成功');
+											$this->redirect('/capital');
+										}else{
+											$transaction->rollBack();
+											$this->_setErrorMessage('支付失败');
+											$this->redirect(Yii::$app->request->referrer);
+										}
+										
+									}else{
+										$this->_setErrorMessage('订单不存在');
+										$this->redirect(Yii::$app->request->referrer);
+									}
+								}else{
+									$this->_setErrorMessage('账户余额不足');
+					                $this->redirect(Yii::$app->request->referrer);
+								}
+								
+								/* /////////////////////////////// 旧逻辑隐藏
 		            			$bond = $paymentAmount/10;
 		            			if($userModel->user_capital >= $bond) {
 		            				if($userModel->credi_limit >= $paymentAmount) {
@@ -288,7 +335,8 @@ class OrderPayController extends HomeBaseController
 		            				$this->_setErrorMessage('账户余额不足');
 					               $this->redirect(Yii::$app->request->referrer);
 		            			}
-	            			}
+								*/
+							}
 	            		} else {
 	            			$this->_setErrorMessage('非法请求');
 	                    		$this->redirect(Yii::$app->request->referrer);
@@ -312,6 +360,69 @@ class OrderPayController extends HomeBaseController
 		}
             }
     }
+	
+	/**
+	** 还款
+	**/
+	public function actionRepayment(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if(!$session->isActive) $session->open();
+		$orderModel = new Orders;
+		$userModel = new Users;
+		$order_id = $request->get('order_id');
+		
+		$condition = [];
+		$condition['id'] = $order_id;
+        $condition['user_id'] = $session['uid'];
+		
+		$userModel = $userModel->findById($session['uid']);
+		$orderModel = $orderModel->findById($condition,$message);
+		if($orderModel){
+			$connection = Yii::$app->db;
+			$transaction = $connection->beginTransaction();
+			
+			$user_capital = $userModel->user_capital; //用户可用资金
+			$credit_insurance = $orderModel->credit_insurance; //使用信用额度付款金额
+			
+			
+			$orders_goods = OrderGoods::find()->where("order_id in({$order_id})")->all();
+			$orders_goods = Tool::convert2Array($orders_goods);
+			
+			$estimated_interest = 0;  //预计利息
+			$estimated_cost = 0;	  //退税手续费
+			
+			foreach ($orders_goods as $item) {
+				$estimated_interest += $item['estimated_interest'];
+				$estimated_cost += $item['estimated_cost'];
+			}
+			
+			if($user_capital < ($credit_insurance + $estimated_interest + $estimated_cost)){
+				$transaction->rollBack();
+				$this->_setErrorMessage('账户余额不足');
+				$this->redirect(Yii::$app->request->referrer);
+			}else{
+				$userModel->user_capital = $user_capital - ($credit_insurance + $estimated_interest + $estimated_cost); //总得还款金额
+				$userModel->bond = $userModel->bond + $estimated_interest + $estimated_cost;
+				$userModel->credi_limit = $userModel->credi_limit + $credit_insurance;
+				$orderModel->is_repayment = 1;
+				$us = $userModel->save();
+				$os = $orderModel->save();
+				if($us && $os){
+					$transaction->commit();
+					$this->_setSuccessMessage('还款成功');
+				    $this->redirect('/capital');
+				}else{
+					$transaction->rollBack();
+					$this->_setErrorMessage('还款失败');
+					$this->redirect(Yii::$app->request->referrer);
+				}
+			}
+		}
+		
+		
+	}
+	
 
     /**
     * @结汇

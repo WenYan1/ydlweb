@@ -69,7 +69,7 @@
                     <tr>
                         <td><?php echo ($page - 1) * 10 + $i; ?></td>
                         <td><?=$data['order_number']?></td>
-							<td></td>
+						<td><?=$data['order_invoice_amount']?></td>
 						<td><?php echo date(("Y-m-d"), $data['created_at']); ?></td>
                         <td>
 		                    <?php if (!empty($Files[$data['id']][1])) { ?>
@@ -100,7 +100,7 @@
 		                    <?php } ?>
                         </td>
 						<td>
-                            <select data-state-bind="true" data-id="<?=$data['id']?>">
+                            <select data-state-bind="true" data-id="<?=$data['id']?>" data-field="foreign_exchange_status">
                                 <option value="0"></option>
                                 <option value="1" <?=$data['foreign_exchange_status'] == 1 ? 'selected' : ''?>>已收齐</option>
                                 <option value="2" <?=$data['foreign_exchange_status'] == 2 ? 'selected' : ''?>>未收齐</option>
@@ -108,21 +108,18 @@
                         </td>
                         <td><?=$data['anticipated_tax_refund']?></td>
                         <td>
-							<?php
-							if ($data['is_end'] == 1){
-								echo '是';
-							}else if ($data['is_end'] == 2){
-								echo '否';
-							}else{
-								echo '';
-							}
-							?>
+							<select data-state-bind="true" data-id="<?=$data['id']?>" data-field="is_end">
+                                <option value="0"></option>
+                                <option value="1" <?=$data['is_end'] == 1 ? 'selected' : ''?>>已收齐</option>
+                                <option value="2" <?=$data['is_end'] == 2 ? 'selected' : ''?>>未收齐</option>
+                            </select>
                         </td>
                         
                         <td class="blue-color">
                             <a href=<?php echo Yii::$app->urlManager->createUrl(['/ydlbam/collection/detail','id'=> $data['id']]);?>>
                                 详情
                             </a>
+							<a href="javascript:;" class="ondel" data-id="<?php echo $data['id'];?>">删除</a>
                         </td>
                     </tr>
 					<?php $i ++; } ?>
@@ -164,10 +161,12 @@
         var id = $(this).attr("data-id");
         var val = $(this).val();
         var csrfToken = $("#_csrf").val();
+		var field = $(this).attr("data-field");
 
         $.post("/ydlbam/collection/change-state-type", {
             "id":id,
             "val":val,
+			"field":field,
             "_csrf":csrfToken
         }, function(data){
             var contentData = $.parseJSON(data);
@@ -178,4 +177,27 @@
             }
         });
     });
+	
+	$(".ondel").on('click', function(){
+		var id = $(this).attr("data-id");
+		var val = $(this).val();
+		var csrfToken = $("#_csrf").val();
+		var ds = confirm("确定删除数据吗？");
+		
+		if(ds){
+			$.post("/ydlbam/collection/delete-order", {
+				"order_id":id,
+				"state":val,
+				"_csrf":csrfToken
+			}, function(data){
+				var contentData = $.parseJSON(data);
+				if (contentData.status){
+					alert(contentData.message);
+					window.location.reload();
+				}else{
+					alert("操作失败，稍后重试");
+				}
+			});
+		}
+	});
 </script>

@@ -75,19 +75,22 @@
                         </td>
 						<td><input name="exchange_rate" data-exchange-rate="true" data-id="<?=$value['id']?>" type="text" value="<?=$value['exchange_rate']?>" style="width: 60px"/></td>
 						<td><?=$value['exchange_settlement_rmb'];?></td>
+						<td>
                         <?php
 						if ($value['state'] == 1) {
 						?>
-						<td>已同意</td>
+						已同意
 						<?php 
 						} else if($value['state'] == -1){
 						?>
-						<td>已拒绝</td>
+						已拒绝
 						<?php }else{ ?>
-						<td><a class="agree">同意</a><span> | </span>
-							<a class="disagree">拒绝</a></td>
+						<a class="agree">同意</a><span> | </span>
+							<a class="disagree">拒绝</a>
 						<?php }?>
-
+						<span> | </span>
+						<a href="javascript:;" class="ondel" data-id="<?php echo $value['id'];?>">删除</a>
+						</td>
 					</tr>
 					<?php
 					$i++;}
@@ -118,7 +121,7 @@
 
 	</div>
 </div>
-
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 <script>
     $('#start_time').datetimepicker({
         lang:'ch',
@@ -130,6 +133,28 @@
         format:'Y-m-d',
         timepicker:false,
     });
+	$(".ondel").on('click', function(){
+	var id = $(this).attr("data-id");
+	var val = $(this).val();
+	var csrfToken = $("#_csrf").val();
+	var ds = confirm("确定删除数据吗？");
+	
+	if(ds){
+		$.post("/ydlbam/capital/delete-order", {
+			"order_id":id,
+			"state":val,
+			"_csrf":csrfToken
+		}, function(data){
+			var contentData = $.parseJSON(data);
+			if (contentData.status){
+				alert(contentData.message);
+				window.location.reload();
+			}else{
+				alert("操作失败，稍后重试");
+			}
+		});
+	}
+});
 </script>
 <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 <script type="text/javascript" src="/js/ydlbam_js/js_capital/capital_recharge.js"></script>

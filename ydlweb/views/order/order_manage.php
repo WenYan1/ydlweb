@@ -96,7 +96,7 @@ if($this->context->_popSuccessMessage()) {
                                 
 								<th>开票总金额</th>
 								<th>报关总金额</th>
-								<th>报关日期</th>
+								<th>预计出口日期</th>
 								<th>状态</th>
 								<th>报关资料</th>
 								<th>操作</th>
@@ -147,8 +147,7 @@ if($this->context->_popSuccessMessage()) {
 											echo '退税完成';
 										}elseif ($data['order_state']==11) {
 											echo '还本付息';
-										}
-                                        elseif ($data['order_state']==11) {
+										}elseif ($data['order_state']==12) {
 											echo '已完成';
 										}elseif ($data['order_state']==-1) {
 											echo '审核未通过';

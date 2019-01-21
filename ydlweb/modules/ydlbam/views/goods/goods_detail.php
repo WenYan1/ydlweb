@@ -89,7 +89,9 @@
 									<span class="name-float">申报要素：</span>
 								</div>
 								<div class="col-md-8 col-xs-8">
-									<span class="text-value sapce_left"><input class="form-control" type="text" name="#####"  value="">#####</span>
+									<span class="text-value sapce_left">
+									<textarea class=" form-control" rows="3" cols="30" name="declaration_element" ><?php echo $goods['declaration_element'];?></textarea>
+									</span>
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12">

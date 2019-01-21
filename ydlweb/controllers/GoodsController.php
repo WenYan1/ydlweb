@@ -121,6 +121,8 @@ class GoodsController extends HomeBaseController
                     $data['original_price'] = $request->post('original_price');
                     $data['goods_url'] = $request->post('goods_url');
                     $data['goods_volume'] = $request->post('goods_volume');
+                    $data['declaration_element'] = $request->post('declaration_element');
+					
     				/*$data['created_at'] = $time;
     				$data['updated_at'] = $time;*/
     				$transaction = $connection->beginTransaction();
@@ -269,6 +271,7 @@ class GoodsController extends HomeBaseController
     			$goods->net_weight = $request->post('net_weight');
     			$goods->goods_url = $request->post('goods_url');
     			$goods->box_number = $request->post('box_number');
+				$goods->declaration_element = $request->post('declaration_element');
 
 			    if (!empty($fileResult)){
 				    $goods->goods_image = $dir.$path['newName'];
@@ -294,6 +297,7 @@ class GoodsController extends HomeBaseController
     			$goodsAttr = $goodsModel->getGoodsAttrs()->all();
     			$goodsAttr = Tool::convert2Array($goodsAttr);
     			$goodsModel = $goodsModel->attributes;
+				
 
     			return $this->render('edit_product', [
 			     'goods' => $goodsModel,

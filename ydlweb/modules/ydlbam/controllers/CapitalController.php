@@ -304,6 +304,33 @@ class CapitalController extends AdminBaseController
 			}
 		}
 	}
+	
+	
+	/**
+	* 删除订单
+	**/
+	public function actionDeleteOrder(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
+		
+		if ($request->isPost) {
+			$rechargeLogsModel = new RechargeLogs;
+			$id['id'] = $request->post('order_id');
+			$rechargeLogsModel = $rechargeLogsModel->findById($id, $message);
+			if ($rechargeLogsModel) {
+				$ds = $rechargeLogsModel->delete(); 
+				if($ds){
+					return Tool::outputSuccess('删除成功');
+				}else{
+					return Tool::outputError('删除失败');
+				}
+			}else{
+				return Tool::outputError('数据不存在');
+			}
+		}
+	}
 
 	public function actionCapitalLog()
 	{

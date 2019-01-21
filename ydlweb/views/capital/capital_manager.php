@@ -35,7 +35,7 @@
         		<p class="spacing-left content-item-width font-content-size capital-category-color space-vertical">可用资金：
                     <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="可用资金： 由用户转账至平台，可以用于支付首付款\尾款\结汇\信保代采购保证金。">
                 </p>
-        		<p class="content-item-width font-content-size capital-category-color space-vertical">保证金：
+        		<p class="content-item-width font-content-size capital-category-color space-vertical">不可用资金：
                     <img style="cursor:pointer;" class="capital-img" src="../images/capital_tip.jpg" data-toggle="tooltip" data-placement="right" title="不可用资金： 每次使用信保代采购需要支付使用额度的10%作为保证金，待结汇后返还至可用资金。">
                 </p>
         		<p class="content-item-width font-content-size capital-category-color space-vertical">可用信用额度：
@@ -125,7 +125,7 @@ if ($filter == 1) {
                         <th class="capital-manager-1 ">订单号</th>
                         <th class="capital-manager-2">开票金额(元)</th>
                         <th class="capital-manager-3">供应商</th>
-                        <th class="capital-manager-4">创建时间</th>
+                        <th class="capital-manager-4">付款时间</th>
                         <th class="capital-manager-5">状态</th>
                         <th class="capital-manager-6">已付款(元)</th>
                         <th class="capital-manager-7">待付款(元)</th>
@@ -163,7 +163,7 @@ if ($filter == 1) {
                             <td class="capital-manager-1"><?php echo $value['order_sn']; ?></td>
                             <td class="capital-manager-2"><?php echo $value['invoice_amount']; ?></td>
                             <td class="capital-manager-3"><?php echo $value['supplier_name']; ?></td>
-                            <td class="capital-manager-4"><?php echo date("Y-m-d", $value['created_at']); ?></td>
+                            <td class="capital-manager-4"><?php echo $value['recharge_time']; ?></td>
                             <td class="capital-manager-5"><?php echo $state_info; ?></td>
                             <td class="capital-manager-6"><?php echo $value['already_pay']; ?></td>
                             <td class="capital-manager-7"><?php echo $value['invoice_amount'] - $value['already_pay']; ?></td>
@@ -247,9 +247,10 @@ if ($filter == 1) {
 						<th class="overdue-4">额度使用金额</th>
 						<th class="overdue-5">开始时间</th>
 						<th class="overdue-6">到期时间</th>
-						<th class="overdue-7">预计费用</th>
-						<th class="overdue-8">预计总还款</th>
-                        <th class="overdue-9">操作</th>
+						<th class="overdue-7">退税手续费</th>
+						<th class="overdue-8">预计利息</th>
+						<th class="overdue-9">预计总还款</th>
+                        <th class="overdue-10">操作</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -283,12 +284,22 @@ if ($filter == 1) {
                         <td class="overdue-1"><?php echo $value['order_sn']; ?></td>
                         <td class="overdue-2"><?php echo $value['invoice_amount']; ?></td>
                         <td class="overdue-3"><?php echo $value['supplier_name']; ?></td>
-                        <td class="overdue-4"><?php echo rand(50000, 300000);?></td>
-                        <td class="overdue-5"><?php echo date("Y-m-d", $value['created_at']); ?></td>
-                        <td class="overdue-6"><?php echo date("Y-m-d", strtotime("+90 days", strtotime(date("Y-m-d", $value['created_at'])))); ?></td>
-                        <td class="overdue-7"><?php echo rand(1000, 5000);?></td>
-                        <td class="overdue-8"></td>
-                        <td class="overdue-9"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/settlement', 'order_id' => $value['id']]); ?>">结汇</a></td>
+                        <td class="overdue-4"><?php echo $value['credit_insurance']; ?></td>
+                        <td class="overdue-5"><?php echo $value['recharge_time']; ?></td>
+                        <td class="overdue-6"><?php 
+							if($value['advance_days'] == 1){
+								echo date("Y-m-d", strtotime("+90 days", strtotime($value['recharge_time']))); 
+							}else if($value['advance_days'] == 2){
+								echo date("Y-m-d", strtotime("+120 days", strtotime($value['recharge_time']))); 
+							}else{
+								echo '';
+							}
+							
+							?></td>
+                        <td class="overdue-7"><?php echo $value['estimated_cost']; ?></td>
+						<td class="overdue-8"><?php echo $value['estimated_interest']; ?></td>
+                        <td class="overdue-9"></td>
+                        <td class="overdue-10"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/repayment', 'order_id' => $value['id']]); ?>">还款</a></td>
                       </tr>
                       <?php  $i++;}?>
                     </tbody>

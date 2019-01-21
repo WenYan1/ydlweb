@@ -6,6 +6,7 @@ use app\controllers\HomeBaseController;
 use app\models\CapitalLogs;
 use app\models\RechargeLogs;
 use app\models\Orders;
+use app\models\OrderGoods;
 use app\models\Users;
 use Tool;
 use Yii;
@@ -54,11 +55,12 @@ class CapitalController extends HomeBaseController
 		$bufferTimeDifference = $nowTime - $overdueTime - $bufferTime; //缓冲时间差
 		$query = Orders::find()->where(['user_id' => $session['uid']]);
 		if ($filter == 1) {
-			$query->andWhere(['or', ['and', 'delivery_time=0', 'order_state>=1'], ['and', 'delivery_time!=0', 'order_state<9', 'delivery_time>' . $timeDifference]])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
+			$query->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 2) {
 			$query->andWhere(['<', 'order_state', 9])->andWhere(['<=', 'delivery_time', $timeDifference])->andWhere(['>=', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 3) {
-			$query->andWhere(['<>', 'delivery_time', 0])->andWhere(['<', 'order_state', 9])->andWhere(['<', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
+			//$query->andWhere(['<>', 'delivery_time', 0])->andWhere(['<', 'order_state', 9])->andWhere(['<', 'delivery_time', $bufferTimeDifference])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
+			$query->andWhere(['<>', 'credit_insurance', 0])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else if ($filter == 5) {
 			$query->andWhere(['>=', 'order_state', 8])->andFilterWhere(['like', 'supplier_name', $search])->orderBy(['id' => SORT_DESC]);
 		} else {
@@ -70,6 +72,20 @@ class CapitalController extends HomeBaseController
 		$models = Tool::convert2Array($models);
 		$usersModel = new Users;
 		$usersModel = $usersModel->findById($session['uid']);
+
+		foreach($models as &$val){
+			$orders_goods = OrderGoods::find()->where("order_id in({$val['id']})")->all();
+			$orders_goods = Tool::convert2Array($orders_goods);
+			
+			$estimated_interest = 0;
+			$estimated_cost = 0;
+			foreach ($orders_goods as $item) {
+				$estimated_interest += $item['estimated_interest'];
+				$estimated_cost += $item['estimated_cost'];
+			}
+			$val['estimated_interest'] = $estimated_interest;
+			$val['estimated_cost'] = $estimated_cost;
+		}
 
 		return $this->render('capital_manager', [
 			'models' => $models,
@@ -106,6 +122,7 @@ class CapitalController extends HomeBaseController
 		$pages = new Pagination(['totalCount' => $countQuery->count()]);
 		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
 		$models = Tool::convert2Array($models);
+
 		$usersModel = new Users;
 		$usersModel = $usersModel->findById($session['uid']);
 
@@ -165,9 +182,26 @@ class CapitalController extends HomeBaseController
 			$condition = [];
 			$condition['id'] = $request->post('id');
 			$recharge = $rechargeLogsModel->findById($condition, $message);
-			if ($recharge) {
-				$recharge->order_id = $request->post('val');
-
+			
+			
+			$fild = $request->post('fild');
+			$order_id = null;
+			if($fild != 'order_sn'){  //id
+				$order_id = $request->post('val');
+			}else{ //订单编号
+				$ordersModel = new Orders;
+				$condition = [];
+				$condition['order_sn'] = $request->post('val');
+				$condition['user_id'] = $session['uid'];
+				$ordersModel = $ordersModel->findById($condition, $message);
+				
+				if($ordersModel){
+					$order_id = $ordersModel->id;
+				}
+			}
+			
+			if ($recharge && $order_id) {
+				$recharge->order_id = $order_id;
 				if ($recharge->save()) {
 					$arr = array(
 						'state' => 1

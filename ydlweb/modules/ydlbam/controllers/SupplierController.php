@@ -170,6 +170,35 @@ class SupplierController extends AdminBaseController {
 			}
 		}
 	}
+	
+	
+	
+	/**
+	* 删除订单
+	**/
+	public function actionDeleteOrder(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
+		
+		if ($request->isPost) {
+			$suppliersModel = new Suppliers;
+			$id['id'] = $request->post('order_id');
+			$suppliersModel = $suppliersModel->findById($id, $message);
+			if ($suppliersModel) {
+				$ds = $suppliersModel->delete(); 
+				if($ds){
+					return Tool::outputSuccess('删除成功');
+				}else{
+					return Tool::outputError('删除失败');
+				}
+			}else{
+				return Tool::outputError('数据不存在');
+			}
+		}
+	}
+	
 
 	public function actionAuditingSupplier() {
 		$request = Yii::$app->request;

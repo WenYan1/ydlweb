@@ -100,7 +100,7 @@
 						<td class="">纳税人识别号</td>
 						<td class="">函调垫税限额</td>
 						<td class="">已垫付税款金额</td>
-						<td class="">添加日期</td>
+						<!--<td class="">添加日期</td>-->
 						<td class="status col-md-2">状态</td>
 						<td class="operate col-md-2">操作</td>
 					</tr>
@@ -112,7 +112,7 @@
 						<td class="name"><?php echo $x_value['identify_number']; ?></td>
 						<td class="name"><?php echo $x_value['allowance_limit']; ?></td>
 						<td class="name"><?php echo $x_value['tax_paid_advance']; ?></td>
-						<td class="time"><?php echo date(("Y-m-d"),$x_value['created_at']); ?></td>
+						<!--<td class="time"><?php echo date(("Y-m-d"),$x_value['created_at']); ?></td>-->
 						<td class="status col-md-2"><?php
 							if($x_value['supplier_state'] == 0){
 								echo "待审核";

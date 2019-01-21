@@ -61,7 +61,7 @@ class SupplierController extends HomeBaseController
 
 		$countQuery = clone $query->orderBy(['updated_at' => SORT_DESC]);
 		$pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => '10']);
-		$models = $query->offset($pages->offset)->limit($pages->limit)->all();
+		$models = $query->offset($pages->offset)->limit($pages->limit)->orderBy('created_at desc')->all();
 		$models = Tool::convert2Array($models);
 
 		return $this->render('privider_manage', [

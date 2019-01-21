@@ -148,7 +148,7 @@
 				<td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?php echo $value['bank_name'] ?></td> 
                 <td><?php echo $value['bank_account']; ?></td>
-                <td><?php echo date("Y-m-d", $value['created_at']); ?></td>
+                <td><?php echo $value['recharge_time']; ?></td>
 				<td>
                     <select data-id="<?=$value['id']?>" data-order="true" style="width: 100px;">
                         <option value="">请选择</option>
@@ -156,6 +156,13 @@
                         <option value="<?=$item['id']?>" <?=$value['order_id'] == $item['id'] ? 'selected':''?>><?=$item['order_sn']?></option>
                         <?php } ?>
                     </select>
+					<!--<input type="text" data-id="<?=$value['id']?>" class="change-order" value="<?php 
+					foreach ($orders as $item){ 
+						if($value['order_id'] == $item['id']){
+							echo $item['order_sn'];
+						}
+					}
+					?>"/>-->
                 </td>
                 <td><a data-id="<?=$value['id']?>" data-apply="true">申请结汇</a></td>
               </tr>
@@ -173,7 +180,7 @@
                 <th>币种</th>
                 <th>结汇汇率</th>
                 <th>结汇后人民币金额</th>
-				<th>关联的订单</th>
+				<!--<th>关联的订单</th>-->
               </tr>
             </thead>
             <tbody>
@@ -184,11 +191,11 @@
                 <td><?=Tool::getCurrency($value['currency'])?></td>
                 <td><?=$value['exchange_rate']?></td>
                 <td><?=$value['exchange_settlement_rmb']?></td>
-				 <td>
+				<!--<td>
 					 <?php foreach ($orders as $item){ if ($value['order_id'] == $item['id']){ ?>
 						 <?=$item['order_sn']?>
 					 <?php } } ?>
-                 </td>
+                 </td>-->
               </tr>
             <?php  $i++; } ?>
             </tbody>

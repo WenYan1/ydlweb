@@ -339,7 +339,7 @@
 								<!--开票人-->	
 							   <td style="width: 6%">
                                     <select name="goods[0][supplier_id]" data-field="true" data-field-name="supplier_id" id="supplier_id" style="width: 100px;">
-                                        <option value="">请选择</option>
+                                      
 		                                <?php foreach ($supplier as $item){ ?>
                                             <option value="<?=$item['id']?>"><?=$item['company_name']?></option>
 		                                <?php } ?>

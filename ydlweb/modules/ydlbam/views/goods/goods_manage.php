@@ -50,6 +50,7 @@
 						<th>供应商名称</th>
 						<th>账号</th>
 						<th>状态</th>
+						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,6 +78,9 @@
 								}
 							?>
 						</td>
+						<td>
+							<a href="javascript:;" class="ondel" data-id="<?php echo $value['id'];?>">删除</a>
+						</td>
 					</tr>
 					<?php } ?>
 				</tbody>
@@ -98,4 +102,29 @@
 			</nav>
 	</div>
 </div>
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+<script type="text/javascript" >
+$(".ondel").on('click', function(){
+	var id = $(this).attr("data-id");
+	var val = $(this).val();
+	var csrfToken = $("#_csrf").val();
+	var ds = confirm("确定删除数据吗？");
+	
+	if(ds){
+		$.post("/ydlbam/goods/delete-order", {
+			"order_id":id,
+			"state":val,
+			"_csrf":csrfToken
+		}, function(data){
+			var contentData = $.parseJSON(data);
+			if (contentData.status){
+				alert(contentData.message);
+				window.location.reload();
+			}else{
+				alert("操作失败，稍后重试");
+			}
+		});
+	}
+});
+</script>
 <script type="text/javascript" src="/js/ydlbam_js/js_goods/goods_manage.js"></script>

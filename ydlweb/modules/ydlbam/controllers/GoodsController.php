@@ -67,6 +67,33 @@ class GoodsController extends AdminBaseController
 			'page'      => $page,
 		]);
 	}
+	
+	/**
+	* 删除订单
+	**/
+	public function actionDeleteOrder(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
+		
+		if ($request->isPost) {
+			$goodsModel = new Goods;
+			$id['id'] = $request->post('order_id');
+			$goodsModel = $goodsModel->findById($id, $message);
+			if ($goodsModel) {
+				$ds = $goodsModel->delete(); 
+				if($ds){
+					return Tool::outputSuccess('删除成功');
+				}else{
+					return Tool::outputError('删除失败');
+				}
+			}else{
+				return Tool::outputError('数据不存在');
+			}
+		}
+	}
+	
 
 	public function actionAuditingGoods()
 	{
@@ -112,6 +139,7 @@ class GoodsController extends AdminBaseController
 				$goodsModel->hs_code_remark = $request->post('hs_code_remark');
 				$goodsModel->original_price_remark = $request->post('original_price_remark');
 				$goodsModel->goods_image_remark = $request->post('goods_image_remark');
+				$goodsModel->declaration_element = $request->post('declaration_element');
 				$goods = $goodsModel->save();
 			}
 

@@ -7,6 +7,7 @@ use Yii;
 use Tool;
 use yii\data\Pagination;
 use app\models\Collection;
+use app\models\Orders;
 
 use app\modules\ydlbam\controllers\AdminBaseController;
 
@@ -41,8 +42,13 @@ class CollectionController extends AdminBaseController
 		$Files = array();
 
 		if (!empty($models)) {
-			foreach ($models as $item) {
+			foreach ($models as &$item) {
 				$cids .= $cids === '' ? $item['id'] : ',' . $item['id'];
+				$ordersModel = new Orders;
+				$condition = [];
+				$condition['id'] = $item['order_id'];
+				$ordersModel = $ordersModel->findById($condition, $message);
+				$item['order_invoice_amount'] = $ordersModel->invoice_amount;
 			}
 
 			$FilesModel = CollectionFile::find()->where('c_id IN(' . $cids . ')')->all();
@@ -59,6 +65,33 @@ class CollectionController extends AdminBaseController
 			'Files'        => $Files,
 			'page'         => $page
 		]);
+	}
+	
+		
+	/**
+	* 删除订单
+	**/
+	public function actionDeleteOrder(){
+		$request = Yii::$app->request;
+		$session = Yii::$app->session;
+		if (!$session->isActive) $session->open();
+		$this->initializeAttributes();
+		
+		if ($request->isPost) {
+			$collectionModel = new Collection;
+			$id['id'] = $request->post('order_id');
+			$collectionModel = $collectionModel->findById($id, $message);
+			if ($collectionModel) {
+				$ds = $collectionModel->delete(); 
+				if($ds){
+					return Tool::outputSuccess('删除成功');
+				}else{
+					return Tool::outputError('删除失败');
+				}
+			}else{
+				return Tool::outputError('数据不存在');
+			}
+		}
 	}
 
 	public function actionDetail()
@@ -101,9 +134,10 @@ class CollectionController extends AdminBaseController
 			$CollectionModel = new Collection;
 			$condition = [];
 			$condition['id'] = $request->post('id');
+			$field = $request->post('field');
 			$Collection = $CollectionModel->findById($condition, $message);
 			if ($Collection) {
-				$Collection->foreign_exchange_status = $request->post('val');
+				$Collection->$field = $request->post('val');
 
 				if ($Collection->save()) {
 					$arr = array(
