@@ -94,8 +94,6 @@ class CollectionController extends HomeBaseController
 			$data['user_email'] = $session['userEmail'];
 			$data['order_number'] = $request->post('order_number');
 			$data['anticipated_tax_refund'] = $request->post('anticipated_tax_refund');
-			$data['is_identification'] = $request->post('is_identification');
-			$data['is_end'] = $request->post('is_end');
 
 			$files = $request->post('files');
 
@@ -193,8 +191,6 @@ class CollectionController extends HomeBaseController
 			if ($collectionModel) {
 				$collectionModel->order_number = $request->post('order_number');
 				$collectionModel->anticipated_tax_refund = $request->post('anticipated_tax_refund');
-				$collectionModel->is_identification = $request->post('is_identification');
-				$collectionModel->is_end = $request->post('is_end');
 
 
 				$connection = Yii::$app->db;

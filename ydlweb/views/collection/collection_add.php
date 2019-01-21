@@ -76,6 +76,7 @@ if($this->context->_popSuccessMessage()) {
 			</div>
 		</div>-->
 
+
 	</div>
 	<div class="container-fluid submit-img" style="background-color: #FAFAFA;">
 		<div class="row-fluid col-md-12">

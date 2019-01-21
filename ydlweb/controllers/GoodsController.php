@@ -114,6 +114,7 @@ class GoodsController extends HomeBaseController
     				$data['goods_wide'] = $request->post('goods_wide');
     				$data['goods_height'] = $request->post('goods_height');
     				$data['gross_weight'] = $request->post('gross_weight');
+    				$data['ingredient'] = $request->post('ingredient');
     				$data['net_weight'] = $request->post('net_weight');
     				$data['hs_code'] = $request->post('hs_code');
     				$data['goods_taxrate'] = $request->post('goods_taxrate');

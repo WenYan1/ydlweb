@@ -184,3 +184,6 @@ ALTER TABLE `collection` ADD `order_status` TINYINT(3) UNSIGNED NULL COMMENT '�
 ALTER TABLE `collection` ADD `invoice_amount` VARCHAR(255) NULL COMMENT '发票金额' AFTER `anticipated_tax_refund`;
 ALTER TABLE `orders` ADD `anticipated_tax_refund` VARCHAR(255) NULL COMMENT '预计退税金额' AFTER `invoice_amount`;
 
+-- 张俊杰 2018-01-20 20:00
+ALTER TABLE `collection` CHANGE `order_status` `order_status` TINYINT(3) NULL DEFAULT NULL COMMENT '订单状态';
+ALTER TABLE `goods` ADD `ingredient` VARCHAR(255) NULL AFTER `gross_weight`;
