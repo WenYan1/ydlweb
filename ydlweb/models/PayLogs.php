@@ -47,7 +47,7 @@ class PayLogs extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'order_id', 'state', 'created_at', 'updated_at'], 'integer'],
-            [['payment_amount'], 'number'],
+            //[['payment_amount'], 'number'],
             [['pay_explain'], 'required'],
             [['pay_explain'], 'string', 'max' => 30]
         ];

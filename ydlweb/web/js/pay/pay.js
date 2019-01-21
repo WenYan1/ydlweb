@@ -13,9 +13,7 @@ function checkAndSumbit(){
 	var account_name = $("#account_name").val();
 	if(checkData(num)){
 		alert("付款金额不能为空！");
-	}else if(!check_number(num)){
-        alert("付款金额必须是正整数！");
-    }else if(checkData(factory_account_name)){
+	}else if(checkData(factory_account_name)){
         alert("加工厂账户名不能为空！");
     }else if(checkData(account_name)){
         alert("账号信息不能为空！");
