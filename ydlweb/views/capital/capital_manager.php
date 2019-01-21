@@ -77,6 +77,7 @@
                 <p class="label-title">资金结算</p>
             </div>
         </div>
+        <form action="<?php echo Yii::$app->urlManager->createUrl(['capital']);?>" id="myform" method="get">
         <div class="privider-select">
         	<?php
 if ($filter == 1) {
@@ -108,12 +109,16 @@ if ($filter == 1) {
 			
 			
             <?php }?>
+
             <p style="margin:0 48px;" class="vertical-line-width vertical-line-color">|</p>
-            <input id="key"  type="text" placeholder="请输入供应商名称" class="privider_query input-padding" value="<?php if ($search === null) {} else {echo $search;}?>">
-            <div class="button_query">
+            <input id="key" name="search"  type="text" placeholder="请输入供应商名称" class="privider_query input-padding" value="<?php if ($search === null) {} else {echo $search;}?>">
+            <div class="button_query" onclick="$('#myform').submit();">
                 <img src="../images/search.jpg" alt="搜索"><span>搜索</span>
             </div>
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+
         </div>
+        </form>
 
             <?php
 if ($filter == 1) {
