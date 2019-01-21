@@ -248,6 +248,7 @@ if ($filter == 1) {
 						<th class="overdue-5">开始时间</th>
 						<th class="overdue-6">到期时间</th>
 						<th class="overdue-7">退税手续费</th>
+						<th class="overdue-8" style="display:none;">预计利息</th>
 						<th class="overdue-9">预计总还款</th>
                         <th class="overdue-10">操作</th>
                       </tr>
@@ -295,7 +296,8 @@ if ($filter == 1) {
 							}
 							
 							?></td>
-						<td class="overdue-8"><?php echo $value['estimated_interest']; ?></td>
+                        <td class="overdue-7"><?php echo $value['estimated_cost']; ?></td>
+						<td class="overdue-8" style="display:none;"><?php echo $value['estimated_interest']; ?></td>
                         <td class="overdue-9"></td>
                         <td class="overdue-10"><a href="<?php echo Yii::$app->urlManager->createUrl(['order-pay/repayment', 'order_id' => $value['id']]); ?>">还款</a></td>
                       </tr>
